@@ -1,0 +1,17 @@
+pip install thefuzz
+pip install python-Levenshtein
+библиотеки thefuzz и python-Levenshtein
+нужны для нечёткое сравнение строк
+
+
+allure generate allure-results --clean
+- удаление истории
+
+
+pytest tests/test_order.py --alluredir=./allure-results
+pytest tests/test_order_freight.py --alluredir=./allure-results
+- запуск тестов
+
+
+allure serve allure-results --lang ru
+- запуск отчета
