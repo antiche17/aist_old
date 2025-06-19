@@ -47,12 +47,14 @@ class LocOrders:
     ORDER_NUMBER = {'auto_id': "bceNavigation", 'control_type': "ComboBox"}
     ORDER_TYPE_TEXT = {'auto_id': "lbType", 'control_type': "Text"}
     STATUS_COMBO = {'title': "Статус:", 'control_type': "ComboBox"}
+    STATUS_FINISH = {'title': "Завершено", 'control_type': "ListItem"}
     STATUS_COMBO_CANCEL = {'title': "Отменен", 'control_type': "ListItem"}
     STATUS_COMBO_FINISH = {'title': "Завершена", 'control_type': "ListItem"}
     PRIORITY_COMBO = {'title': "Приоритет:", 'control_type': "ComboBox"}
     PRIORITY_COMBO_KRIT = {'title': "Критический", 'control_type': "ListItem"}
+    PRIORITY_COMBO_LOW = {'title': "Низкий", 'control_type': "ListItem"}
     PRIORITY_COMBO_HIGH = {'title': "Высокий", 'control_type': "ListItem"}
-    RESPONSIBLE_COMBO = {'title': "Ответственный:", 'control_type': "ComboBox"}
+    RESPONSIBLE_COMBO = {'title': "Ответственный:", 'control_type': "ComboBox", 'found_index': 0}
     CLIENT_COMBO = {'auto_id': "sleClient", 'control_type': "ComboBox"}
     CLIENT_COMBO_3 = {'title': "Наименование строка 3", 'control_type': "DataItem"}
     SENDERS_1 = {'title': "Отправители:", 'control_type': "ComboBox"}
@@ -71,16 +73,21 @@ class LocOrders:
     YES_BUTTON = {'title': "Да", 'control_type': "Button"}
     REFRESH_BUTTON_ORDER = {'title': "Обновить", 'control_type': "Button"}
     COMPLETION_DATE = {'title': "...", 'control_type': "Text", 'auto_id': "lblCompletedOn"}
+
+    # Вкладки
     TAB_INFO = {'title': "Информация", 'control_type': "TabItem"}
     TAB_ROUTES = {'title': "Маршрут", 'control_type': "TabItem"}
     TAB_CHECK = {'title': "Счета", 'control_type': "TabItem"}
     TAB_FILE = {'title': "Файлы", 'control_type': "TabItem"}
     TAB_SERVICES = {'title': "Услуги", 'control_type': "TabItem"}
     TAB_FREIGHT = {'title': "Груз", 'control_type': "TabItem"}
-
+    TAB_TRANSPORTATION = {'title': "Перевозки", 'control_type': "TabItem"}
+    TAB_FORWARDING = {'title': "Экспедирование", 'control_type': "TabItem"}
+    TAB_GTD = {'title': "Декларирование", 'control_type': "TabItem"}
+    TAB_TRACKING = {'title': "Отслеживание", 'control_type': "TabItem"}
+    TAB_FORWARDING_FREIGHT = {'title': "Экспедируемый груз", 'control_type': "TabItem"}
 
     # Перевозки вкладка в заказе
-    TAB_TRANSPORTATION = {'title': "Перевозки", 'control_type': "TabItem"}
     TYPE_TRANSPORTATION = {'title': "Тип перевозки:", 'control_type': "ComboBox", 'auto_id': "carriageTypeEdit"}
     SEA_TRANSPORTATION = {'title': "Морская перевозка", 'control_type': "ListItem"}
     SEA_ORDER_NAME = {'title': "Морская перевозка: Новая морская перевозка", 'control_type': "SplitButton"}
@@ -107,6 +114,8 @@ class LocOrders:
     FEEDER_LINE4 = {'title': "Строка 4", 'control_type': "ListItem"}
     FEEDER_LINE5 = {'title': "Строка 5", 'control_type': "ListItem"}
     FEEDER_KONOSAMENT = {'title': "Фидерн. коносамент:", 'control_type': "Edit"}
+
+
 
     ROUTES_WINDOWS = {'title': "Тип задания:", 'control_type': "ComboBox", 'auto_id': "routeAssignmentSeaCarriageEdit1"}
     PREFORWARDING = {'title': "Преэкспедирование", 'control_type': "ListItem"}
@@ -136,10 +145,26 @@ class LocOrders:
 
 
     # Экспедирование вкладка в заказе
-    TAB_FORWARDING = {'title': "Экспедирование", 'control_type': "TabItem"}
     FORWARDING_TYPE_TEXT = {'auto_id': "lbType", 'control_type': "Text"}
     FORWARDING_ITEM = {'title': "Тип экспедирования строка 1", 'control_type': "DataItem"}
 
+    FORWARDING_NUMBER = {'title': "Номер экспедирования строка 1", 'control_type': "DataItem"}
+    FORWARDING_STATUS = {'title': "Статус строка 1", 'control_type': "DataItem"}
+    FORWARDING_OTV = {'title': "Ответственный строка 1", 'control_type': "DataItem"}
+    FORWARDING_FORWARD = {'title': "Экспедитор строка 1", 'control_type': "DataItem"}
+    FORWARDING_TE = {'title': "Количество ТЕ строка 1", 'control_type': "DataItem"}
+    FORWARDING_DATA_CREATE = {'title': "Дата создания строка 1", 'control_type': "DataItem"}
+    FORWARDING_DATA_FINISH = {'title': "Дата завершения строка 1", 'control_type': "DataItem"}
+    FORWARDING_NOTE = {'title': "Примечание строка 1", 'control_type': "DataItem"}
+
+    FORWARDING_TYPE_DIALOG = {'title': "Тип экспедирования:", 'control_type': "ComboBox"}
+    FORWARDING_FORWARDER = {'title': "Портовое", 'control_type': "ComboBox", 'found_index': 0}
+    FORWARDING_TELEX = {'title': "Телекс-релиз:", 'control_type': "ComboBox"}
+    FORWARDING_RECEIVING_DOC = {'title': "Получение докум.:", 'control_type': "ComboBox"}
+    FORWARDING_NOMINATION = {'title': "Номинация эксп.:", 'control_type': "ComboBox"}
+    FORWARDING_RECEIVING_DO = {'title': "Получение ДО/ДО1:", 'control_type': "ComboBox"}
+
+    DATA_PANEL = {'title': "Панель данных", 'control_type': "Custom"}
 
     # Груз
     FREIGHT_TYPE_TEXT = {'auto_id': "lcCargoType", 'control_type': "Text"}
