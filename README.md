@@ -31,8 +31,8 @@
 ## Команды для запуска тестов
 
 **Подготовка**:
-В командной строке поочерёдно ввести команды:
-cd /d C:\qa\AIST
+В командной строке поочерёдно ввести команды:\
+cd /d C:\qa\AIST\
 call .\.venv1\Scripts\activate
 
 Запуск всех тестов:
@@ -40,7 +40,7 @@ pytest --alluredir=./allure-results
 
 Запуск тестов отдельной командой:
   - Заказ:
-    - Создание с типом "Логистика" - "pytest tests_orders/test_order.py --alluredir=./allure-results"
+    - Создание с типом "Логистика" - pytest tests_orders/test_order.py --alluredir=./allure-results
     - Создание типом "Другие услуги" - pytest tests_orders/test_2order_dr.py --alluredir=./allure-results
     - Редактирование полей заказа - pytest tests_orders/test_order_update.py --alluredir=./allure-results
     - Удаление заказа и удаление двух заказов - pytest tests_orders/test_1order_del.py --alluredir=./allure-results
