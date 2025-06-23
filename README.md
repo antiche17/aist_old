@@ -27,3 +27,26 @@
 - Перевозки
   - [ ] Морская перевозка с маршрутами
   - [ ] Автоперевозка с маршрутами
+
+## Команды для запуска тестов
+
+Подготовка:
+в командной строке поочерёдно ввести команды
+cd /d C:\qa\AIST
+call .\.venv1\Scripts\activate
+
+Запуск всех тестов:
+pytest --alluredir=./allure-results
+
+Запуск тестов по отдельным командам:
+  - Заказ:
+    - Создание с типом "Логистика" - pytest tests_orders/test_order.py --alluredir=./allure-results
+    - Создание типом "Другие услуги" - pytest tests_orders/test_2order_dr.py --alluredir=./allure-results
+    - Редактирование полей заказа - pytest tests_orders/test_order_update.py --alluredir=./allure-results
+    - Удаление заказа и удаление двух заказов - pytest tests_orders/test_1order_del.py --alluredir=./allure-results
+    - Создание и удаление "Экспедирование" - pytest tests_orders/test_order_forwarding.py --alluredir=./allure-results
+    - Создание и удаление "Груз" - pytest tests_orders/test_order_freight.py --alluredir=./allure-results
+    - Создание и удаление "ГТД" - pytest tests_orders/test_order_gtd.py --alluredir=./allure-results
+    - Создание и удаление "Перевозки" - pytest tests_orders/test_order_transportation.py --alluredir=./allure-results
+  - Запуск отчета - allure serve allure-results --lang ru
+  - Удаление истории allure generate allure-results --clean
