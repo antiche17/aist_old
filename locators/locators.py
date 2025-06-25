@@ -1,6 +1,6 @@
 class LocOrders:
     # Основные окна
-    STARTUP_WINDOW = {'title': 'WinAIST Starting...'}  # Исправлена опечатка в названии (было WINDOW)
+    START_WINDOW = {'auto_id': 'frmSplash'}
     MAIN_WINDOW = {'auto_id': 'frmMain'}
     ORDER_FORM = {'auto_id': 'OrderForm'}
     SEA_FORM = {'auto_id': 'SeaCarriageForm', 'control_type': "Window", 'found_index': 0}
