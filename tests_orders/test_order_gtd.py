@@ -1,36 +1,39 @@
 import pytest
 import allure
+from difflib import SequenceMatcher as f
 from orders.order import WinAISTApp
-from fuzzywuzzy import fuzz as f
+from pytest_check import check
 
 
 @pytest.fixture(scope="module")
-def order_data():
-    """Фикстура создает и возвращает данные из приложения"""
+def order_app():
+    """Фикстура создает и возвращает приложение с обновленным заказом"""
     app = WinAISTApp()
-    data = app.gtd()
-    yield data
+    order_data = app.gtd()
+    yield order_data
     app.close()
 
 
 @allure.title("Комплексная проверка данных заказа и ГТД")
-def test_full_order_validation(order_data):
-    with allure.step("Проверка номера заказа"):
-        assert f.ratio(order_data["order_number"], order_data["order_number_dialogue"])
-        print("✅ Номер заказа соответствует")
+@pytest.mark.order(1)
+def test_full_order_validation(order_app):
+    with allure.step("1. Проверка номера заказа"):
+        check.is_true(f(None, order_app["order_number"], order_app["gtd_order_number"]).ratio() > 0.5,"❌ ФР: Не одинаковые данные (порог 50%)")
 
-    with allure.step("Проверка клиента заказа и клиента в ГТД"):
-        assert order_data["client_order"] == order_data["client_gtd"]
-        print("✅ Клиент соответствует в заказе")
+    with allure.step("2. Проверка клиента заказа и клиента в ГТД"):
+        check.equal(order_app["client_order"], order_app["client_gtd"], "ФР: Клиент не соответствует в заказе")
 
-    with allure.step("Проверка процедуры ГТД"):
-        assert order_data["procedure_gtd"] == "ИМ 40"
-        print("✅ Процедура ИМ 40 подтверждена")
+    with allure.step("3. Проверка процедуры ГТД"):
+        check.equal(order_app["procedure_gtd"], "ИМ 40", "ФР: Процедура не ИМ 40")
 
-    with allure.step("Проверка номера груза (ТЭ)"):
-        assert order_data["number_te"] == order_data["number_te_order"]
-        print("✅ Номер груза соответствует")
+    with allure.step("4. Без ТЕ не создаётся"):
+        check.equal(order_app["order_te_not"], "Коносаментная партия должна содержать хотя бы один контейнер", "ФР: Нет окна или текст поменялся")
 
-    with allure.step("Проверка статуса записей"):
-        assert order_data["all_status"] == "Всего записей: 0 | Выделено записей: 0"
-        print("✅ Всего записей 0")
+    with allure.step("5. Сравнение клиента"):
+        check.equal(order_app["order_client"], order_app["client_gtd"], "❌ ФР: Не одинаковые данные")
+
+    with allure.step("5. Проверка номера груза (ТЭ)"):
+        check.equal(order_app["number_te"], order_app["number_te_order"], "ФР: Номер груза не соответствует")
+
+    with allure.step("6. Проверка статуса записей"):
+        check.equal(order_app["all_status"], "Всего записей: 0", "ФР: Есть записи")
