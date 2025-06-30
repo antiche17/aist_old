@@ -18,7 +18,7 @@ def order_app():
 @pytest.mark.order(1)
 def test_forwarding_order_full_check(order_app):
     with allure.step("1. Сравниваем номер заказа с номером экспедирования"):
-        check.is_true(f(None, order_app["order_number"], order_app["forwarding_order_number"]).ratio() > 0.6, "❌ ФР: Не одинаковые данные (порог 80%)")
+        check.is_true(f(None, order_app["order_number"], order_app["forwarding_order_number"]).ratio() > 0.6, "❌ ФР: Не одинаковые данные (порог 60%)")
 
     with allure.step("2. тип экспедирования Портовое"):
         check.equal(order_app["forwarding_dialog_type"], order_app["forwarding_type"], "ФР: Поля не одинаковые")

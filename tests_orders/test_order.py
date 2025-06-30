@@ -14,7 +14,7 @@ def order_app():
     app.close()
 
 
-@allure.title("Проверка создание заказа с типом Логистика 28 проверок")
+@allure.title("Проверка создание и редактирование заказа с типом Логистика 46 проверок")
 @pytest.mark.order(1)
 def test_value_order(order_app):
     with allure.step("1. Номер заказа не пустой"):
@@ -105,3 +105,59 @@ def test_value_order(order_app):
 
     with allure.step("28. вкладка в заказе — Отслеживание"):
         check.equal(order_app["order_tab_tracking"], "Отслеживание", "❌ ФР: Поле с другим значением, но должно быть Отслеживание")
+
+    # Редактирование
+    with allure.step("29. Статус изменён на 'Отменен'"):
+        check.equal(order_app["order_status_up"], "Отменен", "ФР: Статус не Отменен")
+
+    with allure.step("30. Приоритет установлен на 'Критический'"):
+        check.equal(order_app["order_priority_up"], "Критический", "ФР: Приоритет не Критический")
+
+    with allure.step("31. Клиент изменен"):
+        check.not_equal(order_app["order_client"], order_app["order_client_up"], "ФР: Клиент не изменен")
+
+    with allure.step("32. Отправитель выставлен"):
+        check.is_not_none(order_app["order_senders_up"], "ФР: Отправитель не выставлен")
+
+    with allure.step("33. Получатель выставлен"):
+        check.is_not_none(order_app["order_recipient_up"], "ФР: Получатель не выставлен")
+
+    with allure.step("34. Поставка выставлена"):
+        check.is_not_none(order_app["order_delivery_up"], "ФР: Поставка не выставлен")
+
+    with allure.step("35. В поле 'Референс' добавлен текст"):
+        check.is_not_none(order_app["order_reference_up"], "ФР: В поле 'Референс' не добавлен текст")
+
+    with allure.step("36. В поле 'Примечание' добавлен текст"):
+        check.is_not_none(order_app["order_note_up"], "❌ ФР: Примечание не добавлен текст")
+
+    with allure.step("37. Дата модификации изменилась"):
+        check.not_equal(order_app["order_mod_date_up"], order_app["repeat_order_mod_date"], "❌ ФР: Дата модификации не изменилась")
+
+    # Редактирование
+    with allure.step("38. Статус изменён в таблице заказы"):
+        check.equal(order_app["order_status_up"], order_app["repeat_status"], "ФР: Статус разный")
+
+    with allure.step("39. Приоритет изменён в таблице заказы"):
+        check.equal(order_app["order_priority_up"], order_app["repeat_priority"], "ФР: Приоритет разный")
+
+    with allure.step("40. Клиент изменён в таблице заказы"):
+        check.equal(order_app["order_client_up"], order_app["repeat_client"], "ФР: Клиент разный")
+
+    with allure.step("41. Отправитель изменён в таблице заказы"):
+        check.equal(order_app["order_senders_up"],order_app["repeat_senders"], "ФР: Отправитель разный")
+
+    with allure.step("42. Получатель изменён в таблице заказы"):
+        check.equal(order_app["order_recipient_up"],order_app["repeat_recipient"], "ФР: Получатель разный")
+
+    with allure.step("43. Поставка изменёна в таблице заказы"):
+        check.equal(order_app["order_delivery_up"],order_app["repeat_delivery"], "ФР: Поставка разная")
+
+    with allure.step("44. В поле 'Референс' изменён в таблице заказы"):
+        check.equal(order_app["order_reference_up"], order_app["repeat_reference"],"ФР: Референс разный")
+
+    with allure.step("45. В поле 'Примечание' изменён в таблице заказы"):
+        check.equal(order_app["order_note_up"], order_app["repeat_note"],"❌ ФР: Примечание к заказу отсутствует")
+
+    with allure.step("46. Дата модификации изменилась"):
+        check.not_equal(order_app["order_mod_date_up"], order_app["repeat_order_mod_date"], "❌ ФР: Дата модификации одинаковые")
