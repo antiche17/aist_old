@@ -13,6 +13,10 @@ class LocOrders:
     FORM_FORM = {'auto_id': 'TitleBar', 'control_type': "TitleBar"}
     GTD_FROM = {'auto_id': 'frmGTD', 'control_type': "TitleBar"}
     CHECK_FROM = {'auto_id': 'frmOutboxInvoice', 'control_type': "Window"}
+    CHECK_FROM_VS = {'auto_id': 'frmInboxInvoice', 'control_type': "Window"}
+    CHECK_FROM_IP = {'auto_id': 'frmOutboxPayment', 'control_type': "Window"}
+    CHECK_FROM_VP = {'auto_id': 'frmInboxPayment', 'control_type': "Window"}
+
 
     # Базы Аиста
     STAGE_EF = {'title': "(serv02)AIST_STAGE_EF", 'control_type': "ListItem"}
@@ -29,7 +33,8 @@ class LocOrders:
     # Элементы таблицы заказов
     REFRESH_BUTTON = {'title': "Элемент", 'control_type': "SplitButton"}
     TABLE_ORDER_NUMBER = {'title': "Заказ № строка 1", 'control_type': "DataItem"}
-    TABLE_ORDER_NUMBER_2 = {'title': "Заказ № строка 2", 'control_type': "DataItem"}
+    TABLE_ORDER_NUMBER2 = {'title': "Заказ № строка 2", 'control_type': "DataItem"}
+    TABLE_ORDER_NUMBER3 = {'title': "Заказ № строка 3", 'control_type': "DataItem"}
     TABLE_ORDER_TYPE = {'title': "Тип заказа строка 1", 'control_type': "DataItem"}
     TABLE_STATUS = {'title': "Статус строка 1", 'control_type': "DataItem"}
     TABLE_PRIORITY = {'title': "Приоритет строка 1", 'control_type': "DataItem"}
@@ -80,6 +85,7 @@ class LocOrders:
     MOD_DATE = {'control_type': "Text", 'auto_id': "lblModified"}
     CREATE_DATE = {'control_type': "Text", 'auto_id': "lblCreatedOn"}
     LINE_TRANSPORTATION = {'title': "Строка 1", 'control_type': "ListItem"}
+    LINE_TRANSPORTATION10 = {'title': "Строка 10", 'control_type': "ListItem"}
     DEL_BUTTON = {'title': "Удалить", 'control_type': "Button"}
     YES_BUTTON = {'title': "Да", 'control_type': "Button"}
     REFRESH_BUTTON_ORDER = {'title': "Обновить", 'control_type': "Button"}
@@ -127,8 +133,6 @@ class LocOrders:
     FEEDER_LINE5 = {'title': "Строка 5", 'control_type': "ListItem"}
     FEEDER_KONOSAMENT = {'title': "Фидерн. коносамент:", 'control_type': "Edit"}
 
-
-
     ROUTES_WINDOWS = {'title': "Тип задания:", 'control_type': "ComboBox", 'auto_id': "routeAssignmentSeaCarriageEdit1"}
     PREFORWARDING = {'title': "Преэкспедирование", 'control_type': "ListItem"}
     PREFORWARDING_PORT = {'title': "Порт:", 'control_type': "ComboBox", 'auto_id': "portEdit1"}
@@ -159,7 +163,6 @@ class LocOrders:
     # Экспедирование вкладка в заказе
     FORWARDING_TYPE_TEXT = {'auto_id': "lbType", 'control_type': "Text"}
     FORWARDING_ITEM = {'title': "Тип экспедирования строка 1", 'control_type': "DataItem"}
-
     FORWARDING_NUMBER = {'title': "Номер экспедирования строка 1", 'control_type': "DataItem"}
     FORWARDING_STATUS = {'title': "Статус строка 1", 'control_type': "DataItem"}
     FORWARDING_OTV = {'title': "Ответственный строка 1", 'control_type': "DataItem"}
@@ -168,14 +171,12 @@ class LocOrders:
     FORWARDING_DATA_CREATE = {'title': "Дата создания строка 1", 'control_type': "DataItem"}
     FORWARDING_DATA_FINISH = {'title': "Дата завершения строка 1", 'control_type': "DataItem"}
     FORWARDING_NOTE = {'title': "Примечание строка 1", 'control_type': "DataItem"}
-
     FORWARDING_TYPE_DIALOG = {'title': "Тип экспедирования:", 'control_type': "ComboBox"}
     FORWARDING_FORWARDER = {'title': "Портовое", 'control_type': "ComboBox", 'found_index': 0}
     FORWARDING_TELEX = {'title': "Телекс-релиз:", 'control_type': "ComboBox"}
     FORWARDING_RECEIVING_DOC = {'title': "Получение докум.:", 'control_type': "ComboBox"}
     FORWARDING_NOMINATION = {'title': "Номинация эксп.:", 'control_type': "ComboBox"}
     FORWARDING_RECEIVING_DO = {'title': "Получение ДО/ДО1:", 'control_type': "ComboBox"}
-
     DATA_PANEL = {'title': "Панель данных", 'control_type': "Custom"}
 
     # Груз
@@ -220,13 +221,21 @@ class LocOrders:
     GTD_ORDER = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit1"}
     GTD_PROCEDURE = {'title': "Процедура:", 'control_type': "ComboBox", 'auto_id': "icGTDType"}
 
-    # Исходящий счет
+    # Счета радио кнопки
     IS_CREATE_ORDER = {'title': "Исходящий счет", 'control_type': "RadioButton"}
+    VS_CREATE_ORDER = {'title': "Входящий счет", 'control_type': "RadioButton"}
+    IP_CREATE_ORDER = {'title': "Исходящий платеж", 'control_type': "RadioButton"}
+    VP_CREATE_ORDER = {'title': "Входящий платеж", 'control_type': "RadioButton"}
+    BS_CREATE_ORDER = {'title': "Букинг-счет", 'control_type': "RadioButton"}
+
+    # Исходящий счет
     #IS_NAME_FORM = {'control_type': "TitleBar", 'auto_id': "TitleBar", 'found_index': 1} не находит
     IS_ORDER = {'title': "Номер заказа: ", 'control_type': "ComboBox", 'auto_id': "orderEdit1", 'found_index': 0}
     IS_DATE = {'title': "Дата:", 'control_type': "ComboBox", 'auto_id': "deInvoiceDate"}
     IS_LIST = {'control_type': "ComboBox", 'auto_id': "icOutboxInvoiceType"}
     IS_FREIGHT = {'title': "Товарный", 'control_type': "ListItem"}
+    IS_FREIGHT1 = {'title': "Фрахтовый", 'control_type': "ListItem"}
+    IS_FREIGHT2 = {'title': "Экспедиторский", 'control_type': "ListItem"}
     IS_SUPPLIER = {'title': "Поставщик:", 'control_type': "ComboBox", 'auto_id': "leSellerId"}
     IS_BUYER = {'title': "Покупатель:", 'control_type': "ComboBox", 'auto_id': "leBuyerId"}
     IS_TYPE_CHECK = {'title': "Тип счета строка 1", 'control_type': "DataItem"}
@@ -241,3 +250,14 @@ class LocOrders:
     IS_NCLOSED_TABLE = {'title': "Незакрыто строка 1", 'control_type': "DataItem"}
     IS_NINCLUDED_TABLE = {'title': "Неразнесено строка 1", 'control_type': "DataItem"}
     IS_APPOINTMENT_TABLE = {'title': "Назначение строка 1", 'control_type': "DataItem"}
+
+    # Входящий счет
+    VS_CONTRACTOR = {'title': "Подрядчик:", 'control_type': "ComboBox", 'auto_id': "leContractorId"}
+    VS_ORDER = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit1"}
+
+    # Входящий счет
+    VP_NUMBER = {'title': "Счет:", 'control_type': "Edit", 'auto_id': "nameTextEdit"}
+    VP_ORDER = {'title': "Заказ: ", 'control_type': "ComboBox", 'auto_id': "orderEdit1"}
+
+    # Удаление
+    DEL_WINDOW = {'control_type': "Text", 'auto_id': "lblDescription"}

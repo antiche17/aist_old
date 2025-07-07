@@ -69,6 +69,18 @@ class WinAISTApp:
         """Получение главного окна"""
         return self.app.window(**self.loc.CHECK_FROM)
 
+    def get_check_vs_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.CHECK_FROM_VS)
+
+    def get_check_ip_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.CHECK_FROM_IP)
+
+    def get_check_vp_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.CHECK_FROM_VP)
+
     def click_element(self, window, locator, timeout=5):
         """Клик по элементу с ожиданием"""
         element = window.child_window(**locator)
@@ -103,6 +115,25 @@ class WinAISTApp:
         keyboard.send_keys('{VK_CONTROL up}')
 
         return [el1, el2]
+
+    def select_range_with_shift(self, window, first_locator, last_locator, timeout=5):
+        # Клик по первому элементу
+        first_el_spec = window.child_window(**first_locator)
+        first_el_spec.wait('visible', timeout=timeout)
+        first_el = first_el_spec.wrapper_object()
+        first_el.click_input()
+
+        # Зажать Shift и клик по последнему элементу
+        keyboard.send_keys('{VK_SHIFT down}')
+        try:
+            last_el_spec = window.child_window(**last_locator)
+            last_el_spec.wait('visible', timeout=timeout)
+            last_el = last_el_spec.wrapper_object()
+            last_el.click_input()
+        finally:
+            keyboard.send_keys('{VK_SHIFT up}')
+
+        return [first_el, last_el]
 
     def type_keys(self, window, locator, timeout=1):
         """Клик по элементу с ожиданием"""
@@ -1263,12 +1294,16 @@ class WinAISTApp:
         # 6. Перейти во вкладку
         self.click_element(main_window, self.loc.TAB_CHECK, timeout=1)
 
+        self.order_data = {
+            'order_client': self.get_element_property(main_window, self.loc.CLIENT_COMBO, "Value"),
+        }
+
         # 7 Создать Исходящий счет и выставить покупателя
         self.click_element(main_window, self.loc.CREATE_BUTTON, timeout=1)
 
-        self.order_data = {
-            'is_create_order': self.get_element_property(main_window, self.loc.IS_CREATE_ORDER, "Value"),
-        }
+        self.order_data.update({
+            'is_create_order': self.get_element_property(main_window, self.loc.IS_CREATE_ORDER, "Name"),
+        })
         self.click_element(main_window, self.loc.CREATE_BUTTON, timeout=1)
 
         # 7 Переключение на форму ИС
@@ -1303,10 +1338,11 @@ class WinAISTApp:
         main_window.set_focus()
         order_form = self.app.window(**self.loc.ORDER_FORM)
         time.sleep(1)
-
         self.click_element(main_window, self.loc.REFRESH_BUTTON_ORDER, timeout=1)
+
         # 7 Поля в таблице
         self.order_data.update({
+            'is_type_table': self.get_element_property(order_form, self.loc.IS_TYPE_CHECK, "Value"),
             'is_number_table': self.get_element_property(order_form, self.loc.IS_NUMBER_TABLE, "Value"),
             'is_date_table': self.get_element_property(order_form, self.loc.IS_DATE_TABLE, "Value"),
             'is_suppler_table': self.get_element_property(order_form, self.loc.IS_SUPPLIER_TABLE, "Value"),
@@ -1328,6 +1364,381 @@ class WinAISTApp:
         self.order_data.update({
             'freight_del_table': self.get_element_property(order_form, self.loc.FREIGHT_TOTAL_RECORDS, "Value")
         })
+
+        return self.order_data
+
+    def finance_vs(self):
+        # 1. Запуск приложения
+        startup_window = self.start_application()
+        startup_window.set_focus()
+
+        # 2. Нажатие кнопки Запуск
+        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
+        time.sleep(15)
+
+        # 3. Переход в раздел Заказы
+        main_window = self.get_main_window()
+        main_window.set_focus()
+        time.sleep(3)
+        self.click_element(main_window, self.loc.ORDERS_TAB, timeout=3)
+        time.sleep(4)
+
+        # 4. Создание нового заказа
+        self.click_element(main_window, self.loc.ADD_BUTTON, timeout=5)
+        time.sleep(1)
+
+        # 5. Заполнение формы заказа
+        self.click_element(main_window, self.loc.ORDER_TYPE_COMBO, timeout=1)
+        self.click_element(main_window, self.loc.LOGISTICS_ITEM, timeout=1)
+        self.click_element(main_window, self.loc.CUSTOMER_COMBO, timeout=1)
+        self.click_element(main_window, self.loc.CUSTOMER_ITEM, timeout=1)
+        self.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
+        time.sleep(1)
+
+        main_window = self.get_main_form()
+        main_window.set_focus()
+        order_form = self.app.window(**self.loc.ORDER_FORM)
+        time.sleep(1)
+
+        # 6. Перейти во вкладку
+        self.click_element(main_window, self.loc.TAB_CHECK, timeout=1)
+
+        # 7 Создать Входящий счет и выставить покупателя
+        self.click_element(main_window, self.loc.CREATE_BUTTON, timeout=1)
+        time.sleep(1)
+        self.click_element_double(main_window, self.loc.VS_CREATE_ORDER, timeout=1)
+        self.order_data.update({
+            'vs_create_order': self.get_element_property(main_window, self.loc.VS_CREATE_ORDER, "Name"),
+        })
+        self.click_element(main_window, self.loc.CREATE_BUTTON, timeout=1)
+
+        # 7 Переключение на форму ИС
+        main_window = self.get_check_vs_form()
+        main_window.set_focus()
+        order_form = self.app.window(**self.loc.CHECK_FROM_VS)
+        time.sleep(1)
+
+        # 7 Редактирование
+        self.click_element(main_window, self.loc.IS_LIST, timeout=1)
+        self.click_element(main_window, self.loc.IS_FREIGHT1, timeout=1)
+        self.click_element(main_window, self.loc.IS_SUPPLIER, timeout=1)
+        self.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        self.click_element(main_window, self.loc.IS_BUYER, timeout=1)
+        self.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        self.click_element(main_window, self.loc.VS_CONTRACTOR, timeout=1)
+        self.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        self.click_element(main_window, self.loc.APPLY_BUTTON, timeout=1)
+
+        # 7 Проверка полей
+        self.order_data.update({
+            # 'is_name_form': self.get_element_property(order_form, self.loc.IS_NAME_FORM, "Value"),
+            'vs_number': self.get_element_property(order_form, self.loc.IS_NUMBER, "Value"),
+            'vs_date': self.get_element_property(order_form, self.loc.IS_DATE, "Value"),
+            'vs_list': self.get_element_property(order_form, self.loc.IS_LIST, "Value"),
+            'vs_suppler': self.get_element_property(order_form, self.loc.IS_SUPPLIER, "Value"),
+            'vs_order': self.get_element_property(order_form, self.loc.VS_ORDER, "Value"),
+            'vs_contractor': self.get_element_property(order_form, self.loc.VS_CONTRACTOR, "Value"),
+            'vs_buyer': self.get_element_property(order_form, self.loc.IS_BUYER, "Value"),
+        })
+
+        self.click_element(main_window, self.loc.OK_BUTTON2, timeout=1)
+
+        # Переключить на форму заказа
+        main_window = self.get_main_form()
+        main_window.set_focus()
+        order_form = self.app.window(**self.loc.ORDER_FORM)
+        time.sleep(1)
+        self.click_element(main_window, self.loc.REFRESH_BUTTON_ORDER, timeout=1)
+
+        # 7 Поля в таблице
+        self.order_data.update({
+            'vs_type_table': self.get_element_property(order_form, self.loc.IS_TYPE_CHECK, "Value"),
+            'vs_number_table': self.get_element_property(order_form, self.loc.IS_NUMBER_TABLE, "Value"),
+            'vs_date_table': self.get_element_property(order_form, self.loc.IS_DATE_TABLE, "Value"),
+            'vs_suppler_table': self.get_element_property(order_form, self.loc.IS_SUPPLIER_TABLE, "Value"),
+            'vs_buyer_table': self.get_element_property(order_form, self.loc.IS_BUYER_TABLE, "Value"),
+            'vs_currency_table': self.get_element_property(order_form, self.loc.IS_CURRENCY, "Value"),
+            'vs_sum_table': self.get_element_property(order_form, self.loc.IS_SUM_TABLE, "Value"),
+            'vs_closed_table': self.get_element_property(order_form, self.loc.IS_CLOSED_TABLE, "Value"),
+            'vs_nclosed_table': self.get_element_property(order_form, self.loc.IS_NCLOSED_TABLE, "Value"),
+            'vs_nincluded_table': self.get_element_property(order_form, self.loc.IS_NINCLUDED_TABLE, "Value"),
+            'vs_appointment_table': self.get_element_property(order_form, self.loc.IS_APPOINTMENT_TABLE, "Value"),
+        })
+
+        # 7 Удалить
+        self.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        self.click_element(main_window, self.loc.DEL_BUTTON, timeout=1)
+        self.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
+        self.click_element(main_window, self.loc.REFRESH_BUTTON_ORDER, timeout=1)
+
+        self.order_data.update({
+            'freight_del_table': self.get_element_property(order_form, self.loc.FREIGHT_TOTAL_RECORDS, "Value")
+        })
+        return self.order_data
+
+    def finance_ip(self):
+        # 1. Запуск приложения
+        startup_window = self.start_application()
+        startup_window.set_focus()
+
+        # 2. Нажатие кнопки Запуск
+        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
+        time.sleep(15)
+
+        # 3. Переход в раздел Заказы
+        main_window = self.get_main_window()
+        main_window.set_focus()
+        time.sleep(3)
+        self.click_element(main_window, self.loc.ORDERS_TAB, timeout=3)
+        time.sleep(4)
+
+        # 4. Создание нового заказа
+        self.click_element(main_window, self.loc.ADD_BUTTON, timeout=5)
+        time.sleep(1)
+
+        # 5. Заполнение формы заказа
+        self.click_element(main_window, self.loc.ORDER_TYPE_COMBO, timeout=1)
+        self.click_element(main_window, self.loc.LOGISTICS_ITEM, timeout=1)
+        self.click_element(main_window, self.loc.CUSTOMER_COMBO, timeout=1)
+        self.click_element(main_window, self.loc.CUSTOMER_ITEM, timeout=1)
+        self.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
+        time.sleep(1)
+
+        main_window = self.get_main_form()
+        main_window.set_focus()
+        order_form = self.app.window(**self.loc.ORDER_FORM)
+        time.sleep(1)
+
+        # 6. Перейти во вкладку
+        self.click_element(main_window, self.loc.TAB_CHECK, timeout=1)
+
+        # 7 Создать Входящий счет и выставить покупателя
+        self.click_element(main_window, self.loc.CREATE_BUTTON, timeout=1)
+        time.sleep(1)
+        self.click_element_double(main_window, self.loc.IP_CREATE_ORDER, timeout=1)
+        self.order_data = {
+            'ip_create_order': self.get_element_property(main_window, self.loc.IP_CREATE_ORDER, "Name"),
+        }
+        self.click_element(main_window, self.loc.CREATE_BUTTON, timeout=1)
+
+        # 7 Переключение на форму ИС
+        main_window = self.get_check_ip_form()
+        main_window.set_focus()
+        order_form = self.app.window(**self.loc.CHECK_FROM_IP)
+        time.sleep(1)
+
+        # 7 Редактирование
+        self.click_element(main_window, self.loc.IS_LIST, timeout=1)
+        self.click_element(main_window, self.loc.IS_FREIGHT3, timeout=1)
+        self.click_element(main_window, self.loc.IS_SUPPLIER, timeout=1)
+        self.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        self.click_element(main_window, self.loc.IS_BUYER, timeout=1)
+        self.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        self.click_element(main_window, self.loc.APPLY_BUTTON, timeout=1)
+
+        # 7 Проверка полей
+        self.order_data.update({
+            # 'is_name_form': self.get_element_property(order_form, self.loc.IS_NAME_FORM, "Value"),
+            'ip_number': self.get_element_property(order_form, self.loc.VP_NUMBER, "Value"),
+            'ip_date': self.get_element_property(order_form, self.loc.IS_DATE, "Value"),
+            'ip_list': self.get_element_property(order_form, self.loc.IS_LIST, "Value"),
+            'ip_suppler': self.get_element_property(order_form, self.loc.IS_SUPPLIER, "Value"),
+            'ip_order': self.get_element_property(order_form, self.loc.IP_ORDER, "Value"),
+            'ip_buyer': self.get_element_property(order_form, self.loc.IS_BUYER, "Value"),
+        })
+
+        self.click_element(main_window, self.loc.OK_BUTTON2, timeout=1)
+
+        # Переключить на форму заказа
+        main_window = self.get_main_form()
+        main_window.set_focus()
+        order_form = self.app.window(**self.loc.ORDER_FORM)
+        time.sleep(1)
+
+        self.click_element(main_window, self.loc.REFRESH_BUTTON_ORDER, timeout=1)
+        # 7 Поля в таблице
+        self.order_data.update({
+            'ip_type_table': self.get_element_property(order_form, self.loc.IS_TYPE_CHECK, "Value"),
+            'ip_number_table': self.get_element_property(order_form, self.loc.IS_NUMBER_TABLE, "Value"),
+            'ip_date_table': self.get_element_property(order_form, self.loc.IS_DATE_TABLE, "Value"),
+            'ip_suppler_table': self.get_element_property(order_form, self.loc.IS_SUPPLIER_TABLE, "Value"),
+            'ip_buyer_table': self.get_element_property(order_form, self.loc.IS_BUYER_TABLE, "Value"),
+            'ip_currency_table': self.get_element_property(order_form, self.loc.IS_CURRENCY, "Value"),
+            'ip_sum_table': self.get_element_property(order_form, self.loc.IS_SUM_TABLE, "Value"),
+            'ip_closed_table': self.get_element_property(order_form, self.loc.IS_CLOSED_TABLE, "Value"),
+            'ip_nclosed_table': self.get_element_property(order_form, self.loc.IS_NCLOSED_TABLE, "Value"),
+            'ip_nincluded_table': self.get_element_property(order_form, self.loc.IS_NINCLUDED_TABLE, "Value"),
+            'ip_appointment_table': self.get_element_property(order_form, self.loc.IS_APPOINTMENT_TABLE, "Value"),
+        })
+
+        # 7 Удалить
+        self.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        self.click_element(main_window, self.loc.DEL_BUTTON, timeout=1)
+        self.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
+        self.click_element(main_window, self.loc.REFRESH_BUTTON_ORDER, timeout=1)
+
+        self.order_data.update({
+            'freight_del_table': self.get_element_property(order_form, self.loc.FREIGHT_TOTAL_RECORDS, "Value")
+        })
+
+        return self.order_data
+
+    def finance_vp(self):
+        # 1. Запуск приложения
+        startup_window = self.start_application()
+        startup_window.set_focus()
+
+        # 2. Нажатие кнопки Запуск
+        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
+        time.sleep(15)
+
+        # 3. Переход в раздел Заказы
+        main_window = self.get_main_window()
+        main_window.set_focus()
+        time.sleep(3)
+        self.click_element(main_window, self.loc.ORDERS_TAB, timeout=3)
+        time.sleep(4)
+
+        # 4. Создание нового заказа
+        self.click_element(main_window, self.loc.ADD_BUTTON, timeout=5)
+        time.sleep(1)
+
+        # 5. Заполнение формы заказа
+        self.click_element(main_window, self.loc.ORDER_TYPE_COMBO, timeout=1)
+        self.click_element(main_window, self.loc.LOGISTICS_ITEM, timeout=1)
+        self.click_element(main_window, self.loc.CUSTOMER_COMBO, timeout=1)
+        self.click_element(main_window, self.loc.CUSTOMER_ITEM, timeout=1)
+        self.order_data = {
+            'order_client': self.get_element_property(main_window, self.loc.CUSTOMER_COMBO, "Value"),
+        }
+        self.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
+        time.sleep(1)
+
+        main_window = self.get_main_form()
+        main_window.set_focus()
+        order_form = self.app.window(**self.loc.ORDER_FORM)
+        time.sleep(1)
+
+        # 6. Перейти во вкладку
+        self.click_element(main_window, self.loc.TAB_CHECK, timeout=1)
+
+        # 7 Создать Входящий счет и выставить покупателя
+        self.click_element(main_window, self.loc.CREATE_BUTTON, timeout=1)
+        time.sleep(1)
+        self.click_element_double(main_window, self.loc.VP_CREATE_ORDER, timeout=1)
+        self.order_data.update({
+            'vp_create_order': self.get_element_property(main_window, self.loc.VP_CREATE_ORDER, "Name"),
+        })
+        self.click_element(main_window, self.loc.CREATE_BUTTON, timeout=1)
+
+        # 7 Переключение на форму ИС
+        main_window = self.get_check_vp_form()
+        main_window.set_focus()
+        order_form = self.app.window(**self.loc.CHECK_FROM_VP)
+        time.sleep(1)
+
+        # 7 Редактирование
+        self.click_element(main_window, self.loc.IS_LIST, timeout=1)
+        self.click_element(main_window, self.loc.IS_FREIGHT2, timeout=1)
+        self.click_element(main_window, self.loc.IS_SUPPLIER, timeout=1)
+        self.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        self.click_element(main_window, self.loc.IS_BUYER, timeout=1)
+        self.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        self.click_element(main_window, self.loc.APPLY_BUTTON, timeout=1)
+
+        # 7 Проверка полей
+        self.order_data.update({
+            # 'is_name_form': self.get_element_property(order_form, self.loc.IS_NAME_FORM, "Value"),
+            'vp_number': self.get_element_property(order_form, self.loc.VP_NUMBER, "Value"),
+            'vp_date': self.get_element_property(order_form, self.loc.IS_DATE, "Value"),
+            'vp_list': self.get_element_property(order_form, self.loc.IS_LIST, "Value"),
+            'vp_suppler': self.get_element_property(order_form, self.loc.IS_SUPPLIER, "Value"),
+            'vp_order': self.get_element_property(order_form, self.loc.VP_ORDER, "Value"),
+            'vp_client': self.get_element_property(order_form, self.loc.GTD_CLIENT, "Value"),
+            'vp_buyer': self.get_element_property(order_form, self.loc.IS_BUYER, "Value"),
+        })
+
+        self.click_element(main_window, self.loc.OK_BUTTON2, timeout=1)
+
+        # Переключить на форму заказа
+        main_window = self.get_main_form()
+        main_window.set_focus()
+        order_form = self.app.window(**self.loc.ORDER_FORM)
+        time.sleep(1)
+
+        self.click_element(main_window, self.loc.REFRESH_BUTTON_ORDER, timeout=1)
+        # 7 Поля в таблице
+        self.order_data.update({
+            'vp_type_table': self.get_element_property(order_form, self.loc.IS_TYPE_CHECK, "Value"),
+            'vp_number_table': self.get_element_property(order_form, self.loc.IS_NUMBER_TABLE, "Value"),
+            'vp_date_table': self.get_element_property(order_form, self.loc.IS_DATE_TABLE, "Value"),
+            'vp_suppler_table': self.get_element_property(order_form, self.loc.IS_SUPPLIER_TABLE, "Value"),
+            'vp_buyer_table': self.get_element_property(order_form, self.loc.IS_BUYER_TABLE, "Value"),
+            'vp_currency_table': self.get_element_property(order_form, self.loc.IS_CURRENCY, "Value"),
+            'vp_sum_table': self.get_element_property(order_form, self.loc.IS_SUM_TABLE, "Value"),
+            'vp_closed_table': self.get_element_property(order_form, self.loc.IS_CLOSED_TABLE, "Value"),
+            'vp_nclosed_table': self.get_element_property(order_form, self.loc.IS_NCLOSED_TABLE, "Value"),
+            'vp_nincluded_table': self.get_element_property(order_form, self.loc.IS_NINCLUDED_TABLE, "Value"),
+            'vp_appointment_table': self.get_element_property(order_form, self.loc.IS_APPOINTMENT_TABLE, "Value"),
+        })
+
+        # 7 Удалить
+        self.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        self.click_element(main_window, self.loc.DEL_BUTTON, timeout=1)
+        self.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
+        self.click_element(main_window, self.loc.REFRESH_BUTTON_ORDER, timeout=1)
+
+        self.order_data.update({
+            'freight_del_table': self.get_element_property(order_form, self.loc.FREIGHT_TOTAL_RECORDS, "Value")
+        })
+
+        return self.order_data
+
+    def order_del2(self):
+        # 1. Запуск приложения
+        startup_window = self.start_application()
+        startup_window.set_focus()
+
+        # 2. Нажатие кнопки Запуск
+        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
+        time.sleep(15)
+
+        # 3. Переход в раздел Заказы
+        main_window = self.get_main_window()
+        main_window.set_focus()
+        time.sleep(3)
+        self.click_element(main_window, self.loc.ORDERS_TAB, timeout=3)
+        time.sleep(4)
+
+        # Выделение 10 заказа с сущнностью
+        self.order_data = {
+            'order1': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER, "Value"),
+            'order2': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER2, "Value"),
+            'order3': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER3, "Value"),
+        }
+        self.select_range_with_shift(main_window, self.loc.LINE_TRANSPORTATION10, self.loc.LINE_TRANSPORTATION,)
+        self.click_element(main_window, self.loc.TABLE_DELETE, timeout=1)
+        self.order_data.update({
+            'del_window': self.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
+        })
+        # Создать заказ
+
+        # В заказе Прикрепить Фаил
+        # В заказе создать ИС
+        # В заказе создать ВС
+        # В заказе создать ВП
+        # В заказе создать ИП
+
+        # В заказе создать Морская перевозка
+        # В заказе создать Автоперевозка
+
+        # В заказе создать Экспедирование
+        # В заказе создать Груз
+        # В заказе создать ГТД и удалить груз
 
         return self.order_data
 
