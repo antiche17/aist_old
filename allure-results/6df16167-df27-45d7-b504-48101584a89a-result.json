@@ -1,0 +1,1 @@
+{"name": "Проверка создание Исходящего счета в заказе. 19 проверок", "status": "skipped", "start": 1751283842836, "stop": 1751283842836, "uuid": "5e3c430a-5269-4d6f-afa8-1a333ec3e33b", "testCaseId": "6661bc9ee85991bbc5d10c9b06a977dd", "fullName": "tests_orders.test_order_finance_is#test_value_order"}
