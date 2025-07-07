@@ -14,7 +14,7 @@ def order_app():
     app.close()
 
 
-@allure.title("Полная проверка экспедирования (создание, атрибуты, таблица)")
+@allure.title("Полная проверка экспедирования (создание, атрибуты, таблица, 30 проверок)")
 @pytest.mark.order(1)
 def test_forwarding_order_full_check(order_app):
     with allure.step("1. Сравниваем номер заказа с номером экспедирования"):

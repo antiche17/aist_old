@@ -14,7 +14,7 @@ def order_app():
     app.close()
 
 
-@allure.title("Проверка создания и удаления груза Bulkership")
+@allure.title("Проверка создания и удаления груза Bulkership, 35 проверок")
 @pytest.mark.order(1)
 def test_bulkership_freight(order_app):
     with allure.step("1. Тип груза — Bulkership"):
@@ -39,50 +39,50 @@ def test_bulkership_freight(order_app):
         check.equal(order_app["order_dialog_type"], order_app["order_table_type"], "ФР: Не совпадают")
 
     #Форма
-    with allure.step("9. Тип груза — Bulkership"):
+    with allure.step("8. Тип груза — Bulkership"):
         check.equal(order_app["order_dialog_te"], order_app["freight_te"], "❌ ФР: совпадают")
 
-    with allure.step("10. Тип ТЕ — Bag"):
+    with allure.step("9. Тип ТЕ — Bag"):
         check.equal(order_app["order_dialog_type"], order_app["freight_te_type"], "❌ ФР: совпадают")
 
-    with allure.step("11. Количество 1"):
+    with allure.step("10. Количество 1"):
         check.equal(order_app["order_dialog_quantity"], order_app["freight_quantity"], "❌ ФР: совпадают")
 
-    with allure.step("12. Единицы измерения - куб. м."):
+    with allure.step("11. Единицы измерения - куб. м."):
         check.equal(order_app["order_dialog_uom"], order_app["freight_oum"], "❌ ФР: совпадают")
 
-    with allure.step("13. Номер ТЕ — 0000000'"):
+    with allure.step("12. Номер ТЕ — 0000000'"):
         check.equal(order_app["order_dialog_number"], order_app["freight_number"], "ФР: совпадают")
 
-    with allure.step("14. Вес нетто кг"):
+    with allure.step("13. Вес нетто кг"):
         check.equal(order_app["freight_net"], "-", "❌ ФР: Не прочерк")
 
-    with allure.step("15. Вес брутто кг"):
+    with allure.step("14. Вес брутто кг"):
         check.equal(order_app["freight_gross"], "-", "❌ ФР: Не прочерк")
 
 
-    with allure.step("16. Выгрузка"):
+    with allure.step("15. Выгрузка"):
         check.is_false(order_app["freight_unloading"], "❌ ФР: Не пусто")
 
-    with allure.step("17. Номер пломбы"):
+    with allure.step("16. Номер пломбы"):
         check.is_false(order_app["freight_seal_number"],"❌ ФР: Не пусто")
 
-    with allure.step("18. Номер ГТД"):
+    with allure.step("17. Номер ГТД"):
         check.is_false(order_app["freight_number_gtd"], "❌ ФР: Не пусто")
 
-    with allure.step("19. Режим ТО"):
+    with allure.step("18. Режим ТО"):
         check.is_false(order_app["freight_mode_to"],  "❌ ФР: Не пусто")
 
-    with allure.step("20. Получение ДО/ДО1"):
+    with allure.step("19. Получение ДО/ДО1"):
         check.is_false(order_app["freight_do"],"❌ ФР: Не пусто")
 
-    with allure.step("21. Дата ТО"):
+    with allure.step("20. Дата ТО"):
         check.is_false(order_app["freight_data_to"], "❌ ФР: Не пусто")
 
-    with allure.step("22. Дата создания и дата изменения"):
+    with allure.step("21. Дата создания и дата изменения"):
         check.equal(order_app["freight_data_create"], order_app["freight_data_mod"], "❌ ФР: Не одинаковые")
 
-    with allure.step("23. Примечание"):
+    with allure.step("22. Примечание"):
         check.is_false(order_app["freight_note"], "❌ ФР: Не пусто")
 
     tabs_to_check = {
@@ -98,46 +98,46 @@ def test_bulkership_freight(order_app):
             check.equal(order_app.get(field_name), expected_value, f"❌ ФР: Вкладка '{expected_value}' — поле '{field_name}' имеет неверное значение")
 
     # Редактирование
-    with allure.step("10. Изменили Номер ТЕ"):
+    with allure.step("23. Изменили Номер ТЕ"):
         check.equal(order_app["freight_number_up"], order_app["freight_number_save"], "❌ ФР: Не совпадают")
 
-    with allure.step("11. Изменили Тип ТЕ"):
+    with allure.step("24. Изменили Тип ТЕ"):
         check.equal(order_app["freight_te_type_up"], order_app["freight_te_type_save"], "❌ ФР: Не совпадают")
 
-    with allure.step("12. Изменили Количество"):
+    with allure.step("25. Изменили Количество"):
         check.equal(order_app["freight_quantity_up"], order_app["freight_quantity_save"], "❌ ФР: Не совпадают")
 
-    with allure.step("13. Изменили Ед. измерения"):
+    with allure.step("26. Изменили Ед. измерения"):
         check.equal(order_app["freight_oum_up"], order_app["freight_oum_save"], "ФР: Не совпадают")
 
 
-    with allure.step("16. Выгрузка"):
+    with allure.step("27. Выгрузка"):
         check.equal(order_app["freight_unloading_up"], order_app["freight_unloading_save"],"❌ ФР: Не совпадают")
 
-    with allure.step("17. Номер пломбы"):
+    with allure.step("28. Номер пломбы"):
         check.equal(order_app["freight_seal_number_up"],order_app["freight_seal_number_save"],"❌ ФР: Не совпадают")
 
-    with allure.step("18. Номер ГТД"):
+    with allure.step("29. Номер ГТД"):
         check.equal(order_app["freight_number_gtd_up"], order_app["freight_number_gtd_save"],"❌ ФР: Не совпадают")
 
-    with allure.step("19. Режим ТО"):
+    with allure.step("30. Режим ТО"):
         check.equal(order_app["freight_mode_to_up"],  order_app["freight_mode_to_save"],"❌ ФР: Не совпадают")
 
-    with allure.step("20. Получение ДО/ДО1"):
+    with allure.step("31. Получение ДО/ДО1"):
         check.equal(order_app["freight_do_up"],order_app["freight_do_save"],"❌ ФР: Не совпадают")
 
-    with allure.step("21. Дата ТО"):
+    with allure.step("32. Дата ТО"):
         check.equal(order_app["freight_data_to_up"], order_app["freight_data_to_save"],"❌ ФР: Не совпадают")
 
 
-    with allure.step("22. Дата создания не поменялась"):
+    with allure.step("33. Дата создания не поменялась"):
         check.equal(order_app["freight_data_create"], order_app["freight_data_create_save"], "❌ ФР: Поменялась")
 
-    with allure.step("23. Дата изменения  поменялась"):
+    with allure.step("34. Дата изменения  поменялась"):
         check.not_equal(order_app["freight_note_up"], order_app["freight_data_mod_save"], "❌ ФР: Не поменялась")
 
 
-    with allure.step("24. Всего записей 0"):
+    with allure.step("35. Всего записей 0"):
         check.equal(order_app["freight_del_table"], "Всего записей: 0", "❌ ФР: Не совпадает")
 
 
