@@ -11,12 +11,11 @@ class LocOrders:
     FREIGHT_FROM = {'auto_id': 'CargoForm'}
     PREFORWARDING_FORM = {'auto_id': 'RouteSeaCarriageForm'}
     FORM_FORM = {'auto_id': 'TitleBar', 'control_type': "TitleBar"}
-    GTD_FROM = {'auto_id': 'frmGTD', 'control_type': "TitleBar"}
+    GTD_FROM = {'auto_id': 'frmGTD', 'control_type': "Window"}
     CHECK_FROM = {'auto_id': 'frmOutboxInvoice', 'control_type': "Window"}
     CHECK_FROM_VS = {'auto_id': 'frmInboxInvoice', 'control_type': "Window"}
     CHECK_FROM_IP = {'auto_id': 'frmOutboxPayment', 'control_type': "Window"}
     CHECK_FROM_VP = {'auto_id': 'frmInboxPayment', 'control_type': "Window"}
-
 
     # Базы Аиста
     STAGE_EF = {'title': "(serv02)AIST_STAGE_EF", 'control_type': "ListItem"}
@@ -35,12 +34,15 @@ class LocOrders:
     TABLE_ORDER_NUMBER = {'title': "Заказ № строка 1", 'control_type': "DataItem"}
     TABLE_ORDER_NUMBER2 = {'title': "Заказ № строка 2", 'control_type': "DataItem"}
     TABLE_ORDER_NUMBER3 = {'title': "Заказ № строка 3", 'control_type': "DataItem"}
+    TABLE_ORDER_NUMBER8 = {'title': "Заказ № строка 8", 'control_type': "DataItem"}
+    TABLE_ORDER_NUMBER9 = {'title': "Заказ № строка 9", 'control_type': "DataItem"}
+    TABLE_ORDER_NUMBER10 = {'title': "Заказ № строка 10", 'control_type': "DataItem"}
     TABLE_ORDER_TYPE = {'title': "Тип заказа строка 1", 'control_type': "DataItem"}
     TABLE_STATUS = {'title': "Статус строка 1", 'control_type': "DataItem"}
     TABLE_PRIORITY = {'title': "Приоритет строка 1", 'control_type': "DataItem"}
     TABLE_CREATOR = {'title': "Кем создан строка 1", 'control_type': "DataItem"}
     TABLE_CLIENT = {'title': "Клиент строка 1", 'control_type': "DataItem"}
-    TABLE_DELETE = {'title': "Удалить", 'control_type': "Button"}
+    TABLE_DELETE = {'title': "Удалить", 'control_type': "Button", 'found_index': 0}
 
     TABLE_RECIPIENT = {'title': "Получатель строка 1", 'control_type': "DataItem"}
     TABLE_DELIVERY = {'title': "Условия поставки строка 1", 'control_type': "DataItem"}
@@ -86,10 +88,13 @@ class LocOrders:
     CREATE_DATE = {'control_type': "Text", 'auto_id': "lblCreatedOn"}
     LINE_TRANSPORTATION = {'title': "Строка 1", 'control_type': "ListItem"}
     LINE_TRANSPORTATION10 = {'title': "Строка 10", 'control_type': "ListItem"}
-    DEL_BUTTON = {'title': "Удалить", 'control_type': "Button"}
+    DEL_BUTTON = {'title': "Удалить", 'control_type': "Button", 'found_index': 0}
     YES_BUTTON = {'title': "Да", 'control_type': "Button"}
     REFRESH_BUTTON_ORDER = {'title': "Обновить", 'control_type': "Button"}
     COMPLETION_DATE = {'title': "...", 'control_type': "Text", 'auto_id': "lblCompletedOn"}
+
+    # Меню заказа
+    OTHER_ACTIONS = {'title': "Другие действия", 'control_type': "MenuItem", 'found_index': 0}
 
     # Вкладки
     TAB_INFO = {'title': "Информация", 'control_type': "TabItem"}
@@ -220,6 +225,9 @@ class LocOrders:
     GTD_CLIENT = {'title': "Клиент:", 'control_type': "ComboBox", 'auto_id': "leClientId"}
     GTD_ORDER = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit1"}
     GTD_PROCEDURE = {'title': "Процедура:", 'control_type': "ComboBox", 'auto_id': "icGTDType"}
+    GTD_TE_NOT = {'title': "Коносаментная партия должна содержать хотя бы один контейнер", 'control_type': "Text"}
+    GTD_TE = {'title': "Номер ТЕ строка 1", 'control_type': "DataItem"}
+    GTD_TE_LINE  = {'title': "Контейнеры строка 1", 'control_type': "DataItem"}
 
     # Счета радио кнопки
     IS_CREATE_ORDER = {'title': "Исходящий счет", 'control_type': "RadioButton"}
@@ -261,3 +269,7 @@ class LocOrders:
 
     # Удаление
     DEL_WINDOW = {'control_type': "Text", 'auto_id': "lblDescription"}
+    DEL_WINDOW_BUTTON = {'title': "Закрыть", 'control_type': "Button", 'found_index': 0}
+
+    # Файлы
+    FILE_SELECT = {'control_type': "Выбрать файлы", 'auto_id': "btnAdd"}

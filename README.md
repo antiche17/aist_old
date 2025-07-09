@@ -7,7 +7,7 @@
 - [остальное](https://gitlab.smartlink.lan/qa/qa/-/blob/main/requirements.txt)
 
 ## Проверки 
-- [ ] Заказ
+- [х] Заказ
   - [x] Создание с типом:
     - [x] Логистика
     - [x] Другие услуги
@@ -18,9 +18,9 @@
     - [x] Экспедирование
     - [x] ГТД
     - [х] Счета(ИС, ВС, ИП, ВП)
-  - [ ] Удаление
-    - [ ] С одним (те, перевозкой, экспедированием, ГТД, счетом, файл)
-    - [ ] Множественное (от 4), в одном заказе (те, перевозкой, экспедированием, ГТД, счетом, файл)
+  - [х] Удаление
+    - [х] С одним (те, перевозкой, экспедированием, ГТД, счетом, файл)
+    - [х] Множественное (от 4), в одном заказе (те, перевозкой, экспедированием, ГТД, счетом, файл)
     - [x] Удаление одиночное(без сущностей)
     - [x] Удаление множественное(без сущностей)
 - Перевозки
@@ -43,10 +43,16 @@
   - Заказ:
     - Создание и редактирование с типом "Логистика" - `pytest tests_orders/test_order.py --alluredir=./allure-results`
     - Создание типом "Другие услуги" - `pytest tests_orders/test_2order_dr.py --alluredir=./allure-results`
-    - Удаление заказа и удаление двух заказов - `pytest tests_orders/test_1order_del.py --alluredir=./allure-results`
+    - Удаление заказа и удаление двух заказов без сущностей - `pytest tests_orders/test_1order_del.py --alluredir=./allure-results`
     - Создание и удаление "Экспедирование" - `pytest tests_orders/test_order_forwarding.py --alluredir=./allure-results`
-    - Создание и удаление "Груз" - `pytest tests_orders/test_order_freight.py --alluredir=./allure-results`
     - Создание и удаление "ГТД" - `pytest tests_orders/test_order_gtd.py --alluredir=./allure-results`
+    - Создание и удаление "Исходящего счета" - `pytest tests_orders/test_order_finance_is.py --alluredir=./allure-results`
+    - Создание и удаление "Исходящего платежа" - `pytest tests_orders/test_order_finance_ip.py --alluredir=./allure-results`
+    - Создание и удаление "Входящего платежа" - `pytest tests_orders/test_order_finance_vp.py --alluredir=./allure-results`
+    - Создание и удаление "Входящего счета" - `pytest tests_orders/test_order_finance_vs.py --alluredir=./allure-results`
+    - Удаление заказ с сущностями - `pytest tests_orders/test_order_del2.py --alluredir=./allure-results`
     - Создание и удаление "Перевозки" - `pytest tests_orders/test_order_transportation.py --alluredir=./allure-results`
+    - Создание и удаление "Bulkership" - `pytest tests_orders/test_order_freight_bulkership.py --alluredir=./allure-results`
+    - Создание и удаление "Container" - `pytest tests_orders/test_order_freight_container.py --alluredir=./allure-results`
   - Запуск отчета - `allure serve allure-results --lang ru`
   - Удаление истории - `allure generate allure-results --clean`
