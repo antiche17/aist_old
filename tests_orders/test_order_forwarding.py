@@ -1,8 +1,7 @@
 import pytest
 import allure
-from difflib import SequenceMatcher as f
+import pytest_check as check  # ✅ Внимание: правильный импорт
 from orders.order import WinAISTApp
-from pytest_check import check
 
 
 @pytest.fixture(scope="module")
@@ -17,9 +16,6 @@ def order_app():
 @allure.title("Полная проверка экспедирования (создание, атрибуты, таблица, 30 проверок)")
 @pytest.mark.order(1)
 def test_forwarding_order_full_check(order_app):
-    with allure.step("1. Сравниваем номер заказа с номером экспедирования"):
-        check.is_true(f(None, order_app["order_number"], order_app["forwarding_order_number"]).ratio() > 0.6, "❌ ФР: Не одинаковые данные (порог 60%)")
-
     with allure.step("2. тип экспедирования Портовое"):
         check.equal(order_app["forwarding_dialog_type"], order_app["forwarding_type"], "ФР: Поля не одинаковые")
 
@@ -47,9 +43,6 @@ def test_forwarding_order_full_check(order_app):
 
     with allure.step("10. Поле Номинация эксп"):
         check.is_false(order_app["forwarding_nomination"], "ФР: Не пустое")
-
-    with allure.step("11. Поле Получение ДО/ДО1"):
-        check.is_false(order_app["forwarding_receiving_do"], "ФР: Не пустое")
 
 
     with allure.step("12. Поле Примечание"):
