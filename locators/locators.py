@@ -53,7 +53,7 @@ class LocOrders:
     ORDER_TYPE_COMBO = {'auto_id': "orderTypeEdit", 'title': "Тип заказа:", 'control_type': "ComboBox"}
     LOGISTICS_ITEM = {'title': "Логистика", 'control_type': "ListItem"}
     LOGISTICS_ITEM_DR = {'title': "Другие услуги", 'control_type': "ListItem"}
-    CUSTOMER_COMBO = {'auto_id': "customerEdit", 'title': "Клиент:", 'control_type': "ComboBox"}
+    CUSTOMER_COMBO = {'auto_id': "customerEdit", 'title': "Клиент:", 'control_type': "ComboBox", 'found_index': 0}
     CUSTOMER_ITEM = {'title': "Наименование строка 1", 'control_type': "DataItem"}
     OK_BUTTON = {'title': "ОК", 'control_type': "Button", 'found_index': 0}
     OK_BUTTON1 = {'title': "ОК", 'auto_id': "btnOK", 'found_index': 0}
@@ -76,7 +76,8 @@ class LocOrders:
     CLIENT_COMBO_3 = {'title': "Наименование строка 3", 'control_type': "DataItem"}
     SENDERS_1 = {'title': "Отправители:", 'control_type': "ComboBox"}
     RECIPIENT = {'title': "Получатель:", 'auto_id': "sleReceiver"}
-    RECIPIENT_1 = {'title': "Строка 1", 'control_type': "ListItem"}
+    RECIPIENT_1 = {'title': "Строка 1", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT_2 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
     DELIVERY_CONDITION = {'title': "Условия поставки:", 'auto_id': "leIncoterms"}
     DELIVERY_CONDITION_0 = {'title': "Строка 0", 'control_type': "Custom"}
     REFERENCE = {'title': "Референс клиента:", 'auto_id': "teClientReference"}
@@ -216,6 +217,11 @@ class LocOrders:
     FREIGHT_TOTAL_RECORDS = {'title': "Статический", 'control_type': "Text", 'found_index': 0}
     FREIGHT_LINE_3 = {'title': "Строка 3", 'control_type': "ListItem"}
     FREIGHT_LINE_7 = {'title': "Строка 7", 'control_type': "ListItem"}
+    FREIGHT = {'title': "Грузы", 'control_type': "ListItem"}
+    FREIGHT_ORDER_TABLE = {'title': "Заказ фильтр строк", 'control_type': "DataItem"}
+    FREIGHT_ORDER_W = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit"}
+    FREIGHT_ORDER_CREATE = {'title': "Создать", 'control_type': "Button", 'auto_id': "CreateOrderButton"}
+
 
     # Форма контейнера
     # FREIGHT_NUMBER_SEAL_FORM_CONTAINER =
@@ -223,7 +229,7 @@ class LocOrders:
 
     # ГТД
     GTD_CLIENT = {'title': "Клиент:", 'control_type': "ComboBox", 'auto_id': "leClientId"}
-    GTD_ORDER = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit1"}
+    GTD_ORDER = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit1", 'found_index': 0}
     GTD_PROCEDURE = {'title': "Процедура:", 'control_type': "ComboBox", 'auto_id': "icGTDType"}
     GTD_TE_NOT = {'title': "Коносаментная партия должна содержать хотя бы один контейнер", 'control_type': "Text"}
     GTD_TE = {'title': "Номер ТЕ строка 1", 'control_type': "DataItem"}

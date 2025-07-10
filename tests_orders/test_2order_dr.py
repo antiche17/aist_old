@@ -39,7 +39,7 @@ def test_create_other_services_order(order_app):
         check.equal(order_app["order_dialog_client"], order_app["order_client"], "❌ ФР: Не одинаковые клиенты, но должны быть одинаковыми")
 
     with allure.step("8. Проверка Дата создания = Дата изменения"):
-        check.equal(f(None, order_app["order_create_date"], order_app["order_create_mod"]).ratio() > 65,"❌ ФР: Поля не одинаковые, но должно быть одинаковые, выставлено 65")
+        check.equal(order_app["order_create_date"], order_app["order_create_mod"],"❌ ФР: Поля не одинаковые, но должно быть одинаковые, выставлено 65")
 
     with allure.step("9. Проверка Дата завершения"):
         check.equal(order_app["order_completion_date"], "...", "❌ ФР: Поле с другим значением, но должно быть ... ")
@@ -62,7 +62,7 @@ def test_create_other_services_order(order_app):
 
 
     with allure.step("15. Проверка номера в таблице"):
-        check.equal(None, f(order_app["order_number"], order_app["table_order"]).ratio() > 65, "❌ ФР: Поля не одинаковые, выставлено 65")
+        check.equal(order_app["table_order"] in order_app["order_number"], "❌ ФР: Поля не одинаковые65")
 
     with allure.step("16. Проверка типа в таблице"):
         check.equal(order_app["order_type"], order_app["table_type"], "❌ ФР: Поля не одинаковые")
@@ -77,5 +77,5 @@ def test_create_other_services_order(order_app):
         check.equal(order_app["order_client"], order_app["table_client"], "❌ ФР: Поля не одинаковые")
 
     with allure.step("20. Проверка даты создания в таблице"):
-        check.equal(None, f(order_app["table_date"], order_app["order_create_date"]).ratio() > 60, "❌ ФР: Поля не одинаковые")
+        check.equal(order_app["table_date"] in order_app["order_create_date"], "❌ ФР: Поля не одинаковые")
 

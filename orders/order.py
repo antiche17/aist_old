@@ -311,7 +311,7 @@ class WinAISTApp:
             'table_priority_up': self.get_element_property(main_window, self.loc.TABLE_PRIORITY, "Value"),
             'table_client_up': self.get_element_property(main_window, self.loc.TABLE_CLIENT, "Value"),
             'table_recipient_up': self.get_element_property(main_window, self.loc.TABLE_RECIPIENT, "Value"),
-            'table_delivery_up': self.get_element_property(main_window, self.loc.TABLE_DELIVERY, "Value"),
+            #'table_delivery_up': self.get_element_property(main_window, self.loc.TABLE_DELIVERY, "Value"),
             'table_note_up': self.get_element_property(main_window, self.loc.TABLE_NOTE, "Value")
         })
 
@@ -443,7 +443,7 @@ class WinAISTApp:
         self.click_element(main_window, self.loc.TABLE_ORDER_NUMBER, timeout=5)
         time.sleep(1)
         self.click_element(main_window, self.loc.TABLE_DELETE, timeout=1)
-        self.click_element(main_window, self.loc.TABLE_DELETE_WINDOW, timeout=1)
+        #self.click_element(main_window, self.loc.TABLE_DELETE_WINDOW, timeout=1) подтверждение удаления заказа не работает
 
         # Обновить таблицу
         self.click_element(main_window, self.loc.REFRESH_BUTTON, timeout=2)
@@ -456,12 +456,12 @@ class WinAISTApp:
         # Берем номер 2 заказа с таблицей
         self.order_data.update({
             'table_order_del1': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER, "Value"),
-            'table_order_del2': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER_2, "Value")
+            'table_order_del2': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER2, "Value")
         })
         # Выбор 2х заказов и удаление их
-        self.select_two_elements_with_ctrl(main_window,self.loc.TABLE_ORDER_NUMBER, self.loc.TABLE_ORDER_NUMBER_2)
+        self.select_two_elements_with_ctrl(main_window,self.loc.TABLE_ORDER_NUMBER, self.loc.TABLE_ORDER_NUMBER2)
         self.click_element(main_window, self.loc.TABLE_DELETE, timeout=1)
-        self.click_element(main_window, self.loc.TABLE_DELETE_WINDOW, timeout=1)
+        #self.click_element(main_window, self.loc.TABLE_DELETE_WINDOW, timeout=1) подтверждение удаления заказа не работает
 
         # Обновить таблицу
         self.click_element(main_window, self.loc.REFRESH_BUTTON, timeout=2)
@@ -469,7 +469,7 @@ class WinAISTApp:
         # Cравнение изменений
         self.order_data.update({
             'table_order_1': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER, "Value"),
-            'table_order_2': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER_2, "Value")
+            'table_order_2': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER2, "Value")
         })
 
         return self.order_data

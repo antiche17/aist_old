@@ -63,7 +63,7 @@ def test_value_order(order_app):
 
 
     with allure.step("15. Номер заказа с отображением в таблице"):
-        check.equal(f(None, order_app["order_number"], order_app["table_order"]).ratio()>65, "❌ ФР: Поля не одинаковые, выставлено 65")
+        check.equal(order_app["table_order"] in order_app["order_number"],"❌ ФР: Поля не одинаковые, выставлено 65")
 
     with allure.step("16. тип заказа с отображением в таблице"):
         check.equal(order_app["order_type"], order_app["table_type"], "❌ ФР: Поля не одинаковые")
