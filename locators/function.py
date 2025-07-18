@@ -1,0 +1,173 @@
+from pywinauto import Application, keyboard
+from locators.locators import LocOrders
+import time
+import subprocess
+import psutil
+
+
+class Function:
+    def __init__(self):
+        self.app = Application(backend='uia')
+        self.loc = LocOrders()
+        self.order_data = {}  # Для хранения данных заказа
+        self.process = None
+        self.child_pid = None
+
+    def start_application(self):
+        """Запускает WinAIST и подключается к дочернему процессу с окнами"""
+        # Запуск приложения через subprocess, чтобы получить родительский PID
+        self.process = subprocess.Popen(r'C:\AIST\WinAIST.exe')
+        time.sleep(15)  # Ждём, пока окна загрузятся
+
+        # Получаем дочерние процессы
+        parent = psutil.Process(self.process.pid)
+        children = parent.children(recursive=True)
+
+        if not children:
+            raise RuntimeError("Дочерние процессы не найдены")
+
+        # Подключаемся к первому дочернему процессу (где окна)
+        self.child_pid = children[0].pid
+        self.app.connect(process=self.child_pid)
+
+        # Получаем стартовое окно
+        window = self.app.window(**self.loc.STARTUP_WINDOW)
+        window.wait('visible', timeout=25)
+        window.set_focus()
+
+        return window
+
+    def get_main_window(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.MAIN_WINDOW)
+
+    def get_main_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.ORDER_FORM)
+
+    def get_sea_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.SEA_FORM)
+
+    def get_auto_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.AUTO_FORM)
+
+    def get_forwarding_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.FORWARDING_FROM)
+
+    def get_freight_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.FREIGHT_FROM)
+
+    def get_gtd_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.GTD_FROM)
+
+    def get_check_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.CHECK_FROM)
+
+    def get_check_vs_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.CHECK_FROM_VS)
+
+    def get_check_ip_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.CHECK_FROM_IP)
+
+    def get_check_vp_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.CHECK_FROM_VP)
+
+    def get_product_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.PRODUCT_FORM)
+
+    def click_element(self, window, locator, timeout=3):
+        """Клик по элементу с ожиданием"""
+        element = window.child_window(**locator)
+        element.wait('visible', timeout=timeout)
+        element.click_input()
+        return element
+
+    def click_element_double(self, window, locator, timeout=3):
+        """Клик по элементу с ожиданием"""
+        element = window.child_window(**locator)
+        element.wait('visible', timeout=timeout)
+        element.click_input(double=True)
+        return element
+
+    def select_two_elements_with_ctrl(self, window, locator1, locator2, timeout=3):
+        # Первый элемент
+        el1_spec = window.child_window(**locator1)
+        el1_spec.wait('visible', timeout=timeout)
+        el1 = el1_spec.wrapper_object()
+
+        # Второй элемент
+        el2_spec = window.child_window(**locator2)
+        el2_spec.wait('visible', timeout=timeout)
+        el2 = el2_spec.wrapper_object()
+
+        # Клик по первому элементу
+        el1.click_input()
+
+        # Зажимаем Ctrl и кликаем по второму элементу
+        keyboard.send_keys('{VK_CONTROL down}')
+        el2.click_input()
+        keyboard.send_keys('{VK_CONTROL up}')
+
+        return [el1, el2]
+
+    def select_range_with_shift(self, window, first_locator, last_locator, timeout=3):
+        # Клик по первому элементу
+        first_el_spec = window.child_window(**first_locator)
+        first_el_spec.wait('visible', timeout=timeout)
+        first_el = first_el_spec.wrapper_object()
+        first_el.click_input()
+
+        # Зажать Shift и клик по последнему элементу
+        keyboard.send_keys('{VK_SHIFT down}')
+        try:
+            last_el_spec = window.child_window(**last_locator)
+            last_el_spec.wait('visible', timeout=timeout)
+            last_el = last_el_spec.wrapper_object()
+            last_el.click_input()
+        finally:
+            keyboard.send_keys('{VK_SHIFT up}')
+
+        return [first_el, last_el]
+
+    def type_keys(self, window, locator, timeout=1):
+        """Клик по элементу с ожиданием"""
+        element = window.child_window(**locator)
+        element.wait('visible', timeout=timeout)
+        element.type_keys("{DOWN}")
+        return element
+
+    def set_text_field(self, window, locator, text, timeout=1):
+        """Устанавливает текст в текстовое поле"""
+        element = window.child_window(**locator)
+        element.wait('visible enabled ready', timeout=timeout)
+        wrapper = element.wrapper_object()
+        wrapper.set_text(str(text))
+        return wrapper
+
+    def get_element_property(self, window, locator, property_name, timeout=3):
+        """Получение свойства элемента"""
+        element = window.child_window(**locator)
+        element.wait('visible', timeout=timeout)
+        return element.legacy_properties()[property_name]
+
+    def get_element_value(self, window, locator, timeout=1):
+        ctrl = window.child_window(**locator).wait('visible ready', timeout=timeout)
+        if hasattr(ctrl, 'wrapper_object'):
+            ctrl = ctrl.wrapper_object()
+
+        # Если это ComboBoxWrapper, вернем выделенный текст
+        if ctrl.friendly_class_name() == 'ComboBox':
+            return ctrl.selected_text()
+
+        # Для остальных — вернем текст окна
+        return ctrl.window_text()

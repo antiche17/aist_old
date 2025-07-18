@@ -16,18 +16,21 @@ class LocOrders:
     CHECK_FROM_VS = {'auto_id': 'frmInboxInvoice', 'control_type': "Window"}
     CHECK_FROM_IP = {'auto_id': 'frmOutboxPayment', 'control_type': "Window"}
     CHECK_FROM_VP = {'auto_id': 'frmInboxPayment', 'control_type': "Window"}
+    PRODUCT_FORM = {'auto_id': 'ProductForm', 'control_type': "Window"}
 
     # Базы Аиста
     STAGE_EF = {'title': "(serv02)AIST_STAGE_EF", 'control_type': "ListItem"}
+    AIST_EF = {'title': "(serv01)AIST_EF", 'control_type': "ListItem"}
 
     # Кнопки и элементы управления
     START_BUTTON = {'auto_id': 'btnStart', 'title': 'Запуск', 'control_type': 'Button'}
     ORDERS_TAB = {'title': "Заказы", 'control_type': "ListItem"}
     ADD_BUTTON = {'title': "Добавить", 'control_type': "Button"}
     CREATE_BUTTON = {'title': "Создать", 'control_type': "Button", 'found_index': 0}
-    OPEN_BUTTON = {'title': "Открыть", 'control_type': "Button"}
+    OPEN_BUTTON = {'title': "Открыть", 'control_type': "Button", 'found_index': 0}
     TABLE_DELETE_WINDOW = {'title': "OK", 'auto_id': "btnOK", 'found_index': 0}
     APPLY_BUTTON = {'title': "Применить", 'auto_id': "btnApply"}
+    APPLY_BUTTON1 = {'title': "Применить", 'auto_id': "sbApply"}
 
     # Элементы таблицы заказов
     REFRESH_BUTTON = {'title': "Элемент", 'control_type': "SplitButton"}
@@ -53,12 +56,13 @@ class LocOrders:
     ORDER_TYPE_COMBO = {'auto_id': "orderTypeEdit", 'title': "Тип заказа:", 'control_type': "ComboBox"}
     LOGISTICS_ITEM = {'title': "Логистика", 'control_type': "ListItem"}
     LOGISTICS_ITEM_DR = {'title': "Другие услуги", 'control_type': "ListItem"}
-    CUSTOMER_COMBO = {'auto_id': "customerEdit", 'title': "Клиент:", 'control_type': "ComboBox"}
+    CUSTOMER_COMBO = {'auto_id': "customerEdit", 'title': "Клиент:", 'control_type': "ComboBox", 'found_index': 0}
     CUSTOMER_ITEM = {'title': "Наименование строка 1", 'control_type': "DataItem"}
     OK_BUTTON = {'title': "ОК", 'control_type': "Button", 'found_index': 0}
     OK_BUTTON1 = {'title': "ОК", 'auto_id': "btnOK", 'found_index': 0}
     OK_BUTTON2 = {'auto_id': "btnOK", 'found_index': 0}
     SAVE_BUTTON = {'auto_id': "sbSave", 'control_type': "Button"}
+    AP = {'auto_id': "sbSave", 'control_type': "Button"}
 
     # Элементы информации о заказе
     ORDER_NUMBER = {'auto_id': "bceNavigation", 'control_type': "ComboBox"}
@@ -76,9 +80,14 @@ class LocOrders:
     CLIENT_COMBO_3 = {'title': "Наименование строка 3", 'control_type': "DataItem"}
     SENDERS_1 = {'title': "Отправители:", 'control_type': "ComboBox"}
     RECIPIENT = {'title': "Получатель:", 'auto_id': "sleReceiver"}
-    RECIPIENT_1 = {'title': "Строка 1", 'control_type': "ListItem"}
+    RECIPIENT_1 = {'title': "Строка 1", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT_2 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT_3 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT_4 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT_5 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
     DELIVERY_CONDITION = {'title': "Условия поставки:", 'auto_id': "leIncoterms"}
     DELIVERY_CONDITION_0 = {'title': "Строка 0", 'control_type': "Custom"}
+    DELIVERY_CONDITION_1 = {'title': "Строка 1", 'control_type': "Custom"}
     REFERENCE = {'title': "Референс клиента:", 'auto_id': "teClientReference"}
     NOTE = {'title': "Примечание:", 'auto_id': "meDescription"}
     NOTE1 = {'title': "Примечание:", 'auto_id': "meDecription"}
@@ -103,7 +112,7 @@ class LocOrders:
     TAB_FILE = {'title': "Файлы", 'control_type': "TabItem"}
     TAB_SERVICES = {'title': "Услуги", 'control_type': "TabItem"}
     TAB_FREIGHT = {'title': "Груз", 'control_type': "TabItem", 'found_index': 0}
-    TAB_TRANSPORTATION = {'title': "Перевозки", 'control_type': "TabItem"}
+    TAB_TRANSPORTATION = {'title': "Перевозки", 'control_type': "TabItem", 'found_index': 0}
     TAB_FORWARDING = {'title': "Экспедирование", 'control_type': "TabItem"}
     TAB_GTD = {'title': "Декларирование", 'control_type': "TabItem"}
     TAB_TRACKING = {'title': "Отслеживание", 'control_type': "TabItem"}
@@ -124,19 +133,22 @@ class LocOrders:
     SEA_TAB_ORDER_NUMBER = {'title': "Заказ строка 1", 'control_type': "DataItem", 'found_index': 0}
     TYPE_FREIGHT = {'title': "Тип груза:", 'control_type': "ComboBox", 'auto_id': "carriageCargoTypeEdit1"}
     CLASS_FREIGHT = {'title': "Класс груза:", 'control_type': "ComboBox", 'auto_id': "wareClassEdit"}
+    CLASS_FREIGHT_AUTO = {'title': "Класс груза: ", 'control_type': "ComboBox", 'auto_id': "wareClassEdit1"}
     CLASS_FREIGHT1 = {'title': "IMO Cargo", 'control_type': "ListItem"}
     DOWNLOAD_METHOD = {'title': "Способ загрузки:", 'control_type': "ComboBox"}
+    DOWNLOAD_METHOD_AUTO = {'title': "Способ загрузки: ", 'control_type': "ComboBox", 'auto_id': "carriageMethodLoadingEdit1"}
     DOWNLOAD_METHOD1 = {'title': "FCL", 'control_type': "ListItem"}
     REFERENCE_FREIGHT = {'control_type': "Edit", 'auto_id': "teCargoReference"}
     BOOKING_REFERENCE = {'title': "Букинг референс:", 'control_type': "Edit"}
     OCEAN_LINE = {'title': "Океанская линия:", 'control_type': "ComboBox"}
-    OCEAN_KONOSAMENT = {'control_type': "Edit", 'auto_id': "oceanBillOfLadingTextBox"}
+    OCEAN_KONOS = {'control_type': "Edit", 'auto_id': "oceanBillOfLadingTextBox"}
     FEEDER_LINE = {'title': "Фидерная линия:", 'control_type': "ComboBox"}
     FEEDER_LINE1 = {'title': "Строка 2", 'control_type': "ListItem"}
     FEEDER_LINE3 = {'title': "Строка 3", 'control_type': "ListItem"}
     FEEDER_LINE4 = {'title': "Строка 4", 'control_type': "ListItem"}
     FEEDER_LINE5 = {'title': "Строка 5", 'control_type': "ListItem"}
-    FEEDER_KONOSAMENT = {'title': "Фидерн. коносамент:", 'control_type': "Edit"}
+    FEEDER_KONOS = {'title': "Фидерн. коносамент:", 'control_type': "Edit"}
+
 
     ROUTES_WINDOWS = {'title': "Тип задания:", 'control_type': "ComboBox", 'auto_id': "routeAssignmentSeaCarriageEdit1"}
     PREFORWARDING = {'title': "Преэкспедирование", 'control_type': "ListItem"}
@@ -165,6 +177,29 @@ class LocOrders:
     ADD_TE = {'control_type': "ComboBox", 'auto_id': "cargosEdit1"}
 
 
+    # Автоперевозка
+    AUTO_CARRIER = {'title': "Перевозчик:", 'control_type': "ComboBox", 'auto_id': "sleClient"}
+    AUTO_CMR = {'title': "Номер CMR:", 'control_type': "Edit", 'auto_id': "teCMR"}
+    AUTO_CMR_POR = {'title': "Номер CMR порожн.:", 'control_type': "Edit", 'auto_id': "teCMRporozhn"}
+
+    # Морская перевозка
+    PORT1 = {'title': "Порт строка 1", 'control_type': "DataItem"}
+    PORT2 = {'title': "Порт строка 2", 'control_type': "DataItem"}
+    PORT3 = {'title': "Порт строка 3", 'control_type': "DataItem"}
+    PORT4 = {'title': "Порт строка 4", 'control_type': "DataItem"}
+    PORT5 = {'title': "Порт строка 5", 'control_type': "DataItem"}
+
+
+    AUTO_CMR_POR = {'title': "Номер CMR порожн.:", 'control_type': "Edit", 'auto_id': "teCMRporozhn"}
+    AUTO_CMR_POR = {'title': "Номер CMR порожн.:", 'control_type': "Edit", 'auto_id': "teCMRporozhn"}
+    AUTO_CMR_POR = {'title': "Номер CMR порожн.:", 'control_type': "Edit", 'auto_id': "teCMRporozhn"}
+    AUTO_CMR_POR = {'title': "Номер CMR порожн.:", 'control_type': "Edit", 'auto_id': "teCMRporozhn"}
+    AUTO_CMR_POR = {'title': "Номер CMR порожн.:", 'control_type': "Edit", 'auto_id': "teCMRporozhn"}
+    AUTO_CMR_POR = {'title': "Номер CMR порожн.:", 'control_type': "Edit", 'auto_id': "teCMRporozhn"}
+
+
+
+
     # Экспедирование вкладка в заказе
     FORWARDING_TYPE_TEXT = {'auto_id': "lbType", 'control_type': "Text"}
     FORWARDING_ITEM = {'title': "Тип экспедирования строка 1", 'control_type': "DataItem"}
@@ -187,6 +222,7 @@ class LocOrders:
     # Груз
     FREIGHT_TYPE_TEXT = {'auto_id': "lcCargoType", 'control_type': "Text"}
     FREIGHT_ITEM = {'title': "ТЕ строка 1", 'control_type': "DataItem"}
+    FREIGHT_ITEM2 = {'title': "ТЕ строка 2", 'control_type': "DataItem"}
     FREIGHT_TABLE_TYPE_TE = {'title': "Тип ТЕ строка 1", 'control_type': "DataItem"}
     FREIGHT_TABLE_NUMBER_TE = {'title': "Тип ТЕ строка 1", 'control_type': "DataItem"}
     FREIGHT_CREATE_TE = {'title': "ТЕ:", 'control_type': "ComboBox", 'auto_id': "cargoTypeEdit"}
@@ -216,6 +252,14 @@ class LocOrders:
     FREIGHT_TOTAL_RECORDS = {'title': "Статический", 'control_type': "Text", 'found_index': 0}
     FREIGHT_LINE_3 = {'title': "Строка 3", 'control_type': "ListItem"}
     FREIGHT_LINE_7 = {'title': "Строка 7", 'control_type': "ListItem"}
+    FREIGHT = {'title': "Грузы", 'control_type': "ListItem"}
+    FREIGHT_ORDER_W = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit"}
+    FREIGHT_ORDER_CREATE = {'title': "Создать", 'control_type': "Button", 'auto_id': "CreateOrderButton"}
+
+    #Таблица Грузы
+    FREIGHT_ORDER_TABLE = {'title': "Заказ фильтр строк", 'control_type': "DataItem"}
+    FREIGHT_RESP_FOR_TABLE = {'title': "Ответственный (Экспедирование) фильтр строк", 'control_type': "DataItem"}
+
 
     # Форма контейнера
     # FREIGHT_NUMBER_SEAL_FORM_CONTAINER =
@@ -223,7 +267,7 @@ class LocOrders:
 
     # ГТД
     GTD_CLIENT = {'title': "Клиент:", 'control_type': "ComboBox", 'auto_id': "leClientId"}
-    GTD_ORDER = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit1"}
+    GTD_ORDER = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit1", 'found_index': 0}
     GTD_PROCEDURE = {'title': "Процедура:", 'control_type': "ComboBox", 'auto_id': "icGTDType"}
     GTD_TE_NOT = {'title': "Коносаментная партия должна содержать хотя бы один контейнер", 'control_type': "Text"}
     GTD_TE = {'title': "Номер ТЕ строка 1", 'control_type': "DataItem"}
@@ -244,6 +288,7 @@ class LocOrders:
     IS_FREIGHT = {'title': "Товарный", 'control_type': "ListItem"}
     IS_FREIGHT1 = {'title': "Фрахтовый", 'control_type': "ListItem"}
     IS_FREIGHT2 = {'title': "Экспедиторский", 'control_type': "ListItem"}
+    IS_FREIGHT3 = {'title': "Таможенный", 'control_type': "ListItem"}
     IS_SUPPLIER = {'title': "Поставщик:", 'control_type': "ComboBox", 'auto_id': "leSellerId"}
     IS_BUYER = {'title': "Покупатель:", 'control_type': "ComboBox", 'auto_id': "leBuyerId"}
     IS_TYPE_CHECK = {'title': "Тип счета строка 1", 'control_type': "DataItem"}
@@ -273,3 +318,12 @@ class LocOrders:
 
     # Файлы
     FILE_SELECT = {'control_type': "Выбрать файлы", 'auto_id': "btnAdd"}
+
+    # Товары
+    NAME_TOV_RU = {'title': "Наименование (ru):", 'control_type': "Edit", 'auto_id': "NameRuEdit"}
+    NAME_TOV_EN = {'title': "Наименование (en):", 'control_type': "Edit", 'auto_id': "NameEnEdit"}
+    NAME_NOTE = {'title': "Примечание:", 'control_type': "Edit", 'auto_id': "DescriptionEdit"}
+    NET_WEIGHT = {'title': "Вес нетто, кг:", 'control_type': "Edit", 'auto_id': "teNetto"}
+    GROSS_WEIGHT = {'title': "Вес брутто, кг:", 'control_type': "Edit", 'auto_id': "teBrutto"}
+
+

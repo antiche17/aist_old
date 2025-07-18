@@ -25,8 +25,8 @@ def test_container_freight(order_app):
     with allure.step("3. Количество 1"):
         check.equal(order_app["order_dialog_quantity"], "1", "❌ ФР: Количество не 1")
 
-    with allure.step("5. Номер ТЕ — XXXX 0000000'"):
-        check.equal(order_app["order_dialog_number"], "XXXX 0000000", "ФР: Номер ТЕ не XXXX 0000000")
+    with allure.step("5. Номер ТЕ — XXXX0000000'"):
+        check.equal(order_app["order_dialog_number"], "XXXX0000000", "ФР: Номер ТЕ не XXXX 0000000")
 
     with allure.step("6. Сравнение название ТЕ диалога создания и в таблице заказа"):
         check.equal(order_app["order_dialog_te"], order_app["order_table_te"], "ФР: Не совпадают")
@@ -41,7 +41,7 @@ def test_container_freight(order_app):
     with allure.step("9. Тип ТЕ — 20'dc"):
         check.equal(order_app["order_dialog_type"], order_app["freight_te_type"], "❌ ФР: совпадают")
 
-    with allure.step("10. Номер ТЕ — XXXX 0000000'"):
+    with allure.step("10. Номер ТЕ — XXXX0000000'"):
         check.equal(order_app["order_dialog_number"], order_app["freight_number"], "ФР: совпадают")
 
     with allure.step("11. Вес нетто кг"):

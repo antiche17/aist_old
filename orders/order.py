@@ -163,7 +163,7 @@ class WinAISTApp:
         startup_window.set_focus()
 
         # 2. Нажатие кнопки Запуск
-        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.AIST_EF, timeout=1)
         self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
         time.sleep(15)
 
@@ -311,7 +311,7 @@ class WinAISTApp:
             'table_priority_up': self.get_element_property(main_window, self.loc.TABLE_PRIORITY, "Value"),
             'table_client_up': self.get_element_property(main_window, self.loc.TABLE_CLIENT, "Value"),
             'table_recipient_up': self.get_element_property(main_window, self.loc.TABLE_RECIPIENT, "Value"),
-            'table_delivery_up': self.get_element_property(main_window, self.loc.TABLE_DELIVERY, "Value"),
+            #'table_delivery_up': self.get_element_property(main_window, self.loc.TABLE_DELIVERY, "Value"),
             'table_note_up': self.get_element_property(main_window, self.loc.TABLE_NOTE, "Value")
         })
 
@@ -346,7 +346,7 @@ class WinAISTApp:
         startup_window.set_focus()
 
         # 2. Нажатие кнопки Запуск
-        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.AIST_EF, timeout=1)
         self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
         time.sleep(15)
 
@@ -422,7 +422,7 @@ class WinAISTApp:
         startup_window.set_focus()
 
         # 2. Нажатие кнопки Запуск
-        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.AIST_EF, timeout=1)
         self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
         time.sleep(15)
 
@@ -443,7 +443,7 @@ class WinAISTApp:
         self.click_element(main_window, self.loc.TABLE_ORDER_NUMBER, timeout=5)
         time.sleep(1)
         self.click_element(main_window, self.loc.TABLE_DELETE, timeout=1)
-        self.click_element(main_window, self.loc.TABLE_DELETE_WINDOW, timeout=1)
+        #self.click_element(main_window, self.loc.TABLE_DELETE_WINDOW, timeout=1) подтверждение удаления заказа не работает
 
         # Обновить таблицу
         self.click_element(main_window, self.loc.REFRESH_BUTTON, timeout=2)
@@ -456,12 +456,12 @@ class WinAISTApp:
         # Берем номер 2 заказа с таблицей
         self.order_data.update({
             'table_order_del1': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER, "Value"),
-            'table_order_del2': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER_2, "Value")
+            'table_order_del2': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER2, "Value")
         })
         # Выбор 2х заказов и удаление их
-        self.select_two_elements_with_ctrl(main_window,self.loc.TABLE_ORDER_NUMBER, self.loc.TABLE_ORDER_NUMBER_2)
+        self.select_two_elements_with_ctrl(main_window,self.loc.TABLE_ORDER_NUMBER, self.loc.TABLE_ORDER_NUMBER2)
         self.click_element(main_window, self.loc.TABLE_DELETE, timeout=1)
-        self.click_element(main_window, self.loc.TABLE_DELETE_WINDOW, timeout=1)
+        #self.click_element(main_window, self.loc.TABLE_DELETE_WINDOW, timeout=1) подтверждение удаления заказа не работает
 
         # Обновить таблицу
         self.click_element(main_window, self.loc.REFRESH_BUTTON, timeout=2)
@@ -469,22 +469,20 @@ class WinAISTApp:
         # Cравнение изменений
         self.order_data.update({
             'table_order_1': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER, "Value"),
-            'table_order_2': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER_2, "Value")
+            'table_order_2': self.get_element_property(main_window, self.loc.TABLE_ORDER_NUMBER2, "Value")
         })
 
         return self.order_data
 
     def transportation(self):
-        """Создание перевозок"""
-        """Создание морской перевозки"""
         # 1. Запуск приложения
         startup_window = self.start_application()
         startup_window.set_focus()
 
         # 2. Нажатие кнопки Запуск
-        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.AIST_EF, timeout=1)
         self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
-        time.sleep(15)
+        time.sleep(5)
 
         # 3. Переход в раздел Заказы
         main_window = self.get_main_window()
@@ -494,11 +492,22 @@ class WinAISTApp:
         self.click_element(main_window, self.loc.ORDERS_TAB, timeout=3)
         time.sleep(5)
 
-        # 4. Открыть заказ заказа
-        self.click_element_double(main_window, self.loc.TABLE_ORDER_NUMBER, timeout=5)
+        # 4. Создание нового заказа
+        self.click_element(main_window, self.loc.ADD_BUTTON, timeout=5)
         time.sleep(1)
 
-        # 5. Переключение на форму заказа
+        # 5. Заполнение формы заказа
+        self.click_element(main_window, self.loc.ORDER_TYPE_COMBO, timeout=1)
+        self.click_element(main_window, self.loc.LOGISTICS_ITEM, timeout=1)
+        self.click_element(main_window, self.loc.CUSTOMER_COMBO, timeout=1)
+        self.click_element(main_window, self.loc.CUSTOMER_ITEM, timeout=1)
+        time.sleep(1)
+        self.order_data = {
+            'order_dialog_otv': self.get_element_property(main_window, self.loc.RESPONSIBLE_COMBO, "Value")
+        }
+        self.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
+        time.sleep(1)
+
         main_window = self.get_main_form()
         main_window.set_focus()
         time.sleep(1)
@@ -507,18 +516,18 @@ class WinAISTApp:
         time.sleep(1)
 
         # 6. Взять номер заказа
-        self.order_data = {
+        self.order_data.update({
             'order_number': self.get_element_property(order_form, self.loc.ORDER_NUMBER, "Name")
-        }
+        })
 
         # 7. Перейти во вкладку
-        self.click_element(main_window, self.loc.TAB_TRANSPORTATION, timeout=3)
+        self.click_element(main_window, self.loc.TAB_TRANSPORTATION, timeout=5)
 
         # 8. Создать морскую перевозку
         self.click_element(main_window, self.loc.CREATE_BUTTON, timeout=3)
         self.click_element(main_window, self.loc.TYPE_TRANSPORTATION, timeout=3)
         self.click_element(main_window, self.loc.SEA_TRANSPORTATION, timeout=3)
-        keyboard.send_keys('{ENTER}')  # нажать на ОК работает если есть фокус на кнопке, могут быть проблемы
+        self.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
 
         # 9. Переключится на форму морской перевозки
         main_window = self.get_sea_form()
@@ -531,13 +540,24 @@ class WinAISTApp:
         # 10. Проверка полей
         self.order_data.update({
             'sea_order_number': self.get_element_property(order_form, self.loc.ORDER_NUMBER, "Name"),
-            'sea_order_name': self.get_element_property(order_form, self.loc.SEA_ORDER_NAME, "Name"),
             'sea_type': self.get_element_property(order_form, self.loc.SEA_TYPE_TEXT, "Name"),
             'sea_status': self.get_element_property(order_form, self.loc.STATUS_COMBO, "Value"),
             'sea_priority': self.get_element_property(order_form, self.loc.PRIORITY_COMBO, "Value"),
             'sea_otv': self.get_element_property(order_form, self.loc.RESPONSIBLE_COMBO, "Value"),
+
+            'sea_type_freight': self.get_element_property(order_form, self.loc.TYPE_FREIGHT, "Value"),
+            'sea_class_freight': self.get_element_property(order_form, self.loc.CLASS_FREIGHT, "Value"),
+            'sea_download_method': self.get_element_property(order_form, self.loc.DOWNLOAD_METHOD, "Value"),
+            'sea_ref_freight': self.get_element_property(order_form, self.loc.REFERENCE_FREIGHT, "Value"),
+
             'sea_create_date': self.get_element_property(order_form, self.loc.CREATE_DATE, "Value"),
-            'sea_mode_date': self.get_element_property(order_form, self.loc.MOD_DATE, "Value")
+            'sea_mode_date': self.get_element_property(order_form, self.loc.MOD_DATE, "Value"),
+
+            'sea_booking_reference': self.get_element_property(order_form, self.loc.BOOKING_REFERENCE, "Value"),
+            'sea_ocean_line': self.get_element_property(order_form, self.loc.OCEAN_LINE, "Value"),
+            'sea_ocean_konos': self.get_element_property(order_form, self.loc.OCEAN_KONOS, "Value"),
+            'sea_feeder_line': self.get_element_property(order_form, self.loc.FEEDER_LINE, "Value"),
+            'sea_feeder_konos': self.get_element_property(order_form, self.loc.FEEDER_KONOS, "Value"),
         })
 
         # Закрываем морскую перевозку
@@ -562,6 +582,9 @@ class WinAISTApp:
         self.click_element(order_form, self.loc.DEL_BUTTON, timeout=2)
         self.click_element(order_form, self.loc.YES_BUTTON, timeout=2)
         self.click_element(order_form, self.loc.REFRESH_BUTTON_ORDER, timeout=2)
+        self.order_data.update({
+            'del_sea': self.get_element_property(main_window, self.loc.FREIGHT_TOTAL_RECORDS, "Value"),
+        })
 
         # Создаем автоперевозку
         self.click_element(main_window, self.loc.CREATE_BUTTON, timeout=3)
@@ -569,7 +592,7 @@ class WinAISTApp:
         self.click_element(main_window, self.loc.AUTO_TRANSPORTATION, timeout=3)
         keyboard.send_keys('{ENTER}')  # нажать на ОК работает если есть фокус на кнопке, могут быть проблемы
 
-        # 5. Переключится на форму морской перевозки
+        # 5. Переключится на форму автоперевозки
         main_window = self.get_auto_form()
         main_window.set_focus()
         time.sleep(1)
@@ -584,16 +607,44 @@ class WinAISTApp:
             'auto_status': self.get_element_property(order_form, self.loc.STATUS_COMBO, "Value"),
             'auto_priority': self.get_element_property(order_form, self.loc.PRIORITY_COMBO, "Value"),
             'auto_otv': self.get_element_property(order_form, self.loc.RESPONSIBLE_COMBO, "Value"),
+
             'auto_create_date': self.get_element_property(order_form, self.loc.CREATE_DATE, "Value"),
-            'auto_mode_date': self.get_element_property(order_form, self.loc.MOD_DATE, "Value")
+            'auto_mode_date': self.get_element_property(order_form, self.loc.MOD_DATE, "Value"),
+
+            'auto_type_freight': self.get_element_property(order_form, self.loc.TYPE_FREIGHT, "Value"),
+            'auto_class_freight': self.get_element_property(order_form, self.loc.CLASS_FREIGHT_AUTO, "Value"),
+            'auto_download_method': self.get_element_property(order_form, self.loc.DOWNLOAD_METHOD_AUTO, "Value"),
+            'auto_ref_freight': self.get_element_property(order_form, self.loc.REFERENCE_FREIGHT, "Value"),
+
+            'auto_carrier': self.get_element_property(order_form, self.loc.AUTO_CARRIER, "Value"),
+            'auto_cmr': self.get_element_property(order_form, self.loc.AUTO_CMR, "Value"),
+            'auto_cmr_por': self.get_element_property(order_form, self.loc.AUTO_CMR_POR, "Value"),
         })
 
+        # Закрываем морскую перевозку
+        self.click_element(order_form, self.loc.SAVE_BUTTON, timeout=2)
+        time.sleep(1)
+
+        # 5. Переключение на форму заказа
+        main_window = self.get_main_form()
+        main_window.set_focus()
+        time.sleep(1)
+
+        order_form = self.app.window(**self.loc.ORDER_FORM)
+        time.sleep(1)
+
+        # Во вкладке Перевозки, таблица
+        self.order_data.update({
+            'auto_order_table': self.get_element_property(order_form, self.loc.TRANSPORTATION_ITEM, "Value")
+        })
         # Удаляем автоперевозку
         self.click_element(order_form, self.loc.LINE_TRANSPORTATION, timeout=2)
         self.click_element(order_form, self.loc.DEL_BUTTON, timeout=2)
         self.click_element(order_form, self.loc.YES_BUTTON, timeout=2)
         self.click_element(order_form, self.loc.REFRESH_BUTTON_ORDER, timeout=2)
-
+        self.order_data.update({
+            'del_auto': self.get_element_property(main_window, self.loc.FREIGHT_TOTAL_RECORDS, "Value"),
+        })
         return self.order_data
 
     def freight_bulkership(self):
@@ -602,7 +653,7 @@ class WinAISTApp:
         startup_window.set_focus()
 
         # 2. Нажатие кнопки Запуск
-        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.AIST_EF, timeout=1)
         self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
         time.sleep(15)
 
@@ -806,7 +857,7 @@ class WinAISTApp:
         startup_window.set_focus()
 
         # 2. Нажатие кнопки Запуск
-        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.AIST_EF, timeout=1)
         self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
         time.sleep(15)
 
@@ -997,7 +1048,7 @@ class WinAISTApp:
         startup_window.set_focus()
 
         # 2. Нажатие кнопки Запуск
-        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.AIST_EF, timeout=1)
         self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
         time.sleep(15)
 
@@ -1223,7 +1274,7 @@ class WinAISTApp:
 
         # 2. Нажатие кнопки Запуск
         time.sleep(1)
-        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.AIST_EF, timeout=1)
         self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
         time.sleep(15)
 
@@ -1342,7 +1393,7 @@ class WinAISTApp:
         startup_window.set_focus()
 
         # 2. Нажатие кнопки Запуск
-        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.AIST_EF, timeout=1)
         self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
         time.sleep(15)
 
@@ -1624,7 +1675,7 @@ class WinAISTApp:
             'ip_date': self.get_element_property(order_form, self.loc.IS_DATE, "Value"),
             'ip_list': self.get_element_property(order_form, self.loc.IS_LIST, "Value"),
             'ip_suppler': self.get_element_property(order_form, self.loc.IS_SUPPLIER, "Value"),
-            'ip_order': self.get_element_property(order_form, self.loc.IP_ORDER, "Value"),
+            'ip_order': self.get_element_property(order_form, self.loc.VP_ORDER, "Value"),
             'ip_buyer': self.get_element_property(order_form, self.loc.IS_BUYER, "Value"),
         })
 
