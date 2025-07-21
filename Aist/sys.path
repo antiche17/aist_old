@@ -1,0 +1,7 @@
+import sys
+import os
+
+# Абсолютный путь к папке orders (относительно текущего файла)
+sys.path.append(os.path.abspath("../orders"))
+# Абсолютный путь к папке locators
+sys.path.append(os.path.abspath("../locators"))
