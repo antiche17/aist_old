@@ -40,6 +40,7 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
 
         time.sleep(1)
+
         self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
         self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TE, timeout=2)
         self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TE1, timeout=2)
