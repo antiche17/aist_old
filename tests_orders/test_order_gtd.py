@@ -1,6 +1,5 @@
 import pytest
 import allure
-from difflib import SequenceMatcher as f
 from orders.order import WinAISTApp
 import pytest_check as check
 
@@ -18,7 +17,7 @@ def order_app():
 @pytest.mark.order(1)
 def test_full_order_validation(order_app):
     with allure.step("1. Проверка номера заказа"):
-        check.is_true(order_app["gtd_order_number"] in order_app["order_number"], "❌ ❌ ФР: Не одинаковые данные (порог 50%)я")
+        check.is_true(order_app["gtd_order_number"] in order_app["order_number"], "❌ ❌ ФР: Не одинаковые данные")
 
     with allure.step("2. Проверка клиента заказа и клиента в ГТД"):
         check.equal(order_app["client_order"], order_app["client_gtd"], "ФР: Клиент не соответствует в заказе")

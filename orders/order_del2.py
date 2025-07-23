@@ -162,7 +162,7 @@ class WinAISTApp:
         startup_window.set_focus()
 
         # 2. Нажатие кнопки Запуск
-        self.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
+        self.click_element(startup_window, self.loc.AIST_EF, timeout=1)
         self.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
         time.sleep(15)
 

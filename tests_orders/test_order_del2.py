@@ -43,7 +43,7 @@ def test_value_order(order_app):
         "del_bul": ("Bulkership", "12. Удален Bulkership"),
         "del_con": ("Container", "13. Удален Container"),
         "del_gtd": ("ГТД", "14. Удален ГТД"),
-        "del_exp": ("ГТД", "24. Удалено Экспедирование"),
+        "del_exp": ("Экспедирование", "24. Удалено Экспедирование"),
     }
 
     for field_name, (label, step_desc) in deleted_entries.items():
