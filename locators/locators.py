@@ -82,9 +82,6 @@ class LocOrders:
     RECIPIENT = {'title': "Получатель:", 'auto_id': "sleReceiver"}
     RECIPIENT_1 = {'title': "Строка 1", 'control_type': "ListItem", 'found_index': 0}
     RECIPIENT_2 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
-    RECIPIENT_3 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
-    RECIPIENT_4 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
-    RECIPIENT_5 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
     DELIVERY_CONDITION = {'title': "Условия поставки:", 'auto_id': "leIncoterms"}
     DELIVERY_CONDITION_0 = {'title': "Строка 0", 'control_type': "Custom"}
     DELIVERY_CONDITION_1 = {'title': "Строка 1", 'control_type': "Custom"}
@@ -253,12 +250,9 @@ class LocOrders:
     FREIGHT_LINE_3 = {'title': "Строка 3", 'control_type': "ListItem"}
     FREIGHT_LINE_7 = {'title': "Строка 7", 'control_type': "ListItem"}
     FREIGHT = {'title': "Грузы", 'control_type': "ListItem"}
+    FREIGHT_ORDER_TABLE = {'title': "Заказ фильтр строк", 'control_type': "DataItem"}
     FREIGHT_ORDER_W = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit"}
     FREIGHT_ORDER_CREATE = {'title': "Создать", 'control_type': "Button", 'auto_id': "CreateOrderButton"}
-
-    #Таблица Грузы
-    FREIGHT_ORDER_TABLE = {'title': "Заказ фильтр строк", 'control_type': "DataItem"}
-    FREIGHT_RESP_FOR_TABLE = {'title': "Ответственный (Экспедирование) фильтр строк", 'control_type': "DataItem"}
 
 
     # Форма контейнера
@@ -325,5 +319,4 @@ class LocOrders:
     NAME_NOTE = {'title': "Примечание:", 'control_type': "Edit", 'auto_id': "DescriptionEdit"}
     NET_WEIGHT = {'title': "Вес нетто, кг:", 'control_type': "Edit", 'auto_id': "teNetto"}
     GROSS_WEIGHT = {'title': "Вес брутто, кг:", 'control_type': "Edit", 'auto_id': "teBrutto"}
-
 
