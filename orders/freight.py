@@ -2,19 +2,25 @@ from pywinauto import Application, keyboard
 from locators.locators import LocOrders
 from locators.function import Function
 import time
-
+import subprocess
+import psutil
 
 
 class WinAISTApp:
     def __init__(self):
-        self.app = Application(backend='uia').connect(path="WinAIST.exe")
         self.fun = Function()
         self.loc = LocOrders()
+        self.order_data = {}  # Для хранения данных заказа
 
     def freight(self):
         # 1. Запуск приложения
         startup_window = self.fun.start_application()
         startup_window.set_focus()
+
+        # 2. Нажатие кнопки Запуск
+        self.fun.click_element(startup_window, self.loc.AIST_EF, timeout=1)
+        self.fun.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
+        time.sleep(15)
 
         # 3. Переход в раздел Грузы
         main_window = self.fun.get_main_window()

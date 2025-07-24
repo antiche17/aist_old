@@ -1,7 +1,7 @@
 class LocOrders:
     # Основные окна
     STARTUP_WINDOW = {'title': 'WinAIST Starting...'}
-    STARTUP_WINDOW1 = {'title': 'Запуск АИСТ', 'control_type': "Window", 'auto_id': 'frmStartUp'}
+    STARTUP_WINDOW1 = {'title': 'Запуск АИСТ', 'control_type': "Window", 'auto_id': 'frmStartUp', 'found_index': 0}
     MAIN_WINDOW = {'auto_id': 'frmMain'}
     ORDER_FORM = {'auto_id': 'OrderForm'}
     SEA_FORM = {'auto_id': 'SeaCarriageForm', 'control_type': "Window", 'found_index': 0}
