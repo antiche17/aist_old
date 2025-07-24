@@ -4,25 +4,17 @@ from locators.function import Function
 import time
 
 
+
 class WinAISTApp:
     def __init__(self):
-        self.app = Application(backend='uia')
-        self.loc = LocOrders()
+        self.app = Application(backend='uia').connect(path="WinAIST.exe")
         self.fun = Function()
-        self.order_data = {}  # Для хранения данных заказа
-        self.process = None
-        self.child_pid = None
+        self.loc = LocOrders()
 
     def freight(self):
         # 1. Запуск приложения
         startup_window = self.fun.start_application()
         startup_window.set_focus()
-
-        # 2. Нажатие кнопки Запуск
-        time.sleep(1)
-        self.fun.click_element(startup_window, self.loc.STAGE_EF, timeout=1)
-        self.fun.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
-        time.sleep(10)
 
         # 3. Переход в раздел Грузы
         main_window = self.fun.get_main_window()
@@ -48,6 +40,7 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
 
         time.sleep(1)
+
         self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
         self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TE, timeout=2)
         self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TE1, timeout=2)

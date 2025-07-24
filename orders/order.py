@@ -16,8 +16,8 @@ class WinAISTApp:
     def start_application(self):
         """Запускает WinAIST и подключается к дочернему процессу с окнами"""
         # Запуск приложения через subprocess, чтобы получить родительский PID
-        self.process = subprocess.Popen(r'C:\AIST\WinAIST.exe')
-        time.sleep(20)  # Ждём, пока окна загрузятся
+        self.process = subprocess.Popen(r'C:\AIST_AUTO_TESTS\Debug\WinAIST.exe')
+        time.sleep(30)  # Ждём, пока окна загрузятся
 
         # Получаем дочерние процессы
         parent = psutil.Process(self.process.pid)

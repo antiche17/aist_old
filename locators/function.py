@@ -1,5 +1,5 @@
 from pywinauto import Application, keyboard
-from locators.locators import LocOrders
+from .locators import LocOrders
 import time
 import subprocess
 import psutil
@@ -14,28 +14,17 @@ class Function:
         self.child_pid = None
 
     def start_application(self):
-        """Запускает WinAIST и подключается к дочернему процессу с окнами"""
-        # Запуск приложения через subprocess, чтобы получить родительский PID
-        self.process = subprocess.Popen(r'C:\AIST\WinAIST.exe')
-        time.sleep(15)  # Ждём, пока окна загрузятся
+        # Запуск WinAIST
+        self.process = subprocess.Popen(r'C:\AIST_AUTO_TESTS\Debug\WinAIST.exe')
+        time.sleep(15)  # Подождать, пока загрузится111
 
-        # Получаем дочерние процессы
-        parent = psutil.Process(self.process.pid)
-        children = parent.children(recursive=True)
+        # Подключиться к самому процессу
+        self.app = Application(backend="uia").connect(process=self.process.pid)
 
-        if not children:
-            raise RuntimeError("Дочерние процессы не найдены")
-
-        # Подключаемся к первому дочернему процессу (где окна)
-        self.child_pid = children[0].pid
-        self.app.connect(process=self.child_pid)
-
-        # Получаем стартовое окно
-        window = self.app.window(**self.loc.STARTUP_WINDOW)
-        window.wait('visible', timeout=25)
-        window.set_focus()
-
-        return window
+        # верни стартовое окно, если нужно
+        startup_window = self.app.window(**self.loc.MAIN_WINDOW)
+        startup_window.wait("visible", timeout=30)
+        return startup_window
 
     def get_main_window(self):
         """Получение главного окна"""
