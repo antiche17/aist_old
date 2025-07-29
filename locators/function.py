@@ -9,6 +9,7 @@ class Function:
     def __init__(self):
         self.app = Application(backend='uia')
         self.loc = LocOrders()
+        self.order_data = {}
         self.process = None
         self.child_pid = None
 
@@ -16,7 +17,7 @@ class Function:
         """Запускает WinAIST и подключается к дочернему процессу с окнами"""
         # Запуск приложения через subprocess, чтобы получить родительский PID
         self.process = subprocess.Popen(r'C:\AIST\WinAIST.exe')
-        time.sleep(30)  # Ждём, пока окна загрузятся
+        time.sleep(20)  # Ждём, пока окна загрузятся
 
         # Получаем дочерние процессы
         parent = psutil.Process(self.process.pid)
@@ -31,7 +32,7 @@ class Function:
 
         # Получаем стартовое окно
         window = self.app.window(**self.loc.STARTUP_WINDOW)
-        window.wait('visible', timeout=30)
+        window.wait('visible', timeout=20)
         window.set_focus()
 
         return window
@@ -96,6 +97,13 @@ class Function:
         element = window.child_window(**locator)
         element.wait('visible', timeout=timeout)
         element.click_input(double=True)
+        return element
+
+    def right_click_element(self, window, locator, timeout=3):
+        """ПКМ по элементу с ожиданием"""
+        element = window.child_window(**locator)
+        element.wait('visible', timeout=timeout)
+        element.right_click_input()
         return element
 
     def select_two_elements_with_ctrl(self, window, locator1, locator2, timeout=3):
