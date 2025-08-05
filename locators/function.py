@@ -14,25 +14,13 @@ class Function:
         self.child_pid = None
 
     def start_application(self):
-        """Запускает WinAIST и подключается к дочернему процессу с окнами"""
-        # Запуск приложения через subprocess, чтобы получить родительский PID
-        self.process = subprocess.Popen(r'C:\AIST\WinAIST.exe')
-        time.sleep(20)  # Ждём, пока окна загрузятся
+        self.process = subprocess.Popen(r'C:\AIST_AUTO_TESTS\Debug\WinAIST.exe')
+        time.sleep(5)
 
-        # Получаем дочерние процессы
-        parent = psutil.Process(self.process.pid)
-        children = parent.children(recursive=True)
+        self.app.connect(process=self.process.pid)  # ⬅️ напрямую
 
-        if not children:
-            raise RuntimeError("Дочерние процессы не найдены")
-
-        # Подключаемся к первому дочернему процессу (где окна)
-        self.child_pid = children[0].pid
-        self.app.connect(process=self.child_pid)
-
-        # Получаем стартовое окно
-        window = self.app.window(**self.loc.STARTUP_WINDOW)
-        window.wait('visible', timeout=20)
+        window = self.app.window(**self.loc.MAIN_WINDOW)
+        window.wait('visible', timeout=5)
         window.set_focus()
 
         return window
@@ -85,28 +73,28 @@ class Function:
         """Получение главного окна"""
         return self.app.window(**self.loc.PRODUCT_FORM)
 
-    def click_element(self, window, locator, timeout=3):
+    def click_element(self, window, locator, timeout=1.5):
         """Клик по элементу с ожиданием"""
         element = window.child_window(**locator)
         element.wait('visible', timeout=timeout)
         element.click_input()
         return element
 
-    def click_element_double(self, window, locator, timeout=3):
+    def click_element_double(self, window, locator, timeout=1):
         """Клик по элементу с ожиданием"""
         element = window.child_window(**locator)
         element.wait('visible', timeout=timeout)
         element.click_input(double=True)
         return element
 
-    def right_click_element(self, window, locator, timeout=3):
+    def right_click_element(self, window, locator, timeout=1):
         """ПКМ по элементу с ожиданием"""
         element = window.child_window(**locator)
         element.wait('visible', timeout=timeout)
         element.right_click_input()
         return element
 
-    def select_two_elements_with_ctrl(self, window, locator1, locator2, timeout=3):
+    def select_two_elements_with_ctrl(self, window, locator1, locator2, timeout=1):
         # Первый элемент
         el1_spec = window.child_window(**locator1)
         el1_spec.wait('visible', timeout=timeout)
@@ -161,7 +149,7 @@ class Function:
         wrapper.set_text(str(text))
         return wrapper
 
-    def get_element_property(self, window, locator, property_name, timeout=3):
+    def get_element_property(self, window, locator, property_name, timeout=1.1):
         """Получение свойства элемента"""
         element = window.child_window(**locator)
         element.wait('visible', timeout=timeout)

@@ -90,7 +90,8 @@ class LocOrders:
     NOTE = {'title': "Примечание:", 'auto_id': "meDescription"}
     NOTE1 = {'title': "Примечание:", 'auto_id': "meDecription"}
     NOTE_SEA = {'title': "Примечание:", 'auto_id': "decriptionMemoEdit"}
-    NOTE_CONTAINER = {'title': "-", 'auto_id': "descriptionMemoEdit"}
+    NOTE_CONTAINER = {'auto_id': "descriptionMemoEdit"}
+
     MOD_DATE = {'control_type': "Text", 'auto_id': "lblModified"}
     CREATE_DATE = {'control_type': "Text", 'auto_id': "lblCreatedOn"}
     LINE_TRANSPORTATION = {'title': "Строка 1", 'control_type': "ListItem"}
@@ -126,6 +127,9 @@ class LocOrders:
     AUTO_NAME_TRANSPORTATION = {'auto_id': "bceNavigation", 'control_type': "ComboBox"}
     AUTO_TYPE_TEXT = {'auto_id': "lbType", 'control_type': "Text"}
     TRANSPORTATION_ITEM = {'title': "Тип перевозки строка 1", 'control_type': "DataItem"}
+    TRANSPORTATION_ITEM2 = {'title': "Тип перевозки строка 2", 'control_type': "DataItem"}
+    TRANSPORTATION_NUMBER1 = {'title': "Номер перевозки строка 1", 'control_type': "DataItem"}
+    TRANSPORTATION_NUMBER2 = {'title': "Номер перевозки строка 2", 'control_type': "DataItem"}
     SEA_TAB = {'title': "Морские перевозки", 'control_type': "ListItem"}
     ORDER_SELECT = {'title': "Заказ:", 'control_type': "ComboBox"}
     SEA_TAB_ORDER_NUMBER = {'title': "Заказ строка 1", 'control_type': "DataItem", 'found_index': 0}
@@ -271,7 +275,9 @@ class LocOrders:
     FREIGHT_CREATE_TYPE = {'title': "Тип ТЕ:", 'control_type': "ComboBox", 'auto_id': "cargParameterEdit1"}
     FREIGHT_CREATE_TYPE1 = {'title': "Наименование строка 1", 'control_type': "DataItem"}
     FREIGHT_CREATE_QUANTITY = {'title': "Количество:", 'control_type': "Edit", 'auto_id': "textEditQuantity"}
+    FREIGHT_QUANTITY_APPLY = {'control_type': "Edit", 'auto_id': "teQuantity"}
     FREIGHT_CREATE_UOM = {'title': "Единицы измерения:", 'control_type': "ComboBox", 'auto_id': "unitsOfMeasurementEdit1"}
+    FREIGHT_CREATE_UOM_SAVE = {'title': "Ед. измерения:", 'control_type': "ComboBox", 'auto_id': "unitsOfMeasurementEdit1"}
     FREIGHT_CREATE_UOM1 = {'title': "Наименование строка 1", 'control_type': "DataItem"}
     FREIGHT_CREATE_ORDER = {'title': "Номер ТЕ:", 'control_type': "Edit", 'auto_id': "textEditNumber"}
     FREIGHT_TE_NUMBER = {'title': "Номер ТЕ:", 'control_type': "Edit", 'auto_id': "teCargoName"}
@@ -299,6 +305,102 @@ class LocOrders:
 
     # Таблица Грузы
     FREIGHT_RESP_FOR_TABLE = {'title': "Ответственный (Экспедирование) фильтр строк", 'control_type': "DataItem"}
+
+    OTV_FOR_TABLE1 = {'title': "Ответственный (Экспедирование) строка 1", 'control_type': "DataItem"}
+    OTV_FOR_TABLE2 = {'title': "Ответственный (Экспедирование) строка 2", 'control_type': "DataItem"}
+    STATUS_AUTO_TABLE1 = {'title': "Статус (Автоперевозка) строка 1", 'control_type': "DataItem"}
+    STATUS_AUTO_TABLE2 = {'title': "Статус (Автоперевозка) строка 2", 'control_type': "DataItem"}
+    RECIPIENT_TABLE1 = {'title': "Получатель строка 1", 'control_type': "DataItem"}
+    RECIPIENT_TABLE2 = {'title': "Получатель строка 2", 'control_type': "DataItem"}
+    CLIENT_FOR_TABLE1 = {'title': "Клиент строка 1", 'control_type': "DataItem"}
+    CLIENT_FOR_TABLE2 = {'title': "Клиент строка 2", 'control_type': "DataItem"}
+    NUM_TE_TABLE1 = {'title': "Номер ТЕ строка 1", 'control_type': "DataItem"}
+    NUM_TE_TABLE2 = {'title': "Номер ТЕ строка 2", 'control_type': "DataItem"}
+    TE_TABLE1 = {'title': "ТЕ строка 1", 'control_type': "DataItem"}
+    TE_TABLE2 = {'title': "ТЕ строка 2", 'control_type': "DataItem"}
+    TYPE_TE_TABLE1 = {'title': "Тип ТЕ строка 1", 'control_type': "DataItem"}
+    TYPE_TE_TABLE2 = {'title': "Тип ТЕ строка 2", 'control_type': "DataItem"}
+    FREIGHT_GROSS_TABLE1 = {'title': "Вес брутто, кг строка 1", 'control_type': "DataItem"}
+    FREIGHT_GROSS_TABLE2 = {'title': "Вес брутто, кг строка 2", 'control_type': "DataItem"}
+    SEAL_NUMBER_TABLE1 = {'title': "Номер пломбы строка 1", 'control_type': "DataItem"}
+    SEAL_NUMBER_TABLE2 = {'title': "Номер пломбы строка 2", 'control_type': "DataItem"}
+    TERMINAL_TABLE1 = {'title': "Терминал строка 1", 'control_type': "DataItem"}
+    TERMINAL_TABLE2 = {'title': "Терминал строка 2", 'control_type': "DataItem"}
+    PORT_TABLE1 = {'title': "Порт строка 1", 'control_type': "DataItem"}
+    PORT_TABLE2 = {'title': "Порт строка 2", 'control_type': "DataItem"}
+    PLAN_ARRIVAL_TABLE1 = {'title': "План. дата прибытия в порт строка 1", 'control_type': "DataItem"}
+    PLAN_ARRIVAL_TABLE2 = {'title': "План. дата прибытия в порт строка 2", 'control_type': "DataItem"}
+    FACT_ARRIVAL_TABLE1 = {'title': "Факт. дата прибытия в порт строка 1", 'control_type': "DataItem"}
+    FACT_ARRIVAL_TABLE2 = {'title': "Факт. дата прибытия в порт строка 2", 'control_type': "DataItem"}
+    FACT_UNLOADING_TABLE1 = {'title': "Факт. дата выгрузки строка 1", 'control_type': "DataItem"}
+    FACT_UNLOADING_TABLE2 = {'title': "Факт. дата выгрузки строка 2", 'control_type': "DataItem"}
+    DO_TABLE1 = {'title': "ДО/ДО1 строка 1", 'control_type': "DataItem"}
+    DO_TABLE2 = {'title': "ДО/ДО1 строка 2", 'control_type': "DataItem"}
+    DOC_TABLE1 = {'title': "Получение документов строка 1", 'control_type': "DataItem"}
+    DOC_TABLE2 = {'title': "Получение документов строка 2", 'control_type': "DataItem"}
+    NOMINATION_TABLE1 = {'title': "Номинация строка 1", 'control_type': "DataItem"}
+    NOMINATION_TABLE2 = {'title': "Номинация строка 2", 'control_type': "DataItem"}
+    REGIMEN_TABLE1 = {'title': "Режим ТО строка 1", 'control_type': "DataItem"}
+    REGIMEN_TABLE2 = {'title': "Режим ТО строка 2", 'control_type': "DataItem"}
+    TELEX_TABLE1 = {'title': "Телекс-релиз строка 1", 'control_type': "DataItem"}
+    TELEX_TABLE2 = {'title': "Телекс-релиз строка 2", 'control_type': "DataItem"}
+    DATA_TO_TABLE1 = {'title': "Дата ТО строка 1", 'control_type': "DataItem"}
+    DATA_TO_TABLE2 = {'title': "Дата ТО строка 2", 'control_type': "DataItem"}
+    FEEDER_SHIP_TABLE1 = {'title': "Фидерное судно строка 1", 'control_type': "DataItem"}
+    FEEDER_SHIP_TABLE2 = {'title': "Фидерное судно строка 2", 'control_type': "DataItem"}
+    FEEDER_LINE_TABLE1 = {'title': "Фидерная линия строка 1", 'control_type': "DataItem"}
+    FEEDER_LINE_TABLE2 = {'title': "Фидерная линия строка 2", 'control_type': "DataItem"}
+    FEEDER_PORT_TABLE1 = {'title': "Фидерное судно строка 1", 'control_type': "DataItem"}
+    FEEDER_PORT_TABLE2 = {'title': "Фидерное судно строка 2", 'control_type': "DataItem"}
+    NOMINATION_TABLE = {'title': "Номинация", 'control_type': "DataItem"}
+    OCEAN_LINE_TABLE1 = {'title': "Океанская линия строка 1", 'control_type': "DataItem"}
+    OCEAN_LINE_TABLE2 = {'title': "Океанская линия строка 2", 'control_type': "DataItem"}
+    OCEAN_SHIP_TABLE1 = {'title': "Океанское судно строка 1", 'control_type': "DataItem"}
+    OCEAN_SHIP_TABLE2 = {'title': "Океанское судно строка 2", 'control_type': "DataItem"}
+    OCEAN_KONOS_TABLE1 = {'title': "Океанский коносамент строка 1", 'control_type': "DataItem"}
+    OCEAN_KONOS_TABLE2 = {'title': "Океанский коносамент строка 2", 'control_type': "DataItem"}
+    FEEDER_KONOS_TABLE1 = {'title': "Фидерный коносамент строка 1", 'control_type': "DataItem"}
+    FEEDER_KONOS_TABLE2 = {'title': "Фидерный коносамент строка 2", 'control_type': "DataItem"}
+    TRANSPORT_TABLE1 = {'title': "Перевозка строка 1", 'control_type': "DataItem"}
+    TRANSPORT_TABLE2 = {'title': "Перевозка строка 2", 'control_type': "DataItem"}
+    ORDER_TABLE1 = {'title': "Заказ строка 1", 'control_type': "DataItem"}
+    ORDER_TABLE2 = {'title': "Заказ строка 2", 'control_type': "DataItem"}
+    RESPONSIBLE_ORDER_TABLE1 = {'title': "Ответственный (Заказ) строка 1", 'control_type': "DataItem"}
+    RESPONSIBLE_ORDER_TABLE2 = {'title': "Ответственный (Заказ) строка 2", 'control_type': "DataItem"}
+    EXPEDITION_TABLE1 = {'title': "Экспедирование строка 1", 'control_type': "DataItem"}
+    EXPEDITION_TABLE2 = {'title': "Экспедирование строка 2", 'control_type': "DataItem"}
+    CAR_TABLE1 = {'title': "Автомобиль строка 1", 'control_type': "DataItem"}
+    CAR_TABLE2 = {'title': "Автомобиль строка 2", 'control_type': "DataItem"}
+    ADDRESS_TABLE1 = {'title': "Адрес строка 1", 'control_type': "DataItem"}
+    ADDRESS_TABLE2 = {'title': "Адрес строка 2", 'control_type': "DataItem"}
+
+    WEIGHT_NETTO_TABLE1 = {'title': "Вес нетто, кг строка 1", 'control_type': "DataItem"}
+    WEIGHT_NETTO_TABLE2 = {'title': "Вес нетто, кг строка 2", 'control_type': "DataItem"}
+    DRIVER_TABLE1 = {'title': "Водитель строка 1", 'control_type': "DataItem"}
+    DRIVER_TABLE2 = {'title': "Водитель строка 2", 'control_type': "DataItem"}
+    DATE_CHANGED_TABLE1 = {'title': "Дата изменения строка 1", 'control_type': "DataItem"}
+    DATE_CHANGED_TABLE2 = {'title': "Дата изменения строка 2", 'control_type': "DataItem"}
+    DATE_CREATED_TABLE1 = {'title': "Дата создания строка 1", 'control_type': "DataItem"}
+    DATE_CREATED_TABLE2 = {'title': "Дата создания строка 2", 'control_type': "DataItem"}
+    MEASUREMENT_UNIT_TABLE1 = {'title': "Ед. измерения строка 1", 'control_type': "DataItem"}
+    MEASUREMENT_UNIT_TABLE2 = {'title': "Ед. измерения строка 2", 'control_type': "DataItem"}
+    CHANGED_BY_TABLE1 = {'title': "Кем изменен строка 1", 'control_type': "DataItem"}
+    CHANGED_BY_TABLE2 = {'title': "Кем изменен строка 2", 'control_type': "DataItem"}
+    CREATED_BY_TABLE1 = {'title': "Кем создан (ТЕ) строка 1", 'control_type': "DataItem"}
+    CREATED_BY_TABLE2 = {'title': "Кем создан (ТЕ) строка 2", 'control_type': "DataItem"}
+    QUANTITY_TABLE1 = {'title': "Количество строка 1", 'control_type': "DataItem"}
+    QUANTITY_TABLE2 = {'title': "Количество строка 2", 'control_type': "DataItem"}
+    VERSION_TABLE1 = {'title': "Новая версия строка 1", 'control_type': "DataItem"}
+    VERSION_TABLE2 = {'title': "Новая версия строка 2", 'control_type': "DataItem"}
+    GTD_NUMBER_TABLE1 = {'title': "Номер ГТД строка 1", 'control_type': "DataItem"}
+    GTD_NUMBER_TABLE2 = {'title': "Номер ГТД строка 2", 'control_type': "DataItem"}
+    OTV_AUTO_TABLE1 = {'title': "Ответственный (Автоперевозка) строка 1", 'control_type': "DataItem"}
+    OTV_AUTO_TABLE2 = {'title': "Ответственный (Автоперевозка) строка 2", 'control_type': "DataItem"}
+    DELIVERY_DATE_PLAN_TABLE1 = {'title': "План. дата доставки строка 1", 'control_type': "DataItem"}
+    DELIVERY_DATE_PLAN_TABLE2 = {'title': "План. дата доставки строка 2", 'control_type': "DataItem"}
+    NOTE_TE_TABLE1 = {'title': "Примечание (ТЕ) строка 1", 'control_type': "DataItem"}
+    NOTE_TE_TABLE2 = {'title': "Примечание (ТЕ) строка 2", 'control_type': "DataItem"}
+
 
     # Форма контейнера
     # FREIGHT_NUMBER_SEAL_FORM_CONTAINER =
@@ -347,7 +449,7 @@ class LocOrders:
     VS_CONTRACTOR = {'title': "Подрядчик:", 'control_type': "ComboBox", 'auto_id': "leContractorId"}
     VS_ORDER = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit1"}
 
-    # Входящий счет
+    # Входящий платеж
     VP_NUMBER = {'title': "Счет:", 'control_type': "Edit", 'auto_id': "nameTextEdit"}
     VP_ORDER = {'title': "Заказ: ", 'control_type': "ComboBox", 'auto_id': "orderEdit1"}
 
@@ -366,7 +468,7 @@ class LocOrders:
     GROSS_WEIGHT = {'title': "Вес брутто, кг:", 'control_type': "Edit", 'auto_id': "teBrutto"}
 
     #Заголовки полей таблиц
-    OTV_TABLE = {'title': "Ответственный (Экспедирование)", 'control_type': "Header"}
+    OTV_TABLE = {'title': "Ответственный (Экспедирование)", 'control_type': "Header", 'found_index': 0}
     SELECT_SPEAKERS = {'title': "Выбор колонок", 'control_type': "Button", 'found_index': 0}
 
     #Спрятанные колонки
@@ -385,3 +487,6 @@ class LocOrders:
     OTV_AUTO_TABLE = {'title': "Ответственный (Автоперевозка)", 'control_type': "ListItem"}
     PLAN_TABLE = {'title': "План. дата доставки", 'control_type': "ListItem"}
     NOTE_TABLE = {'title': "Примечание (ТЕ)", 'control_type': "ListItem"}
+
+    # Экспедирование форма
+    OTV_FORWARDING = {'title': "Ответственный:", 'control_type': "ComboBox", 'auto_id': "sleResponsible"}
