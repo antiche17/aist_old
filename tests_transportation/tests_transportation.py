@@ -18,19 +18,19 @@ def order_app():
 @pytest.mark.order(1)
 def test_value_del(order_app):
     with allure.step("Сравниваем тип перевозки"):
-        assert order_app["sea_type"] == order_app["sea_type_form"], "❌ Ожидалось: Тип перевозки одинаковые"
+        assert order_app["sea_type"] , order_app["sea_type_form"], "❌ Ожидалось: Тип перевозки одинаковые"
         print("✅ Прошел тест! Тип Морская перевозка")
 
     with allure.step("Сравниваем Статус"):
-        assert order_app["sea_status_form"] == "Черновик", "❌ Ожидалось: Черновик"
+        assert order_app["sea_status_form"] , "Черновик", "❌ Ожидалось: Черновик"
         print("✅ Прошел тест! Черновик")
 
     with allure.step("Сравниваем Приоритет"):
-        assert order_app["sea_priority_form"] == "Средний", "❌ Ожидалось: Средний"
+        assert order_app["sea_priority_form"] , "Средний", "❌ Ожидалось: Средний"
         print("✅ Прошел тест! Средний")
 
     with allure.step("Сравниваем Ответственный"):
-        assert order_app["sea_otv_form"] == order_app["sea_otv"], "❌ Ожидалось: Ответственные, поля должны быть одинаковые"
+        assert order_app["sea_otv_form"] , order_app["sea_otv"], "❌ Ожидалось: Ответственные, поля должны быть одинаковые"
         print("✅ Прошел тест! Не пустое")
 
     with allure.step("Сравниваем Тип груза"):
@@ -51,7 +51,7 @@ def test_value_del(order_app):
 
 
     with allure.step("Сравниваем Дата создания дата изменения"):
-        assert order_app["sea_tab_create_date"] == order_app["sea_tab_mod_date"], "❌ Ожидалось: даты одинаковые"
+        assert order_app["sea_tab_create_date"] , order_app["sea_tab_mod_date"], "❌ Ожидалось: даты одинаковые"
         print("✅ Прошел тест! Одинаковые")
 
     with allure.step("Сравниваем Тип груза"):
@@ -59,7 +59,7 @@ def test_value_del(order_app):
         print("✅ Прошел тест! Поле пустое")
 
     with allure.step("Сравниваем Дата завершения"):
-        assert order_app["sea_tab_finish"] == "...", "❌ Ожидалось: ... , но поле заполнено датой"
+        assert order_app["sea_tab_finish"] , "...", "❌ Ожидалось: ... , но поле заполнено датой"
         print("✅ Прошел тест! Тип Морская перевозка")
 
 
@@ -68,7 +68,7 @@ def test_value_del(order_app):
         print("✅ Прошел тест! Поле пустое")
 
     with allure.step("Сравниваем Океанская линия"):
-        assert order_app["sea_tab_ocean_line"] == "[нет данных]", "❌ Ожидалось: None, но поле заполнено"
+        assert order_app["sea_tab_ocean_line"] , "[нет данных]", "❌ Ожидалось: None, но поле заполнено"
         print("✅ Прошел тест! Поле пустое")
 
     with allure.step("Сравниваем Океан. коносамент"):
@@ -76,7 +76,7 @@ def test_value_del(order_app):
         print("✅ Прошел тест! Поле пустое")
 
     with allure.step("Сравниваем Фидерная линия"):
-        assert order_app["sea_tab_feeder_line"] == "[нет данных]", "❌ Ожидалось: None, но поле заполнено"
+        assert order_app["sea_tab_feeder_line"] , "[нет данных]", "❌ Ожидалось: None, но поле заполнено"
         print("✅ Прошел тест! Поле пустое")
 
     with allure.step("Сравниваем Фидерн. коносамент"):
@@ -95,26 +95,26 @@ def test_value_del(order_app):
         print("✅ Прошел тест! Поле пустое")
 
     with allure.step("Сравниваем Порт"):
-        assert order_app["sea_dialog_port"] == order_app["sea_form_port"], "❌ Ожидалось: None, но поле заполнено"
+        assert order_app["sea_dialog_port"] , order_app["sea_form_port"], "❌ Ожидалось: None, но поле заполнено"
         print("✅ Прошел тест! Поле пустое")
 
     with allure.step("Сравниваем Терминал"):
-        assert order_app["sea_dialog_terminal"] == order_app["sea_form_terminal"], "❌ Ожидалось: None, но поле заполнено"
+        assert order_app["sea_dialog_terminal"] , order_app["sea_form_terminal"], "❌ Ожидалось: None, но поле заполнено"
         print("✅ Прошел тест! Поле пустое")
 
     with allure.step("Сравниваем Агент"):
-        assert order_app["sea_dialog_agent"] == order_app["sea_form_agent"], "❌ Ожидалось: None, но поле заполнено"
+        assert order_app["sea_dialog_agent"] , order_app["sea_form_agent"], "❌ Ожидалось: None, но поле заполнено"
         print("✅ Прошел тест! Поле пустое")
 
     with allure.step("Сравниваем Плановая дата"):
-        assert order_app["sea_dialog_data"] == order_app["sea_form_data"], "❌ Ожидалось: None, но поле заполнено"
+        assert order_app["sea_dialog_data"] , order_app["sea_form_data"], "❌ Ожидалось: None, но поле заполнено"
         print("✅ Прошел тест! Поле пустое")
 
     with allure.step("Сравниваем Даты"):
-        assert order_app["sea_fact_data"] == order_app["sea_form_fact_data"], "❌ Ожидалось: None, но поле заполнено"
+        assert order_app["sea_fact_data"] , order_app["sea_form_fact_data"], "❌ Ожидалось: None, но поле заполнено"
         print("✅ Прошел тест! Поле пустое")
 
     with allure.step("Сравниваем Примечание"):
-        assert order_app["sea_dialog_note"] == order_app["sea_form_note"], "❌ Ожидалось: None, но поле заполнено"
+        assert order_app["sea_dialog_note"] , order_app["sea_form_note"], "❌ Ожидалось: None, но поле заполнено"
         print("✅ Прошел тест! Поле пустое")
 

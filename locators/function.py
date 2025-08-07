@@ -80,10 +80,22 @@ class Function:
         element.click_input()
         return element
 
+    def click_element_sp(self, window, locator):
+        """Клик по элементу без ожидания visible"""
+        element = window.child_window(**locator)
+        element.click_input()
+        return element
+
     def click_element_double(self, window, locator, timeout=1):
         """Клик по элементу с ожиданием"""
         element = window.child_window(**locator)
         element.wait('visible', timeout=timeout)
+        element.click_input(double=True)
+        return element
+
+    def click_element_double_sp(self, window, locator):
+        """Двойной клик по элементу без ожидания visible"""
+        element = window.child_window(**locator)
         element.click_input(double=True)
         return element
 
@@ -153,6 +165,11 @@ class Function:
         """Получение свойства элемента"""
         element = window.child_window(**locator)
         element.wait('visible', timeout=timeout)
+        return element.legacy_properties()[property_name]
+
+    def get_element_property_sp(self, window, locator, property_name, timeout=1.1):
+        """Получение свойства элемента без ожидания visible"""
+        element = window.child_window(**locator)
         return element.legacy_properties()[property_name]
 
     def get_element_value(self, window, locator, timeout=1):

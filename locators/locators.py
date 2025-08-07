@@ -59,6 +59,7 @@ class LocOrders:
     LOGISTICS_ITEM_DR = {'title': "Другие услуги", 'control_type': "ListItem"}
     CUSTOMER_COMBO = {'auto_id': "customerEdit", 'title': "Клиент:", 'control_type': "ComboBox", 'found_index': 0}
     CUSTOMER_ITEM = {'title': "Наименование строка 1", 'control_type': "DataItem"}
+    CUSTOMER_ITEM2 = {'title': "Наименование строка 2", 'control_type': "DataItem"}
     OK_BUTTON = {'title': "ОК", 'control_type': "Button", 'found_index': 0}
     OK_BUTTON1 = {'title': "ОК", 'auto_id': "btnOK", 'found_index': 0}
     OK_BUTTON2 = {'auto_id': "btnOK", 'found_index': 0}
@@ -86,6 +87,7 @@ class LocOrders:
     DELIVERY_CONDITION = {'title': "Условия поставки:", 'auto_id': "leIncoterms"}
     DELIVERY_CONDITION_0 = {'title': "Строка 0", 'control_type': "Custom"}
     DELIVERY_CONDITION_1 = {'title': "Строка 1", 'control_type': "Custom"}
+    DELIVERY_CONDITION_2 = {'title': "Строка 2", 'control_type': "Custom"}
     REFERENCE = {'title': "Референс клиента:", 'auto_id': "teClientReference"}
     NOTE = {'title': "Примечание:", 'auto_id': "meDescription"}
     NOTE1 = {'title': "Примечание:", 'auto_id': "meDecription"}
@@ -175,7 +177,7 @@ class LocOrders:
     SHIPMENT_DATA_FACT = {'title': "Факт. дата сборки:", 'control_type': "ComboBox", 'auto_id': "factShipments", 'found_index': 0}
     ARRIVAL_DATA = {'title': "План. дата прибытия:", 'control_type': "ComboBox", 'auto_id': "PlanArrivals"}
     ARRIVAL_DATA_FACT = {'title': "Факт. дата прибытия:", 'control_type': "ComboBox", 'auto_id': "factArrivals"}
-    UNLOADING = {'title': "Выгрузка:", 'control_type': "ComboBox"}
+    UNLOADING = {'title': "Выгрузка:", 'control_type': "ComboBox", 'found_index': 0}
     ADD_TE = {'control_type': "ComboBox", 'auto_id': "cargosEdit1"}
 
 

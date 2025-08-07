@@ -201,8 +201,6 @@ class WinAISTApp:
 
         main_window = self.get_main_form()
         main_window.set_focus()
-        order_form = self.app.window(**self.loc.ORDER_FORM)
-        time.sleep(1)
 
         # 7. В заказе Прикрепить Фаил пока пропускаем
 
@@ -269,7 +267,6 @@ class WinAISTApp:
         # Переключить на форму заказа
         main_window = self.get_main_form()
         main_window.set_focus()
-        order_form = self.app.window(**self.loc.ORDER_FORM)
         time.sleep(1)
         self.click_element(main_window, self.loc.REFRESH_BUTTON_ORDER, timeout=1)
 
@@ -348,14 +345,12 @@ class WinAISTApp:
         # 7 Переключение на форму ВП
         main_window = self.get_check_vp_form()
         main_window.set_focus()
-        order_form = self.app.window(**self.loc.CHECK_FROM_VP)
         time.sleep(1)
         self.click_element(main_window, self.loc.OK_BUTTON2, timeout=1)
 
         # Переключить на форму заказа
         main_window = self.get_main_form()
         main_window.set_focus()
-        order_form = self.app.window(**self.loc.ORDER_FORM)
         time.sleep(1)
         self.click_element(main_window, self.loc.REFRESH_BUTTON_ORDER, timeout=1)
 

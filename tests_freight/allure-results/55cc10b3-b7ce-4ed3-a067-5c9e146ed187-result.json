@@ -1,1 +1,0 @@
-{"name": "Удаление одного заказа, 2 проверки", "status": "skipped", "start": 1753779482395, "stop": 1753779482395, "uuid": "62a8bbcc-fe58-470d-9c4e-ed92beac590b", "testCaseId": "6362b143554d83af8826462b433fe579", "fullName": "tests_freight.test_freight#test_value_del", "titlePath": ["tests_freight", "test_freight.py"]}

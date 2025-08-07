@@ -279,3 +279,83 @@ def test_value_del(order_app):
 
     with allure.step("6. Кем создан ТЕ"):
         check.is_true(order_app["con_create_table"] in order_app["con_create_form"], "❌ ФР: Не совпадают Кем создан ТЕ")
+
+    #GПроверка редактируемые поля
+    with allure.step("1. Факт. дата выгрузки (bul)"):
+        check.equal(order_app["bul_unloading_mod2"] , order_app["unloading_table_bul"], msg="❌ ФР: Не одинаковая Выгрузка")
+
+    with allure.step("2. Номер пломбы (bul)"):
+        check.equal(order_app["bul_seal_num_mod2"] , order_app["seal_number_table_bul"], msg="❌ ФР: Не одинаковая Пломба")
+
+    with allure.step("3. ДО/ДО1 Разное (bul)"):
+        check.equal(order_app["bul_do_mod2"] , order_app["do_table_bul"], msg="❌ ФР: Одинаковое ДО")
+
+    with allure.step("4. Режим ТО (bul)"):
+        check.equal(order_app["bul_regime_to_mod2"] , order_app["regimen_table_bul"], msg="❌ ФР: Не одинаковый Режим")
+
+    with allure.step("5. Дата ТО (bul)"):
+        check.equal(order_app["bul_data_to_mod2"] , order_app["data_to_table_bul"], msg="❌ ФР: Не одинаковая Дата")
+
+    with allure.step("6. Примечание (ТЕ) (bul)"):
+        check.equal(order_app["bul_note_mod2"] , order_app["note_table_bul"], msg="❌ ФР: Не одинаковое Примечание")
+
+    with allure.step("7. Номер ГТД (bul)"):
+        check.equal(order_app["bul_gtd_mod2"] , order_app["gtd_number_table_bul"], msg="❌ ФР: Не одинаковый ГТД")
+
+    with allure.step("8. Выгрузка (con)"):
+        check.equal(order_app["con_unloading_mod2"] , order_app["unloading_table_con"], msg="❌ ФР: Не одинаковая Выгрузка")
+
+    with allure.step("9. Пломба (con)"):
+        check.equal(order_app["con_seal_num_mod2"] , order_app["seal_number_table_con"], msg="❌ ФР: Не одинаковая Пломба")
+
+    with allure.step("10. ДО (con)"):
+        check.equal(order_app["con_do_mod2"] , order_app["do_table_con"], msg="❌ ФР: Не одинаковое ДО")
+
+    with allure.step("11. Режим ТО (con)"):
+        check.equal(order_app["con_regime_to_mod2"] , order_app["regimen_table_con"], msg="❌ ФР: Не одинаковый Режим")
+
+    with allure.step("12. Дата ТО (con)"):
+        check.equal(order_app["con_data_to_mod2"] , order_app["data_to_table_con"], msg="❌ ФР: Не одинаковая Дата")
+
+    with allure.step("13. Примечание (con)"):
+        check.equal(order_app["con_note_mod2"] , order_app["note_table_con"], msg="❌ ФР: Не одинаковое Примечание")
+
+    with allure.step("14. ГТД (con)"):
+        check.equal(order_app["con_gtd_mod2"] , order_app["gtd_number_table_con"], msg="❌ ФР: Не одинаковый ГТД")
+
+    with allure.step("15. Терминал (sea)"):
+        check.equal(order_app["sea_terminal_mod2"] , order_app["terminal_table"], msg="❌ ФР: Не одинаковый Терминал")
+
+    with allure.step("16. Порт (sea)"):
+        check.equal(order_app["sea_port_mod2"] , order_app["port_table"], msg="❌ ФР: Не одинаковый Порт")
+
+    with allure.step("17. План прибытия (sea)"):
+        check.equal(order_app["sea_plan_arrival_mod2"] , order_app["plan_arrival_table"], msg="❌ ФР: Не одинаковая Плановая дата")
+
+    with allure.step("18. Факт прибытия (sea)"):
+        check.equal(order_app["sea_fact_arrival_mod2"] , order_app["fact_arrival_table"], msg="❌ ФР: Не одинаковая Фактическая дата")
+
+    with allure.step("19. Статус (auto)"):
+        check.equal(order_app["auto_status_mod2"] , order_app["status_table"], msg="❌ ФР: Не одинаковый Статус")
+
+    with allure.step("20. Адрес (auto)"):
+        check.equal(order_app["auto_address_mod2"] , order_app["address_table"], msg="❌ ФР: Не одинаковый Адрес")
+
+    with allure.step("21. План. дата доставки (auto)"):
+        check.equal(order_app["auto_plan_data_mod2"] , order_app["delivery_data_plan_table"], msg="❌ ФР: Не одинаковая Дата доставки")
+
+    with allure.step("22. Водитель (auto)"):
+        check.equal(order_app["auto_driver_mod2"] , order_app["driver_table"], msg="❌ ФР: Не одинаковый Водитель")
+
+    with allure.step("23. Номер авто (auto)"):
+        check.equal(order_app["auto_number_auto_mod2"] , order_app["car_table"], msg="❌ ФР: Не одинаковый Номер авто")
+
+    with allure.step("24. Ответственный (forwarding)"):
+        check.equal(order_app["forwarding_otv_mod2"] , order_app["otv_table"], msg="❌ ФР: Не одинаковый Ответственный")
+
+    with allure.step("25. Телекс (forwarding)"):
+        check.equal(order_app["forwarding_telex_mod2"] , order_app["telex_table"], msg="❌ ФР: Не одинаковый Телекс")
+
+    with allure.step("26. Документ (forwarding)"):
+        check.equal(order_app["forwarding_receiving_doc_mod2"] , order_app["doc_table"], msg="❌ ФР: Не одинаковый Документ")
+

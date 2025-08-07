@@ -26,8 +26,11 @@
 - Перевозки
   - [ ] Морская перевозка с маршрутами
   - [ ] Автоперевозка с маршрутами
-- Грузы
-  - [ ] Создание ТЕ из таблицы Грузы
+- Таблица Грузы
+  - [x] Создание ТЕ из таблицы Грузы
+  - [x] Открыть заказ из поля Заказ
+  - [x] Выставление данных для отображения в таблице на [основании](https://jira.smartlink.lan/browse/AIST-711)
+  - [x] Проверка всех полей
 
 ## Команды для запуска тестов
 
@@ -64,6 +67,8 @@
     - Создание и удаление "Перевозки" - `pytest tests_orders/test_order_transportation.py --alluredir=./allure-results`
     - Создание и удаление "Bulkership" - `pytest tests_orders/test_order_freight_bulkership.py --alluredir=./allure-results`
     - Создание и удаление "Container" - `pytest tests_orders/test_order_freight_container.py --alluredir=./allure-results`
+  - Грузы:
+    - Создание данных и проверка отображения в таблице Грузы, редактирование данных в таблице. `pytest tests_freight/test_freight.py --alluredir=./allure-results` 
   - Запуск отчета - `allure serve allure-results --lang ru`
   - Удаление истории - `allure generate allure-results --clean`
   - Запуск всех тестов - `pytest --alluredir=./allure-results`

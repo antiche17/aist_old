@@ -43,7 +43,7 @@ class WinAISTApp:
 
     def get_main_form(self):
         """Получение главного окна"""
-        return self.app.window(**self.loc.ORDER_FORM)
+        return self.app.window(**self.loc.main_window)
 
     def get_sea_form(self):
         """Получение главного окна"""
@@ -195,40 +195,37 @@ class WinAISTApp:
         self.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
         time.sleep(1)
 
-        order_form = self.app.window(**self.loc.ORDER_FORM)
-        time.sleep(1)
-
         # 7. Получение данных из формы заказа
         self.order_data.update({
-            'order_number': self.get_element_property(order_form, self.loc.ORDER_NUMBER, "Value"),
-            'order_type': self.get_element_property(order_form, self.loc.ORDER_TYPE_TEXT, "Name"),
-            'order_status': self.get_element_property(order_form, self.loc.STATUS_COMBO, "Value"),
-            'order_priority': self.get_element_property(order_form, self.loc.PRIORITY_COMBO, "Value"),
-            'order_otv': self.get_element_property(order_form, self.loc.RESPONSIBLE_COMBO, "Value"),
+            'order_number': self.get_element_property(main_window, self.loc.ORDER_NUMBER, "Value"),
+            'order_type': self.get_element_property(main_window, self.loc.ORDER_TYPE_TEXT, "Name"),
+            'order_status': self.get_element_property(main_window, self.loc.STATUS_COMBO, "Value"),
+            'order_priority': self.get_element_property(main_window, self.loc.PRIORITY_COMBO, "Value"),
+            'order_otv': self.get_element_property(main_window, self.loc.RESPONSIBLE_COMBO, "Value"),
 
-            'order_client': self.get_element_property(order_form, self.loc.CLIENT_COMBO, "Value"),
-            'order_senders': self.get_element_property(order_form, self.loc.SENDERS_1, "Value"),
-            'order_recipient': self.get_element_property(order_form, self.loc.RECIPIENT, "Value"),
-            'order_delivery': self.get_element_property(order_form, self.loc.DELIVERY_CONDITION, "Value"),
+            'order_client': self.get_element_property(main_window, self.loc.CLIENT_COMBO, "Value"),
+            'order_senders': self.get_element_property(main_window, self.loc.SENDERS_1, "Value"),
+            'order_recipient': self.get_element_property(main_window, self.loc.RECIPIENT, "Value"),
+            'order_delivery': self.get_element_property(main_window, self.loc.DELIVERY_CONDITION, "Value"),
 
-            'order_create_mod': self.get_element_property(order_form, self.loc.MOD_DATE, "Name"),
-            'order_create_date': self.get_element_property(order_form, self.loc.CREATE_DATE, "Name"),
-            'order_completion_date': self.get_element_property(order_form, self.loc.COMPLETION_DATE, "Name"),
-            'order_reference': self.get_element_property(order_form, self.loc.REFERENCE, "Value"),
-            'order_note': self.get_element_property(order_form, self.loc.NOTE, "Value"),
+            'order_create_mod': self.get_element_property(main_window, self.loc.MOD_DATE, "Name"),
+            'order_create_date': self.get_element_property(main_window, self.loc.CREATE_DATE, "Name"),
+            'order_completion_date': self.get_element_property(main_window, self.loc.COMPLETION_DATE, "Name"),
+            'order_reference': self.get_element_property(main_window, self.loc.REFERENCE, "Value"),
+            'order_note': self.get_element_property(main_window, self.loc.NOTE, "Value"),
 
-            'order_tab_freight': self.get_element_property(order_form, self.loc.TAB_FREIGHT, "Name"),
-            'order_tab_transportation': self.get_element_property(order_form, self.loc.TAB_TRANSPORTATION, "Name"),
-            'order_tab_forwarding': self.get_element_property(order_form, self.loc.TAB_FORWARDING, "Name"),
-            'order_tab_gtd': self.get_element_property(order_form, self.loc.TAB_GTD, "Name"),
-            'order_tab_check': self.get_element_property(order_form, self.loc.TAB_CHECK, "Name"),
-            'order_tab_file': self.get_element_property(order_form, self.loc.TAB_FILE, "Name"),
-            'order_tab_services': self.get_element_property(order_form, self.loc.TAB_SERVICES, "Name"),
-            'order_tab_tracking': self.get_element_property(order_form, self.loc.TAB_TRACKING, "Name"),
+            'order_tab_freight': self.get_element_property(main_window, self.loc.TAB_FREIGHT, "Name"),
+            'order_tab_transportation': self.get_element_property(main_window, self.loc.TAB_TRANSPORTATION, "Name"),
+            'order_tab_forwarding': self.get_element_property(main_window, self.loc.TAB_FORWARDING, "Name"),
+            'order_tab_gtd': self.get_element_property(main_window, self.loc.TAB_GTD, "Name"),
+            'order_tab_check': self.get_element_property(main_window, self.loc.TAB_CHECK, "Name"),
+            'order_tab_file': self.get_element_property(main_window, self.loc.TAB_FILE, "Name"),
+            'order_tab_services': self.get_element_property(main_window, self.loc.TAB_SERVICES, "Name"),
+            'order_tab_tracking': self.get_element_property(main_window, self.loc.TAB_TRACKING, "Name"),
         })
 
         # 8. Сохранение заказа
-        self.click_element(order_form, self.loc.SAVE_BUTTON, timeout=2)
+        self.click_element(main_window, self.loc.SAVE_BUTTON, timeout=2)
         time.sleep(1)
 
         # 9. Обновляем таблицу
@@ -274,9 +271,6 @@ class WinAISTApp:
         self.set_text_field(main_window, self.loc.NOTE, "Привет, наш огромный дивный мир! 666 ", timeout=1)
 
         # 14. Получение данных из формы заказа
-        order_form = self.app.window(**self.loc.ORDER_FORM)
-        time.sleep(1)
-
         self.order_data.update({
             'order_status_up': self.get_element_property(order_form, self.loc.STATUS_COMBO, "Value"),
             'order_priority_up': self.get_element_property(order_form, self.loc.PRIORITY_COMBO, "Value"),
