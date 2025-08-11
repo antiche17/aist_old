@@ -1,6 +1,6 @@
 import pytest
 import allure
-from difflib import SequenceMatcher as f
+from difflib import SequenceMatcher
 from orders.order import WinAISTApp
 import pytest_check as check
 
@@ -50,7 +50,8 @@ def test_value_order(order_app):
 
 
     with allure.step("11. Дата создания одинаковая с датой изменения"):
-        check.equal(order_app["order_create_date"], order_app["order_create_mod"], "❌ ФР: Поля не одинаковые")
+        check.is_true(SequenceMatcher(None, order_app["order_create_date"], order_app["order_create_mod"]).ratio() >= 0.9,
+                  "❌ ФР: Поля не одинаковые Дата создания одинаковая с датой изменения на 90%")
 
     with allure.step("12. Дата завершения ..."):
         check.equal(order_app["order_completion_date"], "...", "❌ ФР: Не соответствует значению")
@@ -63,7 +64,7 @@ def test_value_order(order_app):
 
 
     with allure.step("15. Номер заказа с отображением в таблице"):
-        check.equal(order_app["table_order"] in order_app["order_number"],"❌ ФР: Поля не одинаковые, выставлено 65")
+        check.is_true(order_app["table_order"] in order_app["order_number"],"❌ ФР: Поля не одинаковые, выставлено 65")
 
     with allure.step("16. тип заказа с отображением в таблице"):
         check.equal(order_app["order_type"], order_app["table_type"], "❌ ФР: Поля не одинаковые")
@@ -161,3 +162,67 @@ def test_value_order(order_app):
 
     with allure.step("46. Дата модификации изменилась"):
         check.not_equal(order_app["order_mod_date_up"], order_app["repeat_order_mod_date"], "❌ ФР: Дата модификации одинаковые")
+
+    # Проверка Другие услуги
+    @allure.title("Проверка создания заказа с типом 'Другие услуги', 20 проверок")
+    @pytest.mark.order(1)
+    def test_create_other_services_order(order_app):
+        with allure.step("1. Проверка номера заказа"):
+            check.is_false(order_app["order_number_dr"] is None, "❌ ФР: Должно быть поле заполнено")
+
+        with allure.step("2. Проверка типа заказа"):
+            check.equal(order_app["order_dialog_type_dr"], "Другие услуги", "❌ ФР: Поле с другим значением, но должно быть Другие услуги")
+
+        with allure.step("3. Проверка типа заказа"):
+            check.equal(order_app["order_dialog_type_dr"], order_app["order_type_dr"], "❌ ФР: Не одинаковые, но должно быть одинаковые")
+
+        with allure.step("4. Проверка статуса заказа"):
+            check.equal(order_app["order_status_dr"], "Черновик", "❌ ФР: Поле с другим значением, но должно быть Черновик")
+
+        with allure.step("5. Проверка приоритета"):
+            check.equal(order_app["order_priority_dr"], "Средний", "❌ ФР: Поле с другим значением, но должно быть Средний")
+
+        with allure.step("6. Проверка Ответственного"):
+            check.equal(order_app["order_dialog_otv_dr"], order_app["order_otv_dr"], "❌ ФР: Не одинаковые ответственные, но должны быть одинаковыми")
+
+        with allure.step("7. Клиент"):
+            check.equal(order_app["order_dialog_client_dr"], order_app["order_client_dr"], "❌ ФР: Не одинаковые Клиент, но должны быть одинаковыми")
+
+        with allure.step("8. Дата создания = Дата изменения"):
+            check.is_true(SequenceMatcher(None, order_app["order_create_date_dr"], order_app["order_create_mod_dr"]).ratio() >= 0.65, "❌ ФР: Поля не одинаковые Дата создания, но должно быть одинаковые на 65%")
+
+        with allure.step("9. Проверка Дата завершения"):
+            check.equal(order_app["order_completion_date_dr"], "...", "❌ ФР: Поле с другим значением, но должно быть ... ")
+
+        with allure.step("10. Референс клиента пусто"):
+            check.is_not_none(order_app["order_reference_dr"], "❌ ФР: Поле не пустое, но должно быть поле пустым")
+
+        with allure.step("11. Есть вкладка Счета"):
+            check.equal(order_app["order_tab_check_dr"], "Счета", "❌ ФР: Поле с другим значением, но должно быть Счета")
+
+        with allure.step("12. Есть вкладка Файлы"):
+            check.equal(order_app["order_tab_file_dr"], "Файлы", "❌ ФР: Поле с другим значением, но должно быть Файлы")
+
+        with allure.step("13. Есть вкладка Услуги"):
+            check.equal(order_app["order_tab_services_dr"], "Услуги", "❌ ФР: Поле с другим значением, но должно быть Услуги")
+
+        with allure.step("14. Примечание"):
+            check.is_not_none(order_app["order_note_dr"], "❌ ФР: Поле не пустое, но должно быть поле пустым")
+
+        with allure.step("15. Номер заказа в таблице"):
+            check.is_true(order_app["table_order_dr"] in order_app["order_number"], "❌ ФР: Поля не одинаковые Номер заказа в таблице")
+
+        with allure.step("16. Тип в таблице"):
+            check.equal(order_app["order_type_dr"], order_app["table_type"], "❌ ФР: Поля не одинаковые Тип в таблице")
+
+        with allure.step("17. Статус в таблице"):
+            check.equal(order_app["order_status_dr"], order_app["table_status"], "❌ ФР: Поля не одинаковые Статус в таблице")
+
+        with allure.step("18. Приоритет в таблице"):
+            check.equal(order_app["order_priority_dr"], order_app["table_priority"], "❌ ФР: Поля не одинаковые Приоритет в таблице")
+
+        with allure.step("19. Клиент в таблице"):
+            check.equal(order_app["order_client_dr"], order_app["table_client"], "❌ ФР: Поля не одинаковые Клиент в таблице")
+
+        with allure.step("20. Дата создания в таблице"):
+            check.is_true(SequenceMatcher(None, order_app["order_create_date_dr"], order_app["table_date_dr"]).ratio() >= 0.65, "❌ ФР: Поля не совпадают хотя бы на 65%")

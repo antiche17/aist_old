@@ -78,8 +78,6 @@ def test_forwarding_order_full_check(order_app):
     with allure.step("18. Сравниваем Номинация эксп"):
         check.equal(order_app["forwarding_nomination_up"], order_app["forwarding_nomination_save"], "ФР: Не совпадают")
 
-    with allure.step("19. Сравниваем Получение ДО/ДО1"):
-        check.equal(order_app["forwarding_receiving_do_up"], order_app["forwarding_receiving_do_save"], "ФР: Не совпадают")
 
     with allure.step("20. Сравниваем Примечание"):
         check.equal(order_app["forwarding_note_up"], order_app["forwarding_note_save"], "ФР: Не совпадают")

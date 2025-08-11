@@ -3,6 +3,7 @@ from .locators import LocOrders
 import time
 import subprocess
 import psutil
+from pywinauto.keyboard import send_keys
 
 
 class Function:
@@ -111,7 +112,7 @@ class Function:
         el1_spec = window.child_window(**locator1)
         el1_spec.wait('visible', timeout=timeout)
         el1 = el1_spec.wrapper_object()
-
+        time.sleep(1)
         # Второй элемент
         el2_spec = window.child_window(**locator2)
         el2_spec.wait('visible', timeout=timeout)
@@ -161,13 +162,13 @@ class Function:
         wrapper.set_text(str(text))
         return wrapper
 
-    def get_element_property(self, window, locator, property_name, timeout=1.1):
+    def get_element_property(self, window, locator, property_name, timeout=1):
         """Получение свойства элемента"""
         element = window.child_window(**locator)
         element.wait('visible', timeout=timeout)
         return element.legacy_properties()[property_name]
 
-    def get_element_property_sp(self, window, locator, property_name, timeout=1.1):
+    def get_element_property_sp(self, window, locator, property_name):
         """Получение свойства элемента без ожидания visible"""
         element = window.child_window(**locator)
         return element.legacy_properties()[property_name]

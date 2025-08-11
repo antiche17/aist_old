@@ -35,12 +35,12 @@ class LocOrders:
 
     # Элементы таблицы заказов
     REFRESH_BUTTON = {'title': "Элемент", 'control_type': "SplitButton"}
-    TABLE_ORDER_NUMBER = {'title': "Заказ № строка 1", 'control_type': "DataItem"}
-    TABLE_ORDER_NUMBER2 = {'title': "Заказ № строка 2", 'control_type': "DataItem"}
+    TABLE_ORDER_NUMBER = {'title': "Номер заказа вернувшийся строка 1", 'control_type': "DataItem"}
+    TABLE_ORDER_NUMBER2 = {'title': "Номер заказа вернувшийся строка 1", 'control_type': "DataItem"}
     TABLE_ORDER_NUMBER3 = {'title': "Заказ № строка 3", 'control_type': "DataItem"}
-    TABLE_ORDER_NUMBER8 = {'title': "Заказ № строка 8", 'control_type': "DataItem"}
-    TABLE_ORDER_NUMBER9 = {'title': "Заказ № строка 9", 'control_type': "DataItem"}
-    TABLE_ORDER_NUMBER10 = {'title': "Заказ № строка 10", 'control_type': "DataItem"}
+    TABLE_ORDER_NUMBER8 = {'title': "Номер заказа вернувшийся строка 8", 'control_type': "DataItem"}
+    TABLE_ORDER_NUMBER9 = {'title': "Номер заказа вернувшийся строка 9", 'control_type': "DataItem"}
+    TABLE_ORDER_NUMBER10 = {'title': "Номер заказа вернувшийся строка 10", 'control_type': "DataItem"}
     TABLE_ORDER_TYPE = {'title': "Тип заказа строка 1", 'control_type': "DataItem"}
     TABLE_STATUS = {'title': "Статус строка 1", 'control_type': "DataItem"}
     TABLE_PRIORITY = {'title': "Приоритет строка 1", 'control_type': "DataItem"}
@@ -51,7 +51,7 @@ class LocOrders:
     TABLE_RECIPIENT = {'title': "Получатель строка 1", 'control_type': "DataItem"}
     TABLE_DELIVERY = {'title': "Условия поставки строка 1", 'control_type': "DataItem"}
     TABLE_NOTE = {'title': "Примечание строка 1", 'control_type': "DataItem"}
-    TABLE_DATE = {'title': "Создан строка 1", 'control_type': "DataItem"}
+    TABLE_DATE = {'title': "Дата создания строка 1", 'control_type': "DataItem"}
 
     # Форма создания заказа
     ORDER_TYPE_COMBO = {'auto_id': "orderTypeEdit", 'title': "Тип заказа:", 'control_type': "ComboBox"}
@@ -67,7 +67,7 @@ class LocOrders:
     AP = {'auto_id': "sbSave", 'control_type': "Button"}
 
     # Элементы информации о заказе
-    ORDER_NUMBER = {'auto_id': "bceNavigation", 'control_type': "ComboBox"}
+    ORDER_NUMBER = { 'control_type': "ComboBox", 'auto_id': "bceNavigation", 'found_index': 0}
     ORDER_TYPE_TEXT = {'auto_id': "lbType", 'control_type': "Text"}
     STATUS_COMBO = {'title': "Статус:", 'control_type': "ComboBox"}
     STATUS_FINISH = {'title': "Завершено", 'control_type': "ListItem"}
@@ -84,6 +84,9 @@ class LocOrders:
     RECIPIENT = {'title': "Получатель:", 'auto_id': "sleReceiver"}
     RECIPIENT_1 = {'title': "Строка 1", 'control_type': "ListItem", 'found_index': 0}
     RECIPIENT_2 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT8 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT9 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT10 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
     DELIVERY_CONDITION = {'title': "Условия поставки:", 'auto_id': "leIncoterms"}
     DELIVERY_CONDITION_0 = {'title': "Строка 0", 'control_type': "Custom"}
     DELIVERY_CONDITION_1 = {'title': "Строка 1", 'control_type': "Custom"}

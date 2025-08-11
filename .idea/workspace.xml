@@ -5,8 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="Редактирование в таблице Грузы, проверка выставленных данных.">
+      <change afterPath="$PROJECT_DIR$/tests_orders/test_order_finance.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locators/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locators/locators.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/locators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/freight.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/freight.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/order_del2.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/order_del2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_1order_del.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_orders/test_1order_del.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_2order_dr.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_orders/test_order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_del2.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_orders/test_order_del2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_finance_ip.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_finance_is.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_finance_vp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_finance_vs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_forwarding.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_orders/test_order_forwarding.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_freight.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_freight_Bulkership.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_orders/test_order_freight_bulkership.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_freight_container.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_orders/test_order_freight_container.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +67,25 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python tests.Python tests for test_2order_dr.test_create_other_services_order.executor": "Run",
     "Python tests.Python tests for test_freight.test_value_del.executor": "Run",
+    "Python tests.Python tests for test_order.test_value_order.executor": "Run",
+    "Python tests.Python tests for test_order.test_value_order.test_create_other_services_order.executor": "Run",
+    "Python tests.Python tests for test_order_finance.test_value_order.executor": "Run",
+    "Python tests.Python tests for test_order_finance_ip.test_value_order.executor": "Run",
+    "Python tests.Python tests for test_order_freight.test_bulkership_freight.executor": "Run",
+    "Python tests.Python tests for test_order_freight_container.test_container_freight.executor": "Run",
+    "Python tests.Python tests in test_1order_del.py.executor": "Run",
+    "Python tests.Python tests in test_order.py.executor": "Run",
+    "Python tests.Python tests in test_order_del2.py.executor": "Run",
+    "Python tests.Python tests in test_order_finance_ip.py.executor": "Run",
+    "Python tests.Python tests in test_order_finance_is.py.executor": "Run",
+    "Python tests.Python tests in test_order_forwarding.py.executor": "Run",
+    "Python tests.Python tests in test_order_freight_Bulkership.py.executor": "Run",
+    "Python tests.Python tests in test_order_freight_bulkership.py.executor": "Run",
+    "Python tests.Python tests in test_order_freight_container.py.executor": "Run",
     "Python tests.pytest in test_freight.py.executor": "Run",
+    "Python.order.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -59,43 +94,89 @@
     "settings.editor.selected.configurable": "editor.preferences.completion"
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.Python tests for test_freight.test_value_del">
-    <configuration name="Python tests for test_freight.test_value_del" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_order_freight_bulkership.test_bulkership_freight">
+    <configuration name="Python tests for test_order_freight_bulkership.test_bulkership_freight" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests_freight" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests_orders" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_freight.test_value_del&quot;" />
+      <option name="_new_target" value="&quot;test_order_freight_bulkership.test_bulkership_freight&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in test_freight.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_order_freight_container.test_container_freight" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests_freight" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests_orders" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests_freight/test_freight.py&quot;" />
+      <option name="_new_target" value="&quot;test_order_freight_container.test_container_freight&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_order_freight.test_bulkership_freight" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests_orders" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_order_freight.test_bulkership_freight&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_order_freight_bulkership.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests_orders" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests_orders/test_order_freight_bulkership.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_order_freight_container.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests_orders" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests_orders/test_order_freight_container.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_freight.test_value_del" />
-        <item itemvalue="Python tests.pytest in test_freight.py" />
+        <item itemvalue="Python tests.Python tests for test_order_freight_bulkership.test_bulkership_freight" />
+        <item itemvalue="Python tests.Python tests in test_order_freight_bulkership.py" />
+        <item itemvalue="Python tests.Python tests for test_order_freight_container.test_container_freight" />
+        <item itemvalue="Python tests.Python tests in test_order_freight_container.py" />
+        <item itemvalue="Python tests.Python tests for test_order_freight.test_bulkership_freight" />
       </list>
     </recent_temporary>
   </component>
@@ -149,5 +230,21 @@
     <MESSAGE value="Проверка таблицы Грузы" />
     <MESSAGE value="Редактирование в таблице Грузы, проверка выставленных данных." />
     <option name="LAST_COMMIT_MESSAGE" value="Редактирование в таблице Грузы, проверка выставленных данных." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/orders/order.py</url>
+          <line>1166</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/orders/order.py</url>
+          <line>855</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

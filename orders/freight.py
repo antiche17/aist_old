@@ -12,7 +12,6 @@ class WinAISTApp:
         self.loc = LocOrders()
         self.app = self.fun.app
 
-
     def freight(self):
         # 1. Запуск приложения
         self.fun.start_application()

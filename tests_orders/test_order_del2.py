@@ -1,16 +1,17 @@
 import pytest
 import allure
-from difflib import SequenceMatcher as f
 from orders.order_del2 import WinAISTApp
 import pytest_check as check
+from locators.function import Function
 
 
 @pytest.fixture(scope="module")
 def order_app():
-    """Фикстура создает и возвращает приложение с созданным заказом"""
+    print("[SETUP] Запуск фикстуры order_app")
     app = WinAISTApp()
     order_data = app.order_del2()
     yield order_data
+    print("[TEARDOWN] Закрытие WinAISTApp")
     app.close()
 
 @allure.title("Проверка создание Входящий платеж в заказе. 19 проверок")
