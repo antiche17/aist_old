@@ -669,7 +669,7 @@ class WinAISTApp:
             'bul_quantity_table': self.fun.get_element_property(main_window, self.loc.QUANTITY_TABLE2, "Value"),
             'bul_uom_table': self.fun.get_element_property(main_window, self.loc.MEASUREMENT_UNIT_TABLE2, "Value"),
             'bul_otv_table': self.fun.get_element_property(main_window, self.loc.OTV_AUTO_TABLE2, "Value"),
-            'bul_create_table': self.fun.get_element_property(main_window, self.loc.CREATED_BY_TABLE2, "Value"),
+            'bul_create_table': self.fun.get_element_property(main_window, self.loc.CREATED_TE_TABLE2, "Value"),
 
             'con_note_table': self.fun.get_element_property(main_window, self.loc.NOTE_TE_TABLE1, "Value"),
             'con_order_otv_table': self.fun.get_element_property(main_window, self.loc.RESPONSIBLE_ORDER_TABLE1, "Value"),
@@ -684,7 +684,7 @@ class WinAISTApp:
             'con_quantity_table': self.fun.get_element_property(main_window, self.loc.QUANTITY_TABLE1, "Value"),
             'con_uom_table': self.fun.get_element_property(main_window, self.loc.MEASUREMENT_UNIT_TABLE1, "Value"),
             'con_otv_table': self.fun.get_element_property(main_window, self.loc.OTV_AUTO_TABLE1, "Value"),
-            'con_create_table': self.fun.get_element_property(main_window, self.loc.CREATED_BY_TABLE1, "Value"),
+            'con_create_table': self.fun.get_element_property(main_window, self.loc.CREATED_TE_TABLE1, "Value"),
         })
         time.sleep(1)
         keyboard.send_keys('{LEFT}' * 47)

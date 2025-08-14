@@ -17,7 +17,7 @@ class LocOrders:
     CHECK_FROM_IP = {'auto_id': 'frmOutboxPayment', 'control_type': "Window"}
     CHECK_FROM_VP = {'auto_id': 'frmInboxPayment', 'control_type': "Window"}
     PRODUCT_FORM = {'auto_id': 'ProductForm', 'control_type': "Window"}
-
+    AUTO_SHIPMENT_FORM = {'auto_id': 'RouteCarCarriageForm', 'control_type': "Window"}
     # Базы Аиста
     STAGE_EF = {'title': "(serv02)AIST_STAGE_EF", 'control_type': "ListItem"}
     AIST_EF = {'title': "(serv01)AIST_EF", 'control_type': "ListItem"}
@@ -31,10 +31,11 @@ class LocOrders:
     OPEN_BUTTON1 = {'title': "Открыть", 'control_type': "Button", 'found_index': 1}
     TABLE_DELETE_WINDOW = {'title': "OK", 'auto_id': "btnOK", 'found_index': 0}
     APPLY_BUTTON = {'title': "Применить", 'auto_id': "btnApply"}
-    APPLY_BUTTON1 = {'title': "Применить", 'auto_id': "sbApply"}
+    APPLY_BUTTON1 = {'title': "Применить", 'auto_id': "sbApply", 'found_index': 0}
 
     # Элементы таблицы заказов
     REFRESH_BUTTON = {'title': "Элемент", 'control_type': "SplitButton"}
+    TABLE_ORDER_NUMBER_FILTER = {'title': "Номер заказа вернувшийся фильтр строк", 'control_type': "DataItem"}
     TABLE_ORDER_NUMBER = {'title': "Номер заказа вернувшийся строка 1", 'control_type': "DataItem"}
     TABLE_ORDER_NUMBER2 = {'title': "Номер заказа вернувшийся строка 1", 'control_type': "DataItem"}
     TABLE_ORDER_NUMBER3 = {'title': "Заказ № строка 3", 'control_type': "DataItem"}
@@ -54,10 +55,10 @@ class LocOrders:
     TABLE_DATE = {'title': "Дата создания строка 1", 'control_type': "DataItem"}
 
     # Форма создания заказа
-    ORDER_TYPE_COMBO = {'auto_id': "orderTypeEdit", 'title': "Тип заказа:", 'control_type': "ComboBox"}
+    ORDER_TYPE_COMBO = {'title': "Тип заказа:", 'control_type': "ComboBox", 'auto_id': "orderTypeEdit", }
     LOGISTICS_ITEM = {'title': "Логистика", 'control_type': "ListItem"}
     LOGISTICS_ITEM_DR = {'title': "Другие услуги", 'control_type': "ListItem"}
-    CUSTOMER_COMBO = {'auto_id': "customerEdit", 'title': "Клиент:", 'control_type': "ComboBox", 'found_index': 0}
+    CUSTOMER_COMBO = {'title': "Клиент:", 'control_type': "ComboBox", 'auto_id': "customerEdit", 'found_index': 0}
     CUSTOMER_ITEM = {'title': "Наименование строка 1", 'control_type': "DataItem"}
     CUSTOMER_ITEM2 = {'title': "Наименование строка 2", 'control_type': "DataItem"}
     OK_BUTTON = {'title': "ОК", 'control_type': "Button", 'found_index': 0}
@@ -72,6 +73,7 @@ class LocOrders:
     STATUS_COMBO = {'title': "Статус:", 'control_type': "ComboBox"}
     STATUS_FINISH = {'title': "Завершено", 'control_type': "ListItem"}
     STATUS_COMBO_CANCEL = {'title': "Отменен", 'control_type': "ListItem"}
+    STATUS_COMBO_CANCEL2 = {'title': "Отменена", 'control_type': "ListItem"}
     STATUS_COMBO_FINISH = {'title': "Завершена", 'control_type': "ListItem"}
     PRIORITY_COMBO = {'title': "Приоритет:", 'control_type': "ComboBox"}
     PRIORITY_COMBO_KRIT = {'title': "Критический", 'control_type': "ListItem"}
@@ -84,9 +86,13 @@ class LocOrders:
     RECIPIENT = {'title': "Получатель:", 'auto_id': "sleReceiver"}
     RECIPIENT_1 = {'title': "Строка 1", 'control_type': "ListItem", 'found_index': 0}
     RECIPIENT_2 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
-    RECIPIENT8 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
-    RECIPIENT9 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
-    RECIPIENT10 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT_3 = {'title': "Строка 3", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT_5 = {'title': "Строка 5", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT_6 = {'title': "Строка 6", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT_7 = {'title': "Строка 7", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT8 = {'title': "Строка 8", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT9 = {'title': "Строка 9", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT10 = {'title': "Строка 10", 'control_type': "ListItem", 'found_index': 0}
     DELIVERY_CONDITION = {'title': "Условия поставки:", 'auto_id': "leIncoterms"}
     DELIVERY_CONDITION_0 = {'title': "Строка 0", 'control_type': "Custom"}
     DELIVERY_CONDITION_1 = {'title': "Строка 1", 'control_type': "Custom"}
@@ -97,14 +103,14 @@ class LocOrders:
     NOTE_SEA = {'title': "Примечание:", 'auto_id': "decriptionMemoEdit"}
     NOTE_CONTAINER = {'auto_id': "descriptionMemoEdit"}
 
-    MOD_DATE = {'control_type': "Text", 'auto_id': "lblModified"}
-    CREATE_DATE = {'control_type': "Text", 'auto_id': "lblCreatedOn"}
+    MOD_DATE = {'control_type': "Text", 'auto_id': "lblModified"}# Дата изменения
+    CREATE_DATE = {'control_type': "Text", 'auto_id': "lblCreatedOn"} # Дата создания
     LINE_TRANSPORTATION = {'title': "Строка 1", 'control_type': "ListItem"}
     LINE_TRANSPORTATION10 = {'title': "Строка 10", 'control_type': "ListItem"}
     DEL_BUTTON = {'title': "Удалить", 'control_type': "Button", 'found_index': 0}
     YES_BUTTON = {'title': "Да", 'control_type': "Button"}
     REFRESH_BUTTON_ORDER = {'title': "Обновить", 'control_type': "Button", 'found_index': 0}
-    COMPLETION_DATE = {'title': "...", 'control_type': "Text", 'auto_id': "lblCompletedOn"}
+    COMPLETION_DATE = {'control_type': "Text", 'auto_id': "lblCompletedOn"}
 
     # Меню заказа
     OTHER_ACTIONS = {'title': "Другие действия", 'control_type': "MenuItem", 'found_index': 0}
@@ -128,9 +134,12 @@ class LocOrders:
     SEA_TRANSPORTATION = {'title': "Морская перевозка", 'control_type': "ListItem"}
     SEA_ORDER_NAME = {'title': "Морская перевозка: Новая морская перевозка", 'control_type': "SplitButton"}
     SEA_TYPE_TEXT = {'auto_id': "labelControl1", 'control_type': "Text"}
-    AUTO_TRANSPORTATION = {'title': "Автоперевозка", 'control_type': "ListItem"}
-    AUTO_NAME_TRANSPORTATION = {'auto_id': "bceNavigation", 'control_type': "ComboBox"}
-    AUTO_TYPE_TEXT = {'auto_id': "lbType", 'control_type': "Text"}
+    AUTO_TRANSPORTATION = {'title': "Автоперевозка", 'control_type': "ListItem", 'found_index': 0}
+    AUTO_TRANSPORTATION1 = {'title': "Автоперевозки", 'control_type': "ListItem", 'found_index': 0}
+
+
+    AUTO_NAME_TRANSPORTATION = {'auto_id': "bceNavigation", 'control_type': "ComboBox"} # номер перевозки
+    AUTO_TYPE_TEXT = {'auto_id': "lbType", 'control_type': "Text"} # тип перевозки
     TRANSPORTATION_ITEM = {'title': "Тип перевозки строка 1", 'control_type': "DataItem"}
     TRANSPORTATION_ITEM2 = {'title': "Тип перевозки строка 2", 'control_type': "DataItem"}
     TRANSPORTATION_NUMBER1 = {'title': "Номер перевозки строка 1", 'control_type': "DataItem"}
@@ -142,9 +151,11 @@ class LocOrders:
     CLASS_FREIGHT = {'title': "Класс груза:", 'control_type': "ComboBox", 'auto_id': "wareClassEdit"}
     CLASS_FREIGHT_AUTO = {'title': "Класс груза: ", 'control_type': "ComboBox", 'auto_id': "wareClassEdit1"}
     CLASS_FREIGHT1 = {'title': "IMO Cargo", 'control_type': "ListItem"}
+    CLASS_FREIGHT2 = {'title': "VER Cargo", 'control_type': "ListItem"}
     DOWNLOAD_METHOD = {'title': "Способ загрузки:", 'control_type': "ComboBox"}
     DOWNLOAD_METHOD_AUTO = {'title': "Способ загрузки: ", 'control_type': "ComboBox", 'auto_id': "carriageMethodLoadingEdit1"}
     DOWNLOAD_METHOD1 = {'title': "FCL", 'control_type': "ListItem"}
+    DOWNLOAD_METHOD3 = {'title': "Break Bulk", 'control_type': "ListItem"}
     REFERENCE_FREIGHT = {'control_type': "Edit", 'auto_id': "teCargoReference"}
     BOOKING_REFERENCE = {'title': "Букинг референс:", 'control_type': "Edit"}
     OCEAN_LINE = {'title': "Океанская линия:", 'control_type': "ComboBox"}
@@ -166,20 +177,24 @@ class LocOrders:
     PREFORWARDING_PORT4 = {'title': "Harbin", 'control_type': "ListItem"}
     PREFORWARDING_PORT5 = {'title': "Шереметьево (терминал Шереметьево-Карго)", 'control_type': "ListItem"}
     PREFORWARDING_TERMINAL = {'title': "Терминал:", 'control_type': "ComboBox", 'auto_id': "sleTerminalEdit"}
-    PREFORWARDING_TERMINAL1 = {'title': "Терминал:", 'control_type': "ComboBox", 'auto_id': "sleTerminal"}
+    PREFORWARDING_TERMINAL1 = {'control_type': "ComboBox", 'auto_id': "sleTerminal", 'found_index': 0}
     PREFORWARDING_AGENT = {'title': "Агент:", 'control_type': "ComboBox", 'auto_id': "sleAgentEdit"}
     PREFORWARDING_AGENT1 = {'title': "Агент:", 'control_type': "ComboBox", 'auto_id': "sleAgent"}
     PREFORWARDING_DATA = {'title': "План. дата сборки:", 'control_type': "ComboBox", 'auto_id': "РlanShipments"}
-    PREFORWARDING_DATA1 = {'title': "План. дата сборки:", 'control_type': "ComboBox", 'auto_id': "planShipments"}
+    PREFORWARDING_DATA1 = {'title': "План. дата отгрузки:", 'control_type': "ComboBox", 'auto_id': "planShipments"}
+    PREFORWARDING_FACT_DATA = {'title': "Факт. дата отгрузки:", 'control_type': "ComboBox", 'auto_id': "factShipments"}
     SHIPMENT = {'title': "Отгрузка", 'control_type': "ListItem"}
     TRANSSHIPMENT1 = {'title': "Перевалка 1", 'control_type': "ListItem"}
     TRANSSHIPMENT2 = {'title': "Перевалка 2", 'control_type': "ListItem"}
     ARRIVAL = {'title': "Прибытие", 'control_type': "ListItem"}
     SHIPMENT_DATA = {'title': "План. дата отгрузки:", 'control_type': "ComboBox", 'auto_id': "PlanShipments"}
+    SHIPMENT_DATA1 = {'title': "План. дата отгрузки:", 'control_type': "ComboBox", 'auto_id': "planShipments"}
     SHIP = {'title': "Судно:", 'control_type': "ComboBox", 'auto_id': "fShipEdit1"}
     SHIPMENT_DATA_FACT = {'title': "Факт. дата сборки:", 'control_type': "ComboBox", 'auto_id': "factShipments", 'found_index': 0}
+
     ARRIVAL_DATA = {'title': "План. дата прибытия:", 'control_type': "ComboBox", 'auto_id': "PlanArrivals"}
-    ARRIVAL_DATA_FACT = {'title': "Факт. дата прибытия:", 'control_type': "ComboBox", 'auto_id': "factArrivals"}
+    ARRIVAL_DATA1 = {'control_type': "ComboBox", 'auto_id': "planArrivals"} # Плановая
+    ARRIVAL_DATA_FACT = {'control_type': "ComboBox", 'auto_id': "factArrivals"}# фактическая
     UNLOADING = {'title': "Выгрузка:", 'control_type': "ComboBox", 'found_index': 0}
     ADD_TE = {'control_type': "ComboBox", 'auto_id': "cargosEdit1"}
 
@@ -189,6 +204,8 @@ class LocOrders:
     AUTO_CMR = {'title': "Номер CMR:", 'control_type': "Edit", 'auto_id': "teCMR"}
     AUTO_CMR_POR = {'title': "Номер CMR порожн.:", 'control_type': "Edit", 'auto_id': "teCMRporozhn"}
     CONTAINER_DELIVERY = {'title': "Сдача контейнера", 'control_type': "ListItem"}
+    CONTAINER_DELIVERY = {'title': "Сдача контейнера", 'control_type': "ListItem"}
+    TERMINAL_CHANGE = {'title': "Терминал сдачи:", 'control_type': "ComboBox"}
 
     # Морская перевозка таблица в заказе
     PORT1 = {'title': "Порт строка 1", 'control_type': "DataItem"}
@@ -240,11 +257,46 @@ class LocOrders:
     FACT_ARRIVAL4 = {'title': "Факт. прибытия строка 4", 'control_type': "DataItem"}
     FACT_ARRIVAL5 = {'title': "Факт. прибытия строка 5", 'control_type': "DataItem"}
 
-    # Автоперевозка таблица в заказе
+    # Автоперевозка в заказе
     ADDRESS1 = {'title': "Адрес строка 1", 'control_type': "DataItem"}
     ADDRESS2 = {'title': "Адрес строка 2", 'control_type': "DataItem"}
     DRIVER = {'title': "Водитель строка 1", 'control_type': "DataItem"}
     AUTO = {'title': "Автомобиль строка 1", 'control_type': "DataItem"}
+    AUTO_FORM1 = {'title': "Автомобиль:", 'control_type': "ComboBox", 'auto_id': "lueCar"}
+
+    # Автоперевозка таблица
+    AUTO_TABLE = {'title': "Сдача контейнера", 'control_type': "ListItem"}
+    AUTO_ADDRESS = {'title': "Адрес:", 'control_type': "ComboBox", 'auto_id': "sleTerminal"}
+    AUTO_DRIVER = {'title': "Водитель:", 'control_type': "ComboBox", 'auto_id': "driversEdit1"}
+    PREFORWARDING_TERMINAL1 = {'title': "Адрес:", 'control_type': "ComboBox", 'auto_id': "sleTerminal"}
+
+    ORDER_TABLE1 = {"title": "Заказ строка 1", "control_type": "DataItem"}
+    STATUS_TABLE1 = {"title": "Статус строка 1", "control_type": "DataItem"}
+    PRIORITY_TABLE1 = {"title": "Приоритет строка 1", "control_type": "DataItem"}
+    RESPONSIBLE_TABLE1 = {"title": "Ответственный строка 1", "control_type": "DataItem"}
+    CARRIER_TABLE1 = {"title": "Перевозчик строка 1", "control_type": "DataItem"}
+    CARGO_CLASS_TABLE1 = {"title": "Класс груза строка 1", "control_type": "DataItem"}
+    LOADING_METHOD_TABLE1 = {"title": "Способ загрузки строка 1", "control_type": "DataItem"}
+    CMR_NUMBER_TABLE1 = {"title": "Номер CMR строка 1", "control_type": "DataItem"}
+    NOTE_TABLE1 = {"title": "Примечание строка 1", "control_type": "DataItem"}
+    CREATED_BY_TABLE1 = {"title": "Кем создан строка 1", "control_type": "DataItem"}
+    CREATION_DATE_TABLE1 = {"title": "Дата создания строка 1", "control_type": "DataItem"}
+    MODIFICATION_DATE_TABLE1 = {"title": "Дата изменения строка 1", "control_type": "DataItem"}
+    COMPLETION_DATE_TABLE1 = {"title": "Дата завершения строка 1", "control_type": "DataItem"}
+    CARGO_TYPE_TABLE1 = {"title": "Тип груза строка 1", "control_type": "DataItem"}
+
+    SHIPMENT1 = {"title": "Маршрутное задание строка 1", "control_type": "DataItem"}
+    SHIPMENT2 = {"title": "Маршрутное задание строка 2", "control_type": "DataItem"}
+    SHIPMENT3 = {"title": "Маршрутное задание строка 3", "control_type": "DataItem"}
+
+    PLAN_ARRIVAL_DATA1 = {"title": "План. прибытия строка 1", "control_type": "DataItem"}
+    PLAN_ARRIVAL_DATA2 = {"title": "План. прибытия строка 2", "control_type": "DataItem"}
+    PLAN_ARRIVAL_DATA3 = {"title": "План. прибытия строка 3", "control_type": "DataItem"}
+
+    FACT_ARRIVAL_DATA1 = {"title": "План. прибытия строка 1", "control_type": "DataItem"}
+    FACT_ARRIVAL_DATA2 = {"title": "План. прибытия строка 2", "control_type": "DataItem"}
+    FACT_ARRIVAL_DATA3 = {"title": "План. прибытия строка 3", "control_type": "DataItem"}
+
 
     # Экспедирование вкладка в заказе
     FORWARDING_TYPE_TEXT = {'auto_id': "lbType", 'control_type': "Text"}
@@ -376,13 +428,16 @@ class LocOrders:
     EXPEDITION_TABLE2 = {'title': "Экспедирование строка 2", 'control_type': "DataItem"}
     CAR_TABLE1 = {'title': "Автомобиль строка 1", 'control_type': "DataItem"}
     CAR_TABLE2 = {'title': "Автомобиль строка 2", 'control_type': "DataItem"}
+    CAR_TABLE3 = {'title': "Автомобиль строка 2", 'control_type': "DataItem"}
     ADDRESS_TABLE1 = {'title': "Адрес строка 1", 'control_type': "DataItem"}
     ADDRESS_TABLE2 = {'title': "Адрес строка 2", 'control_type': "DataItem"}
+    ADDRESS_TABLE3 = {'title': "Адрес строка 3", 'control_type': "DataItem"}
 
     WEIGHT_NETTO_TABLE1 = {'title': "Вес нетто, кг строка 1", 'control_type': "DataItem"}
     WEIGHT_NETTO_TABLE2 = {'title': "Вес нетто, кг строка 2", 'control_type': "DataItem"}
     DRIVER_TABLE1 = {'title': "Водитель строка 1", 'control_type': "DataItem"}
     DRIVER_TABLE2 = {'title': "Водитель строка 2", 'control_type': "DataItem"}
+    DRIVER_TABLE3 = {'title': "Водитель строка 3", 'control_type': "DataItem"}
     DATE_CHANGED_TABLE1 = {'title': "Дата изменения строка 1", 'control_type': "DataItem"}
     DATE_CHANGED_TABLE2 = {'title': "Дата изменения строка 2", 'control_type': "DataItem"}
     DATE_CREATED_TABLE1 = {'title': "Дата создания строка 1", 'control_type': "DataItem"}
@@ -391,7 +446,7 @@ class LocOrders:
     MEASUREMENT_UNIT_TABLE2 = {'title': "Ед. измерения строка 2", 'control_type': "DataItem"}
     CHANGED_BY_TABLE1 = {'title': "Кем изменен строка 1", 'control_type': "DataItem"}
     CHANGED_BY_TABLE2 = {'title': "Кем изменен строка 2", 'control_type': "DataItem"}
-    CREATED_BY_TABLE1 = {'title': "Кем создан (ТЕ) строка 1", 'control_type': "DataItem"}
+    CREATED_TE_TABLE1 = {'title': "Кем создан (ТЕ) строка 1", 'control_type': "DataItem"}
     CREATED_BY_TABLE2 = {'title': "Кем создан (ТЕ) строка 2", 'control_type': "DataItem"}
     QUANTITY_TABLE1 = {'title': "Количество строка 1", 'control_type': "DataItem"}
     QUANTITY_TABLE2 = {'title': "Количество строка 2", 'control_type': "DataItem"}

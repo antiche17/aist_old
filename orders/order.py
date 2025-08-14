@@ -36,7 +36,7 @@ class WinAISTApp:
 
         # 5. Заполнение формы заказа
         self.fun.click_element_sp(main_window, self.fun.loc.ORDER_TYPE_COMBO)
-        self.fun.click_element_sp(main_window, self.fun.loc.LOGISTICS_ITEM)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_TE1)
         self.fun.click_element_sp(main_window, self.fun.loc.CUSTOMER_COMBO)
         self.fun.click_element_sp(main_window, self.fun.loc.CUSTOMER_ITEM)
         time.sleep(1)

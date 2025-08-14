@@ -74,6 +74,10 @@ class Function:
         """Получение главного окна"""
         return self.app.window(**self.loc.PRODUCT_FORM)
 
+    def get_auto_shipment_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.AUTO_SHIPMENT_FORM)
+
     def click_element(self, window, locator, timeout=1.5):
         """Клик по элементу с ожиданием"""
         element = window.child_window(**locator)
