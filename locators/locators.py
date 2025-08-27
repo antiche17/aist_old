@@ -1,6 +1,6 @@
 class LocOrders:
     # Основные окна
-    STARTUP_WINDOW = {'title': 'WinAIST Starting...'}
+    STARTUP_WINDOW = {'title': 'AIST ver. 4.0.2.306 Default database         автотест', 'control_type': "Window",}
     STARTUP_WINDOW1 = {'title': 'Запуск АИСТ', 'control_type': "Window", 'auto_id': 'frmStartUp', 'found_index': 0}
     MAIN_WINDOW = {'auto_id': 'frmMain'}
     ORDER_FORM = {'auto_id': 'OrderForm'}
@@ -110,7 +110,7 @@ class LocOrders:
     DEL_BUTTON = {'title': "Удалить", 'control_type': "Button", 'found_index': 0}
     YES_BUTTON = {'title': "Да", 'control_type': "Button"}
     REFRESH_BUTTON_ORDER = {'title': "Обновить", 'control_type': "Button", 'found_index': 0}
-    COMPLETION_DATE = {'control_type': "Text", 'auto_id': "lblCompletedOn"}
+    COMPLETION_DATE = {'title': "...",'control_type': "Text", 'auto_id': "lblCompletedOn"}
 
     # Меню заказа
     OTHER_ACTIONS = {'title': "Другие действия", 'control_type': "MenuItem", 'found_index': 0}
@@ -204,7 +204,6 @@ class LocOrders:
     AUTO_CMR = {'title': "Номер CMR:", 'control_type': "Edit", 'auto_id': "teCMR"}
     AUTO_CMR_POR = {'title': "Номер CMR порожн.:", 'control_type': "Edit", 'auto_id': "teCMRporozhn"}
     CONTAINER_DELIVERY = {'title': "Сдача контейнера", 'control_type': "ListItem"}
-    CONTAINER_DELIVERY = {'title': "Сдача контейнера", 'control_type': "ListItem"}
     TERMINAL_CHANGE = {'title': "Терминал сдачи:", 'control_type': "ComboBox"}
 
     # Морская перевозка таблица в заказе
@@ -247,11 +246,13 @@ class LocOrders:
     FACT_LOAD3 = {'title': "Факт. отгрузки строка 3", 'control_type': "DataItem"}
     FACT_LOAD4 = {'title': "Факт. отгрузки строка 4", 'control_type': "DataItem"}
 
+    PLAN_ARRIVAL1 = {'title': "План. прибытия строка 1", 'control_type': "DataItem"}
     PLAN_ARRIVAL2 = {'title': "План. прибытия строка 2", 'control_type': "DataItem"}
     PLAN_ARRIVAL3 = {'title': "План. прибытия строка 3", 'control_type': "DataItem"}
     PLAN_ARRIVAL4 = {'title': "План. прибытия строка 4", 'control_type': "DataItem"}
     PLAN_ARRIVAL5 = {'title': "План. прибытия строка 5", 'control_type': "DataItem"}
 
+    FACT_ARRIVAL1 = {'title': "Факт. прибытия строка 1", 'control_type': "DataItem"}
     FACT_ARRIVAL2 = {'title': "Факт. прибытия строка 2", 'control_type': "DataItem"}
     FACT_ARRIVAL3 = {'title': "Факт. прибытия строка 3", 'control_type': "DataItem"}
     FACT_ARRIVAL4 = {'title': "Факт. прибытия строка 4", 'control_type': "DataItem"}
@@ -268,18 +269,15 @@ class LocOrders:
     AUTO_TABLE = {'title': "Сдача контейнера", 'control_type': "ListItem"}
     AUTO_ADDRESS = {'title': "Адрес:", 'control_type': "ComboBox", 'auto_id': "sleTerminal"}
     AUTO_DRIVER = {'title': "Водитель:", 'control_type': "ComboBox", 'auto_id': "driversEdit1"}
-    PREFORWARDING_TERMINAL1 = {'title': "Адрес:", 'control_type': "ComboBox", 'auto_id': "sleTerminal"}
 
-    ORDER_TABLE1 = {"title": "Заказ строка 1", "control_type": "DataItem"}
-    STATUS_TABLE1 = {"title": "Статус строка 1", "control_type": "DataItem"}
-    PRIORITY_TABLE1 = {"title": "Приоритет строка 1", "control_type": "DataItem"}
-    RESPONSIBLE_TABLE1 = {"title": "Ответственный строка 1", "control_type": "DataItem"}
+    STATUS_TABLE1 = {"title": "Статус строка 1", "control_type": "DataItem", 'found_index': 0}
+    PRIORITY_TABLE1 = {"title": "Приоритет строка 1", "control_type": "DataItem", 'found_index': 0}
+    RESPONSIBLE_TABLE1 = {"title": "Ответственный строка 1", "control_type": "DataItem", 'found_index': 0}
     CARRIER_TABLE1 = {"title": "Перевозчик строка 1", "control_type": "DataItem"}
     CARGO_CLASS_TABLE1 = {"title": "Класс груза строка 1", "control_type": "DataItem"}
     LOADING_METHOD_TABLE1 = {"title": "Способ загрузки строка 1", "control_type": "DataItem"}
     CMR_NUMBER_TABLE1 = {"title": "Номер CMR строка 1", "control_type": "DataItem"}
-    NOTE_TABLE1 = {"title": "Примечание строка 1", "control_type": "DataItem"}
-    CREATED_BY_TABLE1 = {"title": "Кем создан строка 1", "control_type": "DataItem"}
+    CREATED_BY_TABLE1 = {"title": "Кем создан строка 1", "control_type": "DataItem", 'found_index': 0}
     CREATION_DATE_TABLE1 = {"title": "Дата создания строка 1", "control_type": "DataItem"}
     MODIFICATION_DATE_TABLE1 = {"title": "Дата изменения строка 1", "control_type": "DataItem"}
     COMPLETION_DATE_TABLE1 = {"title": "Дата завершения строка 1", "control_type": "DataItem"}
@@ -316,6 +314,22 @@ class LocOrders:
     FORWARDING_NOMINATION = {'title': "Номинация эксп.:", 'control_type': "ComboBox"}
     FORWARDING_RECEIVING_DO = {'title': "Получение ДО/ДО1:", 'control_type': "ComboBox"}
     DATA_PANEL = {'title': "Панель данных", 'control_type': "Custom"}
+
+    # Экспедируемый груз
+    FORWARDING_FID_KONS1 = {'title': "Фид. коносамент строка 1", 'control_type': "DataItem"}
+    FORWARDING_PLAN_ARRIVAL1 = {'title': "План. приб. строка 1", 'control_type': "DataItem"}
+    FORWARDING_FACT_ARRIVAL1 = {'title': "Факт. приб. строка 1", 'control_type': "DataItem"}
+    FORWARDING_FID_LINE1 = {'title': "Фид. Линия строка 1", 'control_type': "DataItem"}
+    FORWARDING_PORT1 = {'title': "Порт строка 1", 'control_type': "DataItem"}
+    FORWARDING_TERMINAL1 = {'title': "Терминал строка 1", 'control_type': "DataItem"}
+    FORWARDING_TE1 = {'title': "ТЕ строка 1", 'control_type': "DataItem"}
+    FORWARDING_TE_TYPE1 = {'title': "Тип ТЕ строка 1", 'control_type': "DataItem"}
+    FORWARDING_TE_NUMBER1 = {'title': "Номер ТЕ строка 1", 'control_type': "DataItem"}
+    FORWARDING_RELEASE1 = {'title': "Релиз строка 1", 'control_type': "DataItem"}
+    FORWARDING_DOC1 = {'title': "Документы строка 1", 'control_type': "DataItem"}
+    FORWARDING_NOMINATION1 = {'title': "Номинация строка 1", 'control_type': "DataItem"}
+    FORWARDING_DO_DO1 = {'title': "ДО/ДО1 строка 1", 'control_type': "DataItem"}
+    FORWARDING_NOTE1 = {'title': "Примечание строка 1", 'control_type': "DataItem"}
 
     # Груз
     FREIGHT_TYPE_TEXT = {'auto_id': "lcCargoType", 'control_type': "Text"}
@@ -357,7 +371,7 @@ class LocOrders:
     FREIGHT_LINE_7 = {'title': "Строка 7", 'control_type': "ListItem"}
     FREIGHT = {'title': "Грузы", 'control_type': "ListItem"}
     FREIGHT_ORDER_TABLE = {'title': "Заказ фильтр строк", 'control_type': "DataItem"}
-    FREIGHT_ORDER_W = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit"}
+    FREIGHT_ORDER_W = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit", 'found_index': 0}
     FREIGHT_ORDER_CREATE = {'title': "Создать", 'control_type': "Button", 'auto_id': "CreateOrderButton"}
 
     # Таблица Грузы
@@ -447,7 +461,7 @@ class LocOrders:
     CHANGED_BY_TABLE1 = {'title': "Кем изменен строка 1", 'control_type': "DataItem"}
     CHANGED_BY_TABLE2 = {'title': "Кем изменен строка 2", 'control_type': "DataItem"}
     CREATED_TE_TABLE1 = {'title': "Кем создан (ТЕ) строка 1", 'control_type': "DataItem"}
-    CREATED_BY_TABLE2 = {'title': "Кем создан (ТЕ) строка 2", 'control_type': "DataItem"}
+    CREATED_TE_TABLE2 = {'title': "Кем создан (ТЕ) строка 2", 'control_type': "DataItem"}
     QUANTITY_TABLE1 = {'title': "Количество строка 1", 'control_type': "DataItem"}
     QUANTITY_TABLE2 = {'title': "Количество строка 2", 'control_type': "DataItem"}
     VERSION_TABLE1 = {'title': "Новая версия строка 1", 'control_type': "DataItem"}
@@ -530,6 +544,7 @@ class LocOrders:
     #Заголовки полей таблиц
     OTV_TABLE = {'title': "Ответственный (Экспедирование)", 'control_type': "Header", 'found_index': 0}
     SELECT_SPEAKERS = {'title': "Выбор колонок", 'control_type': "Button", 'found_index': 0}
+    ORDER_TABLE = {'title': "Заказ", 'control_type': "Header", 'found_index': 0}
 
     #Спрятанные колонки
     ADDRESS_TABLE = {'title': "Адрес", 'control_type': "ListItem"}
@@ -547,6 +562,23 @@ class LocOrders:
     OTV_AUTO_TABLE = {'title': "Ответственный (Автоперевозка)", 'control_type': "ListItem"}
     PLAN_TABLE = {'title': "План. дата доставки", 'control_type': "ListItem"}
     NOTE_TABLE = {'title': "Примечание (ТЕ)", 'control_type': "ListItem"}
+    QUANTITY_TE_TABLE = {'title': "Количество ТЕ", 'control_type': "ListItem"}
+    NUMBER_FORWARDING_TABLE = {'title': "Номер экспедирования", 'control_type': "ListItem"}
 
     # Экспедирование форма
     OTV_FORWARDING = {'title': "Ответственный:", 'control_type': "ComboBox", 'auto_id': "sleResponsible"}
+    CARGO_RECEIVED = {'title': "Получен груз", 'control_type': "ListItem"}
+
+    # Экспедирование таблица
+    FORWARDING = {'title': "Заявки на экспедирование", 'control_type': "ListItem", 'found_index': 0}
+
+    TYPE_TABLE1 = {'title': "Тип строка 1", 'control_type': "DataItem"}
+    EXPEDITOR_TABLE1 = {'title': "Экспедитор строка 1", 'control_type': "DataItem"}
+    TELEX_RELEASE_TABLE1 = {'title': "Телекс-релиз строка 1", 'control_type': "DataItem"}
+    RECEIVE_DOC_TABLE1 = {'title': "Получение докум. строка 1", 'control_type': "DataItem"}
+    NOTE_TABLE1 = {'title': "Примечание строка 1", 'control_type': "DataItem", 'found_index': 0}
+    CREATED_DATE_TABLE1 = {'title': "Дата создания строка 1", 'control_type': "DataItem", 'found_index': 0}
+    UPDATED_DATE_TABLE1 = {'title': "Дата изменения строка 1", 'control_type': "DataItem", 'found_index': 0}
+    FINISHED_DATE_TABLE1 = {'title': "Дата завершения строка 1", 'control_type': "DataItem", 'found_index': 0}
+    FORWARDING_NUMBER_HEADER = {'title': "Номер экспедирования строка 1", 'control_type': "DataItem", 'found_index': 0}
+    TE_COUNT_HEADER = {'title': "Количество ТЕ строка 1", 'control_type': "DataItem", 'found_index': 0}

@@ -21,7 +21,7 @@ def check_equal_dates(value1, value2, field_name):
 
 @allure.title("Проверка Таблицы Грузы")
 @pytest.mark.order(1)
-def test_value_del(order_app):
+def test_freight(order_app):
     with allure.step("2. Сравниваем созданного клиента"):
         check.equal(order_app["name_client"], order_app["name_client_order"], "❌ ФР: клиенты не одинаковые")
 

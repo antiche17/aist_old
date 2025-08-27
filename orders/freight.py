@@ -223,8 +223,6 @@ class WinAISTApp:
             'bul_quantity_form_mod': self.fun.get_element_property(main_window, self.loc.FREIGHT_QUANTITY_APPLY, "Value"),
             'bul_uom_form_mod': self.fun.get_element_property(main_window, self.loc.FREIGHT_CREATE_UOM_SAVE, "Value"),
             'bul_create_form': self.fun.get_element_property(main_window, self.loc.FREIGHT_CREATE_FORM, "Name"),
-
-
         })
 
         # 5 Закрыть bulkership

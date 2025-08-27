@@ -4,6 +4,7 @@ import time
 import subprocess
 import psutil
 from pywinauto.keyboard import send_keys
+from pywinauto.findwindows import ElementNotFoundError
 
 
 class Function:
@@ -15,13 +16,25 @@ class Function:
         self.child_pid = None
 
     def start_application(self):
-        self.process = subprocess.Popen(r'C:\AIST_AUTO_TESTS\Debug\WinAIST.exe')
-        time.sleep(5)
+        # Запускаем приложение
+        self.process = subprocess.Popen(r'C:\AIST\WinAIST.exe')
+        time.sleep(15)
 
-        self.app.connect(process=self.process.pid)  # ⬅️ напрямую
+        # Ищем реальный процесс WinAIST среди дочерних
+        parent = psutil.Process(self.process.pid)
+        for child in parent.children(recursive=True):
+            if 'winaist' in child.name().lower():
+                real_pid = child.pid
+                break
+        else:
+            raise Exception("Не найден реальный процесс WinAIST")
 
-        window = self.app.window(**self.loc.MAIN_WINDOW)
-        window.wait('visible', timeout=5)
+        # Подключаемся к реальному процессу
+        self.app.connect(process=real_pid)
+
+        # Находим главное окно
+        window = self.app.window(auto_id="frmMain")
+        window.wait('visible', timeout=30)
         window.set_focus()
 
         return window

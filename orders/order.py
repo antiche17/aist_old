@@ -36,7 +36,7 @@ class WinAISTApp:
 
         # 5. Заполнение формы заказа
         self.fun.click_element_sp(main_window, self.fun.loc.ORDER_TYPE_COMBO)
-        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_TE1)
+        self.fun.click_element_sp(main_window, self.fun.loc.LOGISTICS_ITEM)
         self.fun.click_element_sp(main_window, self.fun.loc.CUSTOMER_COMBO)
         self.fun.click_element_sp(main_window, self.fun.loc.CUSTOMER_ITEM)
         time.sleep(1)
@@ -881,7 +881,7 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.fun.loc.CUSTOMER_COMBO, timeout=1)
         self.fun.click_element(main_window, self.fun.loc.CUSTOMER_ITEM, timeout=1)
         self.fun.click_element(main_window, self.fun.loc.OK_BUTTON, timeout=1)
-        time.sleep(1)
+        time.sleep(2)
 
         # 5. Переключение на форму заказа
         main_window = self.fun.get_main_form()
@@ -946,7 +946,7 @@ class WinAISTApp:
         # 13. Открыть Экспедирование
         self.fun.click_element_double(main_window, self.fun.loc.LINE_TRANSPORTATION, timeout=1)
 
-        # 14. Переключится на форму морской перевозки
+        # 14. Переключится на форму Экспедирование
         main_window = self.fun.get_forwarding_form()
         main_window.set_focus()
         time.sleep(1)
