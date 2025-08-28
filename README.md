@@ -19,8 +19,8 @@
     - [x] ГТД
     - [x] Счета(ИС, ВС, ИП, ВП)
   - [x] Удаление
-    - [x] С одним (те, перевозкой, экспедированием, ГТД, счетом, файл)
-    - [x] Множественное (от 4), в одном заказе (те, перевозкой, экспедированием, ГТД, счетом, файл)
+    - [x] С одним (те, перевозкой, экспедированием, ГТД, счетом, файл, услуга)
+    - [x] Множественное (от 4), в одном заказе (те, перевозкой, экспедированием, ГТД, счетом, файл, услуга)
     - [x] Удаление одиночное(без сущностей)
     - [x] Удаление множественное(без сущностей)
 - [ ] Перевозки
@@ -68,11 +68,10 @@
 Запуск тестов по отдельным командам:
   - Заказ:
     - Создание и редактирование с типом "Логистика" и "Другие услуги" - `pytest tests_orders/test_order.py --alluredir=./allure-results`
-    - Удаление заказа и удаление двух заказов без сущностей - `pytest tests_orders/test_1order_del.py --alluredir=./allure-results`
     - Создание и удаление "Экспедирование" - `pytest tests_orders/test_order_forwarding.py --alluredir=./allure-results`
     - Создание и удаление "ГТД" - `pytest tests_orders/test_order_gtd.py --alluredir=./allure-results`
     - Создание и удаление счетов "ИС, ИП, ВП, ВС" - `pytest tests_orders/test_order_finance.py --alluredir=./allure-results`
-    - Удаление заказ с сущностями - `pytest tests_orders/test_order_del2.py --alluredir=./allure-results`
+    - Удаление заказ с сущностями - `pytest tests_orders/test_order_del.py --alluredir=./allure-results`
     - Создание и удаление "Перевозки" - `pytest tests_orders/test_order_transportation.py --alluredir=./allure-results`
     - Создание и удаление "Bulkership" - `pytest tests_orders/test_order_freight_bulkership.py --alluredir=./allure-results`
     - Создание и удаление "Container" - `pytest tests_orders/test_order_freight_container.py --alluredir=./allure-results`
@@ -80,7 +79,7 @@
     - Создание данных и проверка отображения в таблице Грузы, редактирование данных в таблице. `pytest tests_freight/test_freight.py --alluredir=./allure-results` 
   - Автоперевозка:
     - Создание данных и проверка отображения в таблице Автоперевозка.`pytest tests_transportation/test_transportation.py --alluredir=./allure-results`
-  - Экспелирование:
+  - Экспедирование:
     - Создание данных и проверка отображения в таблице Экспелирование, редактирование данных в таблице. `pytest test_forwarding/test_forwarding.py --alluredir=./allure-results` 
   - Запуск отчета - `allure serve allure-results --lang ru`
   - Удаление истории - `allure generate allure-results --clean`

@@ -259,64 +259,7 @@ class WinAISTApp:
 
         return self.fun.order_data
 
-    def create_order_del(self):
-        # 1. Запуск приложения
-        self.fun.start_application()
-        # startup_window.set_focus()
 
-        # 2. Нажатие кнопки Запуск
-        # self.fun.fun.click_element(startup_window, self.fun.loc.AIST_EF, timeout=1)
-        # self.fun.fun.click_element(startup_window, self.fun.loc.START_BUTTON, timeout=1)
-        time.sleep(2)
-
-        # 3. Переход в раздел Заказы
-        main_window = self.fun.get_main_window()
-        main_window.set_focus()
-        time.sleep(4)
-
-        self.fun.click_element_sp(main_window, self.fun.loc.ORDERS_TAB)
-        time.sleep(5)
-
-        # 4. Берем номер 1 заказа с таблицей
-        self.fun.order_data = {
-            'delete_order': self.fun.get_element_property(main_window, self.fun.loc.TABLE_ORDER_NUMBER, "Value")
-        }
-
-        # 5. Удаление 1 заказа
-        self.fun.click_element(main_window, self.fun.loc.TABLE_ORDER_NUMBER, timeout=5)
-        time.sleep(1)
-        self.fun.click_element(main_window, self.fun.loc.TABLE_DELETE, timeout=1)
-        #self.fun.click_element(main_window, self.fun.loc.TABLE_DELETE_WINDOW, timeout=1) подтверждение удаления заказа не работает
-
-        # 6. Обновить таблицу
-        self.fun.click_element(main_window, self.fun.loc.REFRESH_BUTTON, timeout=2)
-
-        # 7. Cравнение изменений
-        self.fun.order_data.update({
-            'table_order': self.fun.get_element_property(main_window, self.fun.loc.TABLE_ORDER_NUMBER, "Value")
-        })
-
-        # Берем номер 2 заказа с таблицей
-        self.fun.order_data.update({
-            'table_order_del1': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_ORDER_NUMBER, "Value"),
-            'table_order_del2': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_ORDER_NUMBER2, "Value")
-        })
-
-        # Выбор 2х заказов и удаление их
-        self.fun.select_two_elements_with_ctrl(main_window,self.fun.loc.RECIPIENT_1, self.fun.loc.RECIPIENT_2)
-        self.fun.click_element_sp(main_window, self.fun.loc.TABLE_DELETE)
-        #self.fun.click_element(main_window, self.fun.loc.TABLE_DELETE_WINDOW, timeout=1) подтверждение удаления заказа не работает
-
-        # Обновить таблицу
-        self.fun.click_element_sp(main_window, self.fun.loc.REFRESH_BUTTON)
-
-        # Cравнение изменений
-        self.fun.order_data.update({
-            'table_order_1': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_ORDER_NUMBER, "Value"),
-            'table_order_2': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_ORDER_NUMBER2, "Value")
-        })
-
-        return self.fun.order_data
 
     def transportation(self):
         # 1. Запуск приложения

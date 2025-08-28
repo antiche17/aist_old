@@ -4,14 +4,172 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="Проверка таблицы Автоперевозка, создание заказа из таблицы, создание всех маршрутов.">
+    <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="Проверки таблицы Экспедирование">
+      <change afterPath="$PROJECT_DIR$/tests_orders/test_order_del.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locators/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/0846da6e-f07d-436a-be92-43df7400e4e6-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/0b59e48b-8ae3-4ead-b920-9e403e225cf4-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/0cc43826-9204-4456-a86f-d6b7dc200c5c-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/154d0874-c2d2-4b94-ad94-18aa302faa56-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/170db123-0bda-4884-8db0-04c3a2af6f9c-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/304e594a-941b-470a-9d53-32372273d823-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/4526d83c-77bd-47bf-bfb1-e229ff682c56-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/45c4c6f4-3fdb-4be4-9f4b-e750520e138c-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/4ce3f2ae-4d68-4fa7-b0d5-1dfa3b02cd88-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/51b6815e-e0e3-49f7-8028-835ae30b6454-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/619db38c-ac6e-4458-83ba-51bcf384ed94-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/68050147-be15-4a33-91c1-9ee12756fcf2-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/6cd15775-2a85-4aed-8330-1f8d8861f6fd-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/7d7a5575-597c-4d2a-a104-56f98a325ad4-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/864315f7-8d89-4b50-814c-7a27540a9b72-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/87f6e8d9-0dba-4481-b27b-6ab023fd9cf7-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/8b30c871-32d3-4ef8-bab0-891a52c77a44-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/94ad648d-5bd3-4124-b757-8a3f261893c5-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/9dadbf4f-6be2-4208-b9bc-921d26816755-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/9e5fad75-2b57-4f34-b44d-a340bb873699-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/a6b80c4d-b6db-4a73-bdcb-194fb3250a4c-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/b73f1f1c-1608-4f7b-bb11-d1221ccd27a0-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/b8b200f2-7560-4dfd-8aff-2c55a53a909e-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/c277afe5-5a92-49d6-bcea-3da569395cb6-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/cecb0e5b-023a-4ca3-bac1-df261e296e0e-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/dc8d8bad-1452-4694-8046-a72f3f42dc46-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/ddf2c8cd-eecc-4195-9d98-d3b910aa36a0-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allure-results/f9e678a6-a424-4ed8-b200-a5b2ae0570b9-container.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/locators/locators.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/locators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/freight.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/freight.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orders/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_freight/test_freight.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_freight/test_freight.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/order_del2.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/order_del2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/029d5553-f6bc-48da-8736-5a4a700572be-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/02db1805-bc62-4996-96e1-167bd3c1d735-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/0352869e-4274-4485-a5df-6af1fcb3f72b-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/043d4478-2d66-433a-8b03-2f65d99f704b-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/05d2dcaf-16ff-4081-ba66-bec3dbd1d3cd-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/0b1cea63-a7cf-480e-b99d-6235497b7543-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/0b31cbb3-9468-4df5-b27c-47a34fd0152d-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/0b97ad5f-3c6a-4595-a956-d5ad10283039-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/0c093407-f5df-4a09-895c-39f1e03fb4d6-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/121c6987-ad97-4523-ad98-4c3fe8dfb1fc-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/134b13f1-5af7-4334-bd6d-137f14ae21e3-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/13edaa89-1d3b-4a68-9274-af04a765d212-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/1630c468-3f41-4cc6-afd5-e01977d7e7f7-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/1690050d-e0c6-49a2-8e0b-c7e9ece2e803-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/1ad8b6bc-b9d8-4e13-9e9b-d83f43783986-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/1bcf58e1-cee1-4425-887c-b8a193367885-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/1ebc9c4d-6d09-41fd-815d-1670adf85dd4-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/2072e134-0b4d-423c-aa6e-2115b4280345-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/20cbc0ae-4368-4cf0-b7fc-27977f195d75-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/24aac221-21e9-4608-a15d-baa4ab586d38-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/24b64b7a-11e2-44e9-a9d4-6f3f0d2bec4d-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/2bf5125a-00c6-4e5a-a15f-bc525b3a6236-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/2d39e88c-cab6-470f-bc79-bcd82f40085d-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/2ea2fc67-933c-467f-851b-2e29c1edd1c0-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/2f9285a3-b7cd-45ab-9d61-a5f926abcf25-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/31680e3c-2e79-4b42-9044-c544bb8b9115-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/319a8aa8-645c-4e3e-9aa9-136b879374ac-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/324f0679-f041-4cd7-a957-f7f013a7aedf-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/34883978-04ea-4080-ad3c-3ef1de490383-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/35083319-33bc-44fb-ae93-610d061ef6d5-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/363fc613-400d-4a65-8519-ebcc4a023341-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/3b23a9cf-d055-4f94-9123-a4ad782c84b0-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/3b3c88bd-80aa-4e45-bde9-79164982fbc7-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/3eabd74f-5073-45f4-943a-8b1c5246e8bc-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/3f81c0f1-6434-45e5-80f8-dc0a070be4c3-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/4470517f-355e-44fc-a351-04f3333bdc7b-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/486ba97c-3307-4d8f-bdb5-e0ed7194d500-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/4958de21-7eb8-4f9f-b71c-4a2b17806ef0-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/4a65f8d6-a228-49e7-bcb7-8c286def1544-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/4dcc993e-6258-4b3a-929e-e69ed07cc3dc-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/4ef32deb-464a-4d72-aa7b-a6d227e3bff3-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/51aec267-6716-468f-b58b-bf9ffefaf69c-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/5214b2e6-12db-49cf-83ae-f31c8c465dc4-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/5320c9ad-9ef4-4178-9f2d-c89c372e9e7b-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/53b6078e-6976-4205-beec-86d7e0fafd49-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/57ed9ceb-de85-48eb-ba01-bab4ce955100-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/5cd7f3ad-11b5-4a42-b0d2-eaec7ed9848c-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/5f63f4f6-e1a8-4456-b3fc-d1098845b48f-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/60741c44-ac57-4bb5-8e68-d30022b0c6f1-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/63d4c3d0-37fb-495b-8457-d4f04c9df68c-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/64080ce2-2177-41ef-99b0-554c1e80d68b-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/67420f22-5653-4f1e-b7b2-1a90f07f9ef1-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/676271bc-dd7e-4cea-9a0d-067d7f7489fe-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/67c0060b-6c7a-418d-b4db-0f9d992b0e98-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/68b9c602-4ccb-4ed3-8bfd-18407307a365-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/6aa346fb-2c45-41d4-bb44-b1140db9c5ff-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/6ae77ac4-96ba-471f-a110-3bd726fb9ae5-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/6bbaa7ed-51ba-4565-beeb-721ee08779ee-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/6ecc455b-7891-4b96-a6c8-9a388a632526-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/71fde379-a245-41e8-a669-fa87f40e57c7-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/73148119-d8de-4b1d-8d89-dcdd4393b6e7-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/74e2e2f8-86d3-4fba-ba2c-40a24a41775e-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/786bcaaf-47d4-44aa-80c3-0cbad040756e-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/7c892f34-27d6-4744-9690-963727ab66af-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/7cd5ffae-17fe-4699-93e1-e4f5745e9f05-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/7fa48ddf-3dc5-4d00-b988-5ca767c182a1-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/80488540-f1a4-40cb-9341-17bbd32065b3-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/81b51bec-27b1-42a4-95cd-77457f9a4fc9-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/83de6692-669f-4739-ab7e-4fea878d7714-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/858faf0d-16b3-43b3-bf98-f57c2df62c57-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/85c053b6-3d5a-4634-b1c4-15393dba2d2d-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/862c2fba-2b44-4519-b4eb-4ee113e257bd-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/87d15e85-c258-4134-8d1f-c5622f99efcb-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/88a2580a-51f4-4f25-b53d-36bbfcce62d3-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/8d55be07-c9fe-4578-9fb3-370e0cbd3e5a-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/8d651366-478c-4f97-8433-2f640c1b0ea2-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/90eea4d4-c283-4f92-87f8-47ae313e1d78-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/91aae476-39b6-46af-8ead-f59b04c95f5d-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/91e75e63-0108-4a25-9b12-5691451e7dc2-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/93dffd75-b4f5-46b6-b3e0-eb25e45fb7d1-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/96672371-c9a6-43a9-84ba-5528779d6691-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/98b8886d-56da-45d8-a4f3-bc3c0745959a-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/9f6b1a25-a24c-4a2d-bc02-99555842223a-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/a14d5d35-9b42-4e92-b715-f6d98d019b1e-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/a18c8a0a-8d72-48eb-abd5-994014c63a2b-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/a2419618-3b87-4d82-bb99-316763f88c1a-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/a5a4b62a-44aa-445b-bcbe-ade6fe65a4bb-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/a78da83c-6636-44d8-8483-11f2f2b0b3ec-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/aa5ffc77-4d34-46e4-838d-0d8586a75565-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/ac220469-677f-4774-b2db-0ce1f8e87c40-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/ae21746f-33d6-42f4-8139-ecbc563c0886-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/ae6a415a-82f6-41bc-9535-86f34577ca24-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/b00a4139-9df4-46e8-814a-013c3274a8f3-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/b27a8c3a-594d-4d91-a0b6-c24268e1bab9-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/b2eb65b0-9c8c-435f-a06d-18e0f013c215-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/b87bbb65-1aaf-4d7e-ab5a-6544e267a0bf-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/bbeac9f2-9c77-4699-9a78-92e9e2d78958-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/bc35acac-89ae-4452-990b-f92aff884fd4-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/be128076-6d97-4165-87a1-4cd8e685d3f3-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/be298cd2-c534-44d8-bb15-184285a2ad5e-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/be89219f-5b8e-407e-972e-86ce6a992dfe-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/c0b6700a-d6e3-432c-9291-ecc129bbf87a-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/c0d03a45-305b-40d3-ba27-0387dd33ffd7-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/c773c5cc-cb27-4f2d-90f7-9f756c2eed83-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/c825b191-14a5-4b55-9ed3-2ba346a3540c-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/ca501d8c-dd25-40dc-8009-ef91f7cd20c8-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/ce56d756-b4d5-4b82-8bdb-76310ac46f2f-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/d07d095d-c36b-477f-a40c-575f0914e744-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/d0ef486d-7220-47c9-9854-193bf22f9e2c-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/d1178aee-594b-44da-9006-3f2767f2347a-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/d1a6cac5-6ae5-4d8d-b995-272e7f06d1e4-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/d4caa252-b7b9-4fb7-9d35-36770f65c0fa-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/d74cef65-a04a-4f3e-a0c3-c51a1e17c561-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/db53e8a9-1d8b-412f-b21b-008b6c26aa50-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/dec73aaf-52f2-4280-aa0c-0562ae47b5e4-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/e0d6c7b4-3867-46ea-9bc3-c53f0cfe8bea-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/e48b74dd-ea1a-4c12-9529-eafb74755bd3-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/e4ae82f8-9085-4cad-b43c-93dda5734468-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/e5e9a7e5-0c3a-468e-a6ba-8e96cfcdf703-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/e6eaba24-ac7e-433f-8234-eedd36bffb8c-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/e9d0b381-5d08-467f-8bb7-543bf9e3c235-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/ea1ceaf6-20cd-48ab-accb-a30c0d3bdecb-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/eaf8da73-8189-46ef-8294-d77cbca8c46c-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/eb8960e6-ed69-4d73-9aae-7cad583ce1d5-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/ee34b0a8-c827-4869-a6ef-0789cf301860-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/ee71948c-8ca4-4352-bf6b-204e1047cfdb-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/fa28e160-0076-4213-b1d9-4199384ce62c-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/faea939b-b8fc-479f-acf6-8cd7d2b504fd-attachment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/fbc47061-cf46-4af2-9a60-cd12365d5f9f-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_1order_del.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_del2.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,46 +210,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests for test_2order_dr.test_create_other_services_order.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_freight.test_value_del.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order.test_value_order.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order.test_value_order.test_create_other_services_order.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order_finance.test_value_order.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order_finance_ip.test_value_order.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order_freight.test_bulkership_freight.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order_freight_bulkership.test_bulkership_freight.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order_freight_container.test_container_freight.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_transportation.test_value_del.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_1order_del.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_forwarding.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_del2.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_finance_ip.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_finance_is.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_forwarding.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_freight_Bulkership.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_freight_bulkership.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_freight_container.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in tests_transportation.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_freight.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.order.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests for test_2order_dr.test_create_other_services_order.executor": "Run",
+    "Python tests.Python tests for test_freight.test_value_del.executor": "Run",
+    "Python tests.Python tests for test_order.test_value_order.executor": "Run",
+    "Python tests.Python tests for test_order.test_value_order.test_create_other_services_order.executor": "Run",
+    "Python tests.Python tests for test_order_finance.test_value_order.executor": "Run",
+    "Python tests.Python tests for test_order_finance_ip.test_value_order.executor": "Run",
+    "Python tests.Python tests for test_order_freight.test_bulkership_freight.executor": "Run",
+    "Python tests.Python tests for test_order_freight_bulkership.test_bulkership_freight.executor": "Run",
+    "Python tests.Python tests for test_order_freight_container.test_container_freight.executor": "Run",
+    "Python tests.Python tests for test_transportation.test_value_del.executor": "Run",
+    "Python tests.Python tests in test_1order_del.py.executor": "Run",
+    "Python tests.Python tests in test_forwarding.py.executor": "Run",
+    "Python tests.Python tests in test_order.py.executor": "Run",
+    "Python tests.Python tests in test_order_del.py.executor": "Run",
+    "Python tests.Python tests in test_order_del2.py.executor": "Run",
+    "Python tests.Python tests in test_order_finance_ip.py.executor": "Run",
+    "Python tests.Python tests in test_order_finance_is.py.executor": "Run",
+    "Python tests.Python tests in test_order_forwarding.py.executor": "Run",
+    "Python tests.Python tests in test_order_freight_Bulkership.py.executor": "Run",
+    "Python tests.Python tests in test_order_freight_bulkership.py.executor": "Run",
+    "Python tests.Python tests in test_order_freight_container.py.executor": "Run",
+    "Python tests.Python tests in tests_transportation.py.executor": "Run",
+    "Python tests.pytest in test_freight.py.executor": "Run",
+    "Python.1.executor": "Run",
+    "Python.order.executor": "Run",
+    "Python.order_del2.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "editor.preferences.completion"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\qa\tests_finance" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests in test_forwarding.py">
+  <component name="RunManager" selected="Python tests.Python tests in test_order_del.py">
     <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="1" />
       <option name="ENV_FILES" value="" />
@@ -106,6 +266,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="order_del2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/orders" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/orders/order_del2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -129,36 +311,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_order.test_value_order" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests_orders" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_order.test_value_order&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_transportation.test_value_del" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests_transportation" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_transportation.test_value_del&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Python tests in test_forwarding.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="1" />
       <option name="ENV_FILES" value="" />
@@ -174,13 +326,28 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests in test_order_del.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests_orders" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests_orders/test_order_del.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests in test_order_del.py" />
+        <item itemvalue="Python.order_del2" />
         <item itemvalue="Python tests.Python tests in test_forwarding.py" />
         <item itemvalue="Python tests.Python tests for test_freight.test_value_del" />
         <item itemvalue="Python.1" />
-        <item itemvalue="Python tests.Python tests for test_order.test_value_order" />
-        <item itemvalue="Python tests.Python tests for test_transportation.test_value_del" />
       </list>
     </recent_temporary>
   </component>
@@ -242,7 +409,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755176164454</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Проверки таблицы Экспедирование">
+      <option name="closed" value="true" />
+      <created>1756301000997</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1756301000997</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -251,7 +426,8 @@
     <MESSAGE value="Редактирование в таблице Грузы, проверка выставленных данных." />
     <MESSAGE value="Рефакторинг кода, обединение проверок: Счетов, Создание Заказов" />
     <MESSAGE value="Проверка таблицы Автоперевозка, создание заказа из таблицы, создание всех маршрутов." />
-    <option name="LAST_COMMIT_MESSAGE" value="Проверка таблицы Автоперевозка, создание заказа из таблицы, создание всех маршрутов." />
+    <MESSAGE value="Проверки таблицы Экспедирование" />
+    <option name="LAST_COMMIT_MESSAGE" value="Проверки таблицы Экспедирование" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

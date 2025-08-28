@@ -18,6 +18,7 @@ class LocOrders:
     CHECK_FROM_VP = {'auto_id': 'frmInboxPayment', 'control_type': "Window"}
     PRODUCT_FORM = {'auto_id': 'ProductForm', 'control_type': "Window"}
     AUTO_SHIPMENT_FORM = {'auto_id': 'RouteCarCarriageForm', 'control_type': "Window"}
+
     # Базы Аиста
     STAGE_EF = {'title': "(serv02)AIST_STAGE_EF", 'control_type': "ListItem"}
     AIST_EF = {'title': "(serv01)AIST_EF", 'control_type': "ListItem"}
@@ -25,7 +26,8 @@ class LocOrders:
     # Кнопки и элементы управления
     START_BUTTON = {'auto_id': 'btnStart', 'title': 'Запуск', 'control_type': 'Button'}
     ORDERS_TAB = {'title': "Заказы", 'control_type': "ListItem"}
-    ADD_BUTTON = {'title': "Добавить", 'control_type': "Button"}
+    ADD_BUTTON = {'title': "Добавить", 'control_type': "Button", 'found_index': 0}
+    ADD_BUTTON1 = {'title': "Добавить", 'control_type': "Button",  'auto_id': "7013798"}
     CREATE_BUTTON = {'title': "Создать", 'control_type': "Button", 'found_index': 0}
     OPEN_BUTTON = {'title': "Открыть", 'control_type': "Button", 'found_index': 0}
     OPEN_BUTTON1 = {'title': "Открыть", 'control_type': "Button", 'found_index': 1}
@@ -55,7 +57,7 @@ class LocOrders:
     TABLE_DATE = {'title': "Дата создания строка 1", 'control_type': "DataItem"}
 
     # Форма создания заказа
-    ORDER_TYPE_COMBO = {'title': "Тип заказа:", 'control_type': "ComboBox", 'auto_id': "orderTypeEdit", }
+    ORDER_TYPE_COMBO = {'title': "Тип заказа:", 'control_type': "ComboBox", 'auto_id': "orderTypeEdit"}
     LOGISTICS_ITEM = {'title': "Логистика", 'control_type': "ListItem"}
     LOGISTICS_ITEM_DR = {'title': "Другие услуги", 'control_type': "ListItem"}
     CUSTOMER_COMBO = {'title': "Клиент:", 'control_type': "ComboBox", 'auto_id': "customerEdit", 'found_index': 0}
@@ -582,3 +584,11 @@ class LocOrders:
     FINISHED_DATE_TABLE1 = {'title': "Дата завершения строка 1", 'control_type': "DataItem", 'found_index': 0}
     FORWARDING_NUMBER_HEADER = {'title': "Номер экспедирования строка 1", 'control_type': "DataItem", 'found_index': 0}
     TE_COUNT_HEADER = {'title': "Количество ТЕ строка 1", 'control_type': "DataItem", 'found_index': 0}
+
+    # Добавление Файла
+    ADD_FILE = {'title': "Выбрать файлы", 'control_type': "Button", 'auto_id': "btnAdd"}
+    TEST_FILE = {'title': "test.xls", 'control_type': "ListItem"}
+    FILE_1 = {'title': "Файл строка 1", 'control_type': "DataItem", 'found_index': 0}
+
+    # Услуги
+    SERVICES_ADD = {'title': "Услуга:", 'control_type': "ComboBox", 'auto_id': "serviceTypeEdit1"}
