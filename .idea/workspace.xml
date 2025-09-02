@@ -5,129 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="fix">
-      <change afterPath="$PROJECT_DIR$/allure-report/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/data/behaviors.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/data/behaviors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/data/categories.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/data/categories.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/data/packages.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/data/suites.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/data/suites.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/data/timeline.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/export/influxDbData.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/export/mail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/export/prometheusData.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/history/categories-trend.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/history/duration-trend.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/history/history-trend.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/history/history.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/history/retry-trend.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/plugin/behaviors/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/plugin/packages/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/plugin/screen-diff/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/plugin/screen-diff/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/behaviors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/categories-trend.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/categories.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/duration-trend.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/duration.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/environment.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/executors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/history-trend.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/launch.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/retry-trend.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/severity.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/status-chart.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/suites.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/allure-report/widgets/summary.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/finance.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/forwarding.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orders/transport.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_finance/1test_finance_is.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_finance/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_forwarding/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_forwarding/test_forwarding.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/033152a9-9ba6-44c1-b06b-b71a8100af8f-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/0625af65-2e77-4a28-8900-7deeeccd5dbb-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/0a5e35c8-e343-4478-9f86-d99d86ef774f-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/0d187c39-3d85-48ba-a3e0-90ff1dfa295e-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/11cc1d4a-f37c-4c6a-9930-f405df53648f-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/135ec4e9-8ae9-4d38-8cd5-7c3566c5a687-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/15640612-32f2-4669-bcc7-fada4b665f80-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/15a1e7c2-e9d1-42d4-9c45-82840553d415-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/169851db-f472-448d-ac92-209b4ba8136c-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/16b34226-306d-43a3-9412-7a1995890e61-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/16b777a7-dc12-4c60-b6f0-2679b4bf1a34-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/1845deb6-8324-4d2e-8939-e9b1b1996bf8-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/1970aca1-9950-4206-b57e-7812bbdaef07-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/1a76f839-ffc5-4bb8-8ff2-83074cc58a75-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/1bc78074-75d7-4506-8140-d6ee75fc5c50-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/1d3168df-de06-499b-ae45-579fa003d0a2-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/21529406-f86f-49ad-af9a-7ca0b913d83e-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/22d48d8e-353c-41c2-a640-a146cb7c1fe9-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/24422ea4-7f87-4a1b-9b83-632c59511a5a-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/32e5001c-5b36-4f6c-a87d-bdebd524cfb6-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/36da2efa-83dd-408c-91ee-d4fb4aba824b-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/3890aa29-b845-4ab2-a131-10be02447f3d-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/46d3d548-5f4d-407f-a216-97c2f2813cd7-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/4d27af28-e020-4c99-92fe-dd565991c53d-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/4e058d3d-79ea-4c3c-a1e4-6d8ad6e41107-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/6267a80f-cdf5-488d-b708-99e81755c034-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/644efc6c-5ca6-4728-9afd-d997a15b7fb6-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/6663a019-f9e1-4e60-be93-1d8b1ef8df31-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/718ee065-93e7-44cd-8cbe-05955f0fae29-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/7860bfbb-334b-4be7-92c4-e20aeec25993-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/786fbd55-4a7f-4084-a9ff-7f6c4636b4fd-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/7a6f7e8b-f049-43b2-92a0-a70a5ed7c6ab-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/7b0a5f3c-05da-45c5-9f72-627745126637-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/7ce56b83-8aa7-4d65-9c92-356ffd0187fe-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/8622284f-bcd8-4069-a9ce-90f60862578b-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/865ce7ec-82df-4846-97fa-18b9465c8490-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/8a21fd1a-652f-451d-8431-a23d5b253482-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/8c5e1226-b7f3-480c-be27-4177536258cf-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/93f7c665-e1f2-4f7e-95fe-c4f34ff18b25-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/9870b5cb-0e42-486d-b137-427a153b525c-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/9f47d1bd-54e0-48df-82e2-0d008e4b996f-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/a039d693-37ed-4bfe-a006-678e02093c13-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/a12f421f-442f-4296-82a2-e40568980088-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/a1355d52-e774-47dd-9cfb-782fcdf2e01d-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/ad615511-de2d-4d5f-a50f-ffc134d51a8a-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/b2047901-d0d2-4cb7-baa3-6b82e4ae6ead-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/ba47a7d7-f5d8-494c-9fdb-1118930411bb-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/bc7ad93c-4e8d-4090-8c04-3a913b619656-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/bd09fba2-4667-410d-aa93-0fe3c5fc0464-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/c01c2042-6d66-47a2-8c81-9315497c1a6c-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/c117c266-d472-4c74-ab87-634dbaba9970-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/c39f781c-cb10-4d5d-add7-181daf248009-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/c572d54b-673e-4991-8b84-9381c13f8fb1-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/c9123812-03a1-4e7c-a0d2-252042d918b9-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/caaa1d2b-47fe-4b1d-b993-82209ac27e88-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/cb3c6275-3385-4d05-a6b4-e82b4079c998-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/cc0e9b3d-e3f2-4910-b727-fe8cd8f5733e-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/d0a4f870-57fc-4a41-8746-ce0050510493-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/d544ca6f-9dc2-4250-8f7e-b108910f291c-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/dafefad1-e9e4-4bee-a51a-a3ed7215c076-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/db2de706-1082-4cdb-93c0-66faa24075c4-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/dbb6bda8-7b93-4d05-84ca-66f66da4e289-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/e14ebff6-0748-482a-820d-879588a7dfe8-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/e48a8ac0-1c4d-4f6b-9f3f-fb200e30d1de-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/e87269be-c81a-41df-bc3d-ae215a0ee7df-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/e876ba95-1efb-4c2f-97dc-27caf821990e-attachment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/e8da36da-2dc0-4372-8af8-bbb72608dd7d-container.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/f042b4fe-1821-44a4-82bb-09238f0964de-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests_orders/allure-results/ff0ffe04-c625-4cdc-a6c4-efbd4f740975-result.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locators/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/function.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locators/locators.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/locators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/order_del2.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/order_del.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_del.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_orders/test_order_del.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_transportation/test_transportation.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_transportation/test_transportation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transportation/transportation.py" beforeDir="false" afterPath="$PROJECT_DIR$/transportation/transportation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -379,7 +258,47 @@
       <option name="project" value="LOCAL" />
       <updated>1756391073326</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix">
+      <option name="closed" value="true" />
+      <created>1756822355040</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1756822355040</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fix">
+      <option name="closed" value="true" />
+      <created>1756822405315</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1756822405315</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix">
+      <option name="closed" value="true" />
+      <created>1756822473200</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1756822473200</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix">
+      <option name="closed" value="true" />
+      <created>1756822513132</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1756822513132</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fix">
+      <option name="closed" value="true" />
+      <created>1756822535682</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1756822535682</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
