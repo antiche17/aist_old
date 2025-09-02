@@ -521,7 +521,7 @@ class Transportation:
         self.click_element(main_window, self.loc.DEL_BUTTON, timeout=2)
         self.click_element(main_window, self.loc.YES_BUTTON, timeout=2)
         self.click_element(main_window, self.loc.REFRESH_BUTTON_ORDER, timeout=2)
-        '''
+
         return self.order_data
 
     def close(self):

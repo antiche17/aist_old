@@ -91,6 +91,12 @@ class Function:
         """Получение главного окна"""
         return self.app.window(**self.loc.AUTO_SHIPMENT_FORM)
 
+    def get_services_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.SERVICES_FORM)
+
+
+
     def click_element(self, window, locator, timeout=1.5):
         """Клик по элементу с ожиданием"""
         element = window.child_window(**locator)
@@ -201,3 +207,14 @@ class Function:
 
         # Для остальных — вернем текст окна
         return ctrl.window_text()
+
+    @staticmethod
+    def check_element_disappeared(window, locator, timeout=3):
+        """
+        Проверяет, что элемент исчез (не существует или невидим).
+        """
+        try:
+            element = window.child_window(**locator).wait('exists', timeout=timeout)
+            return False  # элемент всё ещё существует
+        except Exception:
+            return True  # элемент не найден → значит исчез

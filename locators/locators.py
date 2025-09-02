@@ -18,6 +18,7 @@ class LocOrders:
     CHECK_FROM_VP = {'auto_id': 'frmInboxPayment', 'control_type': "Window"}
     PRODUCT_FORM = {'auto_id': 'ProductForm', 'control_type': "Window"}
     AUTO_SHIPMENT_FORM = {'auto_id': 'RouteCarCarriageForm', 'control_type': "Window"}
+    SERVICES_FORM = {'auto_id': 'frmService', 'control_type': "Window"}
 
     # Базы Аиста
     STAGE_EF = {'title': "(serv02)AIST_STAGE_EF", 'control_type': "ListItem"}
@@ -64,8 +65,7 @@ class LocOrders:
     CUSTOMER_ITEM = {'title': "Наименование строка 1", 'control_type': "DataItem"}
     CUSTOMER_ITEM2 = {'title': "Наименование строка 2", 'control_type': "DataItem"}
     OK_BUTTON = {'title': "ОК", 'control_type': "Button", 'found_index': 0}
-    OK_BUTTON1 = {'title': "ОК", 'auto_id': "btnOK", 'found_index': 0}
-    OK_BUTTON2 = {'auto_id': "btnOK", 'found_index': 0}
+    OK_BUTTON1 = {'auto_id': "btnOK", 'found_index': 0}
     SAVE_BUTTON = {'auto_id': "sbSave", 'control_type': "Button"}
     AP = {'auto_id': "sbSave", 'control_type': "Button"}
 
@@ -103,6 +103,7 @@ class LocOrders:
     NOTE = {'title': "Примечание:", 'auto_id': "meDescription"}
     NOTE1 = {'title': "Примечание:", 'auto_id': "meDecription"}
     NOTE_SEA = {'title': "Примечание:", 'auto_id': "decriptionMemoEdit"}
+    NOTE_SERVICES = {'control_type': "Edit", 'auto_id': "descriptionTextEdit"}
     NOTE_CONTAINER = {'auto_id': "descriptionMemoEdit"}
 
     MOD_DATE = {'control_type': "Text", 'auto_id': "lblModified"}# Дата изменения
@@ -112,7 +113,7 @@ class LocOrders:
     DEL_BUTTON = {'title': "Удалить", 'control_type': "Button", 'found_index': 0}
     YES_BUTTON = {'title': "Да", 'control_type': "Button"}
     REFRESH_BUTTON_ORDER = {'title': "Обновить", 'control_type': "Button", 'found_index': 0}
-    COMPLETION_DATE = {'title': "...",'control_type': "Text", 'auto_id': "lblCompletedOn"}
+    COMPLETION_DATE = {'control_type': "Text", 'auto_id': "lblCompletedOn"}
 
     # Меню заказа
     OTHER_ACTIONS = {'title': "Другие действия", 'control_type': "MenuItem", 'found_index': 0}
@@ -484,7 +485,7 @@ class LocOrders:
 
     # ГТД
     GTD_CLIENT = {'title': "Клиент:", 'control_type': "ComboBox", 'auto_id': "leClientId"}
-    GTD_ORDER = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit1", 'found_index': 0}
+    GTD_ORDER = {'control_type': "ComboBox", 'auto_id': "orderEdit1", 'found_index': 0}
     GTD_PROCEDURE = {'title': "Процедура:", 'control_type': "ComboBox", 'auto_id': "icGTDType"}
     GTD_TE_NOT = {'title': "Коносаментная партия должна содержать хотя бы один контейнер", 'control_type': "Text"}
     GTD_TE = {'title': "Номер ТЕ строка 1", 'control_type': "DataItem"}
@@ -499,7 +500,7 @@ class LocOrders:
 
     # Исходящий счет
     #IS_NAME_FORM = {'control_type': "TitleBar", 'auto_id': "TitleBar", 'found_index': 1} не находит
-    IS_ORDER = {'title': "Номер заказа: ", 'control_type': "ComboBox", 'auto_id': "orderEdit1", 'found_index': 0}
+    IS_ORDER = {'control_type': "ComboBox", 'auto_id': "orderEdit1", 'found_index': 0}
     IS_DATE = {'title': "Дата:", 'control_type': "ComboBox", 'auto_id': "deInvoiceDate"}
     IS_LIST = {'control_type': "ComboBox", 'auto_id': "icOutboxInvoiceType"}
     IS_FREIGHT = {'title': "Товарный", 'control_type': "ListItem"}
@@ -592,3 +593,38 @@ class LocOrders:
 
     # Услуги
     SERVICES_ADD = {'title': "Услуга:", 'control_type': "ComboBox", 'auto_id': "serviceTypeEdit1"}
+
+    #Финансы
+    FINANCE = {'title': "Финансы", 'control_type': "Button"}
+    OUTGOING_INVOICES = {'title': "Исходящие счета", 'control_type': "ListItem"}
+    INCOMING_PAYMENTS = {'title': "Вх. платежи", 'control_type': "TabItem"}
+    INCOMING_INVOICES = {'title': "Входящие счета", 'control_type': "ListItem"}
+    OUTGOING_PAYMENTS = {'title': "Исходящие платежи", 'control_type': "ListItem"}
+    ORG_ACCOUNT_TRANSFERS = {'title': "Переводы (Орг. счета)", 'control_type': "ListItem"}
+    SERVICES_SERVICES = {'control_type': "ComboBox", 'auto_id': "leServiceTypeId"}
+    SERVICES_BET = {'control_type': "Edit", 'auto_id': "txtChargeValue"}
+    SERVICES_CURRENCY = {'control_type': "ComboBox", 'auto_id': "icCurrencyCode"}
+    CONNECT_VP = {'title': "Связь с вх. платежами", 'control_type': "Button"}
+    CONNECT_TRANSFERS = {'title': "Связь с вх. переводами", 'control_type': "Button"}
+    CONNECT_INVOICES = {'title': "Связь с вх. счетами", 'control_type': "Button"}
+    SERVICES_OPTIONS = {'control_type': "Button", 'auto_id': "btnOptions"}
+    LOOK_SERVICES = {'title': "Показать все счета", 'control_type': "Button", 'found_index': 0}
+    ADD_SERVICES = {'control_type': "Button", 'auto_id': "btnAdd"}
+    EXPAND = {'title': "Свернуть", 'control_type': "Button", 'found_index': 0}
+
+    # Владки счета
+    INCOMING_PAYMENTS = {'title': "Вх. платежи", 'control_type': "TabItem"}
+    INCOMING_TRANSFERS = {'title': "Вх. переводы", 'control_type': "TabItem"}
+    INCOMING_INVOICES = {'title': "Вх. счета", 'control_type': "TabItem"}
+    DIRECT_CLIENT_INVOICES = {'title': "Прямые счета на клиента", 'control_type': "TabItem"}
+    OFFSETS = {'title': "Взаимозачеты с вх. счетами", 'control_type': "TabItem"}
+    RELATIONS = {'title': "Связи с исх. платежами", 'control_type': "TabItem"}
+    PENALTY_INVOICES = {'title': "Пени-счета", 'control_type': "TabItem"}
+    FILES = {'title': "Файлы", 'control_type': "TabItem"}
+    ADD_FROM_ORDER_BUTTON = {'title': "Добавить из заказа", 'control_type': "Button"}
+    QUICK_CREATE_MENU = {'title': "Быстрое создание", 'control_type': "MenuItem"}
+
+
+    # Валюта
+    USD = {'title': "USD", 'control_type': "ListItem"}
+

@@ -259,8 +259,6 @@ class WinAISTApp:
 
         return self.fun.order_data
 
-
-
     def transportation(self):
         # 1. Запуск приложения
         self.fun.start_application()

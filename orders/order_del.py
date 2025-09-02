@@ -12,7 +12,7 @@ class WinAISTApp:
         self.loc = LocOrders()
         self.app = self.fun.app
 
-    def order_del2(self):
+    def order_del(self):
         # 1. Запуск приложения
         self.fun.start_application()
         time.sleep(2)
@@ -169,7 +169,7 @@ class WinAISTApp:
         main_window = self.fun.get_check_form()
         main_window.set_focus()
 
-        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON2)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
 
         # 11. Переключить на форму заказа
         main_window = self.fun.get_main_form()
@@ -225,7 +225,7 @@ class WinAISTApp:
         main_window = self.fun.get_check_vs_form()
         main_window.set_focus()
 
-        self.fun.click_element(main_window, self.loc.OK_BUTTON2)
+        self.fun.click_element(main_window, self.loc.OK_BUTTON1)
 
         # Переключить на форму заказа
         main_window = self.fun.get_main_form()
@@ -281,7 +281,7 @@ class WinAISTApp:
         # 7 Переключение на форму ИП
         main_window = self.fun.get_check_ip_form()
         main_window.set_focus()
-        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON2)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
 
         # Переключить на форму заказа
         main_window = self.fun.get_main_form()
@@ -338,7 +338,7 @@ class WinAISTApp:
         main_window = self.fun.get_check_vp_form()
         main_window.set_focus()
         time.sleep(1)
-        self.fun.click_element(main_window, self.loc.OK_BUTTON2, timeout=1)
+        self.fun.click_element(main_window, self.loc.OK_BUTTON1, timeout=1)
 
         # Переключить на форму заказа
         main_window = self.fun.get_main_form()
@@ -643,7 +643,7 @@ class WinAISTApp:
         keyboard.send_keys('{DOWN}')
         keyboard.send_keys('{ENTER}')
 
-        self.fun.click_element(main_window, self.loc.OK_BUTTON2, timeout=1)
+        self.fun.click_element(main_window, self.loc.OK_BUTTON1, timeout=1)
 
         # 5. Переключение на форму заказа
         main_window = self.fun.get_main_form()

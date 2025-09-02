@@ -1,6 +1,6 @@
 import pytest
 import allure
-from orders.order_del2 import WinAISTApp
+from orders.order_del import WinAISTApp
 import pytest_check as check
 from locators.function import Function
 
@@ -9,7 +9,7 @@ from locators.function import Function
 def order_app():
     print("[SETUP] Запуск фикстуры order_app")
     app = WinAISTApp()
-    order_data = app.order_del2()
+    order_data = app.order_del()
     yield order_data
     print("[TEARDOWN] Закрытие WinAISTApp")
     app.close()
