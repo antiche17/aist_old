@@ -83,7 +83,8 @@
   - Удаление все отчеты - `Remove-Item -Recurse -Force allure-results, allure-report -ErrorAction SilentlyContinue`
   - Запуск всех тестов - `pytest --alluredir=./allure-results`
 
-1️⃣ Прямое открытие через file:// (локальный путь)
+Открыть отчет по авто тестам:
+Прямое открытие через file:// (локальный путь).\
 Если вы просто дважды кликаете index.html, браузер может блокировать AJAX-запросы к JSON-файлам отчёта. Это стандартная защита браузеров.
 Решение: открыть отчёт через локальный HTTP-сервер. Например, на Windows:
     cd allure-report
