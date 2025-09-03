@@ -11,7 +11,6 @@ def order_app():
     app = WinAISTApp()
     order_data = app.finance()
     yield order_data
-    print("[TEARDOWN] Закрытие WinAISTApp")
     app.close()
 
 def check_equal_dates(value1, value2, field_name):

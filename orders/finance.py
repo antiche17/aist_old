@@ -91,8 +91,10 @@ class WinAISTApp:
         keyboard.send_keys('{ENTER}')
         time.sleep(1)
         self.fun.click_element(main_window, self.loc.EXPAND, timeout=1)
+
         self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
         self.fun.click_element_sp(main_window, self.loc.ADD_SERVICES)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
         time.sleep(1)
 
@@ -100,15 +102,14 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.INCOMING_INVOICES)
         self.fun.click_element_sp(main_window, self.loc.CONNECT_INVOICES)
         time.sleep(2)
-        self.fun.click_element_sp(main_window, self.loc.SERVICES_OPTIONS)
-        keyboard.send_keys('{DOWN}')
-        keyboard.send_keys('{ENTER}')
         self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
         self.fun.click_element_sp(main_window, self.loc.ADD_SERVICES)
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
+
         time.sleep(1)
 
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
 
         time.sleep(10)

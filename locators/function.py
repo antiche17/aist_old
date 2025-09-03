@@ -18,7 +18,7 @@ class Function:
     def start_application(self):
         # Запускаем приложение
         self.process = subprocess.Popen(r'C:\AIST\WinAIST.exe')
-        time.sleep(15)
+        time.sleep(17)
 
         # Ищем реальный процесс WinAIST среди дочерних
         parent = psutil.Process(self.process.pid)
@@ -34,7 +34,7 @@ class Function:
 
         # Находим главное окно
         window = self.app.window(auto_id="frmMain")
-        window.wait('visible', timeout=30)
+        window.wait('visible', timeout=33)
         window.set_focus()
 
         return window

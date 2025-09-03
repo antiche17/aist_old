@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locators/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/finance.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/finance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_finance/1test_finance_is.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_finance/test_finance_is.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_freight/test_freight.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_freight/test_freight.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,51 +50,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests for test_2order_dr.test_create_other_services_order.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_freight.test_value_del.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order.test_value_order.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order.test_value_order.test_create_other_services_order.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order_finance.test_value_order.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order_finance_ip.test_value_order.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order_freight.test_bulkership_freight.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order_freight_bulkership.test_bulkership_freight.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_order_freight_container.test_container_freight.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_transportation.test_value_del.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_1order_del.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_finance_is.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_forwarding.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_freight.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_del.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_del2.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_finance_ip.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_finance_is.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_forwarding.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_freight_Bulkership.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_freight_bulkership.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_order_freight_container.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in tests_transportation.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest in test_freight.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.order.executor&quot;: &quot;Run&quot;,
-    &quot;Python.order_del2.executor&quot;: &quot;Run&quot;,
-    &quot;Python.transportation.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests for test_2order_dr.test_create_other_services_order.executor": "Run",
+    "Python tests.Python tests for test_freight.test_value_del.executor": "Run",
+    "Python tests.Python tests for test_order.test_value_order.executor": "Run",
+    "Python tests.Python tests for test_order.test_value_order.test_create_other_services_order.executor": "Run",
+    "Python tests.Python tests for test_order_finance.test_value_order.executor": "Run",
+    "Python tests.Python tests for test_order_finance_ip.test_value_order.executor": "Run",
+    "Python tests.Python tests for test_order_freight.test_bulkership_freight.executor": "Run",
+    "Python tests.Python tests for test_order_freight_bulkership.test_bulkership_freight.executor": "Run",
+    "Python tests.Python tests for test_order_freight_container.test_container_freight.executor": "Run",
+    "Python tests.Python tests for test_transportation.test_value_del.executor": "Run",
+    "Python tests.Python tests in 1test_finance_is.py.executor": "Run",
+    "Python tests.Python tests in test_1order_del.py.executor": "Run",
+    "Python tests.Python tests in test_finance_is.py.executor": "Run",
+    "Python tests.Python tests in test_forwarding.py.executor": "Run",
+    "Python tests.Python tests in test_freight.py.executor": "Run",
+    "Python tests.Python tests in test_order.py.executor": "Run",
+    "Python tests.Python tests in test_order_del.py.executor": "Run",
+    "Python tests.Python tests in test_order_del2.py.executor": "Run",
+    "Python tests.Python tests in test_order_finance_ip.py.executor": "Run",
+    "Python tests.Python tests in test_order_finance_is.py.executor": "Run",
+    "Python tests.Python tests in test_order_forwarding.py.executor": "Run",
+    "Python tests.Python tests in test_order_freight_Bulkership.py.executor": "Run",
+    "Python tests.Python tests in test_order_freight_bulkership.py.executor": "Run",
+    "Python tests.Python tests in test_order_freight_container.py.executor": "Run",
+    "Python tests.Python tests in tests_transportation.py.executor": "Run",
+    "Python tests.pytest in test_freight.py.executor": "Run",
+    "Python.1.executor": "Run",
+    "Python.order.executor": "Run",
+    "Python.order_del2.executor": "Run",
+    "Python.transportation.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "editor.preferences.completion"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\qa\tests_finance" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.transportation">
+  <component name="RunManager" selected="Python tests.Python tests in test_finance_is.py">
     <configuration name="transportation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="1" />
       <option name="ENV_FILES" value="" />
@@ -129,7 +133,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in 1test_finance_is.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests in test_finance_is.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -140,7 +144,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests_finance/1test_finance_is.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests_finance/test_finance_is.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -176,9 +180,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests in 1test_finance_is.py" />
-        <item itemvalue="Python tests.Python tests in test_order_del.py" />
+        <item itemvalue="Python tests.Python tests in test_finance_is.py" />
         <item itemvalue="Python tests.Python tests in test_freight.py" />
+        <item itemvalue="Python tests.Python tests in test_order_del.py" />
         <item itemvalue="Python tests.Python tests for test_transportation.test_value_del" />
         <item itemvalue="Python.transportation" />
       </list>
@@ -298,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756822535682</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix">
+      <option name="closed" value="true" />
+      <created>1756822813563</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1756822813563</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -310,16 +322,5 @@
     <MESSAGE value="Рефакторинг кода автотестов. Обьединение двух проверок по сценариям Удаление заказов из таблицы и Удаление заказов с сущностями" />
     <MESSAGE value="fix" />
     <option name="LAST_COMMIT_MESSAGE" value="fix" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests_forwarding/test_forwarding.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
