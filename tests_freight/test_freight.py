@@ -3,12 +3,28 @@ import allure
 from orders.freight import WinAISTApp
 import pytest_check as check
 from locators.function import Function
-
-
+from datetime import datetime
+import locale
 from datetime import datetime
 
+
+MONTHS_RU_EN = {
+    'января': 'January', 'февраля': 'February', 'марта': 'March',
+    'апреля': 'April', 'мая': 'May', 'июня': 'June',
+    'июля': 'July', 'августа': 'August', 'сентября': 'September',
+    'октября': 'October', 'ноября': 'November', 'декабря': 'December'
+}
+
 def normalize_date(date_str):
-    formats = ["%d %B %Y г.", "%d.%m.%Y"]
+    date_str = date_str.replace("г.", "").strip()
+    # Преобразуем только если месяц на русском
+    for ru, en in MONTHS_RU_EN.items():
+        if ru in date_str:
+            date_str = date_str.replace(ru, en)
+            break
+    # Устанавливаем английскую локаль временно
+    locale.setlocale(locale.LC_TIME, 'C')
+    formats = ["%d %B %Y", "%d.%m.%Y"]
     for fmt in formats:
         try:
             return datetime.strptime(date_str, fmt).date()
@@ -18,7 +34,6 @@ def normalize_date(date_str):
 
 def compare_dates(date1, date2, error_message):
     assert normalize_date(date1) == normalize_date(date2), error_message
-
 
 @pytest.fixture(scope="module")
 def order_app():
@@ -88,27 +103,27 @@ def test_freight(order_app):
         check.equal(order_app["sea_fact_arrival_form"], order_app["bul_fact_arrival_table"], "❌ ФР: Не одинаковый Фактическая дата прибытия")
 
     with allure.step("16. Дата выгрузки"):
-        check.equal(order_app["bul_unloading_mod"], order_app["bul_unloading_table"], "❌ ФР: Не одинаковый Дата выгрузки")
+        compare_dates(order_app["bul_unloading_mod"], order_app["bul_unloading_table"],"❌ ФР: Не одинаковый Дата выгрузки")
 
     with allure.step("17. Дата ДО/ДО1"):
-        check.equal(order_app["bul_do_form_mod"], order_app["bul_do_table"], "❌ ФР: Не одинаковый Дата ДО/ДО1")
+        compare_dates(order_app["bul_do_form_mod"], order_app["bul_do_table"], "❌ ФР: Не одинаковый Дата ДО/ДО1")
 
     with allure.step("18. Получение документов"):
-        check.equal(order_app["forwarding_receiving_doc"], order_app["bul_forwarding_doc_table"], "❌ ФР: Не одинаковый Получение документов")
+        compare_dates(order_app["forwarding_receiving_doc"], order_app["bul_forwarding_doc_table"],
+                      "❌ ФР: Не одинаковый Получение документов")
 
     with allure.step("19. Дата номинации экспедитора"):
-        check.equal(order_app["forwarding_nomination"], order_app["bul_nomination_table"], "❌ ФР: Не одинаковый Дата номинации экспедитора")
+        compare_dates(order_app["forwarding_nomination"], order_app["bul_nomination_table"],
+                      "❌ ФР: Не одинаковый Дата номинации экспедитора")
 
     with allure.step("20. Режим ТО"):
-        check.equal(order_app["bul_regime_to_form_mod"], order_app["bul_regime_to_table"], "❌ ФР: Не одинаковый Режим ТО")
+        check.equal(order_app["bul_regime_to_form_mod"], order_app["bul_regime_to_table"],"❌ ФР: Не одинаковый Режим ТО")
 
     with allure.step("21. Дата выдачи Телекс-релиза"):
-        check.equal(order_app["forwarding_telex"], order_app["bul_telex_table"], "❌ ФР: Не одинаковый Телекс-релиза")
-
-
+        compare_dates(order_app["forwarding_telex"], order_app["bul_telex_table"], "❌ ФР: Не одинаковый Телекс-релиза")
 
     with allure.step("22. Дата ТО"):
-        check.equal(order_app["bul_data_to_form_mod"], order_app["bul_data_to_table"], "❌ ФР: Не одинаковый Дата ТО")
+        compare_dates(order_app["bul_data_to_form_mod"], order_app["bul_data_to_table"], "❌ ФР: Не одинаковый Дата ТО")
 
     with allure.step("23. Океанская линия"):
         check.equal(order_app["sea_ocean_line_form"], order_app["bul_ocean_line_table"], "❌ ФР: Не одинаковый Океанская линия")
@@ -211,37 +226,41 @@ def test_freight(order_app):
     with allure.step("54. Фактическая дата прибытия"):
         check.equal(order_app["sea_fact_arrival_form"], order_app["con_fact_arrival_table"], "❌ ФР: Не одинаковый Фактическая дата прибытия")
 
-    with allure.step("55. Дата выгрузки"):
-        check.equal(order_app["con_unloading_mod"], order_app["con_unloading_table"], "❌ ФР: Не одинаковый Дата выгрузки")
+    with allure.step("55. Дата выгрузки Контейнер"):
+        compare_dates(order_app["con_unloading_mod"], order_app["con_unloading_table"],
+                      "❌ ФР: Не одинаковый Дата выгрузки Контейнер")
 
-    with allure.step("56. Дата ДО/ДО1"):
-        check.equal(order_app["con_do_form_mod"], order_app["con_do_table"], "❌ ФР: Не одинаковый Дата ДО/ДО1")
+    with allure.step("56. Дата ДО/ДО1 Контейнер"):
+        compare_dates(order_app["con_do_form_mod"], order_app["con_do_table"],
+                      "❌ ФР: Не одинаковый Дата ДО/ДО1 Контейнер")
 
-    with allure.step("57. Получение документов"):
-        check.equal(order_app["forwarding_receiving_doc"], order_app["con_forwarding_doc_table"], "❌ ФР: Не одинаковый Получение документов")
+    with allure.step("57. Получение документов Контейнер"):
+        compare_dates(order_app["forwarding_receiving_doc"], order_app["con_forwarding_doc_table"],
+                      "❌ ФР: Не одинаковый Получение документов Контейнер")
 
-    with allure.step("58. Дата номинации экспедитора"):
-        check.equal(order_app["forwarding_nomination"], order_app["con_nomination_table"], "❌ ФР: Не одинаковый Дата номинации экспедитора")
+    with allure.step("58. Дата номинации экспедитора Контейнер"):
+        compare_dates(order_app["forwarding_nomination"], order_app["con_nomination_table"],
+                      "❌ ФР: Не одинаковый Дата номинации экспедитора Контейнер")
 
-    with allure.step("59. Режим ТО"):
-        check.equal(order_app["con_regime_to_form_mod"], order_app["con_regime_to_table"], "❌ ФР: Не одинаковый Режим ТО")
+    with allure.step("59. Режим ТО Контейнер"):
+        check.equal(order_app["con_regime_to_form_mod"], order_app["con_regime_to_table"],
+                    "❌ ФР: Не одинаковый Режим ТО Контейнер")
 
-    with allure.step("60. Дата выдачи Телекс-релиза"):
-        check.equal(order_app["forwarding_telex"], order_app["con_telex_table"], "❌ ФР: Не одинаковый Телекс-релиза")
+    with allure.step("60. Дата выдачи Телекс-релиза Контейнер"):
+        compare_dates(order_app["forwarding_telex"], order_app["con_telex_table"],
+                      "❌ ФР: Не одинаковый Телекс-релиза Контейнер")
 
+    with allure.step("61. Дата ТО Контейнер"):
+        compare_dates(order_app["con_data_to_form_mod"], order_app["con_data_to_table"], "❌ ФР: Не одинаковый Дата ТО Контейнер")
 
+    with allure.step("62. Океанская линия Контейнер"):
+        check.equal(order_app["sea_ocean_line_form"], order_app["con_ocean_line_table"], "❌ ФР: Не одинаковый Океанская линия Контейнер")
 
-    with allure.step("61. Дата ТО"):
-        check.equal(order_app["con_data_to_form_mod"], order_app["con_data_to_table"], "❌ ФР: Не одинаковый Дата ТО")
+    with allure.step("63. Сравнение Океанское судно Контейнер"):
+        check.equal(order_app["sea_ship_shipment_form"], order_app["con_sea_ship_shipment_table"], "❌ ФР: Не одинаковый Океанское судно Контейнер")
 
-    with allure.step("62. Океанская линия"):
-        check.equal(order_app["sea_ocean_line_form"], order_app["con_ocean_line_table"], "❌ ФР: Не одинаковый Океанская линия")
-
-    with allure.step("63. Сравнение Океанское судно"):
-        check.equal(order_app["sea_ship_shipment_form"], order_app["con_sea_ship_shipment_table"], "❌ ФР: Не одинаковый Океанское судно")
-
-    with allure.step("64. Сравнение Океанский коносамент"):
-        check.equal(order_app["sea_ocean_konos_form"], order_app["con_ocean_konos_table"], "❌ ФР: Не одинаковый Океанский коносамент")
+    with allure.step("64. Сравнение Океанский коносамент Контейнер"):
+        check.equal(order_app["sea_ocean_konos_form"], order_app["con_ocean_konos_table"], "❌ ФР: Не одинаковый Океанский коносамент Контейнер")
 
     with allure.step("65. Сравнение Фидерная линия"):
         check.equal(order_app["sea_feeder_line_form"], order_app["con_feeder_line_table"], "❌ ФР: Не одинаковый Фидерная линия")
@@ -299,19 +318,19 @@ def test_freight(order_app):
 
     #GПроверка редактируемые поля
     with allure.step("82. Факт. дата выгрузки (bul)"):
-        check.equal(order_app["bul_unloading_mod2"] , order_app["unloading_table_bul"], msg="❌ ФР: Не одинаковая Выгрузка")
+        compare_dates(order_app["bul_unloading_mod2"], order_app["unloading_table_bul"], "❌ ФР: Не одинаковая Выгрузка(bul)")
 
     with allure.step("83. Номер пломбы (bul)"):
-        check.equal(order_app["bul_seal_num_mod2"] , order_app["seal_number_table_bul"], msg="❌ ФР: Не одинаковая Пломба")
+        check.equal(order_app["bul_seal_num_mod2"] , order_app["seal_number_table_bul"], msg="❌ ФР: Не одинаковая Пломба(bul)")
 
     with allure.step("84. ДО/ДО1 Разное (bul)"):
-        check.equal(order_app["bul_do_mod2"] , order_app["do_table_bul"], msg="❌ ФР: Одинаковое ДО")
+        compare_dates(order_app["bul_do_mod2"], order_app["do_table_bul"], "❌ ФР: Не одинаковое ДО/ДО1 Разное (bul)")
 
     with allure.step("85. Режим ТО (bul)"):
-        check.equal(order_app["bul_regime_to_mod2"] , order_app["regimen_table_bul"], msg="❌ ФР: Не одинаковый Режим")
+        check.equal(order_app["bul_regime_to_mod2"] , order_app["regimen_table_bul"], msg="❌ ФР: Не одинаковый Режим (bul)")
 
     with allure.step("86. Дата ТО (bul)"):
-        check.equal(order_app["bul_data_to_mod2"] , order_app["data_to_table_bul"], msg="❌ ФР: Не одинаковая Дата")
+        compare_dates(order_app["bul_data_to_mod2"], order_app["data_to_table_bul"], "❌ ФР: Не одинаковая Дата (bul)")
 
     with allure.step("87. Примечание (ТЕ) (bul)"):
         check.equal(order_app["bul_note_mod2"] , order_app["note_table_bul"], msg="❌ ФР: Не одинаковое Примечание")
@@ -320,19 +339,19 @@ def test_freight(order_app):
         check.equal(order_app["bul_gtd_mod2"] , order_app["gtd_number_table_bul"], msg="❌ ФР: Не одинаковый ГТД")
 
     with allure.step("89. Выгрузка (con)"):
-        check.equal(order_app["con_unloading_mod2"] , order_app["unloading_table_con"], msg="❌ ФР: Не одинаковая Выгрузка")
+        compare_dates(order_app["con_unloading_mod2"], order_app["unloading_table_con"], "❌ ФР: Не одинаковая Выгрузка (con)")
 
     with allure.step("90. Пломба (con)"):
         check.equal(order_app["con_seal_num_mod2"] , order_app["seal_number_table_con"], msg="❌ ФР: Не одинаковая Пломба")
 
     with allure.step("91. ДО (con)"):
-        check.equal(order_app["con_do_mod2"] , order_app["do_table_con"], msg="❌ ФР: Не одинаковое ДО")
+        compare_dates(order_app["con_do_mod2"], order_app["do_table_con"], "❌ ФР: Не одинаковое ДО(con)")
 
     with allure.step("92. Режим ТО (con)"):
         check.equal(order_app["con_regime_to_mod2"] , order_app["regimen_table_con"], msg="❌ ФР: Не одинаковый Режим")
 
     with allure.step("93. Дата ТО (con)"):
-        check.equal(order_app["con_data_to_mod2"] , order_app["data_to_table_con"], msg="❌ ФР: Не одинаковая Дата")
+        compare_dates(order_app["con_data_to_mod2"], order_app["data_to_table_con"], "❌ ФР: Не одинаковая Дата(con)")
 
     with allure.step("94. Примечание (con)"):
         check.equal(order_app["con_note_mod2"] , order_app["note_table_con"], msg="❌ ФР: Не одинаковое Примечание")
@@ -371,8 +390,8 @@ def test_freight(order_app):
         check.equal(order_app["forwarding_otv_mod2"] , order_app["otv_table"], msg="❌ ФР: Не одинаковый Ответственный")
 
     with allure.step("106. Телекс (forwarding)"):
-        check.equal(order_app["forwarding_telex_mod2"] , order_app["telex_table"], msg="❌ ФР: Не одинаковый Телекс")
+        compare_dates(order_app["forwarding_telex_mod2"], order_app["telex_table"], "❌ ФР: Не одинаковый Телекс")
 
     with allure.step("107. Документ (forwarding)"):
-        check.equal(order_app["forwarding_receiving_doc_mod2"] , order_app["doc_table"], msg="❌ ФР: Не одинаковый Документ")
+        compare_dates(order_app["forwarding_receiving_doc_mod2"], order_app["doc_table"], "❌ ФР: Не одинаковый Документ")
 

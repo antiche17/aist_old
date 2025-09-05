@@ -72,8 +72,8 @@ class WinAISTApp:
 
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
         self.fun.click_element_sp(main_window, self.loc.FREIGHT_CREATE_TE)
-        time.sleep(1)
-        self.fun.click_element_sp(main_window, self.loc.FREIGHT_CREATE_TE1)
+        time.sleep(2)
+        self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TE1, timeout=2)
         self.fun.click_element_sp(main_window, self.loc.FREIGHT_CREATE_TYPE)
         self.fun.click_element_sp(main_window, self.loc.FREIGHT_CREATE_TYPE1)
         self.fun.set_text_field(main_window, self.loc.FREIGHT_CREATE_QUANTITY, 1, timeout=1)

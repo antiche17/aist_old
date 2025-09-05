@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locators/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/function.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/finance.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/finance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/1test_finance_is.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_finance/test_finance_is.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_freight/test_freight.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_freight/test_freight.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,46 +46,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests for test_2order_dr.test_create_other_services_order.executor": "Run",
-    "Python tests.Python tests for test_freight.test_value_del.executor": "Run",
-    "Python tests.Python tests for test_order.test_value_order.executor": "Run",
-    "Python tests.Python tests for test_order.test_value_order.test_create_other_services_order.executor": "Run",
-    "Python tests.Python tests for test_order_finance.test_value_order.executor": "Run",
-    "Python tests.Python tests for test_order_finance_ip.test_value_order.executor": "Run",
-    "Python tests.Python tests for test_order_freight.test_bulkership_freight.executor": "Run",
-    "Python tests.Python tests for test_order_freight_bulkership.test_bulkership_freight.executor": "Run",
-    "Python tests.Python tests for test_order_freight_container.test_container_freight.executor": "Run",
-    "Python tests.Python tests for test_transportation.test_value_del.executor": "Run",
-    "Python tests.Python tests in 1test_finance_is.py.executor": "Run",
-    "Python tests.Python tests in test_1order_del.py.executor": "Run",
-    "Python tests.Python tests in test_finance_is.py.executor": "Run",
-    "Python tests.Python tests in test_forwarding.py.executor": "Run",
-    "Python tests.Python tests in test_freight.py.executor": "Run",
-    "Python tests.Python tests in test_order.py.executor": "Run",
-    "Python tests.Python tests in test_order_del.py.executor": "Run",
-    "Python tests.Python tests in test_order_del2.py.executor": "Run",
-    "Python tests.Python tests in test_order_finance_ip.py.executor": "Run",
-    "Python tests.Python tests in test_order_finance_is.py.executor": "Run",
-    "Python tests.Python tests in test_order_forwarding.py.executor": "Run",
-    "Python tests.Python tests in test_order_freight_Bulkership.py.executor": "Run",
-    "Python tests.Python tests in test_order_freight_bulkership.py.executor": "Run",
-    "Python tests.Python tests in test_order_freight_container.py.executor": "Run",
-    "Python tests.Python tests in tests_transportation.py.executor": "Run",
-    "Python tests.pytest in test_freight.py.executor": "Run",
-    "Python.1.executor": "Run",
-    "Python.order.executor": "Run",
-    "Python.order_del2.executor": "Run",
-    "Python.transportation.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "settings.editor.selected.configurable": "editor.preferences.completion"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for test_2order_dr.test_create_other_services_order.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_freight.test_value_del.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_order.test_value_order.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_order.test_value_order.test_create_other_services_order.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_order_finance.test_value_order.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_order_finance_ip.test_value_order.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_order_freight.test_bulkership_freight.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_order_freight_bulkership.test_bulkership_freight.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_order_freight_container.test_container_freight.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_transportation.test_value_del.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in 1test_finance_is.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_1order_del.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_finance_is.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_forwarding.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_freight.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_order.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_order_del.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_order_del2.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_order_finance_ip.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_order_finance_is.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_order_forwarding.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_order_freight_Bulkership.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_order_freight_bulkership.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_order_freight_container.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in tests_transportation.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest in test_freight.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.order.executor&quot;: &quot;Run&quot;,
+    &quot;Python.order_del2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.transportation.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\qa\tests_finance" />
@@ -191,7 +188,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-4c141bd692a7-e2d783800521-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.26927.90" />
+        <option value="bundled-python-sdk-1bde30d8e611-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.130" />
       </set>
     </attachedChunks>
   </component>
