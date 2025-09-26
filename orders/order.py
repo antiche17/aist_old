@@ -918,6 +918,8 @@ class WinAISTApp:
                                                         "89888333222 SCANIA А777УЕ05 прицеп УЕ1111 05\n"
                                                         "погрузка визит 13\05 1:40 - 4:50 ;\n"
                                                         "сдача на КТСП 13/05 ", timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.APPLY_BUTTON1)
+        time.sleep(1)
 
         # 16. Проверка введенных данных
         self.fun.order_data.update({
@@ -1064,7 +1066,7 @@ class WinAISTApp:
         })
 
         # 11. Проверка, что ГТД не создается без ТЕ
-        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON2, timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON1, timeout=1)
         self.fun.order_data.update({
             'order_te_not': self.fun.get_element_property(main_window, self.fun.loc.GTD_TE_NOT, "Name"),
         })
@@ -1079,7 +1081,7 @@ class WinAISTApp:
         self.fun.order_data.update({
             'number_te': self.fun.get_element_property(main_window, self.fun.loc.GTD_TE, "Value")
         })
-        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON2, timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON1, timeout=1)
 
         # 5. Переключение на форму заказа
         main_window = self.fun.get_main_form()
@@ -1177,7 +1179,7 @@ class WinAISTApp:
             'is_buyer': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER, "Value"),
         })
 
-        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON2, timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON1, timeout=1)
 
         # 11. Переключить на форму заказа
         main_window = self.fun.get_main_form()
@@ -1249,7 +1251,7 @@ class WinAISTApp:
             'vs_buyer': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER, "Value"),
         })
 
-        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON2, timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON1, timeout=1)
 
         # Переключить на форму заказа
         main_window = self.fun.get_main_form()
@@ -1317,7 +1319,7 @@ class WinAISTApp:
             'ip_buyer': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER, "Value"),
         })
 
-        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON2, timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON1, timeout=1)
 
         # Переключить на форму заказа
         main_window = self.fun.get_main_form()
@@ -1386,7 +1388,7 @@ class WinAISTApp:
             'vp_buyer': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER, "Value"),
         })
 
-        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON2, timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON1, timeout=1)
 
         # Переключить на форму заказа
         main_window = self.fun.get_main_form()

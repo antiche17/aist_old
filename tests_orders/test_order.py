@@ -48,7 +48,6 @@ def test_value_order(order_app):
     with allure.step("10. что поле Условие поставки пустое"):
         check.is_false(order_app["order_delivery"], "❌ ФР: Поле не пустое")
 
-
     with allure.step("11. Дата создания одинаковая с датой изменения"):
         check.is_true(SequenceMatcher(None, order_app["order_create_date"], order_app["order_create_mod"]).ratio() >= 0.9,
                   "❌ ФР: Поля не одинаковые Дата создания одинаковая с датой изменения на 90%")
@@ -133,7 +132,7 @@ def test_value_order(order_app):
         check.is_not_none(order_app["order_note_up"], "❌ ФР: Примечание не добавлен текст")
 
     with allure.step("37. Дата модификации изменилась"):
-        check.not_equal(order_app["order_mod_date_up"], order_app["repeat_order_mod_date"], "❌ ФР: Дата модификации не изменилась")
+        check.not_equal(order_app["order_create_mod"], order_app["repeat_order_mod_date"], "❌ ФР: Дата модификации не изменилась")
 
     # Редактирование
     with allure.step("38. Статус изменён в таблице заказы"):

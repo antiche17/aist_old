@@ -2,8 +2,6 @@ import pytest
 import allure
 from orders.freight import WinAISTApp
 import pytest_check as check
-from locators.function import Function
-from datetime import datetime
 import locale
 from datetime import datetime
 

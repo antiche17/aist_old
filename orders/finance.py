@@ -64,9 +64,10 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
         time.sleep(1)
 
-        # Связываем с Вх. платежом
         main_window = self.fun.get_check_form()
         main_window.set_focus()
+
+        # Связываем с Вх. платежом
         self.fun.click_element_sp(main_window, self.loc.INCOMING_PAYMENTS)
         self.fun.click_element_sp(main_window, self.loc.CONNECT_VP)
         time.sleep(2)
@@ -91,7 +92,6 @@ class WinAISTApp:
         keyboard.send_keys('{ENTER}')
         time.sleep(1)
         self.fun.click_element(main_window, self.loc.EXPAND, timeout=1)
-
         self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
         self.fun.click_element_sp(main_window, self.loc.ADD_SERVICES)
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)

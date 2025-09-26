@@ -101,6 +101,7 @@ class WinAISTApp:
 
         self.fun.click_element_sp(main_window, self.fun.loc.APPLY_BUTTON1)
         time.sleep(1)
+
         # 7. Проверка полей после редактирования
         self.fun.order_data.update({
             'auto_status_mod': self.fun.get_element_property(main_window, self.fun.loc.STATUS_COMBO, "Value"),
@@ -186,7 +187,7 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.loc.FACT_ARRIVAL3, timeout=3)
         keyboard.send_keys('6')
         self.fun.click_element_sp(main_window, self.fun.loc.APPLY_BUTTON1)
-
+        time.sleep(1)
         self.fun.order_data.update({
             'shipment1': self.fun.get_element_property(main_window, self.fun.loc.SHIPMENT1, "Value"),
             'shipment2': self.fun.get_element_property(main_window, self.fun.loc.SHIPMENT2, "Value"),
@@ -258,6 +259,7 @@ class WinAISTApp:
         main_window.set_focus()
         time.sleep(1)
 
+        # 19. Открываем форму Прибытие
         self.fun.click_element_double_sp(main_window, self.fun.loc.RECIPIENT_2)
         main_window = self.fun.get_auto_shipment_form()
         main_window.set_focus()
@@ -281,6 +283,7 @@ class WinAISTApp:
         keyboard.send_keys('13')
         self.fun.set_text_field(main_window, self.fun.loc.NOTE, "Прибытие", timeout=1)
         self.fun.click_element_sp(main_window, self.fun.loc.APPLY_BUTTON1)
+        time.sleep(1)
         self.fun.order_data.update({
             'arrival_address_mod': self.fun.get_element_property(main_window, self.fun.loc.AUTO_ADDRESS, "Value"),
             'arrival_plan_data_mod': self.fun.get_element_property(main_window, self.fun.loc.ARRIVAL_DATA1, "Value"),
@@ -357,7 +360,7 @@ class WinAISTApp:
         })
         self.fun.click_element_sp(main_window, self.fun.loc.SAVE_BUTTON)
 
-        # 21. Открываем таблицу для провеки изменений
+        # 21. Открываем таблицу для проверки изменений
         main_window = self.fun.get_main_window()
         main_window.set_focus()
         time.sleep(1)
@@ -417,6 +420,8 @@ class WinAISTApp:
             'order_tab_services': self.fun.get_element_property(main_window, self.fun.loc.TAB_SERVICES, "Name"),
             'order_tab_tracking': self.fun.get_element_property(main_window, self.fun.loc.TAB_TRACKING, "Name"),
         })
+
+
         return self.fun.order_data
 
     def close(self):

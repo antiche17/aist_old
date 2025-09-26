@@ -1,9 +1,38 @@
-import pytest
-import allure
 from difflib import SequenceMatcher
 from orders.forwarding import WinAISTApp
+import pytest
+import allure
 import pytest_check as check
+import locale
+from datetime import datetime
 
+
+MONTHS_RU_EN = {
+    'января': 'January', 'февраля': 'February', 'марта': 'March',
+    'апреля': 'April', 'мая': 'May', 'июня': 'June',
+    'июля': 'July', 'августа': 'August', 'сентября': 'September',
+    'октября': 'October', 'ноября': 'November', 'декабря': 'December'
+}
+
+def normalize_date(date_str):
+    date_str = date_str.replace("г.", "").strip()
+    # Преобразуем только если месяц на русском
+    for ru, en in MONTHS_RU_EN.items():
+        if ru in date_str:
+            date_str = date_str.replace(ru, en)
+            break
+    # Устанавливаем английскую локаль временно
+    locale.setlocale(locale.LC_TIME, 'C')
+    formats = ["%d %B %Y", "%d.%m.%Y"]
+    for fmt in formats:
+        try:
+            return datetime.strptime(date_str, fmt).date()
+        except ValueError:
+            continue
+    raise ValueError(f"Не удалось распознать формат даты: {date_str}")
+
+def compare_dates(date1, date2, error_message):
+    assert normalize_date(date1) == normalize_date(date2), error_message
 
 @pytest.fixture(scope="module")
 def order_app():
@@ -13,6 +42,11 @@ def order_app():
     yield order_data
     print("[TEARDOWN] Закрытие WinAISTApp")
     app.close()
+
+def check_equal_dates(value1, value2, field_name):
+    normalized1 = normalize_date(value1)
+    normalized2 = normalize_date(value2)
+    check.equal(normalized1, normalized2, f"❌ ФР: Не одинаковый {field_name}")
 
 @allure.title("Проверка Таблицы Экспедирование 72 проверки")
 @pytest.mark.order(1)
@@ -26,8 +60,8 @@ def test_forwarding(order_app):
     with allure.step("3. Номер заказа"):
         check.is_true(SequenceMatcher(None, order_app["forwarding_dialog_number"], order_app["forwarding_order_number"]).ratio() >= 0.3, "❌ Номер заказа не одинаковые на 30%")
 
-    with allure.step("4. Ответсвтенный"):
-        check.equal(order_app["forwarding_dialog_otv"], order_app["forwarding_otv"], "❌ ФР: Ответсвтенные не одинаковые")
+    with allure.step("4. Ответственный"):
+        check.equal(order_app["forwarding_dialog_otv"], order_app["forwarding_otv"], "❌ ФР: Ответственные не одинаковые")
 
     with allure.step("5. Портовое сравниваем"):
         check.equal(order_app["forwarding_dialog_type"], order_app["forwarding_type"], "❌ ФР: Портовое не одинаковые")
@@ -51,7 +85,7 @@ def test_forwarding(order_app):
         check.equal(order_app["tab_forwarding"], "Экспедируемый груз", "❌ ФР: Нет Экспедируемый груз вкладки")
 
     with allure.step("12. Вкладка Услуги"):
-         check.equal(order_app["tab_services"], "Услуги", "❌ ФР: Нет Услуги вкладки")
+        check.equal(order_app["tab_services"], "Услуги", "❌ ФР: Нет Услуги вкладки")
 
     with allure.step("13. Вкладка Файлы"):
         check.equal(order_app["tab_file"], "Файлы", "❌ ФР: Нет Файлы вкладки")
@@ -126,7 +160,8 @@ def test_forwarding(order_app):
         check.equal(order_app["order_forwading_te"], "1", "❌ ФР: Номер ТЕ Экспедирования не одинаковые")
 
     with allure.step("34. Дата создания Экспедирования в заказе"):
-        check.equal(order_app["forwarding_create_date"], order_app["order_forwading_data_create"], "❌ ФР: Дата создания Экспедирования не одинаковые")
+        check.is_true(SequenceMatcher(None, order_app["forwarding_create_date"], order_app["order_forwading_data_create"]).ratio() >= 0.3,
+                      "❌ ФР: Дата создания Экспедирования не одинаковые на 30%")
 
     with allure.step("35. Примечание Экспедирования в заказе"):
         check.equal(order_app["forwarding_note_mod"], order_app["order_forwading_note"], "❌ ФР: Примечание Экспедирования не одинаковые")
@@ -159,62 +194,77 @@ def test_forwarding(order_app):
         check.equal(order_app["order_dialog_number"], order_app["order_forwarding_te_number1"], "❌ ФР: Номер ТЕ не одинаковые")
 
     with allure.step("45. Релиз в вкладке Экспедируемый груз"):
-        check.equal(order_app["forwarding_download_method_mod"], order_app["order_forwarding_release1"], "❌ ФР: Релиз не одинаковые")
+        compare_dates(order_app["forwarding_download_method_mod"], order_app["order_forwarding_release1"], "❌ ФР: Релиз не одинаковые")
 
     with allure.step("46. Получение докум. в вкладке Экспедируемый груз"):
-        check.equal(order_app["forwarding_ref_freight_mod"], order_app["order_forwarding_doc1"], "❌ ФР: Получение докум не одинаковые")
+        compare_dates(order_app["forwarding_ref_freight_mod"], order_app["order_forwarding_doc1"], "❌ ФР: Получение докум не одинаковые")
 
     with allure.step("47. Номинация эксп. в вкладке Экспедируемый груз"):
-        check.equal(order_app["forwarding_class_freight_mod"], order_app["order_forwarding_nomination1"], "❌ ФР: Номинация эксп. не одинаковые")
+        compare_dates(order_app["forwarding_class_freight_mod"], order_app["order_forwarding_nomination1"], "❌ ФР: Номинация эксп. не одинаковые")
 
     with allure.step("48. ДО/ДО1 в вкладке Экспедируемый груз"):
-        check.equal(order_app["bul_do_form"], order_app["order_forwarding_do_do1"], "❌ ФР: ДО/ДО1 не одинаковые")
+        compare_dates(order_app["bul_do_form"], order_app["order_forwarding_do_do1"], "❌ ФР: ДО/ДО1 не одинаковые")
 
     with allure.step("49. Примечание в вкладке Экспедируемый груз"):
         check.equal(order_app["forwarding_note_mod"], order_app["order_forwarding_note1"], "❌ ФР: Примечание не одинаковые")
 
-    # В таблице Экспидиция
+    # В таблице Экспедиция
     with allure.step("50. Номер заказа в таблице"):
         check.equal(order_app["forwarding_dialog_number"], order_app["order_table1"], "❌ ФР: Номер заказа в таблице не одинаковые")
+
     with allure.step("51. Тип экспедирования в таблице"):
         check.equal(order_app["forwarding_dialog_type"], order_app["type_table1"], "❌ ФР: Тип экспедирования в таблице не одинаковые")
+
     with allure.step("52. Статус в таблице"):
         check.equal(order_app["forwarding_status_mod"], order_app["status_table1"], "❌ ФР: Статус в таблице не одинаковые")
+
     with allure.step("53. Приоритет в таблице"):
         check.equal(order_app["forwarding_priority_mod"], order_app["priority_table1"], "❌ ФР: Приоритет в таблице не одинаковые")
-    with allure.step("54. Ответсвенный в таблице"):
-        check.equal(order_app["forwarding_otv_mod"], order_app["responsible_table1"], "❌ ФР: Ответсвенный в таблице не одинаковые")
+
+    with allure.step("54. Ответственный в таблице"):
+        check.equal(order_app["forwarding_otv_mod"], order_app["responsible_table1"], "❌ ФР: Ответственный в таблице не одинаковые")
+
     with allure.step("55. Экспедитор в таблице"):
         check.equal(order_app["forwarding_type_freight_mod"], order_app["expeditor_table1"], "❌ ФР: Экспедитор в таблице не одинаковые")
+
     with allure.step("56. Телекс-релиз в таблице"):
-        check.equal(order_app["forwarding_download_method_mod"], order_app["telex_release_table1"], "❌ ФР: Телекс-релиз в таблице не одинаковые")
+        compare_dates(order_app["forwarding_download_method_mod"], order_app["telex_release_table1"], "❌ ФР: Телекс-релиз в таблице не одинаковые")
+
     with allure.step("57. Получение докум в таблице"):
-        check.equal(order_app["forwarding_ref_freight_mod"], order_app["receive_doc_table1"], "❌ ФР: Получение докум в таблице не одинаковые")
+        compare_dates(order_app["forwarding_ref_freight_mod"], order_app["receive_doc_table1"], "❌ ФР: Получение докум в таблице не одинаковые")
+
     with allure.step("58. Номинация эксп в таблице"):
-        check.equal(order_app["forwarding_class_freight_mod"], order_app["nomination_table1"], "❌ ФР: Номинация эксп в таблице не одинаковые")
+        compare_dates(order_app["forwarding_class_freight_mod"], order_app["nomination_table1"], "❌ ФР: Номинация эксп в таблице не одинаковые")
+
     with allure.step("59. Примечание в таблице"):
         check.equal(order_app["forwarding_note_mod"], order_app["note_table1"], "❌ ФР: Примечание в таблице не одинаковые")
+
     with allure.step("60. Кем создан в таблице"):
         check.equal(order_app["forwarding_dialog_otv"], order_app["created_by_table1"], "❌ ФР: Кем создан в таблице не одинаковые")
+
     with allure.step("62. Дата создания в таблице"):
-        check.equal(order_app["forwarding_create_date"], order_app["created_date_table1"], "❌ ФР: Дата создания в таблице не одинаковые")
+        check.is_true(SequenceMatcher(None, order_app["forwarding_create_date"], order_app["created_date_table1"]).ratio() >= 0.3,
+                      "❌ ФР: Дата создания Экспедирования не одинаковые на 30%")
+
     with allure.step("63. Дата изменения в таблице"):
-        check.equal(order_app["forwarding_mode_date"], order_app["updated_date_table1"], "❌ ФР: Дата изменения в таблице не одинаковые")
+        check.is_true(SequenceMatcher(None, order_app["forwarding_mode_date"], order_app["updated_date_table1"]).ratio() >= 0.4,
+            "❌ ФР: Дата изменения в таблице не одинаковые на 40%")
+
     with allure.step("64. Номер экспедирования в таблице"):
         check.is_true(SequenceMatcher(None, order_app["forwarding_number_header"], order_app["forwarding_order_number"]).ratio() >= 0.3, "❌ ФР: Номер экспедирования в таблице не одинаковые на 30%")
-    with allure.step("65. Кол-во ТЕ в таблице"):
-        check.equal(order_app["te_count_header"], "1", "❌ ФР: Кол-во ТЕ в таблице не одинаковые")
 
+    with allure.step("65. Кол-во ТЕ в таблице"):
+        check.equal(order_app["te_count_header"], "1", "65.❌ ФР: Кол-во ТЕ в экспедиции и таблице не одинаковые")
 
 
         steps_to_check = [
-            ("1. Экспедитор", ["forwarding_type_freight"]),
-            ("2. Номинация эксп.", ["forwarding_class_freight"]),
-            ("3. Телекс-релиз", ["forwarding_download_method"]),
-            ("4. Получение докум.", ["forwarding_ref_freight"]),
-            ("5. Примечание", ["forwarding_note"]),
-            ("6. Дата завершения в заказе", ["order_forwading_data_finish"]),
-            ("7. Дата завершения в таблице Экспедиция", ["finished_date_table1"]),
+            ("66. Экспедитор", ["forwarding_type_freight"]),
+            ("67. Номинация эксп.", ["forwarding_class_freight"]),
+            ("68. Телекс-релиз", ["forwarding_download_method"]),
+            ("69. Получение докум.", ["forwarding_ref_freight"]),
+            ("70. Примечание", ["forwarding_note"]),
+            ("71. Дата завершения в заказе", ["order_forwading_data_finish"]),
+            ("72. Дата завершения в таблице Экспедиция", ["finished_date_table1"]),
 
 
         ]

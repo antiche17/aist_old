@@ -2,8 +2,65 @@ import pytest
 import allure
 from orders.transport import WinAISTApp
 import pytest_check as check
-from locators.function import Function
 from difflib import SequenceMatcher
+import locale
+from datetime import datetime, date
+import re
+
+
+
+# Словарь для замены русских месяцев на английские
+MONTHS_RU_EN = {
+    'января': 'January', 'февраля': 'February', 'марта': 'March',
+    'апреля': 'April', 'мая': 'May', 'июня': 'June',
+    'июля': 'July', 'августа': 'August', 'сентября': 'September',
+    'октября': 'October', 'ноября': 'November', 'декабря': 'December'
+}
+
+def normalize_date(date_val):
+    """
+    Преобразует дату в объект date, поддерживает форматы:
+    - 23.09.2025
+    - 23-09-2025 16:03 (автотест)
+    - 1 сентября 2025
+    """
+    if isinstance(date_val, (datetime, date)):
+        return date_val.date() if isinstance(date_val, datetime) else date_val
+
+    date_str = str(date_val).replace("г.", "").strip()
+
+    # Убираем всё, что в скобках
+    date_str = re.sub(r"\(.*?\)", "", date_str).strip()
+
+    # Переводим русские месяцы на английские
+    for ru, en in MONTHS_RU_EN.items():
+        if ru in date_str:
+            date_str = date_str.replace(ru, en)
+            break
+
+    # Ставим безопасную локаль
+    locale.setlocale(locale.LC_TIME, 'C')
+
+    # Список форматов для распознавания
+    formats = ["%d.%m.%Y", "%d-%m-%Y", "%d %B %Y", "%d-%m-%Y %H:%M"]
+
+    for fmt in formats:
+        try:
+            return datetime.strptime(date_str, fmt).date()
+        except ValueError:
+            continue
+
+    raise ValueError(f"Не удалось распознать дату: {date_val}")
+
+def compare_dates(date1, date2, error_message, tolerance_days=0):
+    """
+    Сравнивает две даты с допуском по дням.
+    Если разница больше tolerance_days, выбрасывает AssertionError.
+    """
+    d1, d2 = normalize_date(date1), normalize_date(date2)
+    delta_days = abs((d1 - d2).days)
+    assert delta_days <= tolerance_days, f"{error_message}: {d1} != {d2}, разница {delta_days} дней"
+
 
 
 @pytest.fixture(scope="module")
@@ -17,18 +74,19 @@ def order_app():
 
 @allure.title("Проверка Таблицы Автоперевозка 104 проверки")
 @pytest.mark.order(1)
+
 def test_value_del(order_app):
-    with allure.step("1. Тип первозки"):
+    with allure.step("1. Тип перевозки"):
         check.equal(order_app["order_dialog_type"], "Автоперевозка", "❌ ФР: Не одинаковые")
 
-    with allure.step("2. Поле Отвественный не пустое"):
-        check.is_true(bool(order_app.get("order_dialog_otv")), "❌ ФР: поле Отвественный пустое")
+    with allure.step("2. Поле Ответственный не пустое"):
+        check.is_true(bool(order_app.get("order_dialog_otv")), "❌ ФР: поле Ответственный пустое")
 
     with allure.step("3. Номер заказа"):
         check.is_true(SequenceMatcher(None, order_app["order_dialog_number"], order_app["auto_order_number"]).ratio() >= 0.5, "❌ ФР: Не совпадает Имя маршрута Отгрузка на 50%")
 
-    with allure.step("4. Сравнение Тип первозки"):
-        check.equal(order_app["order_dialog_type"], order_app["auto_type"], "❌ ФР: Не одинаковые Тип первозки")
+    with allure.step("4. Сравнение Тип перевозки"):
+        check.equal(order_app["order_dialog_type"], order_app["auto_type"], "❌ ФР: Не одинаковые Тип перевозки")
 
     with allure.step("5. Статус Черновик"):
         check.equal(order_app["auto_status"], "Черновик", "❌ ФР: Статус не Черновик")
@@ -36,8 +94,8 @@ def test_value_del(order_app):
     with allure.step("6. Приоритет Средний"):
         check.equal(order_app["auto_priority"], "Средний", "❌ ФР: Приоритет не Средний")
 
-    with allure.step("7. Сравнение Отвественный"):
-        check.equal(order_app["order_dialog_otv"], order_app["auto_otv"], "❌ ФР: Не одинаковые Отвественный")
+    with allure.step("7. Сравнение Ответственный"):
+        check.equal(order_app["order_dialog_otv"], order_app["auto_otv"], "❌ ФР: Не одинаковые Ответственный")
 
     with allure.step("8. Сравнение Дат создания и изменение"):
         check.equal(order_app["auto_create_date"], order_app["auto_mode_date"], "❌ ФР: Не одинаковые Даты создания и изменение")
@@ -76,7 +134,7 @@ def test_value_del(order_app):
         check.is_false(order_app["auto_note"] == order_app["auto_note_mod"], f"❌ ФР: Примечание равны")
 
 
-# Сранение маршруных данных
+# Сравнение маршрутных данных
     with allure.step("20. Имя маршрута Отгрузка"):
         check.is_true(SequenceMatcher(None, order_app["shipment1"], order_app["shipment_name"]).ratio() >= 0.1, "❌ ФР: Не совпадает Имя маршрута Отгрузка на 130%")
 
@@ -87,73 +145,73 @@ def test_value_del(order_app):
         check.equal(order_app["driver1"],order_app["shipment_driver"], f"❌ ФР: Не совпадает Водитель Отгрузка")
 
     with allure.step("23. План. дата отгрузки Отгрузка"):
-        check.equal(order_app["plan_load1"],order_app["shipment_plan_data"], f"❌ ФР: Не совпадает План. дата отгрузки Отгрузка")
+        compare_dates(order_app["plan_load1"],order_app["shipment_plan_data"], f"❌ ФР: Не совпадает План. дата отгрузки Отгрузка")
 
     with allure.step("24. Факт. дата отгрузки Отгрузка"):
-        check.equal(order_app["fact_load1"],order_app["shipment_fact_data"], f"❌ ФР: Не совпадает Факт. дата отгрузки Отгрузка")
+        compare_dates(order_app["fact_load1"],order_app["shipment_fact_data"], f"❌ ФР: Не совпадает Факт. дата отгрузки Отгрузка")
 
     with allure.step("25. Автомобиль Отгрузка"):
         check.equal(order_app["car1"],order_app["shipment_auto"], f"❌ ФР: Не совпадает Автомобиль Отгрузка")
 
-    with allure.step("26. Поменялося Адрес Отгрузка"):
+    with allure.step("26. Поменялся Адрес Отгрузка"):
         check.is_false(order_app["shipment_address"] == order_app["shipment_address_mod"], f"❌ ФР: ")
 
-    with allure.step("27. Поменялося Водитель Отгрузка"):
+    with allure.step("27. Поменялся Водитель Отгрузка"):
         check.is_false(order_app["shipment_driver"] == order_app["shipment_driver_mod"], f"❌ ФР: ")
 
-    with allure.step("28. Поменялося Автомобиль Отгрузка"):
+    with allure.step("28. Поменялся Автомобиль Отгрузка"):
         check.is_false(order_app["shipment_auto"] == order_app["shipment_auto_mod"], f"❌ ФР: ")
 
-    with allure.step("29. Поменялося План. дата отгрузки Отгрузка"):
+    with allure.step("29. Поменялся План. дата отгрузки Отгрузка"):
         check.is_false(order_app["shipment_plan_data"] == order_app["shipment_plan_data_mod"], f"❌ ФР: ")
 
-    with allure.step("30. Поменялося Факт. дата отгрузки Отгрузка"):
+    with allure.step("30. Поменялся Факт. дата отгрузки Отгрузка"):
         check.is_false(order_app["shipment_fact_data"] == order_app["shipment_fact_data_mod"], f"❌ ФР: ")
 
-    with allure.step("31. Поменялося Примечание Отгрузка"):
-        check.is_false(order_app["shipment_note"] == order_app["shipment_note_mod"], f"❌ ФР: НЕ поменялося Примечание Отгрузка")
+    with allure.step("31. Поменялся Примечание Отгрузка"):
+        check.is_false(order_app["shipment_note"] == order_app["shipment_note_mod"], f"❌ ФР: НЕ поменялся Примечание Отгрузка")
 
     with allure.step("32. Адрес Прибытие"):
         check.equal(order_app["address2"],order_app["arrival_address"], f"❌ ФР: Не совпадает Адрес Прибытие")
 
     with allure.step("33. План. прибытия Прибытие"):
-        check.equal(order_app["plan_arrival2"],order_app["arrival_plan_data"], f"❌ ФР: Не совпадает План. прибытия Прибытие")
+        compare_dates(order_app["plan_arrival2"],order_app["arrival_plan_data"], f"❌ ФР: Не совпадает План. прибытия Прибытие")
 
     with allure.step("34. Факт. прибытия Прибытие"):
-        check.equal(order_app["fact_arrival2"],order_app["arrival_fact_data"], f"❌ ФР: Не совпадает Факт. прибытия Прибытие")
+        compare_dates(order_app["fact_arrival2"], order_app["arrival_fact_data"], f"❌ ФР: Не совпадает Факт. прибытия Прибытие")
 
-    with allure.step("35. Поменялося Адрес Прибытие"):
-        check.is_false(order_app["arrival_address"] == order_app["arrival_address_mod"], f"❌ ФР:Не поменялося Адрес Прибытие")
+    with allure.step("35. Поменялся Адрес Прибытие"):
+        check.is_false(order_app["arrival_address"] == order_app["arrival_address_mod"], f"❌ ФР:Не поменялся Адрес Прибытие")
 
-    with allure.step("36. Поменялося План. прибытия Прибытие"):
-        check.is_false(order_app["arrival_plan_data"] == order_app["arrival_plan_data_mod"], f"❌ ФР:Не поменялося План. прибытия Прибытие ")
+    with allure.step("36. Поменялся План. прибытия Прибытие"):
+        check.is_false(order_app["arrival_plan_data"] == order_app["arrival_plan_data_mod"], f"❌ ФР:Не поменялся План. прибытия Прибытие ")
 
-    with allure.step("37. Поменялося Факт. прибытия Прибытие"):
-        check.is_false(order_app["arrival_fact_data"] == order_app["arrival_fact_data_mod"], f"❌ ФР:Не поменялося Факт. прибытия Прибытие ")
+    with allure.step("37. Поменялся Факт. прибытия Прибытие"):
+        check.is_false(order_app["arrival_fact_data"] == order_app["arrival_fact_data_mod"], f"❌ ФР:Не поменялся Факт. прибытия Прибытие ")
 
-    with allure.step("38. Поменялося Примечание Прибытие"):
-        check.is_false(order_app["arrival_note"] == order_app["arrival_note_mod"], f"❌ ФР:Не поменялося Примечание Прибытие ")
+    with allure.step("38. Поменялся Примечание Прибытие"):
+        check.is_false(order_app["arrival_note"] == order_app["arrival_note_mod"], f"❌ ФР:Не поменялся Примечание Прибытие ")
 
-    with allure.step("39. Поменялося Адрес Cдача контейнера"):
+    with allure.step("39. Поменялся Адрес Cдача контейнера"):
         check.equal(order_app["address3"], order_app["drop_con_address"], f"❌ ФР:Не совпадает Адрес Cдача контейнера")
 
     with allure.step("40. План. прибытия Cдача контейнера"):
-        check.equal(order_app["plan_arrival3"],order_app["drop_con_plan_data"], f"❌ ФР: Не совпадает План. прибытия Cдача контейнера")
+        compare_dates(order_app["plan_arrival3"],order_app["drop_con_plan_data"], f"❌ ФР: Не совпадает План. прибытия Cдача контейнера")
 
     with allure.step("41. Факт. прибытия Cдача контейнера"):
-        check.equal(order_app["fact_arrival3"],order_app["drop_con_fact_data"], f"❌ ФР: Не совпадает Факт. прибытия Прибытие")
+        compare_dates(order_app["fact_arrival3"],order_app["drop_con_fact_data"], f"❌ ФР: Не совпадает Факт. прибытия Cдача контейнера")
 
-    with allure.step("42. Поменялося Адрес Cдача контейнера"):
-        check.is_false(order_app["drop_con_address"] == order_app["drop_con_fact_data_mod"], f"❌ ФР:Не поменялося Примечание Прибытие ")
+    with allure.step("42. Поменялся Адрес Cдача контейнера"):
+        check.is_false(order_app["drop_con_address"] == order_app["drop_con_fact_data_mod"], f"❌ ФР:Не поменялся Примечание Прибытие ")
 
-    with allure.step("43. Поменялося План. прибытия Cдача контейнера"):
-        check.is_false(order_app["drop_con_plan_data"] == order_app["drop_con_fact_data_mod"], f"❌ ФР:Не поменялося Примечание Прибытие ")
+    with allure.step("43. Поменялся План. прибытия Cдача контейнера"):
+        check.is_false(order_app["drop_con_plan_data"] == order_app["drop_con_fact_data_mod"], f"❌ ФР:Не поменялся Примечание Прибытие ")
 
-    with allure.step("44. Поменялося Факт. прибытия Cдача контейнера"):
-        check.is_false(order_app["drop_con_fact_data"] == order_app["drop_con_fact_data_mod"], f"❌ ФР:Не поменялося Примечание Прибытие ")
+    with allure.step("44. Поменялся Факт. прибытия Cдача контейнера"):
+        check.is_false(order_app["drop_con_fact_data"] == order_app["drop_con_fact_data_mod"], f"❌ ФР:Не поменялся Примечание Прибытие ")
 
-    with allure.step("45. Поменялося Примечание Cдача контейнера"):
-        check.is_false(order_app["drop_con_note"] == order_app["arrival_note_mod"], f"❌ ФР:Не поменялося Примечание Прибытие ")
+    with allure.step("45. Поменялся Примечание Cдача контейнера"):
+        check.is_false(order_app["drop_con_note"] == order_app["arrival_note_mod"], f"❌ ФР:Не поменялся Примечание Прибытие ")
 
 # Заказ
     with allure.step("46. Заказ таблица"):
@@ -190,10 +248,10 @@ def test_value_del(order_app):
         check.is_true(SequenceMatcher(None, order_app["creation_date_table1"], order_app["auto_create_date"]).ratio() >= 0.3, "❌ ФР: Не совпадает Дата создания таблица на 30%")
 
     with allure.step("57. Дата изменения таблица"):
-        check.equal(order_app["modification_date_table1"], order_app["auto_mode_date_mod"], f"❌ ФР: Не совпадает Дата изменения таблица")
+        compare_dates(order_app["modification_date_table1"], order_app["auto_mode_date_mod"], f"❌ ФР: Не совпадает Дата изменения таблица")
 
     with allure.step("58. Дата завершения таблица"):
-        check.equal(order_app["completion_date_table1"], order_app["auto_finish_date_mod"], f"❌ ФР: Не совпадает Дата завершения таблица")
+        compare_dates(order_app["completion_date_table1"], order_app["auto_finish_date_mod"], f"❌ ФР: Не совпадает Дата завершения таблица")
 
     with allure.step("59. Тип груза таблица"):
         check.equal(order_app["cargo_type_table1"], order_app["auto_type_freight_mod"], f"❌ ФР: Не совпадает Тип груза таблица")
@@ -226,43 +284,43 @@ def test_value_del(order_app):
 
 
     steps_to_check = [
-        ("1. Тип груза", ["auto_type_freight"]),
-        ("2. Класс груза", ["auto_class_freight"]),
-        ("3. Способ загрузки", ["auto_download_method"]),
-        ("4. Референс груза", ["auto_ref_freight"]),
-        ("5. Перевозчик", ["auto_carrier"]),
-        ("6. Номер CRM", ["auto_cmr"]),
-        ("7. Номер CRM порож", ["auto_cmr_por"]),
-        ("8. Примечание перевозки", ["auto_note"]),
-        ("9. Примечание Отгрузка", ["shipment_note"]),
-        ("10. План. прибытия Отгрузка", ["plan_arrival1"]),
-        ("11. Факт. прибытия Отгрузка", ["fact_arrival1"]),
-        ("12. Водитель Прибытие", ["driver2"]),
-        ("13. План. отгрузки Прибытие", ["plan_load2"]),
-        ("14. Факт. отгрузки Прибытие", ["fact_load2"]),
-        ("15. Автомобиль Прибытие", ["car2"]),
-        ("16. Примечание Прибытие", ["arrival_note"]),
-        ("17. Адрес Сдача контейнера", ["address3"]),
-        ("18. Примечание Сдача контейнера", ["drop_con_note"]),
-        ("19. Водитель Сдача контейнера", ["driver3"]),
-        ("20. План. отгрузки Сдача контейнера", ["plan_load3"]),
-        ("21. Факт. отгрузки Сдача контейнера", ["fact_load3"]),
-        ("22. Автомобиль Сдача контейнера", ["car3"]),
-        ("23. План. прибытия Отгрузка", ["plan_arrival1_mod"]),
-        ("24. Факт. прибытия Отгрузка", ["fact_arrival1_mod"]),
-        ("25. Водитель Прибытие", ["driver2_mod"]),
-        ("26. План. отгрузки Прибытие", ["plan_load2_mod"]),
-        ("27. Факт. отгрузки Прибытие", ["fact_load2_mod"]),
-        ("28. Автомобиль Прибытие", ["car2_mod"]),
-        ("29. Водитель Сдача контейнера", ["driver3_mod"]),
-        ("30. План. отгрузки Сдача контейнера", ["plan_load3_mod"]),
-        ("31. Факт. отгрузки Сдача контейнера", ["fact_load3_mod"]),
-        ("32. Автомобиль Сдача контейнера", ["car3_mod"]),
-        ("33. Отправители в заказе", ["order_senders"]),
-        ("34. Получатель в заказе", ["order_recipient"]),
-        ("35. Условия поставки в заказе", ["order_delivery"]),
-        ("36. Референс клиента в заказе", ["order_reference"]),
-        ("37. Примечание в заказе", ["order_note"]),
+        ("68. Тип груза", ["auto_type_freight"]),
+        ("69. Класс груза", ["auto_class_freight"]),
+        ("70. Способ загрузки", ["auto_download_method"]),
+        ("71. Референс груза", ["auto_ref_freight"]),
+        ("72. Перевозчик", ["auto_carrier"]),
+        ("73. Номер CRM", ["auto_cmr"]),
+        ("74. Номер CRM порож", ["auto_cmr_por"]),
+        ("75. Примечание перевозки", ["auto_note"]),
+        ("76. Примечание Отгрузка", ["shipment_note"]),
+        ("77. План. прибытия Отгрузка", ["plan_arrival1"]),
+        ("78. Факт. прибытия Отгрузка", ["fact_arrival1"]),
+        ("79. Водитель Прибытие", ["driver2"]),
+        ("80. План. отгрузки Прибытие", ["plan_load2"]),
+        ("81. Факт. отгрузки Прибытие", ["fact_load2"]),
+        ("82. Автомобиль Прибытие", ["car2"]),
+        ("83. Примечание Прибытие", ["arrival_note"]),
+        ("84. Адрес Сдача контейнера", ["address3"]),
+        ("85. Примечание Сдача контейнера", ["drop_con_note"]),
+        ("86. Водитель Сдача контейнера", ["driver3"]),
+        ("87. План. отгрузки Сдача контейнера", ["plan_load3"]),
+        ("88. Факт. отгрузки Сдача контейнера", ["fact_load3"]),
+        ("89. Автомобиль Сдача контейнера", ["car3"]),
+        ("90. План. прибытия Отгрузка", ["plan_arrival1_mod"]),
+        ("91. Факт. прибытия Отгрузка", ["fact_arrival1_mod"]),
+        ("92. Водитель Прибытие", ["driver2_mod"]),
+        ("93. План. отгрузки Прибытие", ["plan_load2_mod"]),
+        ("94. Факт. отгрузки Прибытие", ["fact_load2_mod"]),
+        ("95. Автомобиль Прибытие", ["car2_mod"]),
+        ("96. Водитель Сдача контейнера", ["driver3_mod"]),
+        ("97. План. отгрузки Сдача контейнера", ["plan_load3_mod"]),
+        ("98. Факт. отгрузки Сдача контейнера", ["fact_load3_mod"]),
+        ("99. Автомобиль Сдача контейнера", ["car3_mod"]),
+        ("100. Отправители в заказе", ["order_senders"]),
+        ("101. Получатель в заказе", ["order_recipient"]),
+        ("102. Условия поставки в заказе", ["order_delivery"]),
+        ("103. Референс клиента в заказе", ["order_reference"]),
+        ("104. Примечание в заказе", ["order_note"]),
     ]
 
     for step_name, fields in steps_to_check:

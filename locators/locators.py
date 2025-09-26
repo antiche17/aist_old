@@ -197,7 +197,7 @@ class LocOrders:
 
     ARRIVAL_DATA = {'title': "План. дата прибытия:", 'control_type': "ComboBox", 'auto_id': "PlanArrivals"}
     ARRIVAL_DATA1 = {'control_type': "ComboBox", 'auto_id': "planArrivals"} # Плановая
-    ARRIVAL_DATA_FACT = {'control_type': "ComboBox", 'auto_id': "factArrivals"}# фактическая
+    ARRIVAL_DATA_FACT = {'control_type': "ComboBox", 'auto_id': "factArrivals", 'found_index': 0}# фактическая
     UNLOADING = {'title': "Выгрузка:", 'control_type': "ComboBox", 'found_index': 0}
     ADD_TE = {'control_type': "ComboBox", 'auto_id': "cargosEdit1"}
 
@@ -294,9 +294,9 @@ class LocOrders:
     PLAN_ARRIVAL_DATA2 = {"title": "План. прибытия строка 2", "control_type": "DataItem"}
     PLAN_ARRIVAL_DATA3 = {"title": "План. прибытия строка 3", "control_type": "DataItem"}
 
-    FACT_ARRIVAL_DATA1 = {"title": "План. прибытия строка 1", "control_type": "DataItem"}
-    FACT_ARRIVAL_DATA2 = {"title": "План. прибытия строка 2", "control_type": "DataItem"}
-    FACT_ARRIVAL_DATA3 = {"title": "План. прибытия строка 3", "control_type": "DataItem"}
+    FACT_ARRIVAL_DATA1 = {"title": "Факт. прибытия строка 1", "control_type": "DataItem"}
+    FACT_ARRIVAL_DATA2 = {"title": "Факт. прибытия строка 2", "control_type": "DataItem"}
+    FACT_ARRIVAL_DATA3 = {"title": "Факт. прибытия строка 3", "control_type": "DataItem"}
 
 
     # Экспедирование вкладка в заказе
