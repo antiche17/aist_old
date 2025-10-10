@@ -12,7 +12,7 @@ def order_app():
     yield order_data
     app.close()
 
-
+@allure.suite("Комплексная проверка данных заказа и ГТД")
 @allure.title("Комплексная проверка данных заказа и ГТД")
 @pytest.mark.order(1)
 def test_full_order_validation(order_app):

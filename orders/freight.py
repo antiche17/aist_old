@@ -244,7 +244,7 @@ class WinAISTApp:
 
         # 8 Взять данные
         self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
-        time.sleep(1)
+        time.sleep(2)
 
         # 5. Открыть Container
         self.fun.click_element_double(main_window, self.loc.FREIGHT_ITEM2, timeout=5)

@@ -49,6 +49,7 @@ def check_equal_dates(value1, value2, field_name):
     normalized2 = normalize_date(value2)
     check.equal(normalized1, normalized2, f"❌ ФР: Не одинаковый {field_name}")
 
+@allure.suite("Проверка Таблицы Грузы")
 @allure.title("Проверка Таблицы Грузы")
 @pytest.mark.order(1)
 def test_freight(order_app):

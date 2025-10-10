@@ -14,7 +14,7 @@ def order_app():
     app.close()
 
 
-@allure.suite("Заказ")
+@allure.suite("Проверка создания и удаления перевозок")
 @allure.title("Проверка создания и удаления перевозок")
 @pytest.mark.order(1)
 def test_sea_transportation(order_app):
