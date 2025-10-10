@@ -33,6 +33,7 @@ class WinAISTApp:
         self.fun.select_range_with_shift(main_window, self.fun.loc.TABLE_ORDER_NUMBER, self.fun.loc.TABLE_ORDER_NUMBER10)
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.fun.loc.TABLE_DELETE)
+        self.fun.click_element_sp(main_window, self.fun.loc.YES_BUTTON)
         self.fun.order_data.update({
             'del_window': self.fun.get_element_property(main_window, self.fun.loc.DEL_WINDOW, "Name"),
         })
@@ -90,7 +91,9 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.REFRESH_BUTTON)
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER)
+
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element_sp(main_window, self.loc.YES_BUTTON)
         self.fun.order_data.update({
             'del_window_file1': self.fun.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
         })
@@ -139,6 +142,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER)
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element_sp(main_window, self.loc.YES_BUTTON)
         self.fun.order_data.update({
             'del_window_services1': self.fun.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
         })
@@ -197,6 +201,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER)
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element_sp(main_window, self.loc.YES_BUTTON)
         self.fun.order_data.update({
             'del_window_is1': self.fun.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
         })
@@ -254,6 +259,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER)
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element_sp(main_window, self.loc.YES_BUTTON)
         self.fun.order_data.update({
             'del_window_vs1': self.fun.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
         })
@@ -310,6 +316,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER)
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element_sp(main_window, self.loc.YES_BUTTON)
         self.fun.order_data.update({
             'del_window_ip1': self.fun.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
         })
@@ -366,6 +373,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER)
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
         self.fun.order_data.update({
             'del_window_vp1': self.fun.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
         })
@@ -391,7 +399,7 @@ class WinAISTApp:
         # 8. Создать морскую перевозку
         self.fun.click_element(main_window, self.loc.CREATE_BUTTON, timeout=3)
         self.fun.click_element(main_window, self.loc.TYPE_TRANSPORTATION, timeout=3)
-        self.fun.click_element(main_window, self.loc.SEA_TRANSPORTATION, timeout=3)
+        self.fun.click_element(main_window, self.loc.SEA_TRANSPORTATION, timeout=4)
         keyboard.send_keys('{ENTER}')  # нажать на ОК работает если есть фокус на кнопке, могут быть проблемы
 
         # 9. Переключится на форму морской перевозки
@@ -429,6 +437,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER)
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
         self.fun.order_data.update({
             'del_window_sea1': self.fun.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
         })
@@ -487,6 +496,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER)
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
         self.fun.order_data.update({
             'del_window_auto1': self.fun.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
         })
@@ -543,6 +553,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER)
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
         self.fun.order_data.update({
             'del_window_bul1': self.fun.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
         })
@@ -593,6 +604,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER)
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
         self.fun.order_data.update({
             'del_window_con1': self.fun.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
         })
@@ -684,6 +696,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER)
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
         self.fun.order_data.update({
             'del_window_gtd1': self.fun.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
         })
@@ -742,6 +755,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER)
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
         self.fun.order_data.update({
             'del_window_exp1': self.fun.get_element_property(main_window, self.loc.DEL_WINDOW, "Name"),
         })
@@ -794,7 +808,8 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.fun.loc.TABLE_ORDER_NUMBER, timeout=5)
         time.sleep(1)
         self.fun.click_element(main_window, self.fun.loc.TABLE_DELETE, timeout=1)
-        # self.fun.click_element(main_window, self.fun.loc.TABLE_DELETE_WINDOW, timeout=1) подтверждение удаления заказа не работает
+        self.fun.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
+
 
         # 6. Обновить таблицу
         self.fun.click_element(main_window, self.fun.loc.REFRESH_BUTTON, timeout=2)
@@ -849,17 +864,18 @@ class WinAISTApp:
         # Выбор 2х заказов и удаление их
         self.fun.select_two_elements_with_ctrl(main_window, self.fun.loc.RECIPIENT_1, self.fun.loc.RECIPIENT_2)
         self.fun.click_element_sp(main_window, self.fun.loc.TABLE_DELETE)
+
         # self.fun.click_element(main_window, self.fun.loc.TABLE_DELETE_WINDOW, timeout=1) подтверждение удаления заказа не работает
 
         # Обновить таблицу
         self.fun.click_element_sp(main_window, self.fun.loc.REFRESH_BUTTON)
-
+        self.fun.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
         # Cравнение изменений
         self.fun.order_data.update({
             'table_order_1': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_ORDER_NUMBER, "Value"),
             'table_order_2': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_ORDER_NUMBER2, "Value")
         })
-
+        self.fun.click_element(main_window, self.fun.loc.REFRESH_BUTTON, timeout=1)
         return self.fun.order_data
 
 

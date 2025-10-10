@@ -186,7 +186,7 @@ class WinAISTApp:
         main_window.set_focus()
 
 
-        # 5. Добавление веса товара bulkership
+        # 5. Добавление вес товара bulkership
         self.fun.set_text_field(main_window, self.loc.NET_WEIGHT, "1000", timeout=1)
         self.fun.set_text_field(main_window, self.loc.GROSS_WEIGHT, "2345", timeout=1)
 

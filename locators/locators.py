@@ -33,7 +33,7 @@ class LocOrders:
     OPEN_BUTTON = {'title': "Открыть", 'control_type': "Button", 'found_index': 0}
     OPEN_BUTTON1 = {'title': "Открыть", 'control_type': "Button", 'found_index': 1}
     TABLE_DELETE_WINDOW = {'title': "OK", 'auto_id': "btnOK", 'found_index': 0}
-    APPLY_BUTTON = {'title': "Применить", 'auto_id': "btnApply"}
+    APPLY_BUTTON = {'title': "Применить", 'auto_id': "btnApply", 'found_index': 0}
     APPLY_BUTTON1 = {'title': "Применить", 'auto_id': "sbApply", 'found_index': 0}
 
     # Элементы таблицы заказов
@@ -68,6 +68,8 @@ class LocOrders:
     OK_BUTTON1 = {'auto_id': "btnOK", 'found_index': 0}
     SAVE_BUTTON = {'auto_id': "sbSave", 'control_type': "Button"}
     AP = {'auto_id': "sbSave", 'control_type': "Button"}
+    SCROLL_RIGHT = {'title': "Прокрутка вправо", 'control_type': "Button", 'found_index': 0}
+    SCROLL_LEFT = {'title': "Прокрутка влево", 'control_type': "Button", 'found_index': 0}
 
     # Элементы информации о заказе
     ORDER_NUMBER = { 'control_type': "ComboBox", 'auto_id': "bceNavigation", 'found_index': 0}
@@ -89,6 +91,7 @@ class LocOrders:
     RECIPIENT_1 = {'title': "Строка 1", 'control_type': "ListItem", 'found_index': 0}
     RECIPIENT_2 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
     RECIPIENT_3 = {'title': "Строка 3", 'control_type': "ListItem", 'found_index': 0}
+    RECIPIENT_4 = {'title': "Строка 4", 'control_type': "ListItem", 'found_index': 0}
     RECIPIENT_5 = {'title': "Строка 5", 'control_type': "ListItem", 'found_index': 0}
     RECIPIENT_6 = {'title': "Строка 6", 'control_type': "ListItem", 'found_index': 0}
     RECIPIENT_7 = {'title': "Строка 7", 'control_type': "ListItem", 'found_index': 0}
@@ -100,11 +103,13 @@ class LocOrders:
     DELIVERY_CONDITION_1 = {'title': "Строка 1", 'control_type': "Custom"}
     DELIVERY_CONDITION_2 = {'title': "Строка 2", 'control_type': "Custom"}
     REFERENCE = {'title': "Референс клиента:", 'auto_id': "teClientReference"}
+    SEARCH_BOX = {'title': "Search Box", 'auto_id': "teFind"}
     NOTE = {'title': "Примечание:", 'auto_id': "meDescription"}
     NOTE1 = {'title': "Примечание:", 'auto_id': "meDecription"}
     NOTE_SEA = {'title': "Примечание:", 'auto_id': "decriptionMemoEdit"}
     NOTE_SERVICES = {'control_type': "Edit", 'auto_id': "descriptionTextEdit"}
     NOTE_CONTAINER = {'auto_id': "descriptionMemoEdit"}
+    IS_DATE_SF = {'title': "Дата с/ф", 'auto_id': "dateEdit1"}
 
     MOD_DATE = {'control_type': "Text", 'auto_id': "lblModified"}# Дата изменения
     CREATE_DATE = {'control_type': "Text", 'auto_id': "lblCreatedOn"} # Дата создания
@@ -122,6 +127,7 @@ class LocOrders:
     TAB_INFO = {'title': "Информация", 'control_type': "TabItem"}
     TAB_ROUTES = {'title': "Маршрут", 'control_type': "TabItem"}
     TAB_CHECK = {'title': "Счета", 'control_type': "TabItem"}
+    TAB_CHECK1 = {'title': "Счет", 'control_type': "TabItem"}
     TAB_FILE = {'title': "Файлы", 'control_type': "TabItem"}
     TAB_SERVICES = {'title': "Услуги", 'control_type': "TabItem"}
     TAB_FREIGHT = {'title': "Груз", 'control_type': "TabItem", 'found_index': 0}
@@ -504,13 +510,14 @@ class LocOrders:
     IS_DATE = {'title': "Дата:", 'control_type': "ComboBox", 'auto_id': "deInvoiceDate"}
     IS_LIST = {'control_type': "ComboBox", 'auto_id': "icOutboxInvoiceType"}
     IS_FREIGHT = {'title': "Товарный", 'control_type': "ListItem"}
+    IS_NUMBER_ORDER = {'title': "Номер заказа: ", 'control_type': "ComboBox"}
     IS_FREIGHT1 = {'title': "Фрахтовый", 'control_type': "ListItem"}
     IS_FREIGHT2 = {'title': "Экспедиторский", 'control_type': "ListItem"}
     IS_FREIGHT3 = {'title': "Таможенный", 'control_type': "ListItem"}
     IS_SUPPLIER = {'title': "Поставщик:", 'control_type': "ComboBox", 'auto_id': "leSellerId"}
     IS_BUYER = {'title': "Покупатель:", 'control_type': "ComboBox", 'auto_id': "leBuyerId"}
     IS_TYPE_CHECK = {'title': "Тип счета строка 1", 'control_type': "DataItem"}
-    IS_NUMBER = {'title': "Счет №:", 'control_type': "Edit", 'auto_id': "nameTextEdit"}
+    IS_NUMBER = {'title': "Счет №:", 'control_type': "Edit", 'auto_id': "nameTextEdit", 'found_index': 0}
     IS_NUMBER_TABLE = {'title': "Счет № строка 1", 'control_type': "DataItem"}
     IS_DATE_TABLE = {'title': "Дата строка 1", 'control_type': "DataItem"}
     IS_SUPPLIER_TABLE = {'title': "Поставщик строка 1", 'control_type': "DataItem"}
@@ -521,6 +528,7 @@ class LocOrders:
     IS_NCLOSED_TABLE = {'title': "Незакрыто строка 1", 'control_type': "DataItem"}
     IS_NINCLUDED_TABLE = {'title': "Неразнесено строка 1", 'control_type': "DataItem"}
     IS_APPOINTMENT_TABLE = {'title': "Назначение строка 1", 'control_type': "DataItem"}
+    SYNC_1C = {'title': "Синхронизация 1С:", 'control_type': "Edit"}
 
     # Входящий счет
     VS_CONTRACTOR = {'title': "Подрядчик:", 'control_type': "ComboBox", 'auto_id': "leContractorId"}
@@ -596,6 +604,7 @@ class LocOrders:
 
     #Финансы
     FINANCE = {'title': "Финансы", 'control_type': "Button"}
+    ALL_INVOICES = {'title': "Все счета", 'control_type': "ListItem"}
     OUTGOING_INVOICES = {'title': "Исходящие счета", 'control_type': "ListItem"}
     INCOMING_PAYMENTS = {'title': "Вх. платежи", 'control_type': "TabItem"}
     INCOMING_INVOICES = {'title': "Входящие счета", 'control_type': "ListItem"}
@@ -607,15 +616,17 @@ class LocOrders:
     CONNECT_VP = {'title': "Связь с вх. платежами", 'control_type': "Button"}
     CONNECT_TRANSFERS = {'title': "Связь с вх. переводами", 'control_type': "Button"}
     CONNECT_INVOICES = {'title': "Связь с вх. счетами", 'control_type': "Button"}
+    CONNECT_OFFSETS = {'title': "Взаимозачет с вх. счетами", 'control_type': "Button"}
+    CONNECT_ACCOUNTS_CLIENT = {'title': "Связь с прямыми счетами на клиента", 'control_type': "Button"}
     SERVICES_OPTIONS = {'control_type': "Button", 'auto_id': "btnOptions"}
     LOOK_SERVICES = {'title': "Показать все счета", 'control_type': "Button", 'found_index': 0}
     ADD_SERVICES = {'control_type': "Button", 'auto_id': "btnAdd"}
     EXPAND = {'title': "Свернуть", 'control_type': "Button", 'found_index': 0}
 
-    # Владки счета
-    INCOMING_PAYMENTS = {'title': "Вх. платежи", 'control_type': "TabItem"}
+    # Вкладки счета
+    INCOMING_PAYMENTS1 = {'title': "Вх. платежи", 'control_type': "TabItem"}
     INCOMING_TRANSFERS = {'title': "Вх. переводы", 'control_type': "TabItem"}
-    INCOMING_INVOICES = {'title': "Вх. счета", 'control_type': "TabItem"}
+    INCOMING_INVOICES1 = {'title': "Вх. счета", 'control_type': "TabItem"}
     DIRECT_CLIENT_INVOICES = {'title': "Прямые счета на клиента", 'control_type': "TabItem"}
     OFFSETS = {'title': "Взаимозачеты с вх. счетами", 'control_type': "TabItem"}
     RELATIONS = {'title': "Связи с исх. платежами", 'control_type': "TabItem"}
@@ -624,7 +635,95 @@ class LocOrders:
     ADD_FROM_ORDER_BUTTON = {'title': "Добавить из заказа", 'control_type': "Button"}
     QUICK_CREATE_MENU = {'title': "Быстрое создание", 'control_type': "MenuItem"}
 
+    OCEAN_VESSEL_PANEL = {'title': "Океан. к/с:", 'control_type': "Edit"}
+    FEEDER_VESSEL_PANEL = {'title': "Фидер. к/с:", 'control_type': "Edit"}
+    OCEAN_SHIP_PANEL = {'title': "Океан. судно:", 'control_type': "Edit"}
+    FEEDER_SHIP_PANEL = {'title': "Фидер. судно:", 'control_type': "Edit"}
+    ARRIVAL_PANEL = {'title': "Прибытие:", 'control_type': "ComboBox"}
+    SHIPMENT_PANEL = {'title': "Отгрузка:", 'control_type': "ComboBox"}
+    LOADING_CONDITIONS_PANEL = {'title': "Усл. погрузки:", 'control_type': "ComboBox"}
+    DESTINATION_CONDITIONS_PANEL = {'title': "Усл. назначения:", 'control_type': "ComboBox"}
+    TERMINAL_PANEL = {'title': "Терминал:", 'control_type': "ComboBox"}
+    OCEAN_LINE_PANEL = {'title': "Океан. линия:", 'control_type': "ComboBox"}
+    FEEDER_LINE_PANEL = {'title': "Фидер. линия:", 'control_type': "ComboBox"}
+    LOADING_LOCATION_PANEL = {'title': "Место погрузки:", 'control_type': "ComboBox"}
+    DESTINATION_PANEL = {'title': "Место назначения:", 'control_type': "ComboBox"}
+
+    RETURN_DATE_PANEL = {'title': "Дата возврата:", 'control_type': "ComboBox"}
+    PICKUP_DATE_PANEL = {'title': "Дата вывоза:", 'control_type': "ComboBox"}
+    GTD_PANEL = {'title': "ГТД:", 'control_type': "Edit"}
+    DOOR = {'title': "DOOR", 'control_type': "ListItem"}
+    FOB = {'title': "FOB", 'control_type': "ListItem"}
+    SYNC_BUTTON_1C = {'title': "Glyph", 'control_type': "Button"}
+
+    NDS = {'title': "НДС:", 'control_type': "ComboBox"}
+    NDS_0 = {'title': "0%", 'control_type': "ListItem"}
 
     # Валюта
     USD = {'title': "USD", 'control_type': "ListItem"}
+    RUR = {'title': "RUR", 'control_type': "ListItem"}
 
+    # Услуга в счете
+    LINE_NUMBER1 = {'title': "# строка 1", 'control_type': "DataItem"}
+    SERVICE_LINE1 = {'title': "Услуга строка 1", 'control_type': "DataItem"}
+    VAT_LINE1 = {'title': "НДС строка 1", 'control_type': "DataItem"}
+    QUANTITY_LINE1 = {'title': "Кол-во строка 1", 'control_type': "DataItem"}
+    QUANTITY_SERVICE = {'title': "Кол-во:", 'control_type': "Edit", 'found_index': 0}
+    RATE_LINE1 = {'title': "Ставка строка 1", 'control_type': "DataItem"}
+    CURRENCY_LINE1 = {'title': "Валюта строка 1", 'control_type': "DataItem", 'found_index': 0}
+    TOTAL_LINE1 = {'title': "Итого строка 1", 'control_type': "DataItem"}
+    TOTAL_SV_LINE1 = {'title': "Итого (С. В.) строка 1", 'control_type': "DataItem"}
+
+    SERVICE_TOTAL = {'title': "Итого:", 'control_type': "Edit"}
+
+    DATE_LINE1 = {'title': "Дата строка 1", 'control_type': "DataItem", 'found_index': 0}
+    INVOICE_LINE1 = {'title': "Счет № строка 1", 'control_type': "DataItem", 'found_index': 0}
+    CLIENT_LINE1 = {'title': "Клиент строка 1", 'control_type': "DataItem", 'found_index': 0}
+    BUYER_LINE1 = {'title': "Покупатель строка 1", 'control_type': "DataItem", 'found_index': 0}
+    SUPPLIER_LINE1 = {'title': "Поставщик строка 1", 'control_type': "DataItem", 'found_index': 0}
+    AMOUNT_LINE1 = {'title': "Сумма строка 1", 'control_type': "DataItem", 'found_index': 0}
+    INFO_LINE1 = {'title': "Информация строка 1", 'control_type': "DataItem", 'found_index': 0}
+    CLOSED_LINE1 = {'title': "Закрыто строка 1", 'control_type': "DataItem", 'found_index': 0}
+    UNPAID_LINE1 = {'title': "Незакрыто строка 1", 'control_type': "DataItem", 'found_index': 0}
+    CHARGED_LINE1 = {'title': "Начислено строка 1", 'control_type': "DataItem", 'found_index': 0}
+    CHARGED_SV_LINE1 = {'title': "Начислено (С.В.) строка 1", 'control_type': "DataItem", 'found_index': 0}
+
+    IS_PAYMENT_LINE1 = {'title': "ИС Оплата строка 1", 'control_type': "DataItem", 'found_index': 0}
+    IS_PAYMENT_LINE1_1 = {'title': "ИC оплата строка 1", 'control_type': "DataItem", 'found_index': 0}
+    IS_TYPE_LINE1 = {'title': "Тип ИС строка 1", 'control_type': "DataItem", 'found_index': 0}
+    CONTRACTOR_LINE1 = {'title': "Подрядчик строка 1", 'control_type': "DataItem", 'found_index': 0}
+    UNALLOCATED_LINE1 = {'title': "Неразнесено строка 1", 'control_type': "DataItem", 'found_index': 0}
+    NOTE_LINE1 = {'title': "Примечание строка 1", 'control_type': "DataItem", 'found_index': 0}
+
+    CREATED_LINE1 = {'title': "Создан строка 1", 'control_type': "DataItem", 'found_index': 0}
+    CREATED_BY_LINE1 = {'title': "Кем создан строка 1", 'control_type': "DataItem", 'found_index': 0}
+    MODIFIED_BY_LINE1 = {'title': "Кем изменен строка 1", 'control_type': "DataItem", 'found_index': 0}
+    SERVICE_LINE_01 = {'title': "Услуга 0 строка 1", 'control_type': "DataItem", 'found_index': 0}
+    ACCOUNT_LINE1 = {'title': "Счет № строка 1", 'control_type': "DataItem", 'found_index': 0}
+    GTD_LINE1 = {'title': "ГТД строка 1", 'control_type': "DataItem", 'found_index': 0}
+    FEEDER_VESSEL_LINE1 = {'title': "Фидер. судно строка 1", 'control_type': "DataItem", 'found_index': 0}
+    LINKED_IS_LINE1 = {'title': "Связано в ИС строка 1", 'control_type': "DataItem", 'found_index': 0}
+    LINKED_VS_LINE1 = {'title': "Связано в ВС строка 1", 'control_type': "DataItem", 'found_index': 0}
+
+    MODIFIED_LINE1 = {'title': "Изменен строка 1", 'control_type': "DataItem", 'found_index': 0}
+    PAYMENT_TO_LINE1 = {'title': "Оплата к строка 1", 'control_type': "DataItem", 'found_index': 0}
+    ACCRUED_SV_LINE1 = {'title': "Начислено (С.В.) строка 1", 'control_type': "DataItem", 'found_index': 0}
+
+
+    SERVICE_0_LINE1 = {'title': "Услуга 0 строка 1", 'control_type': "DataItem", 'found_index': 0}
+    UNREALIZED_LINE1 = {'title': "Нереализовано строка 1", 'control_type': "DataItem", 'found_index': 0}
+    UNCLOSED_LINE1 = {'title': "Незакрыто строка 1", 'control_type': "DataItem", 'found_index': 0}
+    ENTERED_IS_LINE1 = {'title': "Введено в ИС строка 1", 'control_type': "DataItem", 'found_index': 0}
+
+    INVOICES_FILTER = {'title': "Счет № фильтр строк", 'control_type': "DataItem", 'found_index': 0}
+
+    # Верхнее меню
+
+    MENU_BAZA = {'title': "База  ", 'control_type': "MenuItem", 'found_index': 0}
+    # не работает MENU_FINANCE = {'title': "Финансы", 'control_type': "Button", 'found_index': 2}
+    # не работает MENU_ALL_SERVICE = {'title': "Все услуги", 'control_type': "Button", 'found_index': 0}
+
+    # Все услуги
+    INVOICE_NUMBER_1 = {'title': "Счет строка 1", 'control_type': "DataItem", 'found_index': 0}
+    INVOICE_DATE_1 = {'title': "Дата счета строка 1", 'control_type': "DataItem", 'found_index': 0}
+    INVOICE_NOTE_1 = {'title': "Примечание счета строка 1", 'control_type': "DataItem", 'found_index': 0}

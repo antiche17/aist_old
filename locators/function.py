@@ -197,15 +197,36 @@ class Function:
         return element.legacy_properties()[property_name]
 
     def get_element_value(self, window, locator, timeout=1):
+        # Ожидание видимости и готовности элемента
         ctrl = window.child_window(**locator).wait('visible ready', timeout=timeout)
         if hasattr(ctrl, 'wrapper_object'):
             ctrl = ctrl.wrapper_object()
 
-        # Если это ComboBoxWrapper, вернем выделенный текст
+        # Если это ComboBoxWrapper — возвращаем выбранный текст
         if ctrl.friendly_class_name() == 'ComboBox':
-            return ctrl.selected_text()
+            try:
+                return ctrl.selected_text()
+            except Exception:
+                # fallback если по каким-то причинам selected_text() не сработал
+                return ctrl.window_text()
 
-        # Для остальных — вернем текст окна
+        # Попробуем получить значение из свойства "Value"
+        try:
+            value = ctrl.get_value()
+            if value not in (None, ''):
+                return value
+        except Exception:
+            pass
+
+        # Если get_value() не сработал — проверим свойства напрямую
+        try:
+            props = ctrl.get_properties()
+            if 'Value' in props and props['Value'] not in (None, ''):
+                return props['Value']
+        except Exception:
+            pass
+
+        # Если Value не нашли — вернем текст элемента (Name)
         return ctrl.window_text()
 
     @staticmethod
