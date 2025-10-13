@@ -35,7 +35,7 @@ def compare_dates(date1, date2, error_message):
 
 @pytest.fixture(scope="module")
 def order_app():
-    print("[SETUP] Запуск фикстуры order_app")
+    print("Есть ошибки задача AIST-863\n Проверка синхронизации с 1С не полная, на дев01 ошибка - Данный счет существует в 1С")
     app = WinAISTApp()
     order_data = app.finance()
     yield order_data
