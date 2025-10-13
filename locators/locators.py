@@ -716,6 +716,7 @@ class LocOrders:
     ENTERED_IS_LINE1 = {'title': "Введено в ИС строка 1", 'control_type': "DataItem", 'found_index': 0}
 
     INVOICES_FILTER = {'title': "Счет № фильтр строк", 'control_type': "DataItem", 'found_index': 0}
+    INVOICES_FILTER1 = {'title': "Счет фильтр строк", 'control_type': "DataItem", 'found_index': 0}
 
     # Верхнее меню
 

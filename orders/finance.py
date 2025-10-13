@@ -62,6 +62,7 @@ class WinAISTApp:
             'is_gtd': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_PANEL, "Value"),
         }
         self.fun.click_element(main_window, self.loc.EXPAND, timeout=1)
+
         # Редактирование формы
         self.fun.click_element_sp(main_window, self.loc.IS_LIST)
         self.fun.click_element_sp(main_window, self.loc.IS_FREIGHT)
@@ -475,7 +476,7 @@ class WinAISTApp:
         keyboard.send_keys('{DOWN 13}')
         keyboard.send_keys('{ENTER}')
         time.sleep(2)
-        self.fun.click_element_sp(main_window, self.loc.INVOICES_FILTER)
+        self.fun.click_element_sp(main_window, self.loc.INVOICES_FILTER1)
         keyboard.send_keys(text, with_spaces=True)
         keyboard.send_keys('{ENTER}')
         self.fun.order_data.update({
