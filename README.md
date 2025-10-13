@@ -78,7 +78,10 @@
   - Автоперевозка:
     - Создание данных и проверка отображения в таблице Автоперевозка.`pytest tests_transportation/test_transportation.py --alluredir=./allure-results`
   - Экспедирование:
-    - Создание данных и проверка отображения в таблице Экспелирование, редактирование данных в таблице. `pytest test_forwarding/test_forwarding.py --alluredir=./allure-results` 
+    - Создание данных и проверка отображения в таблице Экспедирование, редактирование данных в таблице. `pytest test_forwarding/test_forwarding.py --alluredir=./allure-results` 
+  - Финансы:
+    - ИС - создание, редактирование, связывание с другими счетами, синхронизация 1С, создание услуги. `pytest tests_finance/test_finance_is.py --alluredir=./allure-results`
+        нужно, что бы были созданы другие счета!
   - Запуск отчета - `allure serve allure-results --lang ru`
   - Удалить все отчеты - `Remove-Item -Recurse -Force allure-results, allure-report -ErrorAction SilentlyContinue`
   - Запуск всех тестов - `pytest --alluredir=./allure-results`

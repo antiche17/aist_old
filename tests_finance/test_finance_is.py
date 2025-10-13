@@ -47,7 +47,7 @@ def check_equal_dates(value1, value2, field_name):
     check.equal(normalized1, normalized2, f"❌ ФР: Не одинаковый {field_name}")
 
 @allure.suite("Проверка ИС")
-@allure.title("Проверка ИС")
+@allure.title("Проверка ИС, проверок 134")
 @pytest.mark.order(1)
 def test_finance(order_app):
     with allure.step("1. Дата в форме Создание ИС"):
