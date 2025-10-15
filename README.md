@@ -34,7 +34,7 @@
   - [x] Выставление данных для отображения в таблице на [основании](https://jira.smartlink.lan/browse/AIST-711)
   - [x] Редактирование полей и проверка данных в формах
 - [ ] Счета
-  - [ ] ИС: создание, редактирование, связь с другим счетом
+  - [x] ИС: создание, редактирование, связь с другим счетом
   - [ ] ВС: создание, редактирование, связь с другим счетом
   - [ ] ИП: создание, редактирование, связь с другим счетом
   - [ ] ВП: создание, редактирование, связь с другим счетом
@@ -67,7 +67,7 @@
   - Заказ:
     - Создание и редактирование с типом "Логистика" и "Другие услуги" - `pytest tests_orders/test_order.py --alluredir=./allure-results`
     - Создание и удаление "Экспедирование" - `pytest tests_orders/test_order_forwarding.py --alluredir=./allure-results`
-    - Создание и удаление "ГТД" - `pytest tests_orders/test_order_gtd.py --alluredir=./allure-results`
+    - Создание, редактирование и удаление "ГТД" - `pytest tests_orders/test_order_gtd.py --alluredir=./allure-results`
     - Создание и удаление счетов "ИС, ИП, ВП, ВС" - `pytest tests_orders/test_order_finance.py --alluredir=./allure-results`
     - Удаление заказ с сущностями - `pytest tests_orders/test_order_del.py --alluredir=./allure-results`
     - Создание и удаление "Перевозки" - `pytest tests_orders/test_order_transportation.py --alluredir=./allure-results`

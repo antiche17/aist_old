@@ -262,12 +262,6 @@ class WinAISTApp:
     def transportation(self):
         # 1. Запуск приложения
         self.fun.start_application()
-        # startup_window.set_focus()
-
-        # 2. Нажатие кнопки Запуск
-        # self.fun.fun.click_element(startup_window, self.fun.loc.AIST_EF, timeout=1)
-        # self.fun.fun.click_element(startup_window, self.fun.loc.START_BUTTON, timeout=1)
-        time.sleep(2)
 
         # 3. Переход в раздел Заказы
         main_window = self.fun.get_main_window()
@@ -471,7 +465,7 @@ class WinAISTApp:
             'order_dialog_uom': self.fun.get_element_property_sp(main_window, self.fun.loc.FREIGHT_CREATE_UOM, "Value"),
             'order_dialog_number': self.fun.get_element_property_sp(main_window, self.fun.loc.FREIGHT_CREATE_ORDER, "Value"),
         }
-        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON, timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.OK_BUTTON)
         time.sleep(1)
 
         # Во вкладке Перевозки, таблица
@@ -518,21 +512,21 @@ class WinAISTApp:
 
         # 5 Редактирование формы груза
         self.fun.set_text_field(main_window, self.fun.loc.FREIGHT_TE_NUMBER_FORM, "1234567", timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_TE_TYPE, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_LINE_7, timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_TE_TYPE)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_LINE_7)
         self.fun.set_text_field(main_window, self.fun.loc.FREIGHT_TE_QUANTITY_FORM, "77", timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_TE_UOM, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_LINE_3, timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_TE_UOM)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_LINE_3)
 
-        self.fun.click_element(main_window, self.fun.loc.UNLOADING, timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.UNLOADING)
         keyboard.send_keys('1')
         self.fun.set_text_field(main_window, self.fun.loc.FREIGHT_NUMBER_SEAL_FORM, "12345678", timeout=1)
         self.fun.set_text_field(main_window, self.fun.loc.FREIGHT_NUMBER_GTD_FORM, "23456789", timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_MODE_TO_FORM, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.DELIVERY_CONDITION_0, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.FORWARDING_RECEIVING_DO, timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_MODE_TO_FORM)
+        self.fun.click_element_sp(main_window, self.fun.loc.DELIVERY_CONDITION_0)
+        self.fun.click_element_sp(main_window, self.fun.loc.FORWARDING_RECEIVING_DO)
         keyboard.send_keys('2')
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_DATA_TO_FORM, timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_DATA_TO_FORM)
         keyboard.send_keys('3')
         self.fun.set_text_field(main_window, self.fun.loc.NOTE_CONTAINER, "MSMU 2222222 + СААU 333333  2х20 ставка перевоза по 7 000р/щт", timeout=1)
 
@@ -570,8 +564,6 @@ class WinAISTApp:
         main_window.set_focus()
         time.sleep(1)
 
-        main_window = self.fun.app.window(**self.fun.loc.FREIGHT_FROM)
-
         # 5. Проверка полей
         self.fun.order_data.update({
             'freight_number_save': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_TE_NUMBER_FORM, "Value"),
@@ -601,10 +593,10 @@ class WinAISTApp:
 
 
         # 5. Удалить Bulkership
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_ITEM, timeout=5)
-        self.fun.click_element(main_window, self.fun.loc.DEL_BUTTON, timeout=2)
-        self.fun.click_element(main_window, self.fun.loc.YES_BUTTON, timeout=2)
-        self.fun.click_element(main_window, self.fun.loc.REFRESH_BUTTON_ORDER, timeout=2)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_ITEM)
+        self.fun.click_element_sp(main_window, self.fun.loc.DEL_BUTTON)
+        self.fun.click_element_sp(main_window, self.fun.loc.YES_BUTTON)
+        self.fun.click_element_sp(main_window, self.fun.loc.REFRESH_BUTTON_ORDER)
 
         self.fun.order_data.update({
             'freight_del_table': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_TOTAL_RECORDS, "Value")
@@ -1000,14 +992,8 @@ class WinAISTApp:
     def gtd(self):
         # 1. Запуск приложения
         self.fun.start_application()
-        # startup_window.set_focus()
 
-        # 2. Нажатие кнопки Запуск
-        # self.fun.fun.click_element(startup_window, self.fun.loc.AIST_EF, timeout=1)
-        # self.fun.fun.click_element(startup_window, self.fun.loc.START_BUTTON, timeout=1)
-        time.sleep(2)
-
-        # 3. Переход в раздел Заказы
+        # 2. Переход в раздел Заказы
         main_window = self.fun.get_main_window()
         main_window.set_focus()
         time.sleep(4)
@@ -1015,90 +1001,261 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.fun.loc.ORDERS_TAB, timeout=3)
         time.sleep(5)
 
-        # 4. Открыть заказ заказа
-        self.fun.click_element_double(main_window, self.fun.loc.TABLE_ORDER_NUMBER, timeout=5)
+        # 4. Создание нового заказа
+        self.fun.click_element_sp(main_window, self.fun.loc.ADD_BUTTON)
         time.sleep(1)
 
-        # 5. Переключение на форму заказа
+        # 5. Заполнение формы заказа
+        self.fun.click_element_sp(main_window, self.fun.loc.ORDER_TYPE_COMBO)
+        self.fun.click_element_sp(main_window, self.fun.loc.LOGISTICS_ITEM)
+        self.fun.click_element_sp(main_window, self.fun.loc.CUSTOMER_COMBO)
+        self.fun.click_element_sp(main_window, self.fun.loc.CUSTOMER_ITEM)
+        time.sleep(1)
+
+        # 6. Взять значения для проверок
+        self.fun.order_data = {
+            'order_dialog_client': self.fun.get_element_property_sp(main_window, self.fun.loc.CUSTOMER_COMBO, "Value"),
+        }
+        self.fun.click_element_sp(main_window, self.fun.loc.OK_BUTTON)
+        time.sleep(3)
+
+        # 4. Переключение на форму заказа
         main_window = self.fun.get_main_form()
         main_window.set_focus()
         time.sleep(1)
 
-        # 6. Взять номер заказа
-        self.fun.order_data = {
+        # 5. Взять номер заказа
+        self.fun.order_data.update({
             'order_number': self.fun.get_element_property(main_window, self.fun.loc.ORDER_NUMBER, "Name")
-        }
+        })
+        # 7. Перейти во вкладку
 
-        # 7. Перейти во вкладку груза
-        self.fun.click_element(main_window, self.fun.loc.TAB_FREIGHT, timeout=3)
+        self.fun.click_element(main_window, self.fun.loc.TAB_TRANSPORTATION, timeout=5)
 
-        # 8 Создать Bulkership
-        self.fun.click_element(main_window, self.fun.loc.CREATE_BUTTON, timeout=5)
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_CREATE_TE, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_CREATE_TE1, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_CREATE_TYPE, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_CREATE_TYPE1, timeout=1)
-        self.fun.set_text_field(main_window, self.fun.loc.FREIGHT_CREATE_QUANTITY, 1, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_CREATE_UOM, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.FREIGHT_CREATE_UOM1, timeout=1)
-        keyboard.send_keys('{ENTER}')  # нажать на ОК работает если есть фокус на кнопке, могут быть проблемы
+        # 8. Создать морскую перевозку
+        self.fun.click_element(main_window, self.fun.loc.CREATE_BUTTON, timeout=3)
+        self.fun.click_element(main_window, self.fun.loc.TYPE_TRANSPORTATION, timeout=3)
+        self.fun.click_element(main_window, self.fun.loc.SEA_TRANSPORTATION, timeout=3)
+        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON, timeout=1)
+
+        # 9. Переключится на форму морской перевозки
+        main_window = self.fun.get_sea_form()
+        main_window.set_focus()
         time.sleep(1)
 
-        # 9. Во вкладке Перевозки, таблица
+        # 10. Проверка полей
         self.fun.order_data.update({
-            'freight_order_table': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_ITEM, "Value")
+            'sea_order_number': self.fun.get_element_property(main_window, self.fun.loc.ORDER_NUMBER, "Name"),
+
         })
 
-        # 10. Перейти во вкладку Декларирования
-        self.fun.click_element(main_window, self.fun.loc.TAB_GTD, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.ADD_BUTTON, timeout=1)
+        # 10. Создать ТЕ
+        self.fun.click_element_sp(main_window, self.fun.loc.TAB_FREIGHT)
+        self.fun.click_element_sp(main_window, self.fun.loc.CREATE_BUTTON)
+        self.fun.click_element_sp(main_window, self.fun.loc.ADD_TE)
+        self.fun.click_element_sp(main_window, self.fun.loc.OPEN_BUTTON)
+        self.fun.click_element_sp(main_window, self.fun.loc.CREATE_BUTTON)
+        self.fun.click_element_sp(main_window, self.fun.loc.OK_BUTTON)
 
-        # 11. Переключение на форму ГТД
+        # 8 Создать Bulkership
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_TE, )
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_TE1)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_TYPE)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_TYPE1)
+        self.fun.set_text_field(main_window, self.fun.loc.FREIGHT_CREATE_QUANTITY, 1, timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_UOM)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_UOM1)
+        time.sleep(1)
+
+        keyboard.send_keys('{ENTER}')
+        main_window = self.fun.get_sea_form()
+        main_window.set_focus()
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.fun.loc.SAVE_BUTTON)
+        keyboard.send_keys('{ENTER}')
+
+
+        # Закрываем морскую перевозку
+        self.fun.click_element_sp(main_window, self.fun.loc.SAVE_BUTTON)
+        time.sleep(1)
+
+        # 4. Переключение на форму заказа
+        main_window = self.fun.get_main_form()
+        main_window.set_focus()
+        time.sleep(1)
+
+        # 10. Создать ГТД в заказе
+        self.fun.click_element_sp(main_window, self.fun.loc.TAB_GTD)
+        self.fun.click_element_sp(main_window, self.fun.loc.ADD_BUTTON)
+
         main_window = self.fun.get_gtd_form()
         main_window.set_focus()
         time.sleep(1)
 
         # 11. Проверка полей
         self.fun.order_data.update({
-            'order_client': self.fun.get_element_property(main_window, self.fun.loc.GTD_CLIENT, "Value"),
+            'gtd_client': self.fun.get_element_property(main_window, self.fun.loc.GTD_CLIENT, "Value"),
             'gtd_order_number': self.fun.get_element_property(main_window, self.fun.loc.GTD_ORDER, "Value"),
+            'gtd_number': self.fun.get_element_property(main_window, self.fun.loc.GTD_NUMBER, "Value"),
             'procedure_gtd': self.fun.get_element_property(main_window, self.fun.loc.GTD_PROCEDURE, "Value"),
+            'gtd_manager': self.fun.get_element_property(main_window, self.fun.loc.GTD_MANAGER, "Value"),
+
+            'gtd_forwarding': self.fun.get_element_property(main_window, self.fun.loc.GTD_FORWARDING, "Value"),
+            'gtd_sender': self.fun.get_element_property(main_window, self.fun.loc.GTD_SENDER, "Value"),
+            'gtd_plan_arrival': self.fun.get_element_property(main_window, self.fun.loc.GTD_PLAN_ARRIVAL, "Value"),
+            'gtd_plan_ship': self.fun.get_element_property(main_window, self.fun.loc.GTD_PLAN_SHIP, "Value"),
+            'gtd_doc': self.fun.get_element_property(main_window, self.fun.loc.GTD_DOC, "Value"),
+            'gtd_post': self.fun.get_element_property(main_window, self.fun.loc.GTD_POST, "Value"),
+            'gtd_svh': self.fun.get_element_property(main_window, self.fun.loc.GTD_SVH, "Value"),
+            'gtd_declarant': self.fun.get_element_property(main_window, self.fun.loc.GTD_DEC, "Value"),
+
+            'gtd_supply': self.fun.get_element_property(main_window, self.fun.loc.GTD_SUPPLY, "Value"),
+            'gtd_release': self.fun.get_element_property(main_window, self.fun.loc.GTD_RELEASE, "Value"),
+            'gtd_pers': self.fun.get_element_property(main_window, self.fun.loc.GTD_PERSONALS, "Value"),
+
+            'gtd_decl_te': self.fun.get_element_property(main_window, self.fun.loc.GTD_DECl_TE, "Value"),
+            'gtd_real_te': self.fun.get_element_property(main_window, self.fun.loc.GTD_REAL_TE, "Value"),
+            'gtd_decl_tnved': self.fun.get_element_property(main_window, self.fun.loc.GTD_DECl_TNVED, "Value"),
+            'gtd_real_tnved': self.fun.get_element_property(main_window, self.fun.loc.GTD_REAL_TNVED, "Value"),
+            'gtd_brutto': self.fun.get_element_property(main_window, self.fun.loc.GTD_BRUTTO, "Value"),
+            'gtd_netto': self.fun.get_element_property(main_window, self.fun.loc.GTD_NETTO, "Value"),
+            'gtd_price_p': self.fun.get_element_property(main_window, self.fun.loc.GTD_PRICE_P, "Value"),
+            'gtd_price_v': self.fun.get_element_property(main_window, self.fun.loc.GTD_PRICE_V, "Value"),
+
+            'gtd_payment': self.fun.get_element_property(main_window, self.fun.loc.GTD_PAYMENT, "Value"),
+            'gtd_tk': self.fun.get_element_property(main_window, self.fun.loc.GTD_TK, "Value"),
+            'gtd_kts': self.fun.get_element_property(main_window, self.fun.loc.GTD_KTS, "Value"),
+            'gtd_guarantee': self.fun.get_element_property(main_window, self.fun.loc.GTD_GUARANTEE, "Value"),
+            'gtd_peny': self.fun.get_element_property(main_window, self.fun.loc.GTD_PENY, "Value"),
+
+            'gtd_receiver': self.fun.get_element_property(main_window, self.fun.loc.GTD_RECEIVER, "Value"),
+            'gtd_contract': self.fun.get_element_property(main_window, self.fun.loc.GTD_CONTRACT, "Value"),
+            'gtd_sum': self.fun.get_element_property(main_window, self.fun.loc.GTD_SUM, "Value"),
+            'gtd_note': self.fun.get_element_property(main_window, self.fun.loc.GTD_NOTE, "Value"),
+
+            'gtd_dol': self.fun.get_element_property(main_window, self.fun.loc.GTD_DOL, "Value"),
+            'gtd_evr': self.fun.get_element_property(main_window, self.fun.loc.GTD_EVR, "Value"),
+
         })
 
-        # 11. Проверка, что ГТД не создается без ТЕ
-        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON1, timeout=1)
+        # 11. Проверка, что ГТД не сохраняется без ТЕ
+        self.fun.click_element_sp(main_window, self.fun.loc.OK_BUTTON1)
         self.fun.order_data.update({
             'order_te_not': self.fun.get_element_property(main_window, self.fun.loc.GTD_TE_NOT, "Name"),
         })
-        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON, timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.OK_BUTTON)
 
-        # 12. Прикрепить ТЕ
-        self.fun.click_element(main_window, self.fun.loc.CREATE_BUTTON, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.ADD_TE, timeout=1)
+        # 12. Создать ТЕ из ГТД
+        self.fun.click_element_sp(main_window, self.fun.loc.CREATE_BUTTON)
+        self.fun.click_element_sp(main_window, self.fun.loc.ADD_TE)
         keyboard.send_keys('{DOWN}')
         keyboard.send_keys('{ENTER}')
-
+        time.sleep(1)
         self.fun.order_data.update({
             'number_te': self.fun.get_element_property(main_window, self.fun.loc.GTD_TE, "Value")
         })
-        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON1, timeout=1)
+
+        # 12. Взять из К/С партии
+        #self.fun.click_element_sp(main_window, self.fun.loc.GTD_KS)
+        #self.fun.click_element_sp(main_window, self.fun.loc.ADD_TE)
+
+        # 12. Редактирование формы(не все поля)
+        # 12. Редактирование формы(не все поля)
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_PLAN_SHIP)
+        keyboard.send_keys('1')
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_DEC)
+        self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_1)
+        keyboard.send_keys('1')
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_POST)
+        time.sleep(1)
+        self.fun.set_text_field(main_window, self.fun.loc.SEARCH_BOX, "В", timeout=1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_1)
+        time.sleep(1)
+
+
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_SUPPLY)
+        keyboard.send_keys('2')
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_RELEASE)
+        keyboard.send_keys('3')
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_PERSONALS)
+        keyboard.send_keys('4')
+
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_DECl_TE)
+        keyboard.send_keys('1')
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_BRUTTO)
+        keyboard.send_keys('100')
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_PAYMENT)
+        keyboard.send_keys('5')
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_RECEIVER)
+        self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_1)
+
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_CONTRACT)
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_ELLIPSIS)
+        self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.fun.loc.OK_BUTTON1)
+        self.fun.click_element_sp(main_window, self.fun.loc.GTD_SUM)
+        keyboard.send_keys('6')
+
+        self.fun.set_text_field(main_window, self.loc.GTD_NOTE, "Примечание ГТД", timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.APPLY_BUTTON)
+        self.fun.click_element_sp(main_window, self.fun.loc.YES_BUTTON)
+        time.sleep(1)
+        # 11. Проверка полей
+        self.fun.order_data.update({
+            'gtd_number_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_NUMBER, "Value"),
+            'gtd_plan_ship_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_PLAN_SHIP, "Value"),
+            'gtd_post_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_POST, "Value"),
+            'gtd_declarant_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_DEC, "Value"),
+            'gtd_supply_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_SUPPLY, "Value"),
+            'gtd_release_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_RELEASE, "Value"),
+            'gtd_pers_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_PERSONALS, "Value"),
+            'gtd_decl_te_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_DECl_TE, "Value"),
+            'gtd_brutto_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_BRUTTO, "Value"),
+
+            'gtd_payment_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_PAYMENT, "Value"),
+            'gtd_receiver_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_RECEIVER, "Value"),
+            'gtd_contract_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_CONTRACT, "Value"),
+            'gtd_sum_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_SUM, "Value"),
+            'gtd_note_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_NOTE, "Value"),
+
+            'gtd_dol_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_DOL, "Value"),
+            'gtd_evr_mod': self.fun.get_element_property(main_window, self.fun.loc.GTD_EVR, "Value"),
+
+        })
+        self.fun.click_element_sp(main_window, self.fun.loc.OK_BUTTON1)
 
         # 5. Переключение на форму заказа
         main_window = self.fun.get_main_form()
         main_window.set_focus()
         time.sleep(1)
 
-        self.fun.click_element(main_window, self.fun.loc.REFRESH_BUTTON, timeout=2)
+        self.fun.click_element_sp(main_window, self.fun.loc.REFRESH_BUTTON)
+        self.fun.click_element_sp(main_window, self.fun.loc.MAX_FORM)
 
         self.fun.order_data.update({
-            'client_gtd': self.fun.get_element_property(main_window, self.fun.loc.TABLE_CLIENT, "Value"),
-            'client_order': self.fun.get_element_property(main_window, self.fun.loc.CLIENT_COMBO, "Value"),
-            'number_te_order': self.fun.get_element_property(main_window, self.fun.loc.GTD_TE_LINE, "Value"),
+            'gtd_client_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_CLIENT, "Value"),
+            'gtd_decl_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_DECL, "Value"),
+            'gtd_arrival_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_ARRIVAL, "Value"),
+            'gtd_post_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_POST, "Value"),
+            'gtd_container_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_CONTAINER, "Value"),
+            'gtd_brutto_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_BRUTTO, "Value"),
+            'gtd_supply_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_SUPPLY, "Value"),
+            'gtd_contract_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_CONTRACT, "Value"),
+            'gtd_importer_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_IMPORTER, "Value"),
+            'gtd_release_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_RELEASE_GTD, "Value"),
+            'gtd_number_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_GTD_NUMBER, "Value"),
+            'gtd_created_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_CREATED, "Value"),
+            'gtd_sum_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_INVOICE_SUM, "Value"),
+            'gtd_note_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_NOTE, "Value"),
+            'gtd_payments_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_PAYMENTS, "Value"),
+            'gtd_personal_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_PERSONAL, "Value"),
+            'gtd_declarant_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_DECLARANT, "Value")
         })
 
-        self.fun.click_element(main_window, self.fun.loc.TABLE_DELETE, timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.TABLE_DELETE)
         keyboard.send_keys('{ENTER}')
-        self.fun.click_element(main_window, self.fun.loc.REFRESH_BUTTON, timeout=2)
+        self.fun.click_element_sp(main_window, self.fun.loc.REFRESH_BUTTON)
 
         self.fun.order_data.update({
             'all_status': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_TOTAL_RECORDS, "Value")

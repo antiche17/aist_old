@@ -77,8 +77,7 @@ class WinAISTApp:
         self.fun.set_text_field(main_window, self.fun.loc.SEARCH_BOX, "Веспа", timeout=1)
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
-
-        self.fun.click_element_sp(main_window, self.loc.GTD_ORDER)
+        self.fun.click_element_sp(main_window, self.loc.IS_ORDER)
         self.fun.click_element_sp(main_window, self.loc.FREIGHT_ORDER_CREATE)
         self.fun.click_element_sp(main_window, self.loc.ORDER_TYPE_COMBO)
         self.fun.click_element_sp(main_window, self.loc.LOGISTICS_ITEM)

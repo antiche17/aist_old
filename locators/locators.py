@@ -66,10 +66,12 @@ class LocOrders:
     CUSTOMER_ITEM2 = {'title': "Наименование строка 2", 'control_type': "DataItem"}
     OK_BUTTON = {'title': "ОК", 'control_type': "Button", 'found_index': 0}
     OK_BUTTON1 = {'auto_id': "btnOK", 'found_index': 0}
+    OK_BUTTON2 = {'title': "ОК", 'control_type': "Button", 'found_index': 2}
     SAVE_BUTTON = {'auto_id': "sbSave", 'control_type': "Button"}
     AP = {'auto_id': "sbSave", 'control_type': "Button"}
     SCROLL_RIGHT = {'title': "Прокрутка вправо", 'control_type': "Button", 'found_index': 0}
     SCROLL_LEFT = {'title': "Прокрутка влево", 'control_type': "Button", 'found_index': 0}
+    MAX_FORM = {'title': "Maximize", 'control_type': "Button", 'found_index': 0}
 
     # Элементы информации о заказе
     ORDER_NUMBER = { 'control_type': "ComboBox", 'auto_id': "bceNavigation", 'found_index': 0}
@@ -103,7 +105,7 @@ class LocOrders:
     DELIVERY_CONDITION_1 = {'title': "Строка 1", 'control_type': "Custom"}
     DELIVERY_CONDITION_2 = {'title': "Строка 2", 'control_type': "Custom"}
     REFERENCE = {'title': "Референс клиента:", 'auto_id': "teClientReference"}
-    SEARCH_BOX = {'title': "Search Box", 'auto_id': "teFind"}
+    SEARCH_BOX = {'title': "Search Box", 'auto_id': "teFind", 'found_index': 0}
     NOTE = {'title': "Примечание:", 'auto_id': "meDescription"}
     NOTE1 = {'title': "Примечание:", 'auto_id': "meDecription"}
     NOTE_SEA = {'title': "Примечание:", 'auto_id': "decriptionMemoEdit"}
@@ -491,11 +493,64 @@ class LocOrders:
 
     # ГТД
     GTD_CLIENT = {'title': "Клиент:", 'control_type': "ComboBox", 'auto_id': "leClientId"}
-    GTD_ORDER = {'control_type': "ComboBox", 'auto_id': "orderEdit1", 'found_index': 0}
+    GTD_ORDER = {'title': "Заказ:",'control_type': "ComboBox", 'auto_id': "orderEdit1", 'found_index': 0}
     GTD_PROCEDURE = {'title': "Процедура:", 'control_type': "ComboBox", 'auto_id': "icGTDType"}
     GTD_TE_NOT = {'title': "Коносаментная партия должна содержать хотя бы один контейнер", 'control_type': "Text"}
     GTD_TE = {'title': "Номер ТЕ строка 1", 'control_type': "DataItem"}
     GTD_TE_LINE  = {'title': "Контейнеры строка 1", 'control_type': "DataItem"}
+    GTD_MANAGER = {'control_type': "Edit", 'auto_id': "txtManagers"} # поле с менеджером
+    GTD_FORWARDING = {'control_type': "ComboBox", 'auto_id': "leExpeditorId"}  # поле экспедитор
+    GTD_SENDER = {'control_type': "Edit", 'auto_id': "seSCSenderId"}  # поле отправитель
+    GTD_PLAN_ARRIVAL = {'control_type': "ComboBox", 'auto_id': "dtPlan"}  # поле план приход
+    GTD_PLAN_SHIP = {'control_type': "ComboBox", 'auto_id': "arrivalDateDateEdit"}  # поле план судно
+    GTD_DOC = {'control_type': "ComboBox", 'auto_id': "docGetDateDateEdit"}  # поле получение документов
+    GTD_POST = {'control_type': "ComboBox", 'auto_id': "leCustomId"}  # поле пост
+    GTD_SVH = {'control_type': "ComboBox", 'auto_id': "leCBXId"}  # поле СВХ
+    GTD_DEC = {'control_type': "ComboBox", 'auto_id': "leDeclarantUserId"}  # поле Декларант
+    GTD_NUMBER = {'control_type': "Edit", 'auto_id': "gtdNumberTextEdit"}  # поле № ГТД:
+    GTD_SUPPLY = {'control_type': "ComboBox", 'auto_id': "requestDateEdit"}  # поле Подача
+    GTD_RELEASE = {'control_type': "ComboBox", 'auto_id': "releaseDateDateEdit"}  # поле Выпуск
+    GTD_PERSONALS = {'control_type': "Edit", 'auto_id': "customContactTextEdit"}  # поле Лички
+    GTD_DECl_TE = {'control_type': "ComboBox", 'auto_id': "cbeWareDecRus"}  # поле Декл. груз
+
+    GTD_REAL_TE = {'control_type': "ComboBox", 'auto_id': "cbeWareDescDecl"}  # поле Реал. груз
+    GTD_DECl_TNVED = {'control_type': "Edit", 'auto_id': "declTnvedCodeTextEdit"}  # поле Декл. ТНВЭД
+    GTD_REAL_TNVED = {'control_type': "Edit", 'auto_id': "tnvedCodeTextEdit"}  # поле Реал. ТНВЭД
+    GTD_BRUTTO = {'control_type': "Edit", 'auto_id': "txtWeightBrutto"}  # поле Вес (брутто)
+    GTD_NETTO = {'control_type': "Edit", 'auto_id': "txtWeightNetto"}  # поле Вес (нетто)
+    GTD_PRICE_P = {'control_type': "Edit", 'auto_id': "aistNumberEdit10"}  # поле Цена подача
+    GTD_PRICE_V = {'control_type': "Edit", 'auto_id': "aistNumberEdit7"}  # поле Цена выпуск
+    GTD_PAYMENT = {'control_type': "Edit", 'auto_id': "txtPayment"}  # поле Платежи
+    GTD_TK = {'control_type': "Edit", 'auto_id': "aistNumberEdit9"}  # поле ТК
+    GTD_KTS = {'control_type': "Edit", 'auto_id': "txtKTS"}  # поле КТС
+    GTD_GUARANTEE = {'control_type': "Edit", 'auto_id': "txtGuarantee"}  # поле Обеспечение
+    GTD_PENY = {'control_type': "Edit", 'auto_id': "txtPeny"}  # поле Пени
+    GTD_RECEIVER = {'control_type': "ComboBox", 'auto_id': "leReceiverId"}  # поле Импортер
+    GTD_CONTRACT = {'control_type': "Edit", 'auto_id': "seContractId"}  # поле Контракт
+    GTD_SUM = {'control_type': "Edit", 'auto_id': "aistNumberEdit11"}  # поле Сумма
+    GTD_NOTE = {'control_type': "Edit", 'auto_id': "memoEdit1"}  # поле Примечание
+    GTD_DOL = {'control_type': "Edit", 'auto_id': "currencyCourseTextEdit"}  # поле Примечание
+    GTD_EVR = {'control_type': "Edit", 'auto_id': "currencyCourseEURTextEdit"}  # поле Примечание
+
+
+    GTD_KS = {'title': "Взять из К/С партии", 'control_type': "Button"}  # поле Примечание
+    GTD_ELLIPSIS = {'title': "Ellipsis", 'control_type': "Button", 'found_index': 0}  # поле три точки в контракте
+
+    TABLE_DECL = {'title': "Декл. груз строка 1", 'control_type': "DataItem"}
+    TABLE_ARRIVAL = {'title': "Приход груза строка 1", 'control_type': "DataItem"}
+    TABLE_POST = {'title': "Пост строка 1", 'control_type': "DataItem"}
+    TABLE_CONTAINER = {'title': "Контейнеры строка 1", 'control_type': "DataItem"}
+    TABLE_BRUTTO = {'title': "Вес (Брутто) строка 1", 'control_type': "DataItem"}
+    TABLE_SUPPLY = {'title': "Подача ГТД строка 1", 'control_type': "DataItem"}
+    TABLE_CONTRACT = {'title': "Контракт строка 1", 'control_type': "DataItem"}
+    TABLE_IMPORTER = {'title': "Импортер строка 1", 'control_type': "DataItem"}
+    TABLE_RELEASE_GTD = {'title': "Выпуск ГТД строка 1", 'control_type': "DataItem"}
+    TABLE_GTD_NUMBER = {'title': "№ ГТД строка 1", 'control_type': "DataItem"}
+    TABLE_CREATED = {'title': "Создан строка 1", 'control_type': "DataItem"}
+    TABLE_INVOICE_SUM = {'title': "Сумма инвойса строка 1", 'control_type': "DataItem"}
+    TABLE_PAYMENTS = {'title': "Платежи строка 1", 'control_type': "DataItem"}
+    TABLE_PERSONAL = {'title': "№ Лички строка 1", 'control_type': "DataItem"}
+    TABLE_DECLARANT = {'title': "Декларант строка 1", 'control_type': "DataItem"}
 
     # Счета радио кнопки
     IS_CREATE_ORDER = {'title': "Исходящий счет", 'control_type': "RadioButton"}
