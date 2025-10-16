@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="Переделка сценария и проверок ГТД в заказе">
+    <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="fix">
+      <change afterPath="$PROJECT_DIR$/notifications/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allure-report_20250902_165254.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/freight.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/freight.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_freight/test_freight.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_freight/test_freight.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,7 +345,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760533617569</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fix">
+      <option name="closed" value="true" />
+      <created>1760608901421</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1760608901421</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -358,9 +363,9 @@
     <MESSAGE value="Проверка таблицы Автоперевозка, создание заказа из таблицы, создание всех маршрутов." />
     <MESSAGE value="Проверки таблицы Экспедирование" />
     <MESSAGE value="Рефакторинг кода автотестов. Обьединение двух проверок по сценариям Удаление заказов из таблицы и Удаление заказов с сущностями" />
-    <MESSAGE value="fix" />
     <MESSAGE value="Переделка сценария и проверок ГТД в заказе" />
-    <option name="LAST_COMMIT_MESSAGE" value="Переделка сценария и проверок ГТД в заказе" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

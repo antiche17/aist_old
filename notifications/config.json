@@ -1,0 +1,27 @@
+{
+  "base": {
+    "logo": "Аист",
+    "project": "Аист",
+    "environment": "",
+    "comment": "",
+    "reportLink": "",
+    "language": "ru",
+    "allureFolder": "allure-report",
+    "enableChart": true ,
+    "enableSuitesPublishing": true ,
+    "customData": {}
+  },
+  "mail": {
+    "host": "mail.terpo.ru",
+    "port": "587",
+    "username": "r.sabirov@terpo.ru",
+    "password": "sZezw88C59",
+    "securityProtocol": "STARTTLS" ,
+    "from": "r.sabirov@terpo.ru",
+    "to": "r.sabirov@terpo.ru",
+    "cc": "",
+    "bcc": "",
+    "templatePath": "/templates/html.ftl"
+  }
+
+}
