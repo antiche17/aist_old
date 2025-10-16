@@ -161,6 +161,7 @@ class WinAISTApp:
 
         self.fun.click_element(main_window, self.loc.UNLOADING, timeout=1)
         keyboard.send_keys('1')
+        time.sleep(1)
         self.fun.set_text_field(main_window, self.loc.FREIGHT_NUMBER_SEAL_FORM, "12345678", timeout=1)
         self.fun.set_text_field(main_window, self.loc.FREIGHT_NUMBER_GTD_FORM, "23456789", timeout=2)
         self.fun.click_element(main_window, self.loc.FREIGHT_MODE_TO_FORM, timeout=1)
@@ -556,21 +557,21 @@ class WinAISTApp:
         time.sleep(1)
 
         # 15. Редактирование Экспедирование
-        self.fun.click_element(main_window, self.loc.STATUS_COMBO, timeout=1)
-        self.fun.click_element(main_window, self.loc.STATUS_FINISH, timeout=1)
-        self.fun.click_element(main_window, self.loc.PRIORITY_COMBO, timeout=1)
-        self.fun.click_element(main_window, self.loc.PRIORITY_COMBO_LOW, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.STATUS_COMBO)
+        self.fun.click_element_sp(main_window, self.loc.STATUS_FINISH)
+        self.fun.click_element_sp(main_window, self.loc.PRIORITY_COMBO)
+        self.fun.click_element_sp(main_window, self.loc.PRIORITY_COMBO_LOW)
 
-        self.fun.click_element(main_window, self.loc.FORWARDING_FORWARDER, timeout=1)
-        self.fun.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.FORWARDING_FORWARDER)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
 
-        self.fun.click_element(main_window, self.loc.FORWARDING_TELEX, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.FORWARDING_TELEX)
         time.sleep(1)
         keyboard.send_keys('10')
-        self.fun.click_element(main_window, self.loc.FORWARDING_RECEIVING_DOC, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.FORWARDING_RECEIVING_DOC)
         time.sleep(1)
         keyboard.send_keys('11')
-        self.fun.click_element(main_window, self.loc.FORWARDING_NOMINATION, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.FORWARDING_NOMINATION)
         time.sleep(1)
         keyboard.send_keys('12')
         self.fun.set_text_field(main_window, self.loc.NOTE, "CAAU 111111 \n"
@@ -584,17 +585,17 @@ class WinAISTApp:
 
 
         # Перейти во вкладку грузы
-        self.fun.click_element(main_window, self.loc.TAB_FORWARDING_FREIGHT, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.TAB_FORWARDING_FREIGHT)
 
         # Добавить груз
-        self.fun.click_element(main_window, self.loc.CREATE_BUTTON, timeout=1)
-        self.fun.click_element(main_window, self.loc.OPEN_BUTTON, timeout=1)
-        self.fun.click_element(main_window, self.loc.DELIVERY_CONDITION_0, timeout=1)
-        self.fun.click_element(main_window, self.loc.DELIVERY_CONDITION_1, timeout=1)
-        self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
-        self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.CREATE_BUTTON)
+        self.fun.click_element_sp(main_window, self.loc.OPEN_BUTTON)
+        self.fun.click_element_sp(main_window, self.loc.DELIVERY_CONDITION_0)
+        self.fun.click_element_sp(main_window, self.loc.DELIVERY_CONDITION_1)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
 
-        self.fun.click_element(main_window, self.loc.APPLY_BUTTON1, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON1)
 
         # 16. Проверка введенных данных
         self.fun.order_data.update({
@@ -605,7 +606,7 @@ class WinAISTApp:
 
         })
 
-        self.fun.click_element(main_window, self.loc.SAVE_BUTTON, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.SAVE_BUTTON)
 
         # 17. Переключение на форму заказа
         main_window = self.fun.get_main_form()
@@ -616,16 +617,16 @@ class WinAISTApp:
             'forwarding_number': self.fun.get_element_property(main_window, self.loc.FORWARDING_NUMBER, "Value"),
         })
 
-        self.fun.click_element(main_window, self.loc.SAVE_BUTTON, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.SAVE_BUTTON)
 
         # 22. В таблицу грузы
         main_window = self.fun.get_main_window()
         main_window.set_focus()
         time.sleep(1)
 
-        self.fun.click_element(main_window, self.loc.REFRESH_BUTTON_ORDER, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.REFRESH_BUTTON_ORDER)
         time.sleep(2)
-        self.fun.click_element(main_window, self.loc.FREIGHT_ORDER_TABLE, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT_ORDER_TABLE)
         time.sleep(1)
 
         # 5. Проверка середины полей в таблице до поля Заказ
@@ -733,27 +734,29 @@ class WinAISTApp:
         })
 
         # Изменяем данные в таблице
-        self.fun.click_element(main_window, self.loc.OTV_FOR_TABLE2, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.OTV_FOR_TABLE2)
         keyboard.send_keys('{ENTER}')
-        self.fun.click_element(main_window, self.loc.OTV_FOR_TABLE2, timeout=1)
-        self.fun.click_element(main_window, self.loc.CUSTOMER_ITEM, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.OTV_FOR_TABLE2)
+        self.fun.click_element_sp(main_window, self.loc.CUSTOMER_ITEM)
 
-        self.fun.click_element(main_window, self.loc.STATUS_AUTO_TABLE2, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.STATUS_AUTO_TABLE2)
         keyboard.send_keys('{ENTER}')
-        self.fun.click_element(main_window, self.loc.STATUS_AUTO_TABLE2, timeout=1)
-        self.fun.click_element(main_window, self.loc.STATUS_COMBO_FINISH, timeout=1)
-
-        self.fun.click_element(main_window, self.loc.SEAL_NUMBER_TABLE1, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.STATUS_AUTO_TABLE2)
+        self.fun.click_element_sp(main_window, self.loc.STATUS_COMBO_FINISH)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.SEAL_NUMBER_TABLE1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.SEAL_NUMBER_TABLE1)
         keyboard.send_keys("Номер пломбы №1")
-        self.fun.click_element(main_window, self.loc.SEAL_NUMBER_TABLE2, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.SEAL_NUMBER_TABLE2)
         keyboard.send_keys("2Номер пломбы №2")
 
-        self.fun.click_element(main_window, self.loc.TERMINAL_TABLE2, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.TERMINAL_TABLE2)
         keyboard.send_keys('{ENTER}')
-        self.fun.click_element(main_window, self.loc.TERMINAL_TABLE2, timeout=1)
-        self.fun.click_element(main_window, self.loc.CUSTOMER_ITEM, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.TERMINAL_TABLE2)
+        self.fun.click_element_sp(main_window, self.loc.CUSTOMER_ITEM)
 
-        self.fun.click_element(main_window, self.loc.PORT_TABLE2, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.PORT_TABLE2)
         keyboard.send_keys('{ENTER}')
         self.fun.click_element(main_window, self.loc.PORT_TABLE2, timeout=1)
         self.fun.click_element(main_window, self.loc.NAME_LINE1, timeout=1)

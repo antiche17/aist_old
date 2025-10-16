@@ -2,40 +2,12 @@ import pytest
 import allure
 from orders.freight import WinAISTApp
 import pytest_check as check
-import locale
-from datetime import datetime
+from locators.format_data import compare_dates
 
-
-MONTHS_RU_EN = {
-    'января': 'January', 'февраля': 'February', 'марта': 'March',
-    'апреля': 'April', 'мая': 'May', 'июня': 'June',
-    'июля': 'July', 'августа': 'August', 'сентября': 'September',
-    'октября': 'October', 'ноября': 'November', 'декабря': 'December'
-}
-
-def normalize_date(date_str):
-    date_str = date_str.replace("г.", "").strip()
-    # Преобразуем только если месяц на русском
-    for ru, en in MONTHS_RU_EN.items():
-        if ru in date_str:
-            date_str = date_str.replace(ru, en)
-            break
-    # Устанавливаем английскую локаль временно
-    locale.setlocale(locale.LC_TIME, 'C')
-    formats = ["%d %B %Y", "%d.%m.%Y"]
-    for fmt in formats:
-        try:
-            return datetime.strptime(date_str, fmt).date()
-        except ValueError:
-            continue
-    raise ValueError(f"Не удалось распознать формат даты: {date_str}")
-
-def compare_dates(date1, date2, error_message):
-    assert normalize_date(date1) == normalize_date(date2), error_message
 
 @pytest.fixture(scope="module")
 def order_app():
-    print("[SETUP] Запуск фикстуры order_app")
+    print("Проверка выставление данных в колонках и редактирование")
     app = WinAISTApp()
     try:
         order_data = app.freight()
@@ -43,11 +15,6 @@ def order_app():
     finally:
         print("[TEARDOWN] Закрытие WinAISTApp")
         app.close()
-
-def check_equal_dates(value1, value2, field_name):
-    normalized1 = normalize_date(value1)
-    normalized2 = normalize_date(value2)
-    check.equal(normalized1, normalized2, f"❌ ФР: Не одинаковый {field_name}")
 
 @allure.suite("Проверка Таблицы Грузы")
 @allure.title("Проверка Таблицы Грузы")

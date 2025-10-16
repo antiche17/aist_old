@@ -85,14 +85,15 @@
   - Запуск отчета - `allure serve allure-results --lang ru`
   - Удалить все отчеты - `Remove-Item -Recurse -Force allure-results, allure-report -ErrorAction SilentlyContinue`
   - Запуск всех тестов - `pytest --alluredir=./allure-results`
+  - Сохранение отчета в проекте - `allure generate allure-results -o Отчет_о_тестировании-16_10_2025 --clean` выставить нужную дату
 
 **Открыть отчет по авто тестам:**\
 Прямое открытие через file:// (локальный путь)\
 Если вы просто дважды кликаете index.html, браузер может блокировать AJAX-запросы к JSON-файлам отчёта. Это стандартная защита браузеров.\
 Решение: открыть отчёт через локальный HTTP-сервер. Например, на Windows:\
-    cd путь к разархивированной папке(cd C:\автотесты\allure-report_20250902_165254)\
+    cd `путь к разархивированной папке`(cd C:\автотесты\allure-report_20250902_165254)\
     python -m http.server 8000\
-И в браузере открыть:\
-http://localhost:8000\
+    И в браузере открыть:\
+    http://localhost:8000\
 
 Для macOS/Linux аналогично через python3 -m http.server 8000.
