@@ -85,7 +85,8 @@
   - Запуск отчета - `allure serve allure-results --lang ru`
   - Удалить все отчеты - `Remove-Item -Recurse -Force allure-results, allure-report -ErrorAction SilentlyContinue`
   - Запуск всех тестов - `pytest --alluredir=./allure-results`
-  - Сохранение отчета в проекте - `allure generate allure-results -o Отчет_о_тестировании-16_10_2025 --clean` выставить нужную дату
+  - Сохранение отчета в проекте - `allure generate allure-results -o allure-report` важно для отправки отчета по почте
+  - Отправка отчета по почте - `java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifications-4.11.0.jar`
 
 **Открыть отчет по авто тестам:**\
 Прямое открытие через file:// (локальный путь)\

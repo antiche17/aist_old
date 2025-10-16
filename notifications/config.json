@@ -1,14 +1,14 @@
 {
   "base": {
     "logo": "Аист",
-    "project": "Аист",
+    "project": "Аист авто тесты",
     "environment": "",
     "comment": "",
     "reportLink": "",
     "language": "ru",
     "allureFolder": "allure-report",
     "enableChart": true ,
-    "enableSuitesPublishing": true ,
+    "enableSuitesPublishing": false ,
     "customData": {}
   },
   "mail": {
