@@ -38,6 +38,7 @@ class LocOrders:
 
     # Элементы таблицы заказов
     REFRESH_BUTTON = {'title': "Элемент", 'control_type': "SplitButton"}
+    REFRESH_BUTTON1 = {'title': "Обновить", 'control_type': "Button"}
     TABLE_ORDER_NUMBER_FILTER = {'title': "Номер заказа вернувшийся фильтр строк", 'control_type': "DataItem"}
     TABLE_ORDER_NUMBER = {'title': "Номер заказа вернувшийся строка 1", 'control_type': "DataItem"}
     TABLE_ORDER_NUMBER2 = {'title': "Номер заказа вернувшийся строка 1", 'control_type': "DataItem"}
@@ -609,6 +610,8 @@ class LocOrders:
 
     #Заголовки полей таблиц
     OTV_TABLE = {'title': "Ответственный (Экспедирование)", 'control_type': "Header", 'found_index': 0}
+    TYPE_IS_TABLE = {'title': "Тип ИС", 'control_type': "Header", 'found_index': 0}
+    CHECK_TABLE = {'title': "Счет №", 'control_type': "Header", 'found_index': 0}
     SELECT_SPEAKERS = {'title': "Выбор колонок", 'control_type': "Button", 'found_index': 0}
     ORDER_TABLE = {'title': "Заказ", 'control_type': "Header", 'found_index': 0}
 

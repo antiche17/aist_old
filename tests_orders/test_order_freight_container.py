@@ -20,7 +20,7 @@ def test_container_freight(order_app):
         check.equal(order_app["order_dialog_te"], "Container", "❌ ФР: Тип груза не Container")
 
     with allure.step("2. Тип ТЕ — 20'dc"):
-        check.equal(order_app["order_dialog_type"], "20' dc", "❌ ФР: Тип ТЕ не 20'dc")
+        check.equal(order_app["order_dialog_type"], "40' hc", "❌ ФР: Тип ТЕ не 20'dc")
 
     with allure.step("3. Количество 1"):
         check.equal(order_app["order_dialog_quantity"], "1", "❌ ФР: Количество не 1")

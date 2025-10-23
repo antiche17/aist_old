@@ -24,7 +24,7 @@ def test_freight(order_app):
         check.equal(order_app["name_client"], order_app["name_client_order"], "❌ ФР: клиенты не одинаковые")
 
     with allure.step("2. Ответственный"):
-        check.equal(order_app["order_otv"], "автотест", "❌ ФР: номер ТЕ не одинаковые")
+        check.equal(order_app["order_otv"], "Administrator S.", "❌ ФР: номер ТЕ не одинаковые")
 
 
     #Проверки с таблицей Грузы

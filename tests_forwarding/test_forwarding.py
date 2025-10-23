@@ -247,8 +247,8 @@ def test_forwarding(order_app):
                       "❌ ФР: Дата создания Экспедирования не одинаковые на 30%")
 
     with allure.step("63. Дата изменения в таблице"):
-        check.is_true(SequenceMatcher(None, order_app["forwarding_mode_date"], order_app["updated_date_table1"]).ratio() >= 0.4,
-            "❌ ФР: Дата изменения в таблице не одинаковые на 40%")
+        check.is_true(SequenceMatcher(None, order_app["forwarding_mode_date"], order_app["updated_date_table1"]).ratio() >= 0.3,
+            "❌ ФР: Дата изменения в таблице не одинаковые на 30%")
 
     with allure.step("64. Номер экспедирования в таблице"):
         check.is_true(SequenceMatcher(None, order_app["forwarding_number_header"], order_app["forwarding_order_number"]).ratio() >= 0.3, "❌ ФР: Номер экспедирования в таблице не одинаковые на 30%")

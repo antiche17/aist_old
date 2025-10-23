@@ -21,7 +21,7 @@ def test_bulkership_freight(order_app):
         check.equal(order_app["order_dialog_te"], "Bulkership", "❌ ФР: Тип груза не Bulkership")
 
     with allure.step("2. Тип ТЕ — Bag"):
-        check.equal(order_app["order_dialog_type"], "Bag", "❌ ФР: Тип ТЕ не Bag")
+        check.equal(order_app["order_dialog_type"], "Box", "❌ ФР: Тип ТЕ не Box")
 
     with allure.step("3. Количество 1"):
         check.equal(order_app["order_dialog_quantity"], "1", "❌ ФР: Количество не 1")

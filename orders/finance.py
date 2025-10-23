@@ -1,4 +1,4 @@
-from pywinauto import Application, keyboard
+from pywinauto import Application, keyboard, mouse
 from locators.locators import LocOrders
 from locators.function import Function
 import time
@@ -263,7 +263,7 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.SERVICES_OPTIONS)
         keyboard.send_keys('{DOWN}')
         keyboard.send_keys('{ENTER}')
-        time.sleep(1)
+        time.sleep(2)
         self.fun.click_element(main_window, self.loc.EXPAND, timeout=1)
         self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
         self.fun.click_element_sp(main_window, self.loc.ADD_SERVICES)
@@ -377,11 +377,18 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.DIRECT_CLIENT_INVOICES)
         self.fun.click_element_sp(main_window, self.loc.CONNECT_ACCOUNTS_CLIENT)
         time.sleep(2)
-        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
-        self.fun.click_element_sp(main_window, self.loc.ADD_SERVICES)
+        self.fun.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        time.sleep(1)
+        self.fun.click_element(main_window, self.loc.ADD_SERVICES, timeout=1)
+        self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
+        # Сброс настроек
+        self.fun.right_click_element(main_window, self.loc.TYPE_IS_TABLE, timeout=3)
+        keyboard.send_keys('{DOWN}' * 17)
+        keyboard.send_keys('{ENTER}')
+        time.sleep(1)
         self.fun.order_data.update({
             'is_type_ps': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_TYPE_LINE1, "Value"),
-            'created_by_ps': self.fun.get_element_property_sp(main_window, self.fun.loc.CREATED_BY_LINE1, "Value"),
+            'created_by_ps': self.fun.get_element_property(main_window, self.fun.loc.CREATED_BY_LINE1, "Value"),
             'date_ps': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_LINE1, "Value"),
             'account_ps': self.fun.get_element_property_sp(main_window, self.fun.loc.ACCOUNT_LINE1, "Value"),
             'buyer_ps': self.fun.get_element_property_sp(main_window, self.fun.loc.BUYER_LINE1, "Value"),
@@ -393,6 +400,9 @@ class WinAISTApp:
         })
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
         time.sleep(2)
+        self.fun.right_click_element(main_window, self.loc.CHECK_TABLE, timeout=3)
+        keyboard.send_keys('{DOWN}' * 18)
+        keyboard.send_keys('{ENTER}')
         self.fun.order_data.update({
             'is_type_ps_form': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_TYPE_LINE1, "Value"),
             'created_by_ps_form': self.fun.get_element_property_sp(main_window, self.fun.loc.CREATED_BY_LINE1, "Value"),
@@ -416,8 +426,11 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.SERVICES_OPTIONS)
         keyboard.send_keys('{DOWN}')
         keyboard.send_keys('{ENTER}')
-        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_2)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.ADD_SERVICES)
+        time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
 
@@ -448,10 +461,14 @@ class WinAISTApp:
         # таблица Все счета
         main_window = self.fun.get_main_window()
         main_window.set_focus()
+        time.sleep(2)
+        self.fun.click_element_sp(main_window, self.loc.MENU_BAZA)
+        keyboard.send_keys('{DOWN 3}')
+        keyboard.send_keys('{ENTER}')
         time.sleep(1)
+        keyboard.send_keys('{ENTER}')
+        time.sleep(2)
 
-        self.fun.click_element_sp(main_window, self.loc.ALL_INVOICES)
-        time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.INVOICES_FILTER)
         keyboard.send_keys(text, with_spaces=True)
         keyboard.send_keys('{ENTER}')

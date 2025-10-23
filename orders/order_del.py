@@ -108,7 +108,7 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
         self.fun.click_element_sp(main_window, self.loc.YES_BUTTON)
         time.sleep(1)
-        self.fun.click_element_sp(main_window, self.loc.REFRESH_BUTTON)
+        self.fun.click_element_sp(main_window, self.loc.REFRESH_BUTTON1)
         self.fun.order_data.update({
             'del_file': self.fun.get_element_property(main_window, self.loc.FREIGHT_TOTAL_RECORDS, "Value"),
         })
