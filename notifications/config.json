@@ -17,7 +17,7 @@
     "password": "sZezw88C59",
     "securityProtocol": "STARTTLS" ,
     "from": "r.sabirov@terpo.ru",
-    "to": "r.sabirov@terpo.ru, v.danilevich@terpo.ru",
+    "to": "r.sabirov@terpo.ru",
     "cc": "",
     "bcc": "",
     "templatePath": "/templates/html.ftl"

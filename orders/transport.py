@@ -15,11 +15,6 @@ class WinAISTApp:
     def transport_auto(self):
         # 1. Запуск приложения
         self.fun.start_application()
-        #startup_window.set_focus()
-
-        # 2. Нажатие кнопки Запуск
-        #self.fun.click_element(startup_window, self.loc.AIST_EF, timeout=1)
-        #self.fun.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
         time.sleep(3)
 
         # 3.
@@ -214,7 +209,7 @@ class WinAISTApp:
             'fact_arrival2': self.fun.get_element_property(main_window, self.fun.loc.FACT_ARRIVAL_DATA2, "Value"),
             'fact_arrival3': self.fun.get_element_property(main_window, self.fun.loc.FACT_ARRIVAL_DATA3, "Value"),
         })
-        # 19. Открываем формы маршрутов
+        # Открываем форму маршрутов
         self.fun.click_element_double_sp(main_window, self.fun.loc.RECIPIENT_1)
 
         main_window = self.fun.get_auto_shipment_form()

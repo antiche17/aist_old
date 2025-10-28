@@ -290,10 +290,6 @@ class WinAISTApp:
         main_window = self.fun.get_product_form()
         main_window.set_focus()
         time.sleep(1)
-        self.fun.order_data.update({
-
-
-        })
 
         # 5. Добавление веса товара bulkership
         self.fun.set_text_field(main_window, self.loc.NET_WEIGHT, "0007", timeout=1)

@@ -13,21 +13,16 @@ class WinAISTApp:
         self.app = self.fun.app
 
     def create_order(self):
-        # 1. Запуск приложения
+        # Запуск приложения
         self.fun.start_application()
-        # startup_window.set_focus()
-
-        # 2. Нажатие кнопки Запуск
-        # self.fun.fun.click_element(startup_window, self.fun.loc.AIST_EF, timeout=1)
-        # self.fun.fun.click_element(startup_window, self.fun.loc.START_BUTTON, timeout=1)
         time.sleep(2)
 
-        # 3. Переход в раздел Заказы
+        # Переход в раздел Заказы
         main_window = self.fun.get_main_window()
         main_window.set_focus()
         time.sleep(4)
 
-        self.fun.click_element(main_window, self.fun.loc.ORDERS_TAB, timeout=3)
+        self.fun.click_element_sp(main_window, self.fun.loc.ORDERS_TAB)
         time.sleep(5)
 
         # 4. Создание нового заказа
@@ -57,31 +52,31 @@ class WinAISTApp:
 
         # 8. Получение данных из формы заказа
         self.fun.order_data.update({
-            'order_number': self.fun.get_element_property(main_window, self.fun.loc.ORDER_NUMBER, "Value"),
-            'order_type': self.fun.get_element_property(main_window, self.fun.loc.ORDER_TYPE_TEXT, "Name"),
-            'order_status': self.fun.get_element_property(main_window, self.fun.loc.STATUS_COMBO, "Value"),
-            'order_priority': self.fun.get_element_property(main_window, self.fun.loc.PRIORITY_COMBO, "Value"),
-            'order_otv': self.fun.get_element_property(main_window, self.fun.loc.RESPONSIBLE_COMBO, "Value"),
+            'order_number': self.fun.get_element_property_sp(main_window, self.fun.loc.ORDER_NUMBER, "Value"),
+            'order_type': self.fun.get_element_property_sp(main_window, self.fun.loc.ORDER_TYPE_TEXT, "Name"),
+            'order_status': self.fun.get_element_property_sp(main_window, self.fun.loc.STATUS_COMBO, "Value"),
+            'order_priority': self.fun.get_element_property_sp(main_window, self.fun.loc.PRIORITY_COMBO, "Value"),
+            'order_otv': self.fun.get_element_property_sp(main_window, self.fun.loc.RESPONSIBLE_COMBO, "Value"),
 
-            'order_client': self.fun.get_element_property(main_window, self.fun.loc.CLIENT_COMBO, "Value"),
-            'order_senders': self.fun.get_element_property(main_window, self.fun.loc.SENDERS_1, "Value"),
-            'order_recipient': self.fun.get_element_property(main_window, self.fun.loc.RECIPIENT, "Value"),
-            'order_delivery': self.fun.get_element_property(main_window, self.fun.loc.DELIVERY_CONDITION, "Value"),
+            'order_client': self.fun.get_element_property_sp(main_window, self.fun.loc.CLIENT_COMBO, "Value"),
+            'order_senders': self.fun.get_element_property_sp(main_window, self.fun.loc.SENDERS_1, "Value"),
+            'order_recipient': self.fun.get_element_property_sp(main_window, self.fun.loc.RECIPIENT, "Value"),
+            'order_delivery': self.fun.get_element_property_sp(main_window, self.fun.loc.DELIVERY_CONDITION, "Value"),
 
-            'order_create_mod': self.fun.get_element_property(main_window, self.fun.loc.MOD_DATE, "Name"),
-            'order_create_date': self.fun.get_element_property(main_window, self.fun.loc.CREATE_DATE, "Name"),
-            'order_completion_date': self.fun.get_element_property(main_window, self.fun.loc.COMPLETION_DATE, "Name"),
-            'order_reference': self.fun.get_element_property(main_window, self.fun.loc.REFERENCE, "Value"),
-            'order_note': self.fun.get_element_property(main_window, self.fun.loc.NOTE, "Value"),
+            'order_create_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.MOD_DATE, "Name"),
+            'order_create_date': self.fun.get_element_property_sp(main_window, self.fun.loc.CREATE_DATE, "Name"),
+            'order_completion_date': self.fun.get_element_property_sp(main_window, self.fun.loc.COMPLETION_DATE, "Name"),
+            'order_reference': self.fun.get_element_property_sp(main_window, self.fun.loc.REFERENCE, "Value"),
+            'order_note': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE, "Value"),
 
-            'order_tab_freight': self.fun.get_element_property(main_window, self.fun.loc.TAB_FREIGHT, "Name"),
-            'order_tab_transportation': self.fun.get_element_property(main_window, self.fun.loc.TAB_TRANSPORTATION, "Name"),
-            'order_tab_forwarding': self.fun.get_element_property(main_window, self.fun.loc.TAB_FORWARDING, "Name"),
-            'order_tab_gtd': self.fun.get_element_property(main_window, self.fun.loc.TAB_GTD, "Name"),
-            'order_tab_check': self.fun.get_element_property(main_window, self.fun.loc.TAB_CHECK, "Name"),
-            'order_tab_file': self.fun.get_element_property(main_window, self.fun.loc.TAB_FILE, "Name"),
-            'order_tab_services': self.fun.get_element_property(main_window, self.fun.loc.TAB_SERVICES, "Name"),
-            'order_tab_tracking': self.fun.get_element_property(main_window, self.fun.loc.TAB_TRACKING, "Name"),
+            'order_tab_freight': self.fun.get_element_property_sp(main_window, self.fun.loc.TAB_FREIGHT, "Name"),
+            'order_tab_transportation': self.fun.get_element_property_sp(main_window, self.fun.loc.TAB_TRANSPORTATION, "Name"),
+            'order_tab_forwarding': self.fun.get_element_property_sp(main_window, self.fun.loc.TAB_FORWARDING, "Name"),
+            'order_tab_gtd': self.fun.get_element_property_sp(main_window, self.fun.loc.TAB_GTD, "Name"),
+            'order_tab_check': self.fun.get_element_property_sp(main_window, self.fun.loc.TAB_CHECK, "Name"),
+            'order_tab_file': self.fun.get_element_property_sp(main_window, self.fun.loc.TAB_FILE, "Name"),
+            'order_tab_services': self.fun.get_element_property_sp(main_window, self.fun.loc.TAB_SERVICES, "Name"),
+            'order_tab_tracking': self.fun.get_element_property_sp(main_window, self.fun.loc.TAB_TRACKING, "Name"),
         })
 
         # 9. Сохранение заказа
@@ -95,12 +90,12 @@ class WinAISTApp:
 
         # 110. Проверка данных в таблице
         self.fun.order_data.update({
-            'table_order': self.fun.get_element_property(main_window, self.fun.loc.TABLE_ORDER_NUMBER, "Value"),
-            'table_type': self.fun.get_element_property(main_window, self.fun.loc.TABLE_ORDER_TYPE, "Value"),
-            'table_status': self.fun.get_element_property(main_window, self.fun.loc.TABLE_STATUS, "Value"),
-            'table_priority': self.fun.get_element_property(main_window, self.fun.loc.TABLE_PRIORITY, "Value"),
-            'table_creator': self.fun.get_element_property(main_window, self.fun.loc.TABLE_CREATOR, "Value"),
-            'table_client': self.fun.get_element_property(main_window, self.fun.loc.TABLE_CLIENT, "Value")
+            'table_order': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_ORDER_NUMBER, "Value"),
+            'table_type': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_ORDER_TYPE, "Value"),
+            'table_status': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_STATUS, "Value"),
+            'table_priority': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_PRIORITY, "Value"),
+            'table_creator': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_CREATOR, "Value"),
+            'table_client': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_CLIENT, "Value")
         })
 
         # 12. Открыть заказ заказа

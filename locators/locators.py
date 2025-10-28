@@ -7,6 +7,8 @@ class LocOrders:
     SEA_FORM = {'auto_id': 'SeaCarriageForm', 'control_type': "Window", 'found_index': 0}
     SEA_FORM1 = {'title': "Морская перевозка: Создание", 'auto_id': 'SeaCarriageForm', 'control_type': "Window", 'found_index': 0}
     AUTO_FORM = {'auto_id': 'CarCarriageForm'}
+    JD_FORM = {'auto_id': 'RailCarriageForm'}
+    AVIA_FORM = {'auto_id': 'AirCarriageForm'}
     FORWARDING_FROM = {'auto_id': 'ExpeditionForm'}
     FREIGHT_FROM = {'auto_id': 'CargoForm'}
     PREFORWARDING_FORM = {'auto_id': 'RouteSeaCarriageForm'}
@@ -19,6 +21,7 @@ class LocOrders:
     PRODUCT_FORM = {'auto_id': 'ProductForm', 'control_type': "Window"}
     AUTO_SHIPMENT_FORM = {'auto_id': 'RouteCarCarriageForm', 'control_type': "Window"}
     SERVICES_FORM = {'auto_id': 'frmService', 'control_type': "Window"}
+    SERVICES_FORM_NEW = {'auto_id': 'ServiceForm', 'control_type': "Window"}
 
     # Базы Аиста
     STAGE_EF = {'title': "(serv02)AIST_STAGE_EF", 'control_type': "ListItem"}
@@ -55,7 +58,6 @@ class LocOrders:
 
     TABLE_RECIPIENT = {'title': "Получатель строка 1", 'control_type': "DataItem"}
     TABLE_DELIVERY = {'title': "Условия поставки строка 1", 'control_type': "DataItem"}
-    TABLE_NOTE = {'title': "Примечание строка 1", 'control_type': "DataItem"}
     TABLE_DATE = {'title': "Дата создания строка 1", 'control_type': "DataItem"}
 
     # Форма создания заказа
@@ -91,6 +93,7 @@ class LocOrders:
     CLIENT_COMBO_3 = {'title': "Наименование строка 3", 'control_type': "DataItem"}
     SENDERS_1 = {'title': "Отправители:", 'control_type': "ComboBox"}
     RECIPIENT = {'title': "Получатель:", 'auto_id': "sleReceiver"}
+    RECIPIENT_0 = {'title': "Строка 0", 'control_type': "ListItem", 'found_index': 0}
     RECIPIENT_1 = {'title': "Строка 1", 'control_type': "ListItem", 'found_index': 0}
     RECIPIENT_2 = {'title': "Строка 2", 'control_type': "ListItem", 'found_index': 0}
     RECIPIENT_3 = {'title': "Строка 3", 'control_type': "ListItem", 'found_index': 0}
@@ -148,7 +151,8 @@ class LocOrders:
     SEA_TYPE_TEXT = {'auto_id': "labelControl1", 'control_type': "Text"}
     AUTO_TRANSPORTATION = {'title': "Автоперевозка", 'control_type': "ListItem", 'found_index': 0}
     AUTO_TRANSPORTATION1 = {'title': "Автоперевозки", 'control_type': "ListItem", 'found_index': 0}
-
+    JD_TRANSPORTATION = {'title': "ЖД-перевозка", 'control_type': "ListItem", 'found_index': 0}
+    AVIA_TRANSPORTATION = {'title': "Авиаперевозка", 'control_type': "ListItem", 'found_index': 0}
 
     AUTO_NAME_TRANSPORTATION = {'auto_id': "bceNavigation", 'control_type': "ComboBox"} # номер перевозки
     AUTO_TYPE_TEXT = {'auto_id': "lbType", 'control_type': "Text"} # тип перевозки
@@ -156,6 +160,8 @@ class LocOrders:
     TRANSPORTATION_ITEM2 = {'title': "Тип перевозки строка 2", 'control_type': "DataItem"}
     TRANSPORTATION_NUMBER1 = {'title': "Номер перевозки строка 1", 'control_type': "DataItem"}
     TRANSPORTATION_NUMBER2 = {'title': "Номер перевозки строка 2", 'control_type': "DataItem"}
+    TRANSPORTATION_NUMBER3 = {'title': "Номер перевозки строка 3", 'control_type': "DataItem"}
+    TRANSPORTATION_NUMBER4 = {'title': "Номер перевозки строка 4", 'control_type': "DataItem"}
     SEA_TAB = {'title': "Морские перевозки", 'control_type': "ListItem"}
     ORDER_SELECT = {'title': "Заказ:", 'control_type': "ComboBox"}
     SEA_TAB_ORDER_NUMBER = {'title': "Заказ строка 1", 'control_type': "DataItem", 'found_index': 0}
@@ -178,7 +184,6 @@ class LocOrders:
     FEEDER_LINE4 = {'title': "Строка 4", 'control_type': "ListItem"}
     FEEDER_LINE5 = {'title': "Строка 5", 'control_type': "ListItem"}
     FEEDER_KONOS = {'title': "Фидерн. коносамент:", 'control_type': "Edit"}
-
 
     ROUTES_WINDOWS = {'title': "Тип задания:", 'control_type': "ComboBox", 'auto_id': "routeAssignmentSeaCarriageEdit1"}
     PREFORWARDING = {'title': "Преэкспедирование", 'control_type': "ListItem"}
@@ -209,7 +214,6 @@ class LocOrders:
     ARRIVAL_DATA_FACT = {'control_type': "ComboBox", 'auto_id': "factArrivals", 'found_index': 0}# фактическая
     UNLOADING = {'title': "Выгрузка:", 'control_type': "ComboBox", 'found_index': 0}
     ADD_TE = {'control_type': "ComboBox", 'auto_id': "cargosEdit1"}
-
 
     # Автоперевозка
     AUTO_CARRIER = {'title': "Перевозчик:", 'control_type': "ComboBox", 'auto_id': "sleClient"}
@@ -278,7 +282,7 @@ class LocOrders:
     AUTO_FORM1 = {'title': "Автомобиль:", 'control_type': "ComboBox", 'auto_id': "lueCar"}
 
     # Автоперевозка таблица
-    AUTO_TABLE = {'title': "Сдача контейнера", 'control_type': "ListItem"}
+    CONTAINER_DELIVERY1 = {'title': "Сдача контейнера", 'control_type': "ListItem"}
     AUTO_ADDRESS = {'title': "Адрес:", 'control_type': "ComboBox", 'auto_id': "sleTerminal"}
     AUTO_DRIVER = {'title': "Водитель:", 'control_type': "ComboBox", 'auto_id': "driversEdit1"}
 
@@ -307,18 +311,16 @@ class LocOrders:
     FACT_ARRIVAL_DATA2 = {"title": "Факт. прибытия строка 2", "control_type": "DataItem"}
     FACT_ARRIVAL_DATA3 = {"title": "Факт. прибытия строка 3", "control_type": "DataItem"}
 
-
     # Экспедирование вкладка в заказе
     FORWARDING_TYPE_TEXT = {'auto_id': "lbType", 'control_type': "Text"}
     FORWARDING_ITEM = {'title': "Тип экспедирования строка 1", 'control_type': "DataItem"}
-    FORWARDING_NUMBER = {'title': "Номер экспедирования строка 1", 'control_type': "DataItem"}
+    FORWARDING_NUMBER = {'title': "Номер экспедирования строка 1", 'control_type': "DataItem", 'found_index': 0}
     FORWARDING_STATUS = {'title': "Статус строка 1", 'control_type': "DataItem"}
     FORWARDING_OTV = {'title': "Ответственный строка 1", 'control_type': "DataItem"}
     FORWARDING_FORWARD = {'title': "Экспедитор строка 1", 'control_type': "DataItem"}
     FORWARDING_TE = {'title': "Количество ТЕ строка 1", 'control_type': "DataItem"}
     FORWARDING_DATA_CREATE = {'title': "Дата создания строка 1", 'control_type': "DataItem"}
     FORWARDING_DATA_FINISH = {'title': "Дата завершения строка 1", 'control_type': "DataItem"}
-    FORWARDING_NOTE = {'title': "Примечание строка 1", 'control_type': "DataItem"}
     FORWARDING_TYPE_DIALOG = {'title': "Тип экспедирования:", 'control_type': "ComboBox"}
     FORWARDING_FORWARDER = {'title': "Портовое", 'control_type': "ComboBox", 'found_index': 0}
     FORWARDING_TELEX = {'title': "Телекс-релиз:", 'control_type': "ComboBox"}
@@ -335,30 +337,26 @@ class LocOrders:
     FORWARDING_PORT1 = {'title': "Порт строка 1", 'control_type': "DataItem"}
     FORWARDING_TERMINAL1 = {'title': "Терминал строка 1", 'control_type': "DataItem"}
     FORWARDING_TE1 = {'title': "ТЕ строка 1", 'control_type': "DataItem"}
-    FORWARDING_TE_TYPE1 = {'title': "Тип ТЕ строка 1", 'control_type': "DataItem"}
     FORWARDING_TE_NUMBER1 = {'title': "Номер ТЕ строка 1", 'control_type': "DataItem"}
     FORWARDING_RELEASE1 = {'title': "Релиз строка 1", 'control_type': "DataItem"}
     FORWARDING_DOC1 = {'title': "Документы строка 1", 'control_type': "DataItem"}
     FORWARDING_NOMINATION1 = {'title': "Номинация строка 1", 'control_type': "DataItem"}
     FORWARDING_DO_DO1 = {'title': "ДО/ДО1 строка 1", 'control_type': "DataItem"}
-    FORWARDING_NOTE1 = {'title': "Примечание строка 1", 'control_type': "DataItem"}
 
     # Груз
     FREIGHT_TYPE_TEXT = {'auto_id': "lcCargoType", 'control_type': "Text"}
     FREIGHT_ITEM = {'title': "ТЕ строка 1", 'control_type': "DataItem"}
     FREIGHT_ITEM2 = {'title': "ТЕ строка 2", 'control_type': "DataItem"}
-    FREIGHT_TABLE_TYPE_TE = {'title': "Тип ТЕ строка 1", 'control_type': "DataItem"}
-    FREIGHT_TABLE_NUMBER_TE = {'title': "Тип ТЕ строка 1", 'control_type': "DataItem"}
     FREIGHT_CREATE_TE = {'title': "ТЕ:", 'control_type': "ComboBox", 'auto_id': "cargoTypeEdit"}
     FREIGHT_CREATE_TE1 = {'title': "Наименование строка 1", 'control_type': "DataItem"}
     FREIGHT_CREATE_TE2 = {'title': "Наименование строка 2", 'control_type': "DataItem"}
     FREIGHT_CREATE_TE3 = {'title': "Наименование строка 3", 'control_type': "DataItem"}
     FREIGHT_CREATE_TE4 = {'title': "Наименование строка 4", 'control_type': "DataItem"}
     FREIGHT_CREATE_TE5 = {'title': "Наименование строка 5", 'control_type': "DataItem"}
-    FREIGHT_CREATE_TYPE = {'title': "Тип ТЕ:", 'control_type': "ComboBox", 'auto_id': "cargParameterEdit1"}
+    FREIGHT_CREATE_TYPE = {'title': "Тип ТЕ:", 'control_type': "ComboBox", 'found_index': 0}
     FREIGHT_CREATE_TYPE1 = {'title': "Наименование строка 1", 'control_type': "DataItem"}
     FREIGHT_CREATE_QUANTITY = {'title': "Количество:", 'control_type': "Edit", 'auto_id': "textEditQuantity"}
-    FREIGHT_QUANTITY_APPLY = {'control_type': "Edit", 'auto_id': "teQuantity"}
+    FREIGHT_QUANTITY_APPLY = {'control_type': "Edit", 'auto_id': "teQuantity"} # Количество
     FREIGHT_CREATE_UOM = {'title': "Единицы измерения:", 'control_type': "ComboBox", 'auto_id': "unitsOfMeasurementEdit1"}
     FREIGHT_CREATE_UOM_SAVE = {'title': "Ед. измерения:", 'control_type': "ComboBox", 'auto_id': "unitsOfMeasurementEdit1"}
     FREIGHT_CREATE_UOM1 = {'title': "Наименование строка 1", 'control_type': "DataItem"}
@@ -487,7 +485,6 @@ class LocOrders:
     NOTE_TE_TABLE1 = {'title': "Примечание (ТЕ) строка 1", 'control_type': "DataItem"}
     NOTE_TE_TABLE2 = {'title': "Примечание (ТЕ) строка 2", 'control_type': "DataItem"}
 
-
     # Форма контейнера
     # FREIGHT_NUMBER_SEAL_FORM_CONTAINER =
     FREIGHT_NUMBER_GTD_FORM_CONTAINER = {'title': "Container", 'control_type': "Edit", 'auto_id': "cargoGTDNumberTextEdit"}
@@ -533,7 +530,6 @@ class LocOrders:
     GTD_DOL = {'control_type': "Edit", 'auto_id': "currencyCourseTextEdit"}  # поле Примечание
     GTD_EVR = {'control_type': "Edit", 'auto_id': "currencyCourseEURTextEdit"}  # поле Примечание
 
-
     GTD_KS = {'title': "Взять из К/С партии", 'control_type': "Button"}  # поле Примечание
     GTD_ELLIPSIS = {'title': "Ellipsis", 'control_type': "Button", 'found_index': 0}  # поле три точки в контракте
 
@@ -578,7 +574,6 @@ class LocOrders:
     IS_DATE_TABLE = {'title': "Дата строка 1", 'control_type': "DataItem"}
     IS_SUPPLIER_TABLE = {'title': "Поставщик строка 1", 'control_type': "DataItem"}
     IS_BUYER_TABLE = {'title': "Покупатель строка 1", 'control_type': "DataItem"}
-    IS_CURRENCY = {'title': "Валюта строка 1", 'control_type': "DataItem"}
     IS_SUM_TABLE = {'title': "Сумма строка 1", 'control_type': "DataItem"}
     IS_CLOSED_TABLE = {'title': "Закрыто строка 1", 'control_type': "DataItem"}
     IS_NCLOSED_TABLE = {'title': "Незакрыто строка 1", 'control_type': "DataItem"}
@@ -595,11 +590,12 @@ class LocOrders:
     VP_ORDER = {'title': "Заказ: ", 'control_type': "ComboBox", 'auto_id': "orderEdit1"}
 
     # Удаление
-    DEL_WINDOW = {'control_type': "Text", 'auto_id': "lblDescription"}
+    DEL_WINDOW = {'control_type': "Text", 'auto_id': "lblDescription", 'found_index': 0}
     DEL_WINDOW_BUTTON = {'title': "Закрыть", 'control_type': "Button", 'found_index': 0}
 
     # Файлы
     FILE_SELECT = {'control_type': "Выбрать файлы", 'auto_id': "btnAdd"}
+    FILE_SELECT1 = {'control_type': "Button", 'auto_id': "btnAdd", 'found_index': 0}
 
     # Товары
     NAME_TOV_RU = {'title': "Наименование (ru):", 'control_type': "Edit", 'auto_id': "NameRuEdit"}
@@ -614,6 +610,7 @@ class LocOrders:
     CHECK_TABLE = {'title': "Счет №", 'control_type': "Header", 'found_index': 0}
     SELECT_SPEAKERS = {'title': "Выбор колонок", 'control_type': "Button", 'found_index': 0}
     ORDER_TABLE = {'title': "Заказ", 'control_type': "Header", 'found_index': 0}
+    SERVICE_TABLE = {'title': "Услуга", 'control_type': "Header", 'found_index': 0}
 
     #Спрятанные колонки
     ADDRESS_TABLE = {'title': "Адрес", 'control_type': "ListItem"}
@@ -645,7 +642,6 @@ class LocOrders:
     EXPEDITOR_TABLE1 = {'title': "Экспедитор строка 1", 'control_type': "DataItem"}
     TELEX_RELEASE_TABLE1 = {'title': "Телекс-релиз строка 1", 'control_type': "DataItem"}
     RECEIVE_DOC_TABLE1 = {'title': "Получение докум. строка 1", 'control_type': "DataItem"}
-    NOTE_TABLE1 = {'title': "Примечание строка 1", 'control_type': "DataItem", 'found_index': 0}
     CREATED_DATE_TABLE1 = {'title': "Дата создания строка 1", 'control_type': "DataItem", 'found_index': 0}
     UPDATED_DATE_TABLE1 = {'title': "Дата изменения строка 1", 'control_type': "DataItem", 'found_index': 0}
     FINISHED_DATE_TABLE1 = {'title': "Дата завершения строка 1", 'control_type': "DataItem", 'found_index': 0}
@@ -723,11 +719,16 @@ class LocOrders:
 
     # Услуга в счете
     LINE_NUMBER1 = {'title': "# строка 1", 'control_type': "DataItem"}
-    SERVICE_LINE1 = {'title': "Услуга строка 1", 'control_type': "DataItem"}
+    SERVICE_LINE1 = {'title': "Услуга строка 1", 'control_type': "DataItem", 'found_index': 0}
+    SERVICE_LINE2 = {'title': "Услуга строка 2", 'control_type': "DataItem", 'found_index': 0}
+    SERVICE_LINE3 = {'title': "Услуга строка 3", 'control_type': "DataItem", 'found_index': 0}
+    SERVICE_LINE4 = {'title': "Услуга строка 4", 'control_type': "DataItem", 'found_index': 0}
+    SERVICE_LINE5 = {'title': "Услуга строка 5", 'control_type': "DataItem"}
+    SERVICE_LINE6 = {'title': "Услуга строка 6", 'control_type': "DataItem"}
     VAT_LINE1 = {'title': "НДС строка 1", 'control_type': "DataItem"}
     QUANTITY_LINE1 = {'title': "Кол-во строка 1", 'control_type': "DataItem"}
     QUANTITY_SERVICE = {'title': "Кол-во:", 'control_type': "Edit", 'found_index': 0}
-    RATE_LINE1 = {'title': "Ставка строка 1", 'control_type': "DataItem"}
+    RATE_LINE1 = {'title': "Ставка строка 1", 'control_type': "DataItem", 'found_index': 0}
     CURRENCY_LINE1 = {'title': "Валюта строка 1", 'control_type': "DataItem", 'found_index': 0}
     TOTAL_LINE1 = {'title': "Итого строка 1", 'control_type': "DataItem"}
     TOTAL_SV_LINE1 = {'title': "Итого (С. В.) строка 1", 'control_type': "DataItem"}
@@ -767,7 +768,6 @@ class LocOrders:
     PAYMENT_TO_LINE1 = {'title': "Оплата к строка 1", 'control_type': "DataItem", 'found_index': 0}
     ACCRUED_SV_LINE1 = {'title': "Начислено (С.В.) строка 1", 'control_type': "DataItem", 'found_index': 0}
 
-
     SERVICE_0_LINE1 = {'title': "Услуга 0 строка 1", 'control_type': "DataItem", 'found_index': 0}
     UNREALIZED_LINE1 = {'title': "Нереализовано строка 1", 'control_type': "DataItem", 'found_index': 0}
     UNCLOSED_LINE1 = {'title': "Незакрыто строка 1", 'control_type': "DataItem", 'found_index': 0}
@@ -776,6 +776,22 @@ class LocOrders:
     INVOICES_FILTER = {'title': "Счет № фильтр строк", 'control_type': "DataItem", 'found_index': 0}
     INVOICES_FILTER1 = {'title': "Счет фильтр строк", 'control_type': "DataItem", 'found_index': 0}
 
+    SERVICE_TE_NUMBER = {'title': "Номера ТЕ строка 1", 'control_type': "DataItem"}
+    SERVICE_SOURCE = {'title': "Источник строка 1", 'control_type': "DataItem"}
+    SERVICE_SOURCE2 = {'title': "Источник строка 2", 'control_type': "DataItem"}
+    SERVICE_SOURCE3 = {'title': "Источник строка 3", 'control_type': "DataItem"}
+    SERVICE_SOURCE4 = {'title': "Источник строка 4", 'control_type': "DataItem"}
+    SERVICE_SOURCE5 = {'title': "Источник строка 5", 'control_type': "DataItem"}
+    SERVICE_SOURCE6 = {'title': "Источник строка 6", 'control_type': "DataItem"}
+    SERVICE_ACCOUNT = {'title': "Счет строка 1", 'control_type': "DataItem"}
+
+    SERVICE_RATE_FORM = {'title': "Ставка:", 'control_type': "Edit"}
+    SERVICE_CURRENCY_FORM = {'title': "Валюта:", 'control_type': "ComboBox"}
+    SERVICE_VAT_FORM = {'title': "НДС:", 'control_type': "ComboBox"}
+    SERVICE_TE_NUMBER_FORM = {'title': "Номера ТЕ:", 'control_type': "ComboBox"}
+    SERVICE_UOM_FORM = {'title': "Ед. изм.", 'control_type': "ComboBox"}
+    SERVICE_M3_FORM = {'title': "м3", 'control_type': "ListItem"}
+
     # Верхнее меню
 
     MENU_BAZA = {'title': "База  ", 'control_type': "MenuItem", 'found_index': 0}
@@ -783,6 +799,6 @@ class LocOrders:
     # не работает MENU_ALL_SERVICE = {'title': "Все услуги", 'control_type': "Button", 'found_index': 0}
 
     # Все услуги
-    INVOICE_NUMBER_1 = {'title': "Счет строка 1", 'control_type': "DataItem", 'found_index': 0}
+    # INVOICE_NUMBER_1 = {'title': "Счет строка 1", 'control_type': "DataItem", 'found_index': 0}
     INVOICE_DATE_1 = {'title': "Дата счета строка 1", 'control_type': "DataItem", 'found_index': 0}
     INVOICE_NOTE_1 = {'title': "Примечание счета строка 1", 'control_type': "DataItem", 'found_index': 0}

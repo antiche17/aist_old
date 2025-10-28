@@ -18,7 +18,7 @@ class Function:
     def start_application(self):
         # Запускаем приложение
         self.process = subprocess.Popen(r'C:\AIST\WinAIST.exe')
-        time.sleep(17)
+        time.sleep(15)
 
         # Ищем реальный процесс WinAIST среди дочерних
         parent = psutil.Process(self.process.pid)
@@ -54,6 +54,14 @@ class Function:
     def get_auto_form(self):
         """Получение главного окна"""
         return self.app.window(**self.loc.AUTO_FORM)
+
+    def get_jd_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.JD_FORM)
+
+    def get_avia_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.AVIA_FORM)
 
     def get_forwarding_form(self):
         """Получение главного окна"""
@@ -94,6 +102,10 @@ class Function:
     def get_services_form(self):
         """Получение главного окна"""
         return self.app.window(**self.loc.SERVICES_FORM)
+
+    def get_services_form_new(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.SERVICES_FORM_NEW)
 
 
 
