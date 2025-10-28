@@ -161,7 +161,7 @@ class WinAISTApp:
             'table_client_up': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_CLIENT, "Value"),
             'table_recipient_up': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_RECIPIENT, "Value"),
             #'table_delivery_up': self.fun.get_element_property(main_window, self.fun.loc.TABLE_DELIVERY, "Value"),
-            'table_note_up': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_NOTE, "Value")
+            'table_note_up': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE_LINE1, "Value")
         })
 
         # 19. Открыть заказ
@@ -466,8 +466,8 @@ class WinAISTApp:
         # Во вкладке Перевозки, таблица
         self.fun.order_data.update({
             'order_table_te': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_ITEM, "Value"),
-            'order_table_type': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_TABLE_TYPE_TE, "Value"),
-            'order_table_number': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_TABLE_NUMBER_TE, "Value")
+            'order_table_type': self.fun.get_element_property(main_window, self.fun.loc.TYPE_TE_TABLE1, "Value"),
+            'order_table_number': self.fun.get_element_property(main_window, self.fun.loc.NUM_TE_TABLE1, "Value")
         })
 
         # 5. Открыть груз заказа
@@ -592,7 +592,7 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.fun.loc.DEL_BUTTON)
         self.fun.click_element_sp(main_window, self.fun.loc.YES_BUTTON)
         self.fun.click_element_sp(main_window, self.fun.loc.REFRESH_BUTTON_ORDER)
-
+        time.sleep(1)
         self.fun.order_data.update({
             'freight_del_table': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_TOTAL_RECORDS, "Value")
         })
@@ -657,8 +657,8 @@ class WinAISTApp:
         # Во вкладке Перевозки, таблица
         self.fun.order_data.update({
             'order_table_te': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_ITEM, "Value"),
-            'order_table_type': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_TABLE_TYPE_TE, "Value"),
-            'order_table_number': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_TABLE_NUMBER_TE, "Value")
+            'order_table_type': self.fun.get_element_property(main_window, self.fun.loc.TYPE_TE_TABLE1, "Value"),
+            'order_table_number': self.fun.get_element_property(main_window, self.fun.loc.NUM_TE_TABLE1, "Value")
         })
 
         # 5. Открыть груз заказа
@@ -968,7 +968,7 @@ class WinAISTApp:
             'forwarding_te_table': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_TE, "Value"),
             'forwarding_create_table': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_DATA_CREATE, "Value"),
             'forwarding_mod_table': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_DATA_FINISH, "Value"),
-            'forwarding_note_table': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_NOTE, "Value")
+            'forwarding_note_table': self.fun.get_element_property(main_window, self.fun.loc.NOTE_LINE1, "Value")
         })
 
         # 23. Удаляем морскую перевозку
@@ -1089,15 +1089,15 @@ class WinAISTApp:
 
         # 11. Проверка полей
         self.fun.order_data.update({
-            'gtd_client': self.fun.get_element_property(main_window, self.fun.loc.GTD_CLIENT, "Value"),
-            'gtd_order_number': self.fun.get_element_property(main_window, self.fun.loc.GTD_ORDER, "Value"),
-            'gtd_number': self.fun.get_element_property(main_window, self.fun.loc.GTD_NUMBER, "Value"),
-            'procedure_gtd': self.fun.get_element_property(main_window, self.fun.loc.GTD_PROCEDURE, "Value"),
-            'gtd_manager': self.fun.get_element_property(main_window, self.fun.loc.GTD_MANAGER, "Value"),
+            'gtd_client': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_CLIENT, "Value"),
+            'gtd_order_number': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_ORDER, "Value"),
+            'gtd_number': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_NUMBER, "Value"),
+            'procedure_gtd': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_PROCEDURE, "Value"),
+            'gtd_manager': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_MANAGER, "Value"),
 
-            'gtd_forwarding': self.fun.get_element_property(main_window, self.fun.loc.GTD_FORWARDING, "Value"),
-            'gtd_sender': self.fun.get_element_property(main_window, self.fun.loc.GTD_SENDER, "Value"),
-            'gtd_plan_arrival': self.fun.get_element_property(main_window, self.fun.loc.GTD_PLAN_ARRIVAL, "Value"),
+            'gtd_forwarding': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_FORWARDING, "Value"),
+            'gtd_sender': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_SENDER, "Value"),
+            'gtd_plan_arrival': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_PLAN_ARRIVAL, "Value"),
             'gtd_plan_ship': self.fun.get_element_property(main_window, self.fun.loc.GTD_PLAN_SHIP, "Value"),
             'gtd_doc': self.fun.get_element_property(main_window, self.fun.loc.GTD_DOC, "Value"),
             'gtd_post': self.fun.get_element_property(main_window, self.fun.loc.GTD_POST, "Value"),
@@ -1242,7 +1242,7 @@ class WinAISTApp:
             'gtd_number_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_GTD_NUMBER, "Value"),
             'gtd_created_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_CREATED, "Value"),
             'gtd_sum_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_INVOICE_SUM, "Value"),
-            'gtd_note_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_NOTE, "Value"),
+            'gtd_note_tab': self.fun.get_element_property(main_window, self.fun.loc.NOTE_LINE1, "Value"),
             'gtd_payments_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_PAYMENTS, "Value"),
             'gtd_personal_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_PERSONAL, "Value"),
             'gtd_declarant_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_DECLARANT, "Value")
@@ -1346,7 +1346,7 @@ class WinAISTApp:
             'is_date_table': self.fun.get_element_property(main_window, self.fun.loc.IS_DATE_TABLE, "Value"),
             'is_suppler_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUPPLIER_TABLE, "Value"),
             'is_buyer_table': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER_TABLE, "Value"),
-            'is_currency_table': self.fun.get_element_property(main_window, self.fun.loc.IS_CURRENCY, "Value"),
+            'is_currency_table': self.fun.get_element_property(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'is_sum_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUM_TABLE, "Value"),
             'is_closed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_CLOSED_TABLE, "Value"),
             'is_nclosed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_NCLOSED_TABLE, "Value"),
@@ -1418,7 +1418,7 @@ class WinAISTApp:
             'vs_date_table': self.fun.get_element_property(main_window, self.fun.loc.IS_DATE_TABLE, "Value"),
             'vs_suppler_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUPPLIER_TABLE, "Value"),
             'vs_buyer_table': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER_TABLE, "Value"),
-            'vs_currency_table': self.fun.get_element_property(main_window, self.fun.loc.IS_CURRENCY, "Value"),
+            'vs_currency_table': self.fun.get_element_property(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'vs_sum_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUM_TABLE, "Value"),
             'vs_closed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_CLOSED_TABLE, "Value"),
             'vs_nclosed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_NCLOSED_TABLE, "Value"),
@@ -1486,7 +1486,7 @@ class WinAISTApp:
             'ip_date_table': self.fun.get_element_property(main_window, self.fun.loc.IS_DATE_TABLE, "Value"),
             'ip_suppler_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUPPLIER_TABLE, "Value"),
             'ip_buyer_table': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER_TABLE, "Value"),
-            'ip_currency_table': self.fun.get_element_property(main_window, self.fun.loc.IS_CURRENCY, "Value"),
+            'ip_currency_table': self.fun.get_element_property(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'ip_sum_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUM_TABLE, "Value"),
             'ip_closed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_CLOSED_TABLE, "Value"),
             'ip_nclosed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_NCLOSED_TABLE, "Value"),
@@ -1554,7 +1554,7 @@ class WinAISTApp:
             'vp_date_table': self.fun.get_element_property(main_window, self.fun.loc.IS_DATE_TABLE, "Value"),
             'vp_suppler_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUPPLIER_TABLE, "Value"),
             'vp_buyer_table': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER_TABLE, "Value"),
-            'vp_currency_table': self.fun.get_element_property(main_window, self.fun.loc.IS_CURRENCY, "Value"),
+            'vp_currency_table': self.fun.get_element_property(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'vp_sum_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUM_TABLE, "Value"),
             'vp_closed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_CLOSED_TABLE, "Value"),
             'vp_nclosed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_NCLOSED_TABLE, "Value"),

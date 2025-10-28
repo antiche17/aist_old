@@ -239,7 +239,7 @@ class WinAISTApp:
         time.sleep(1)
         # 6. Перейти во вкладку Услуги
         self.fun.click_element_sp(main_window, self.fun.loc.TAB_SERVICES)
-        time.sleep(1)
+        time.sleep(2)
         self.fun.click_element(main_window, self.fun.loc.CREATE_BUTTON, timeout=1)
         self.fun.click_element_sp(main_window, self.fun.loc.SERVICES_ADD)
         keyboard.send_keys('КТС')
@@ -360,7 +360,7 @@ class WinAISTApp:
         keyboard.send_keys('{ENTER}')
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.fun.loc.OK_BUTTON)
-        time.sleep(1)
+        time.sleep(2)
         self.fun.order_data.update({
             'for_service_type': self.fun.get_element_property(main_window, self.fun.loc.SERVICE_LINE1, "Value"),
             'for_service_source': self.fun.get_element_property(main_window, self.fun.loc.SERVICE_SOURCE, "Value")

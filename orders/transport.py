@@ -372,7 +372,7 @@ class WinAISTApp:
             'cargo_class_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.CARGO_CLASS_TABLE1, "Value"),
             'loading_method_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.LOADING_METHOD_TABLE1, "Value"),
             'cmr_number_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.CMR_NUMBER_TABLE1, "Value"),
-            'note_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE_TABLE1, "Value"),
+            'note_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE_LINE1, "Value"),
             'created_by_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.CREATED_BY_TABLE1, "Value"),
             'creation_date_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.CREATION_DATE_TABLE1, "Value"),
             'modification_date_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.MODIFICATION_DATE_TABLE1, "Value"),

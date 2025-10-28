@@ -11,6 +11,8 @@ MONTHS_RU_EN = {
 
 def normalize_date(date_str):
     date_str = date_str.replace("г.", "").strip()
+    if not date_str:
+        raise ValueError("Пустая строка — дата не указана")
     # Преобразуем только если месяц на русском
     for ru, en in MONTHS_RU_EN.items():
         if ru in date_str:

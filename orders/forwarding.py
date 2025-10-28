@@ -280,7 +280,7 @@ class WinAISTApp:
             'order_forwading_te': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_TE, "Value"),
             'order_forwading_data_create': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_DATA_CREATE, "Value"),
             'order_forwading_data_finish': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_DATA_FINISH, "Value"),
-            'order_forwading_note': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_NOTE, "Value"),
+            'order_forwading_note': self.fun.get_element_property(main_window, self.fun.loc.NOTE_LINE1, "Value"),
 
         })
         self.fun.click_element_double(main_window, self.loc.LINE_TRANSPORTATION, timeout=2)
@@ -300,13 +300,13 @@ class WinAISTApp:
             'order_forwarding_port1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_PORT1, "Value"),
             'order_forwarding_terminal1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_TERMINAL1, "Value"),
             'order_forwarding_te1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_TE1, "Value"),
-            'order_forwarding_te_type1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_TE_TYPE1, "Value"),
+            'order_forwarding_te_type1': self.fun.get_element_property_sp(main_window, self.fun.loc.TYPE_TE_TABLE1, "Value"),
             'order_forwarding_te_number1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_TE_NUMBER1, "Value"),
             'order_forwarding_release1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_RELEASE1, "Value"),
             'order_forwarding_doc1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_DOC1, "Value"),
             'order_forwarding_nomination1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_NOMINATION1, "Value"),
             'order_forwarding_do_do1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_DO_DO1, "Value"),
-            'order_forwarding_note1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_NOTE1, "Value"),
+            'order_forwarding_note1': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE_LINE1, "Value"),
 
         })
 
@@ -347,7 +347,7 @@ class WinAISTApp:
             'telex_release_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.TELEX_RELEASE_TABLE1, "Value"),
             'receive_doc_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.RECEIVE_DOC_TABLE1, "Value"),
             'nomination_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.NOMINATION_TABLE1, "Value"),
-            'note_table1': self.fun.get_element_property(main_window, self.fun.loc.NOTE_TABLE1, "Value", timeout=1),
+            'note_table1': self.fun.get_element_property(main_window, self.fun.loc.NOTE_LINE1, "Value", timeout=1),
             'created_by_table1': self.fun.get_element_property(main_window, self.fun.loc.CREATED_BY_TABLE1, "Value", timeout=1),
             'created_date_table1': self.fun.get_element_property(main_window, self.fun.loc.CREATED_DATE_TABLE1, "Value", timeout=1),
             'updated_date_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.UPDATED_DATE_TABLE1, "Value"),
