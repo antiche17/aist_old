@@ -401,6 +401,7 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
         time.sleep(2)
         self.fun.right_click_element(main_window, self.loc.CHECK_TABLE, timeout=3)
+        time.sleep(1)
         keyboard.send_keys('{DOWN}' * 18)
         keyboard.send_keys('{ENTER}')
         self.fun.order_data.update({
@@ -423,7 +424,8 @@ class WinAISTApp:
         # Связываем с Взаимозачеты с вх. счетами
         self.fun.click_element_sp(main_window, self.loc.OFFSETS)
         self.fun.click_element_sp(main_window, self.loc.CONNECT_OFFSETS)
-        self.fun.click_element_sp(main_window, self.loc.SERVICES_OPTIONS)
+        time.sleep(2)
+        self.fun.click_element(main_window, self.loc.SERVICES_OPTIONS, timeout=1)
         keyboard.send_keys('{DOWN}')
         keyboard.send_keys('{ENTER}')
         time.sleep(1)
@@ -448,7 +450,7 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.SYNC_BUTTON_1C)
         time.sleep(3)
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
-        time.sleep(2)
+        time.sleep(3)
 
         #self.fun.order_data.update({
         #   'is_sync_ок': self.fun.get_element_property_sp(main_window, self.fun.loc.SYNC_1C, "Value"),
@@ -496,7 +498,7 @@ class WinAISTApp:
         keyboard.send_keys(text, with_spaces=True)
         keyboard.send_keys('{ENTER}')
         self.fun.order_data.update({
-            'all_serv_invoice_number': self.fun.get_element_property_sp(main_window, self.loc.INVOICE_NUMBER_1, "Value"),
+            'all_serv_invoice_number': self.fun.get_element_property_sp(main_window, self.loc.SERVICE_ACCOUNT, "Value"),
             'all_serv_invoice_date': self.fun.get_element_property_sp(main_window, self.loc.INVOICE_DATE_1, "Value"),
             'all_serv_service': self.fun.get_element_property_sp(main_window, self.loc.SERVICE_LINE1, "Value"),
             'all_serv_client': self.fun.get_element_property_sp(main_window, self.loc.CLIENT_LINE1, "Value"),

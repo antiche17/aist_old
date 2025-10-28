@@ -672,7 +672,7 @@ class LocOrders:
     CONNECT_INVOICES = {'title': "Связь с вх. счетами", 'control_type': "Button"}
     CONNECT_OFFSETS = {'title': "Взаимозачет с вх. счетами", 'control_type': "Button"}
     CONNECT_ACCOUNTS_CLIENT = {'title': "Связь с прямыми счетами на клиента", 'control_type': "Button"}
-    SERVICES_OPTIONS = {'control_type': "Button", 'auto_id': "btnOptions"}
+    SERVICES_OPTIONS = {'control_type': "Button", 'auto_id': "btnOptions", 'found_index': 0}
     LOOK_SERVICES = {'title': "Показать все счета", 'control_type': "Button", 'found_index': 0}
     ADD_SERVICES = {'control_type': "Button", 'auto_id': "btnAdd"}
     EXPAND = {'title': "Свернуть", 'control_type': "Button", 'found_index': 0}

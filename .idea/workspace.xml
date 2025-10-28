@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locators/format_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/format_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/forwarding.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/forwarding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/transport.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/transport.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locators/locators.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/locators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/finance.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/finance.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +113,7 @@
       <recent name="C:\qa\tests_finance" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for tests_orders.test_order_freight_bulkership.test_bulkership_freight">
+  <component name="RunManager" selected="Python tests.Python tests in test_finance_is.py">
     <configuration name="Python tests for tests_orders.test_order_freight_bulkership.test_bulkership_freight" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="1" />
       <option name="ENV_FILES" value="" />
@@ -148,7 +144,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in test_order_gtd.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests in test_finance_is.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,7 +155,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests_orders/test_order_gtd.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests_finance/test_finance_is.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -195,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests in test_finance_is.py" />
         <item itemvalue="Python tests.Python tests for tests_orders.test_order_freight_bulkership.test_bulkership_freight" />
         <item itemvalue="Python tests.Python tests for tests_transportation.test_transportation.test_value_del" />
         <item itemvalue="Python tests.Python tests in test_services.py" />
         <item itemvalue="Python tests.Python tests in test_order_transportation.py" />
-        <item itemvalue="Python tests.Python tests in test_order_gtd.py" />
       </list>
     </recent_temporary>
   </component>
