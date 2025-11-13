@@ -95,7 +95,7 @@ class WinAISTApp:
             'table_status': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_STATUS, "Value"),
             'table_priority': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_PRIORITY, "Value"),
             'table_creator': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_CREATOR, "Value"),
-            'table_client': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_CLIENT, "Value")
+            'table_client': self.fun.get_element_property_sp(main_window, self.fun.loc.CLIENT_LINE1, "Value")
         })
 
         # 12. Открыть заказ заказа
@@ -158,7 +158,7 @@ class WinAISTApp:
             'table_type_up': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_ORDER_TYPE, "Value"),
             'table_status_up': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_STATUS, "Value"),
             'table_priority_up': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_PRIORITY, "Value"),
-            'table_client_up': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_CLIENT, "Value"),
+            'table_client_up': self.fun.get_element_property_sp(main_window, self.fun.loc.CLIENT_LINE1, "Value"),
             'table_recipient_up': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_RECIPIENT, "Value"),
             #'table_delivery_up': self.fun.get_element_property(main_window, self.fun.loc.TABLE_DELIVERY, "Value"),
             'table_note_up': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE_LINE1, "Value")
@@ -249,7 +249,7 @@ class WinAISTApp:
             'table_priority_dr': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_PRIORITY, "Value"),
             'table_creator_dr': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_CREATOR, "Value"),
             'table_date_dr': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_DATE, "Value"),
-            'table_client_dr': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_CLIENT, "Value")
+            'table_client_dr': self.fun.get_element_property_sp(main_window, self.fun.loc.CLIENT_LINE1, "Value")
         })
 
         return self.fun.order_data
@@ -390,7 +390,7 @@ class WinAISTApp:
         # 5. Переключение на форму заказа
         main_window = self.fun.get_main_form()
         main_window.set_focus()
-        time.sleep(1)
+        time.sleep(2)
 
         # Во вкладке Перевозки, таблица
         self.fun.order_data.update({
@@ -962,7 +962,7 @@ class WinAISTApp:
         self.fun.order_data.update({
             'forwarding_type_table': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_ITEM, "Value"),
             'forwarding_order_table': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_NUMBER, "Value"),
-            'forwarding_status_table': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_STATUS, "Value"),
+            'forwarding_status_table': self.fun.get_element_property(main_window, self.fun.loc.TABLE_STATUS, "Value"),
             'forwarding_otv_table': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_OTV, "Value"),
             'forwarding_forward_table': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_FORWARD, "Value"),
             'forwarding_te_table': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_TE, "Value"),
@@ -1040,7 +1040,7 @@ class WinAISTApp:
 
         # 10. Проверка полей
         self.fun.order_data.update({
-            'sea_order_number': self.fun.get_element_property(main_window, self.fun.loc.ORDER_NUMBER, "Name"),
+            'sea_order_number': self.fun.get_element_property_sp(main_window, self.fun.loc.ORDER_NUMBER, "Name"),
 
         })
 
@@ -1098,45 +1098,45 @@ class WinAISTApp:
             'gtd_forwarding': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_FORWARDING, "Value"),
             'gtd_sender': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_SENDER, "Value"),
             'gtd_plan_arrival': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_PLAN_ARRIVAL, "Value"),
-            'gtd_plan_ship': self.fun.get_element_property(main_window, self.fun.loc.GTD_PLAN_SHIP, "Value"),
-            'gtd_doc': self.fun.get_element_property(main_window, self.fun.loc.GTD_DOC, "Value"),
-            'gtd_post': self.fun.get_element_property(main_window, self.fun.loc.GTD_POST, "Value"),
-            'gtd_svh': self.fun.get_element_property(main_window, self.fun.loc.GTD_SVH, "Value"),
-            'gtd_declarant': self.fun.get_element_property(main_window, self.fun.loc.GTD_DEC, "Value"),
+            'gtd_plan_ship': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_PLAN_SHIP, "Value"),
+            'gtd_doc': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_DOC, "Value"),
+            'gtd_post': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_POST, "Value"),
+            'gtd_svh': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_SVH, "Value"),
+            'gtd_declarant': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_DEC, "Value"),
 
-            'gtd_supply': self.fun.get_element_property(main_window, self.fun.loc.GTD_SUPPLY, "Value"),
-            'gtd_release': self.fun.get_element_property(main_window, self.fun.loc.GTD_RELEASE, "Value"),
-            'gtd_pers': self.fun.get_element_property(main_window, self.fun.loc.GTD_PERSONALS, "Value"),
+            'gtd_supply': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_SUPPLY, "Value"),
+            'gtd_release': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_RELEASE, "Value"),
+            'gtd_pers': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_PERSONALS, "Value"),
 
-            'gtd_decl_te': self.fun.get_element_property(main_window, self.fun.loc.GTD_DECl_TE, "Value"),
-            'gtd_real_te': self.fun.get_element_property(main_window, self.fun.loc.GTD_REAL_TE, "Value"),
-            'gtd_decl_tnved': self.fun.get_element_property(main_window, self.fun.loc.GTD_DECl_TNVED, "Value"),
-            'gtd_real_tnved': self.fun.get_element_property(main_window, self.fun.loc.GTD_REAL_TNVED, "Value"),
-            'gtd_brutto': self.fun.get_element_property(main_window, self.fun.loc.GTD_BRUTTO, "Value"),
-            'gtd_netto': self.fun.get_element_property(main_window, self.fun.loc.GTD_NETTO, "Value"),
-            'gtd_price_p': self.fun.get_element_property(main_window, self.fun.loc.GTD_PRICE_P, "Value"),
-            'gtd_price_v': self.fun.get_element_property(main_window, self.fun.loc.GTD_PRICE_V, "Value"),
+            'gtd_decl_te': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_DECl_TE, "Value"),
+            'gtd_real_te': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_REAL_TE, "Value"),
+            'gtd_decl_tnved': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_DECl_TNVED, "Value"),
+            'gtd_real_tnved': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_REAL_TNVED, "Value"),
+            'gtd_brutto': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_BRUTTO, "Value"),
+            'gtd_netto': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_NETTO, "Value"),
+            'gtd_price_p': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_PRICE_P, "Value"),
+            'gtd_price_v': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_PRICE_V, "Value"),
 
-            'gtd_payment': self.fun.get_element_property(main_window, self.fun.loc.GTD_PAYMENT, "Value"),
-            'gtd_tk': self.fun.get_element_property(main_window, self.fun.loc.GTD_TK, "Value"),
-            'gtd_kts': self.fun.get_element_property(main_window, self.fun.loc.GTD_KTS, "Value"),
-            'gtd_guarantee': self.fun.get_element_property(main_window, self.fun.loc.GTD_GUARANTEE, "Value"),
-            'gtd_peny': self.fun.get_element_property(main_window, self.fun.loc.GTD_PENY, "Value"),
+            'gtd_payment': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_PAYMENT, "Value"),
+            'gtd_tk': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_TK, "Value"),
+            'gtd_kts': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_KTS, "Value"),
+            'gtd_guarantee': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_GUARANTEE, "Value"),
+            'gtd_peny': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_PENY, "Value"),
 
-            'gtd_receiver': self.fun.get_element_property(main_window, self.fun.loc.GTD_RECEIVER, "Value"),
-            'gtd_contract': self.fun.get_element_property(main_window, self.fun.loc.GTD_CONTRACT, "Value"),
-            'gtd_sum': self.fun.get_element_property(main_window, self.fun.loc.GTD_SUM, "Value"),
-            'gtd_note': self.fun.get_element_property(main_window, self.fun.loc.GTD_NOTE, "Value"),
+            'gtd_receiver': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_RECEIVER, "Value"),
+            'gtd_contract': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_CONTRACT, "Value"),
+            'gtd_sum': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_SUM, "Value"),
+            'gtd_note': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_NOTE, "Value"),
 
-            'gtd_dol': self.fun.get_element_property(main_window, self.fun.loc.GTD_DOL, "Value"),
-            'gtd_evr': self.fun.get_element_property(main_window, self.fun.loc.GTD_EVR, "Value"),
+            'gtd_dol': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_DOL, "Value"),
+            'gtd_evr': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_EVR, "Value"),
 
         })
 
         # 11. Проверка, что ГТД не сохраняется без ТЕ
         self.fun.click_element_sp(main_window, self.fun.loc.OK_BUTTON1)
         self.fun.order_data.update({
-            'order_te_not': self.fun.get_element_property(main_window, self.fun.loc.GTD_TE_NOT, "Name"),
+            'order_te_not': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_TE_NOT, "Name"),
         })
         self.fun.click_element_sp(main_window, self.fun.loc.OK_BUTTON)
 
@@ -1229,7 +1229,7 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.fun.loc.MAX_FORM)
 
         self.fun.order_data.update({
-            'gtd_client_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_CLIENT, "Value"),
+            'gtd_client_tab': self.fun.get_element_property(main_window, self.fun.loc.CLIENT_LINE1, "Value"),
             'gtd_decl_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_DECL, "Value"),
             'gtd_arrival_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_ARRIVAL, "Value"),
             'gtd_post_tab': self.fun.get_element_property(main_window, self.fun.loc.TABLE_POST, "Value"),
@@ -1294,9 +1294,9 @@ class WinAISTApp:
         # 6. Перейти во вкладку
         self.fun.click_element_sp(main_window, self.fun.loc.TAB_CHECK)
 
-        self.fun.order_data.update({
+        self.fun.order_data = {
             'order_client': self.fun.get_element_property(main_window, self.fun.loc.CLIENT_COMBO, "Value"),
-        })
+        }
 
         # 7 Создать Исходящий счет и выставить покупателя
         self.fun.click_element_sp(main_window, self.fun.loc.CREATE_BUTTON)
@@ -1345,7 +1345,7 @@ class WinAISTApp:
             'is_number_table': self.fun.get_element_property(main_window, self.fun.loc.IS_NUMBER_TABLE, "Value"),
             'is_date_table': self.fun.get_element_property(main_window, self.fun.loc.IS_DATE_TABLE, "Value"),
             'is_suppler_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUPPLIER_TABLE, "Value"),
-            'is_buyer_table': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER_TABLE, "Value"),
+            'is_buyer_table': self.fun.get_element_property(main_window, self.fun.loc.BUYER_LINE1, "Value"),
             'is_currency_table': self.fun.get_element_property(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'is_sum_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUM_TABLE, "Value"),
             'is_closed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_CLOSED_TABLE, "Value"),
@@ -1374,7 +1374,7 @@ class WinAISTApp:
         })
         self.fun.click_element_sp(main_window, self.fun.loc.CREATE_BUTTON)
 
-        # 7 Переключение на форму ИС
+        # 7 Переключение на форму ВС
         main_window = self.fun.get_check_vs_form()
         main_window.set_focus()
         main_window = self.fun.app.window(**self.fun.loc.CHECK_FROM_VS)
@@ -1384,11 +1384,11 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.fun.loc.IS_LIST, timeout=1)
         self.fun.click_element(main_window, self.fun.loc.IS_FREIGHT1, timeout=1)
         self.fun.click_element(main_window, self.fun.loc.IS_SUPPLIER, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.RECIPIENT_1, timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.RECIPIENT_2, timeout=1)
         self.fun.click_element(main_window, self.fun.loc.IS_BUYER, timeout=1)
         self.fun.click_element(main_window, self.fun.loc.RECIPIENT_1, timeout=1)
         self.fun.click_element(main_window, self.fun.loc.VS_CONTRACTOR, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.RECIPIENT_1, timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.RECIPIENT_2, timeout=1)
         self.fun.click_element(main_window, self.fun.loc.APPLY_BUTTON, timeout=1)
 
         # 7 Проверка полей
@@ -1417,7 +1417,7 @@ class WinAISTApp:
             'vs_number_table': self.fun.get_element_property(main_window, self.fun.loc.IS_NUMBER_TABLE, "Value"),
             'vs_date_table': self.fun.get_element_property(main_window, self.fun.loc.IS_DATE_TABLE, "Value"),
             'vs_suppler_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUPPLIER_TABLE, "Value"),
-            'vs_buyer_table': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER_TABLE, "Value"),
+            'vs_buyer_table': self.fun.get_element_property(main_window, self.fun.loc.BUYER_LINE1, "Value"),
             'vs_currency_table': self.fun.get_element_property(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'vs_sum_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUM_TABLE, "Value"),
             'vs_closed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_CLOSED_TABLE, "Value"),
@@ -1452,25 +1452,24 @@ class WinAISTApp:
         time.sleep(1)
 
         # 7 Редактирование
-        self.fun.click_element(main_window, self.fun.loc.IS_LIST, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.IS_FREIGHT3, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.IS_SUPPLIER, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.RECIPIENT_1, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.IS_BUYER, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.RECIPIENT_1, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.APPLY_BUTTON, timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.IS_LIST)
+        self.fun.click_element_sp(main_window, self.fun.loc.IS_FREIGHT3)
+        self.fun.click_element_sp(main_window, self.fun.loc.IS_SUPPLIER)
+        self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_2)
+        self.fun.click_element_sp(main_window, self.fun.loc.IS_BUYER)
+        self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.fun.loc.APPLY_BUTTON)
 
         # 7 Проверка полей
         self.fun.order_data.update({
             # 'is_name_form': self.fun.get_element_property(main_window, self.fun.loc.IS_NAME_FORM, "Value"),
-            'ip_number': self.fun.get_element_property(main_window, self.fun.loc.VP_NUMBER, "Value"),
-            'ip_date': self.fun.get_element_property(main_window, self.fun.loc.IS_DATE, "Value"),
-            'ip_list': self.fun.get_element_property(main_window, self.fun.loc.IS_LIST, "Value"),
-            'ip_suppler': self.fun.get_element_property(main_window, self.fun.loc.IS_SUPPLIER, "Value"),
-            'ip_order': self.fun.get_element_property(main_window, self.fun.loc.VP_ORDER, "Value"),
-            'ip_buyer': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER, "Value"),
+            'ip_number': self.fun.get_element_property_sp(main_window, self.fun.loc.VP_NUMBER, "Value"),
+            'ip_date': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_DATE, "Value"),
+            'ip_list': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_LIST, "Value"),
+            'ip_suppler': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_SUPPLIER, "Value"),
+            'ip_order': self.fun.get_element_property_sp(main_window, self.fun.loc.VP_ORDER, "Value"),
+            'ip_buyer': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_BUYER, "Value"),
         })
-
         self.fun.click_element(main_window, self.fun.loc.OK_BUTTON1, timeout=1)
 
         # Переключить на форму заказа
@@ -1481,17 +1480,17 @@ class WinAISTApp:
 
         # 7 Поля в таблице
         self.fun.order_data.update({
-            'ip_type_table': self.fun.get_element_property(main_window, self.fun.loc.IS_TYPE_CHECK, "Value"),
-            'ip_number_table': self.fun.get_element_property(main_window, self.fun.loc.IS_NUMBER_TABLE, "Value"),
-            'ip_date_table': self.fun.get_element_property(main_window, self.fun.loc.IS_DATE_TABLE, "Value"),
-            'ip_suppler_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUPPLIER_TABLE, "Value"),
-            'ip_buyer_table': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER_TABLE, "Value"),
-            'ip_currency_table': self.fun.get_element_property(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
-            'ip_sum_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUM_TABLE, "Value"),
-            'ip_closed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_CLOSED_TABLE, "Value"),
-            'ip_nclosed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_NCLOSED_TABLE, "Value"),
-            'ip_nincluded_table': self.fun.get_element_property(main_window, self.fun.loc.IS_NINCLUDED_TABLE, "Value"),
-            'ip_appointment_table': self.fun.get_element_property(main_window, self.fun.loc.IS_APPOINTMENT_TABLE, "Value"),
+            'ip_type_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_TYPE_CHECK, "Value"),
+            'ip_number_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_NUMBER_TABLE, "Value"),
+            'ip_date_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_DATE_TABLE, "Value"),
+            'ip_suppler_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_SUPPLIER_TABLE, "Value"),
+            'ip_buyer_table': self.fun.get_element_property_sp(main_window, self.fun.loc.BUYER_LINE1, "Value"),
+            'ip_currency_table': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
+            'ip_sum_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_SUM_TABLE, "Value"),
+            'ip_closed_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_CLOSED_TABLE, "Value"),
+            'ip_nclosed_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_NCLOSED_TABLE, "Value"),
+            'ip_nincluded_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_NINCLUDED_TABLE, "Value"),
+            'ip_appointment_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_APPOINTMENT_TABLE, "Value"),
         })
 
         # 7 Удалить
@@ -1509,7 +1508,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_double(main_window, self.fun.loc.VP_CREATE_ORDER, timeout=1)
         self.fun.order_data.update({
-            'vp_create_order': self.fun.get_element_property(main_window, self.fun.loc.VP_CREATE_ORDER, "Name"),
+            'vp_create_order': self.fun.get_element_property_sp(main_window, self.fun.loc.VP_CREATE_ORDER, "Name"),
         })
         self.fun.click_element(main_window, self.fun.loc.CREATE_BUTTON, timeout=1)
 
@@ -1531,13 +1530,13 @@ class WinAISTApp:
         # 7 Проверка полей
         self.fun.order_data.update({
             # 'is_name_form': self.fun.get_element_property(main_window, self.fun.loc.IS_NAME_FORM, "Value"),
-            'vp_number': self.fun.get_element_property(main_window, self.fun.loc.VP_NUMBER, "Value"),
-            'vp_date': self.fun.get_element_property(main_window, self.fun.loc.IS_DATE, "Value"),
-            'vp_list': self.fun.get_element_property(main_window, self.fun.loc.IS_LIST, "Value"),
-            'vp_suppler': self.fun.get_element_property(main_window, self.fun.loc.IS_SUPPLIER, "Value"),
-            'vp_order': self.fun.get_element_property(main_window, self.fun.loc.VP_ORDER, "Value"),
-            'vp_client': self.fun.get_element_property(main_window, self.fun.loc.GTD_CLIENT, "Value"),
-            'vp_buyer': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER, "Value"),
+            'vp_number': self.fun.get_element_property_sp(main_window, self.fun.loc.VP_NUMBER, "Value"),
+            'vp_date': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_DATE, "Value"),
+            'vp_list': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_LIST, "Value"),
+            'vp_suppler': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_SUPPLIER, "Value"),
+            'vp_order': self.fun.get_element_property_sp(main_window, self.fun.loc.VP_ORDER, "Value"),
+            'vp_client': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_CLIENT, "Value"),
+            'vp_buyer': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_BUYER, "Value"),
         })
 
         self.fun.click_element(main_window, self.fun.loc.OK_BUTTON1, timeout=1)
@@ -1549,27 +1548,27 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.fun.loc.REFRESH_BUTTON_ORDER, timeout=1)
         # 7 Поля в таблице
         self.fun.order_data.update({
-            'vp_type_table': self.fun.get_element_property(main_window, self.fun.loc.IS_TYPE_CHECK, "Value"),
-            'vp_number_table': self.fun.get_element_property(main_window, self.fun.loc.IS_NUMBER_TABLE, "Value"),
-            'vp_date_table': self.fun.get_element_property(main_window, self.fun.loc.IS_DATE_TABLE, "Value"),
-            'vp_suppler_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUPPLIER_TABLE, "Value"),
-            'vp_buyer_table': self.fun.get_element_property(main_window, self.fun.loc.IS_BUYER_TABLE, "Value"),
-            'vp_currency_table': self.fun.get_element_property(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
-            'vp_sum_table': self.fun.get_element_property(main_window, self.fun.loc.IS_SUM_TABLE, "Value"),
-            'vp_closed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_CLOSED_TABLE, "Value"),
-            'vp_nclosed_table': self.fun.get_element_property(main_window, self.fun.loc.IS_NCLOSED_TABLE, "Value"),
-            'vp_nincluded_table': self.fun.get_element_property(main_window, self.fun.loc.IS_NINCLUDED_TABLE, "Value"),
-            'vp_appointment_table': self.fun.get_element_property(main_window, self.fun.loc.IS_APPOINTMENT_TABLE, "Value"),
+            'vp_type_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_TYPE_CHECK, "Value"),
+            'vp_number_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_NUMBER_TABLE, "Value"),
+            'vp_date_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_DATE_TABLE, "Value"),
+            'vp_suppler_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_SUPPLIER_TABLE, "Value"),
+            'vp_buyer_table': self.fun.get_element_property_sp(main_window, self.fun.loc.BUYER_LINE1, "Value"),
+            'vp_currency_table': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
+            'vp_sum_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_SUM_TABLE, "Value"),
+            'vp_closed_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_CLOSED_TABLE, "Value"),
+            'vp_nclosed_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_NCLOSED_TABLE, "Value"),
+            'vp_nincluded_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_NINCLUDED_TABLE, "Value"),
+            'vp_appointment_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_APPOINTMENT_TABLE, "Value"),
         })
 
         # 7 Удалить
-        self.fun.click_element(main_window, self.fun.loc.RECIPIENT_1, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.DEL_BUTTON, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.YES_BUTTON, timeout=1)
-        self.fun.click_element(main_window, self.fun.loc.REFRESH_BUTTON_ORDER, timeout=1)
-
+        self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.fun.loc.DEL_BUTTON)
+        self.fun.click_element_sp(main_window, self.fun.loc.YES_BUTTON)
+        self.fun.click_element_sp(main_window, self.fun.loc.REFRESH_BUTTON_ORDER)
+        time.sleep(1)
         self.fun.order_data.update({
-            'freight_del_table_vp': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_TOTAL_RECORDS, "Value")
+            'freight_del_table_vp': self.fun.get_element_property_sp(main_window, self.fun.loc.FREIGHT_TOTAL_RECORDS, "Value")
         })
         return self.fun.order_data
 

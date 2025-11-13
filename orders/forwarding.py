@@ -2,8 +2,6 @@ from pywinauto import Application, keyboard
 from locators.locators import LocOrders
 from locators.function import Function
 import time
-import subprocess
-import psutil
 
 
 class WinAISTApp:
@@ -15,13 +13,7 @@ class WinAISTApp:
     def forwarding(self):
         # 1. Запуск приложения
         self.fun.start_application()
-        #startup_window.set_focus()
-
-        # 2. Нажатие кнопки Запуск
-        #self.fun.click_element(startup_window, self.loc.AIST_EF, timeout=1)
-        #self.fun.click_element(startup_window, self.loc.START_BUTTON, timeout=1)
         time.sleep(3)
-
 
         # 3.
         main_window = self.fun.get_main_window()
@@ -87,26 +79,27 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_6)
         self.fun.click_element_sp(main_window, self.fun.loc.FORWARDING_FORWARDER)
         self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_2)
-        self.fun.click_element_sp(main_window, self.loc.FORWARDING_NOMINATION)
+        self.fun.click_element(main_window, self.loc.FORWARDING_NOMINATION, timeout=1)
         keyboard.send_keys('1')
         self.fun.click_element_sp(main_window, self.loc.FORWARDING_TELEX)
         keyboard.send_keys('2')
         self.fun.click_element_sp(main_window, self.loc.FORWARDING_RECEIVING_DOC)
         keyboard.send_keys('3')
+        time.sleep(1)
         self.fun.set_text_field(main_window, self.fun.loc.NOTE, "Экспедирование", timeout=1)
         self.fun.click_element_sp(main_window, self.fun.loc.APPLY_BUTTON1)
         time.sleep(1)
 
         # 5. Проверка полей Экспедирования после редактирования
         self.fun.order_data.update({
-            'forwarding_status_mod': self.fun.get_element_property(main_window, self.fun.loc.STATUS_COMBO, "Value"),
-            'forwarding_priority_mod': self.fun.get_element_property(main_window, self.fun.loc.PRIORITY_COMBO, "Value"),
-            'forwarding_otv_mod': self.fun.get_element_property(main_window, self.fun.loc.RESPONSIBLE_COMBO, "Value"),
+            'forwarding_status_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.STATUS_COMBO, "Value"),
+            'forwarding_priority_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.PRIORITY_COMBO, "Value"),
+            'forwarding_otv_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.RESPONSIBLE_COMBO, "Value"),
             
-            'forwarding_type_freight_mod': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_FORWARDER, "Value"),
-            'forwarding_class_freight_mod': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_NOMINATION, "Value"),
-            'forwarding_download_method_mod': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_TELEX, "Value"),
-            'forwarding_ref_freight_mod': self.fun.get_element_property(main_window, self.fun.loc.FORWARDING_RECEIVING_DOC, "Value"),
+            'forwarding_type_freight_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_FORWARDER, "Value"),
+            'forwarding_class_freight_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_NOMINATION, "Value"),
+            'forwarding_download_method_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_TELEX, "Value"),
+            'forwarding_ref_freight_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_RECEIVING_DOC, "Value"),
 
             'forwarding_note_mod': self.fun.get_element_property(main_window, self.fun.loc.NOTE, "Value"),
         })
@@ -227,16 +220,19 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
         time.sleep(1)
         # 9. Порт выставление данных в маршруты
-        self.fun.click_element(main_window, self.loc.PORT1, timeout=1)
-        keyboard.send_keys('{ENTER}')
-        self.fun.click_element(main_window, self.loc.PORT1, timeout=1)
-        self.fun.click_element(main_window, self.loc.NAME_LINE1, timeout=1)
-
-        # 9. Терминал выставление данных в маршруты
-        self.fun.click_element(main_window, self.loc.TERMINAL_LINE1, timeout=1)
-        keyboard.send_keys('{ENTER}')
-        self.fun.click_element(main_window, self.loc.TERMINAL_LINE1, timeout=1)
-        self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TE1, timeout=1)
+        self.fun.click_element_double_sp(main_window, self.loc.RECIPIENT_1)
+        main_window = self.fun.get_preforwarding_form()
+        main_window.set_focus()
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.PREFORWARDING_TERMINAL2)
+        self.fun.click_element_sp(main_window, self.loc.SEARCH_BOX)
+        keyboard.send_keys('москва')
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.loc.SAVE_BUTTON)
+        main_window = self.fun.get_sea_form()
+        main_window.set_focus()
+        time.sleep(1)
 
         self.fun.click_element(main_window, self.loc.PLAN_ARRIVAL1, timeout=3)
         keyboard.send_keys('3')
@@ -253,15 +249,15 @@ class WinAISTApp:
 
         self.fun.click_element_sp(main_window, self.fun.loc.TAB_FREIGHT)
         # 10. Добавить груз в морскую перевозку
-        self.fun.click_element(main_window, self.loc.TAB_FREIGHT, timeout=1)
-        self.fun.click_element(main_window, self.loc.CREATE_BUTTON, timeout=1)
-        self.fun.click_element(main_window, self.loc.OPEN_BUTTON, timeout=1)
-        self.fun.click_element(main_window, self.loc.DELIVERY_CONDITION_0, timeout=1)
-        self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
-        self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.TAB_FREIGHT)
+        self.fun.click_element_sp(main_window, self.loc.CREATE_BUTTON)
+        self.fun.click_element_sp(main_window, self.loc.OPEN_BUTTON)
+        self.fun.click_element_sp(main_window, self.loc.DELIVERY_CONDITION_0)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
 
         # Закрываем морскую перевозку
-        self.fun.click_element(main_window, self.loc.SAVE_BUTTON, timeout=2)
+        self.fun.click_element_sp(main_window, self.loc.SAVE_BUTTON)
         time.sleep(1)
 
         # 5. Переключение на форму заказа
@@ -274,7 +270,7 @@ class WinAISTApp:
         self.fun.order_data.update({
             'order_forwading_item': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_ITEM, "Value"),
             'order_forwading_numder': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_NUMBER, "Value"),
-            'order_forwading_status': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_STATUS, "Value"),
+            'order_forwading_status': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_STATUS, "Value"),
             'order_forwading_otv': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_OTV, "Value"),
             'order_forwading_forward': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_FORWARD, "Value"),
             'order_forwading_te': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_TE, "Value"),
@@ -291,6 +287,8 @@ class WinAISTApp:
         time.sleep(1)
 
         self.fun.click_element_sp(main_window, self.fun.loc.TAB_FORWARDING_FREIGHT)
+        self.fun.click_element_sp(main_window, self.fun.loc.REFRESH_BUTTON1)
+        time.sleep(1)
         # Проверка отображения данных в вкладке Экспедируемый груз
         self.fun.order_data.update({
             'order_forwarding_fid_kons1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_FID_KONS1, "Value"),
@@ -306,7 +304,7 @@ class WinAISTApp:
             'order_forwarding_doc1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_DOC1, "Value"),
             'order_forwarding_nomination1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_NOMINATION1, "Value"),
             'order_forwarding_do_do1': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_DO_DO1, "Value"),
-            'order_forwarding_note1': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE_LINE1, "Value"),
+            'order_forwarding_note1': self.fun.get_element_property(main_window, self.fun.loc.NOTE_LINE1, "Value"),
 
         })
 
@@ -340,16 +338,16 @@ class WinAISTApp:
         self.fun.order_data.update({
             'order_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.ORDER_TABLE1, "Value"),
             'type_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.TYPE_TABLE1, "Value"),
-            'status_table1': self.fun.get_element_property(main_window, self.fun.loc.STATUS_TABLE1, "Value", timeout=1),
-            'priority_table1': self.fun.get_element_property(main_window, self.fun.loc.PRIORITY_TABLE1, "Value", timeout=1),
-            'responsible_table1': self.fun.get_element_property(main_window, self.fun.loc.RESPONSIBLE_TABLE1, "Value", timeout=1),
+            'status_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_STATUS, "Value"),
+            'priority_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_PRIORITY, "Value"),
+            'responsible_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.RESPONSIBLE_TABLE1, "Value"),
             'expeditor_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.EXPEDITOR_TABLE1, "Value"),
             'telex_release_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.TELEX_RELEASE_TABLE1, "Value"),
             'receive_doc_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.RECEIVE_DOC_TABLE1, "Value"),
             'nomination_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.NOMINATION_TABLE1, "Value"),
             'note_table1': self.fun.get_element_property(main_window, self.fun.loc.NOTE_LINE1, "Value", timeout=1),
-            'created_by_table1': self.fun.get_element_property(main_window, self.fun.loc.CREATED_BY_TABLE1, "Value", timeout=1),
-            'created_date_table1': self.fun.get_element_property(main_window, self.fun.loc.CREATED_DATE_TABLE1, "Value", timeout=1),
+            'created_by_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.CREATED_BY_TABLE1, "Value"),
+            'created_date_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.CREATED_DATE_TABLE1, "Value"),
             'updated_date_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.UPDATED_DATE_TABLE1, "Value"),
             'finished_date_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.FINISHED_DATE_TABLE1, "Value"),
             'forwarding_number_header': self.fun.get_element_property_sp(main_window, self.fun.loc.FORWARDING_NUMBER_HEADER, "Value"),

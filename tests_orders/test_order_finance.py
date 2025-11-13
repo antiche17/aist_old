@@ -1,65 +1,9 @@
 import pytest
 import allure
-from difflib import SequenceMatcher as f
 from orders.order import WinAISTApp
 import pytest_check as check
-import locale
-from datetime import datetime, date
-import re
+from locators.format_data import compare_dates
 
-
-
-# Словарь для замены русских месяцев на английские
-MONTHS_RU_EN = {
-    'января': 'January', 'февраля': 'February', 'марта': 'March',
-    'апреля': 'April', 'мая': 'May', 'июня': 'June',
-    'июля': 'July', 'августа': 'August', 'сентября': 'September',
-    'октября': 'October', 'ноября': 'November', 'декабря': 'December'
-}
-
-def normalize_date(date_val):
-    """
-    Преобразует дату в объект date, поддерживает форматы:
-    - 23.09.2025
-    - 23-09-2025 16:03 (автотест)
-    - 1 сентября 2025
-    """
-    if isinstance(date_val, (datetime, date)):
-        return date_val.date() if isinstance(date_val, datetime) else date_val
-
-    date_str = str(date_val).replace("г.", "").strip()
-
-    # Убираем всё, что в скобках
-    date_str = re.sub(r"\(.*?\)", "", date_str).strip()
-
-    # Переводим русские месяцы на английские
-    for ru, en in MONTHS_RU_EN.items():
-        if ru in date_str:
-            date_str = date_str.replace(ru, en)
-            break
-
-    # Ставим безопасную локаль
-    locale.setlocale(locale.LC_TIME, 'C')
-
-    # Список форматов для распознавания
-    formats = ["%d.%m.%Y", "%d-%m-%Y", "%d %B %Y", "%d-%m-%Y %H:%M"]
-
-    for fmt in formats:
-        try:
-            return datetime.strptime(date_str, fmt).date()
-        except ValueError:
-            continue
-
-    raise ValueError(f"Не удалось распознать дату: {date_val}")
-
-def compare_dates(date1, date2, error_message, tolerance_days=0):
-    """
-    Сравнивает две даты с допуском по дням.
-    Если разница больше tolerance_days, выбрасывает AssertionError.
-    """
-    d1, d2 = normalize_date(date1), normalize_date(date2)
-    delta_days = abs((d1 - d2).days)
-    assert delta_days <= tolerance_days, f"{error_message}: {d1} != {d2}, разница {delta_days} дней"
 
 @pytest.fixture(scope="module")
 def order_app():
@@ -70,7 +14,6 @@ def order_app():
 
 
 @allure.title("Проверка создание Исходящий платеж в заказе. 19 проверок")
-@pytest.mark.order(1)
 def test_value_order(order_app):
     with allure.step("1. Исходящий платеж"):
         check.equal(order_app["ip_create_order"], "Исходящий платеж", "❌ ФР: ИП не совпадает")
@@ -85,7 +28,7 @@ def test_value_order(order_app):
         check.equal(order_app["ip_list"], "Таможенный", "❌ ФР: Тип счета Товарный")
 
     with allure.step("5. Поле Поставщик не пустое"):
-        check.is_true(order_app["ip_suppler"], "❌ ФР: Поле пустое")
+        check.is_true(order_app["ip_suppler"], "❌ ФР: Поле Поставщик пустое")
 
     with allure.step("6. Поле Номер заказа не пустое"):
         check.is_true(order_app["ip_order"], "❌ ФР: Поле пустое")
@@ -128,7 +71,6 @@ def test_value_order(order_app):
         check.equal(order_app["ip_appointment_table"], order_app["ip_list"], "❌ ФР: Поле с другим значением, но должно быть Логистика")
 
 @allure.title("Проверка создание Входящий счет в заказе. 19 проверок")
-@pytest.mark.order(1)
 def test_value_vs(order_app):
     with allure.step("1. Входящий счет"):
         check.equal(order_app["vs_create_order"], "Входящий счет", "❌ ФР: ВС не совпадает")
@@ -143,7 +85,7 @@ def test_value_vs(order_app):
         check.equal(order_app["vs_list"], "Фрахтовый", "❌ ФР: Тип счета Товарный")
 
     with allure.step("5. Поле Поставщик не пустое"):
-        check.is_true(order_app["vs_suppler"], "❌ ФР: Поле пустое")
+        check.is_true(order_app["vs_suppler"], "❌ ФР: Поле Поставщик пустое")
 
     with allure.step("6. Поле Номер заказа не пустое"):
         check.is_true(order_app["vs_order"], "❌ ФР: Поле пустое")
@@ -189,7 +131,6 @@ def test_value_vs(order_app):
         check.equal(order_app["vs_appointment_table"], order_app["vs_list"], "❌ ФР: Поле с другим значением, но должно быть Логистика")
 
 @allure.title("Проверка создание Исходящего счета в заказе. 19 проверок")
-@pytest.mark.order(1)
 def test_value_is(order_app):
     with allure.step("1. Исходящий счет"):
         check.equal(order_app["is_create_order"], "Исходящий счет", "❌ ФР: ИС не совпадает")
@@ -250,7 +191,6 @@ def test_value_is(order_app):
         check.equal(order_app["is_appointment_table"], order_app["is_list"], "❌ ФР: Поле с другим значением, но должно быть Логистика")
 
 @allure.title("Проверка создание Входящий платеж в заказе. 19 проверок")
-@pytest.mark.order(1)
 def test_value_vp(order_app):
     with allure.step("1. Входящий платеж"):
         check.equal(order_app["vp_create_order"], "Входящий платеж", "❌ ФР: ВП не совпадает")

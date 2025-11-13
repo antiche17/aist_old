@@ -57,10 +57,10 @@ def test_freight(order_app):
         check.equal(order_app["bul_seal_num_form_mod"], order_app["bul_seal_num_table"], "❌ ФР: Не одинаковый Номер пломбы")
 
     with allure.step("12. Терминал "):
-        check.equal(order_app["sea_terminal_form"], order_app["bul_sea_terminal_table"], "❌ ФР: Не одинаковый Вес нетто")
+        check.equal(order_app["sea_terminal_form"], order_app["bul_sea_terminal_table"], "❌ ФР: Не одинаковый Терминал")
 
     with allure.step("13. Порт"):
-        check.equal(order_app["sea_port_form"], order_app["bul_port_table"], "❌ ФР: Не одинаковый Вес нетто")
+        check.equal(order_app["sea_port_form"], order_app["bul_port_table"], "❌ ФР: Не одинаковый Порт")
 
     with allure.step("14. Планируемая дата прибытия"):
         check.equal(order_app["sea_plan_arrival_form"], order_app["bul_plan_arrival_table"], "❌ ФР: Планируемая дата прибытия")

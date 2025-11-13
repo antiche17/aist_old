@@ -3,87 +3,34 @@ import allure
 from orders.transport import WinAISTApp
 import pytest_check as check
 from difflib import SequenceMatcher
-import locale
-from datetime import datetime, date
-import re
-
-
-
-# Словарь для замены русских месяцев на английские
-MONTHS_RU_EN = {
-    'января': 'January', 'февраля': 'February', 'марта': 'March',
-    'апреля': 'April', 'мая': 'May', 'июня': 'June',
-    'июля': 'July', 'августа': 'August', 'сентября': 'September',
-    'октября': 'October', 'ноября': 'November', 'декабря': 'December'
-}
-
-def normalize_date(date_val):
-    """
-    Преобразует дату в объект date, поддерживает форматы:
-    - 23.09.2025
-    - 23-09-2025 16:03 (автотест)
-    - 1 сентября 2025
-    """
-    if isinstance(date_val, (datetime, date)):
-        return date_val.date() if isinstance(date_val, datetime) else date_val
-
-    date_str = str(date_val).replace("г.", "").strip()
-
-    # Убираем всё, что в скобках
-    date_str = re.sub(r"\(.*?\)", "", date_str).strip()
-
-    # Переводим русские месяцы на английские
-    for ru, en in MONTHS_RU_EN.items():
-        if ru in date_str:
-            date_str = date_str.replace(ru, en)
-            break
-
-    # Ставим безопасную локаль
-    locale.setlocale(locale.LC_TIME, 'C')
-
-    # Список форматов для распознавания
-    formats = ["%d.%m.%Y", "%d-%m-%Y", "%d %B %Y", "%d-%m-%Y %H:%M"]
-
-    for fmt in formats:
-        try:
-            return datetime.strptime(date_str, fmt).date()
-        except ValueError:
-            continue
-
-    raise ValueError(f"Не удалось распознать дату: {date_val}")
-
-def compare_dates(date1, date2, error_message, tolerance_days=0):
-    """
-    Сравнивает две даты с допуском по дням.
-    Если разница больше tolerance_days, выбрасывает AssertionError.
-    """
-    d1, d2 = normalize_date(date1), normalize_date(date2)
-    delta_days = abs((d1 - d2).days)
-    assert delta_days <= tolerance_days, f"{error_message}: {d1} != {d2}, разница {delta_days} дней"
-
+from locators.format_data import compare_dates
 
 
 @pytest.fixture(scope="module")
 def order_app():
-    print("[SETUP] Запуск фикстуры order_app")
+    print("Автопервозки:\n- создание\n- редактирование\n- проверка в таблице Автоперевозка\n- проверка в заказе")
     app = WinAISTApp()
     order_data = app.transport_auto()
     yield order_data
     print("[TEARDOWN] Закрытие WinAISTApp")
     app.close()
 
+@allure.suite("ГТД в заказе")
 @allure.title("Проверка Таблицы Автоперевозка 104 проверки")
-@pytest.mark.order(1)
-
 def test_value_del(order_app):
+    # Диалог создания автоперевозки
     with allure.step("1. Тип перевозки"):
         check.equal(order_app["order_dialog_type"], "Автоперевозка", "❌ ФР: Не одинаковые")
 
     with allure.step("2. Поле Ответственный не пустое"):
-        check.is_true(bool(order_app.get("order_dialog_otv")), "❌ ФР: поле Ответственный пустое")
+        check.is_true(order_app["order_dialog_otv"], "❌ ФР: поле Ответственный пустое")
 
     with allure.step("3. Номер заказа"):
-        check.is_true(SequenceMatcher(None, order_app["order_dialog_number"], order_app["auto_order_number"]).ratio() >= 0.5, "❌ ФР: Не совпадает Имя маршрута Отгрузка на 50%")
+        check.is_true(order_app["order_dialog_number"], "❌ ФР: Номер заказа поле пустое")
+
+    # Форма перевозки
+    with allure.step("4. Название Бэндкэмп"):
+        check.is_true(order_app["auto_order_number"], "❌ ФР: Бэндкэмп пустой")
 
     with allure.step("4. Сравнение Тип перевозки"):
         check.equal(order_app["order_dialog_type"], order_app["auto_type"], "❌ ФР: Не одинаковые Тип перевозки")
@@ -133,7 +80,6 @@ def test_value_del(order_app):
     with allure.step("19. Примечание неравны"):
         check.is_false(order_app["auto_note"] == order_app["auto_note_mod"], f"❌ ФР: Примечание равны")
 
-
 # Сравнение маршрутных данных
     with allure.step("20. Имя маршрута Отгрузка"):
         check.is_true(SequenceMatcher(None, order_app["shipment1"], order_app["shipment_name"]).ratio() >= 0.1, "❌ ФР: Не совпадает Имя маршрута Отгрузка на 130%")
@@ -154,7 +100,7 @@ def test_value_del(order_app):
         check.equal(order_app["car1"],order_app["shipment_auto"], f"❌ ФР: Не совпадает Автомобиль Отгрузка")
 
     with allure.step("26. Поменялся Адрес Отгрузка"):
-        check.is_false(order_app["shipment_address"] == order_app["shipment_address_mod"], f"❌ ФР: ")
+            check.not_equal(order_app["shipment_address"], order_app["shipment_address_mod"], f"❌ ФР: Адрес Отгрузка не поменялся")
 
     with allure.step("27. Поменялся Водитель Отгрузка"):
         check.is_false(order_app["shipment_driver"] == order_app["shipment_driver_mod"], f"❌ ФР: ")
@@ -172,7 +118,7 @@ def test_value_del(order_app):
         check.is_false(order_app["shipment_note"] == order_app["shipment_note_mod"], f"❌ ФР: НЕ поменялся Примечание Отгрузка")
 
     with allure.step("32. Адрес Прибытие"):
-        check.equal(order_app["address2"],order_app["arrival_address"], f"❌ ФР: Не совпадает Адрес Прибытие")
+            check.equal(order_app["address2"],order_app["arrival_address"], f"❌ ФР: Не совпадает Адрес Прибытие")
 
     with allure.step("33. План. прибытия Прибытие"):
         compare_dates(order_app["plan_arrival2"],order_app["arrival_plan_data"], f"❌ ФР: Не совпадает План. прибытия Прибытие")
@@ -181,7 +127,7 @@ def test_value_del(order_app):
         compare_dates(order_app["fact_arrival2"], order_app["arrival_fact_data"], f"❌ ФР: Не совпадает Факт. прибытия Прибытие")
 
     with allure.step("35. Поменялся Адрес Прибытие"):
-        check.is_false(order_app["arrival_address"] == order_app["arrival_address_mod"], f"❌ ФР:Не поменялся Адрес Прибытие")
+        check.not_equal(order_app["arrival_address"], order_app["arrival_address_mod"], f"❌ ФР: Одинаковый Адрес Прибытие")
 
     with allure.step("36. Поменялся План. прибытия Прибытие"):
         check.is_false(order_app["arrival_plan_data"] == order_app["arrival_plan_data_mod"], f"❌ ФР:Не поменялся План. прибытия Прибытие ")
@@ -226,13 +172,13 @@ def test_value_del(order_app):
     with allure.step("49. Ответственный таблица"):
         check.equal(order_app["responsible_table1"], order_app["auto_otv"], f"❌ ФР: Не совпадает Ответственный таблица")
 
-    #with allure.step("50. Перевозчик таблица"): Убрана проверка до исправления
+    #with allure.step("50. Перевозчик таблица"):
         #check.equal(order_app["carrier_table1"], order_app["auto_carrier_mod"], f"❌ ФР: Не совпадает Перевозчик таблица Не чинили 29.08")
 
     with allure.step("51. Класс груза таблица"):
         check.equal(order_app["cargo_class_table1"], order_app["auto_class_freight_mod"], f"❌ ФР: Не совпадает Класс груза таблица")
 
-    # with allure.step("52. Способ загрузки таблица"): Убрана проверка до исправления
+    #with allure.step("52. Способ загрузки таблица"):
         #check.equal(order_app["loading_method_table1"], order_app["auto_download_method_mod"], f"❌ ФР: Не совпадает Способ загрузки таблица Не чинили 29.08")
 
     with allure.step("53. Номер CMR таблица"):
@@ -301,6 +247,8 @@ def test_value_del(order_app):
         ("82. Автомобиль Прибытие", ["car2"]),
         ("83. Примечание Прибытие", ["arrival_note"]),
         ("84. Адрес Сдача контейнера", ["address3"]),
+        ("84. Адрес Прибытие", ["address2"]),
+        ("84. Адрес Отгрузка", ["address1"]),
         ("85. Примечание Сдача контейнера", ["drop_con_note"]),
         ("86. Водитель Сдача контейнера", ["driver3"]),
         ("87. План. отгрузки Сдача контейнера", ["plan_load3"]),

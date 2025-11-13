@@ -7,15 +7,17 @@ from locators.function import Function
 
 @pytest.fixture(scope="module")
 def order_app():
-    print("[SETUP] Запуск фикстуры order_app")
+    print("Создание в заказе сущности: \n-перевозки\n-груз\n-счета\n-файлы\n-ГТД\n-экспедирование.\nУдаление заказа с сущностями из формы из таблицы.\nУдаление нескольких заказов.")
     app = WinAISTApp()
-    order_data = app.order_del()
-    yield order_data
-    print("[TEARDOWN] Закрытие WinAISTApp")
-    app.close()
+    try:
+        order_data = app.order_del()
+        yield order_data
+    finally:
+        print("[TEARDOWN] Закрытие WinAISTApp")
+        app.close()
 
-@allure.title("Проверка создание Входящий платеж в заказе. 39 проверок")
-@pytest.mark.order(1)
+@allure.suite("Удаление заказа со связанными сущностями" )
+@allure.title("Удаление заказа со связанными сущностями. 45 проверок")
 def test_order_del(order_app):
     # 1–4: Проверка наличия номеров заказов в окне удаления
     order_numbers = {
@@ -42,6 +44,8 @@ def test_order_del(order_app):
         "del_vp": ("Входящий платеж", "9. Удален Входящий платеж"),
         "del_sea": ("Морская перевозка", "10. Удалена Морская перевозка"),
         "del_auto": ("Автоперевозка", "11. Удалена Автоперевозка"),
+        "del_jd": ("ЖД-перевозка", "40. Удалена ЖД-перевозка"),
+        "del_avia": ("Авиаперевозка", "41. Удалена Авиаперевозка"),
         "del_bul": ("Bulkership", "12. Удален Bulkership"),
         "del_con": ("Container", "13. Удален Container"),
         "del_gtd": ("ГТД", "14. Удален ГТД"),
@@ -73,6 +77,10 @@ def test_order_del(order_app):
         "del_window_sea1": ("Морская перевозка", "27. Удалена Морская перевозка из таблицы Заказы"),
         "del_window_auto": ("Автоперевозка", "28. Удалена Автоперевозка из формы"),
         "del_window_auto1": ("Автоперевозка", "29. Удалена Автоперевозка из таблицы Заказы"),
+        "del_window_jd": ("ЖД-перевозка", "42. Удалена ЖД-перевозка из формы"),
+        "del_window_jd1": ("ЖД-перевозка", "42. Удалена ЖД-перевозка из таблицы Заказы"),
+        "del_window_avia": ("Авиаперевозка", "44. Удалена Авиаперевозка из формы"),
+        "del_window_avia1": ("Авиаперевозка", "45. Удалена Авиаперевозка из таблицы Заказы"),
         "del_window_bul": ("Bulkership", "30. Удален Bulkership из формы"),
         "del_window_bul1": ("Bulkership", "31. Удален Bulkership из таблицы Заказы"),
         "del_window_con": ("Container", "32. Удален Container из формы"),

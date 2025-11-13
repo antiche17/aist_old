@@ -2,8 +2,6 @@ from pywinauto import Application, keyboard, mouse
 from locators.locators import LocOrders
 from locators.function import Function
 import time
-import subprocess
-import psutil
 
 
 class WinAISTApp:
@@ -12,7 +10,289 @@ class WinAISTApp:
         self.loc = LocOrders()
         self.app = self.fun.app
 
-    def finance(self):
+    def finance_org(self):
+        # 1. Запуск приложения
+        self.fun.start_application()
+        time.sleep(3)
+
+        # 3.
+        main_window = self.fun.get_main_window()
+        main_window.set_focus()
+        time.sleep(1)
+
+        self.fun.click_element_sp(main_window, self.loc.FINANCE)
+        time.sleep(3)
+        self.fun.click_element_sp(main_window, self.loc.ORG_ACCOUNT_TRANSFERS)
+        self.fun.click_element_sp(main_window, self.loc.ADD_BUTTON)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE_WINDOW)
+
+        main_window = self.fun.get_transfer_form()
+        main_window.set_focus()
+        time.sleep(1)
+        self.fun.set_text_field(main_window, self.loc.EXECUTION_IN_DAYS, "1", timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.COMPLETED)
+        keyboard.send_keys('31')
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.FROM_CHECK)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.set_text_field(main_window, self.loc.FROM_SUM, "100", timeout=1)
+
+        self.fun.click_element_sp(main_window, self.loc.ON_CHECK)
+        self.fun.set_text_field(main_window, self.fun.loc.SEARCH_BOX, "Бодрус ВТБ RUR", timeout=1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.set_text_field(main_window, self.loc.IN_SUM, "100", timeout=1)
+
+        self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
+
+        main_window = self.fun.get_main_window()
+        main_window.set_focus()
+        time.sleep(1)
+
+        # Удалить созданный перевод
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.loc.DEL_BUTTON)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE_WINDOW)
+
+        self.fun.click_element_sp(main_window, self.loc.REFRESH_BUTTON)
+        time.sleep(1)
+
+        # Создать второй перевод
+        self.fun.click_element_sp(main_window, self.loc.ADD_BUTTON)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE_WINDOW)
+
+        main_window = self.fun.get_transfer_form()
+        main_window.set_focus()
+        time.sleep(1)
+        self.fun.order_data = {
+            # Блок 1: основные текстовые поля
+            'number_org': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_NUMBER, "Value"),
+            'type_transfer': self.fun.get_element_property_sp(main_window, self.fun.loc.TYPE_TRANSFER, "Value"),
+            'ot_org': self.fun.get_element_property_sp(main_window, self.fun.loc.OT, "Value"),
+            'execution_in_days': self.fun.get_element_property_sp(main_window, self.fun.loc.EXECUTION_IN_DAYS, "Value"),
+            'completed_org': self.fun.get_element_property_sp(main_window, self.fun.loc.COMPLETED, "Value"),
+            # Блок 2: радиокнопки / флаги
+            'no_sum': self.fun.get_element_property_sp(main_window, self.fun.loc.NO_SUM,      "SelectionItem.IsSelected"),
+            'formula_sum1_selected': self.fun.get_element_property_sp(main_window, self.fun.loc.FORMULA_SUM1,
+                                                                      "SelectionItem.IsSelected"),
+            'formula_sum2_selected': self.fun.get_element_property_sp(main_window, self.fun.loc.FORMULA_SUM2,
+                                                                      "SelectionItem.IsSelected"),
+            # Исх: расчёт №1
+            'from_check_1': self.fun.get_element_property_sp(main_window, self.fun.loc.FROM_CHECK, "Value"),
+            'in_sum_1': self.fun.get_element_property_sp(main_window, self.fun.loc.FROM_SUM, "Value"),
+            'currency_org1': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG1, "Value"),
+            'currency_org1_readonly': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG1,
+                                                                       "Value.IsReadOnly"),
+            # Вх: расчёт №2
+            'on_check_2': self.fun.get_element_property_sp(main_window, self.fun.loc.ON_CHECK, "Value"),
+            'in_sum_2': self.fun.get_element_property_sp(main_window, self.fun.loc.IN_SUM, "Value"),
+            'currency_org2': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG2, "Value"),
+            'currency_org2_readonly': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG2,
+                                                                       "Value.IsReadOnly"),
+            # Комиссия и даты
+            'date_org1': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_ORG1, "Value"),
+            'commission1': self.fun.get_element_property_sp(main_window, self.fun.loc.COMMISSION1, "Value"),
+            'currency_org3': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG3, "Value"),
+            'from_check3': self.fun.get_element_property_sp(main_window, self.fun.loc.FROM_CHECK3, "Value"),
+            'date_org2': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_ORG2, "Value"),
+            'commission2': self.fun.get_element_property_sp(main_window, self.fun.loc.COMMISSION2, "Value"),
+            'currency_org4': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG4, "Value"),
+            # Итоги
+            'total1': self.fun.get_element_property_sp(main_window, self.fun.loc.TOTAL1, "Value"),
+            'currency_org6': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG6, "Value"),
+            'total2': self.fun.get_element_property_sp(main_window, self.fun.loc.TOTAL2, "Value"),
+            'currency_org7': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG7, "Value"),
+            'gtd_note': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_NOTE, "Value"),
+        }
+        # Редактирование перевода
+        self.fun.set_text_field(main_window, self.loc.EXECUTION_IN_DAYS, "1", timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.COMPLETED)
+        keyboard.send_keys('31')
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.FROM_CHECK)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.set_text_field(main_window, self.loc.FROM_SUM, "100", timeout=1)
+
+        self.fun.click_element_sp(main_window, self.loc.ON_CHECK)
+        self.fun.set_text_field(main_window, self.fun.loc.SEARCH_BOX, "Бодрус ВТБ RUR", timeout=1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.set_text_field(main_window, self.loc.IN_SUM, "100", timeout=1)
+        self.fun.set_text_field(main_window, self.fun.loc.GTD_NOTE, "Перевод для Бодрус", timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON)
+
+        time.sleep(1)
+        text = self.fun.get_element_value(main_window, self.loc.IS_NUMBER, timeout=1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
+
+        main_window = self.fun.get_main_window()
+        main_window.set_focus()
+        time.sleep(1)
+
+        self.fun.click_element_sp(main_window, self.loc.NUMBER_FILTER)
+        keyboard.send_keys(text, with_spaces=True)
+        keyboard.send_keys('{ENTER}')
+        time.sleep(1)
+        self.fun.order_data.update({
+            'status_org_table': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_STATUS, "Value"),
+            'number_org_table': self.fun.get_element_property_sp(main_window, self.fun.loc.NUMBER_LINE1, "Value"),
+            'type_transfer_table': self.fun.get_element_property_sp(main_window, self.fun.loc.TYPE_TRANSFER_TABLE,
+                                                                    "Value"),
+            'ot_org_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_DATE_TABLE, "Value"),
+            'completed_org_table': self.fun.get_element_property_sp(main_window, self.fun.loc.FINISH_DATE_TABLE,
+                                                                    "Value"),
+
+            # Исх: расчёт №1
+            'from_check_1_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_TABLE, "Value"),
+            'in_sum_1_table': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_SUM_TABLE1, "Value"),
+
+            # Вх: расчёт №2
+            'on_check_2_table': self.fun.get_element_property_sp(main_window, self.fun.loc.VS_TABLE, "Value"),
+            'in_sum_2_table': self.fun.get_element_property_sp(main_window, self.fun.loc.VS_SUM_TABLE1, "Value"),
+
+            'gtd_note_table': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE_LINE1, "Value"),
+        })
+        self.fun.click_element_double(main_window, self.loc.RECIPIENT_1)
+        time.sleep(1)
+
+        main_window = self.fun.get_transfer_form()
+        main_window.set_focus()
+        time.sleep(2)
+        self.fun.order_data.update({
+            # Блок 1: основные текстовые поля
+            'number_org_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_NUMBER, "Value"),
+            'type_transfer_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.TYPE_TRANSFER, "Value"),
+            'ot_org_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.OT, "Value"),
+            'execution_in_days_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.EXECUTION_IN_DAYS, "Value"),
+            'completed_org_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.COMPLETED, "Value"),
+            # Блок 2: радиокнопки / флаги
+            'no_sum_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.NO_SUM, "SelectionItem.IsSelected"),
+            'formula_sum1_selected_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.FORMULA_SUM1,
+                                                                      "SelectionItem.IsSelected"),
+            'formula_sum2_selected_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.FORMULA_SUM2,
+                                                                      "SelectionItem.IsSelected"),
+            # Исх: расчёт №1
+            'from_check_1_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.FROM_CHECK, "Value"),
+            'in_sum_1_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.FROM_SUM, "Value"),
+            'currency_org1_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG1, "Value"),
+            'currency_org1_readonly_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG1,
+                                                                       "Value.IsReadOnly"),
+            # Вх: расчёт №2
+            'on_check_2_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.ON_CHECK, "Value"),
+            'in_sum_2_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.IN_SUM, "Value"),
+            'currency_org2_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG2, "Value"),
+            'currency_org2_readonly_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG2,
+                                                                       "Value.IsReadOnly"),
+            # Комиссия и даты
+            'date_org1_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_ORG1, "Value"),
+            'commission1_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.COMMISSION1, "Value"),
+            'currency_org3_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG3, "Value"),
+            'from_check3_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.FROM_CHECK3, "Value"),
+            'date_org2_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_ORG2, "Value"),
+            'commission2_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.COMMISSION2, "Value"),
+            'currency_org4_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG4, "Value"),
+            # Итоги
+            'total1_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.TOTAL1, "Value"),
+            'currency_org6_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG6, "Value"),
+            'total2_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.TOTAL2, "Value"),
+            'currency_org7_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_ORG7, "Value"),
+            'gtd_note_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_NOTE, "Value"),
+        })
+        # Связь с ИС
+        self.fun.click_element_sp(main_window, self.loc.IS)
+        self.fun.click_element(main_window, self.loc.TRANSFER_IS, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.SERVICES_OPTIONS)
+        keyboard.send_keys('{DOWN}')
+        keyboard.send_keys('{ENTER}')
+        time.sleep(1)
+        self.fun.click_element(main_window, self.loc.EXPAND, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.loc.ADD_SERVICES)
+        time.sleep(1)
+        self.fun.order_data.update({
+            'service_date_is': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_LINE1, "Value"),
+            'service_invoice_is': self.fun.get_element_property_sp(main_window, self.fun.loc.INVOICE_LINE1, "Value"),
+            'service_client_is': self.fun.get_element_property_sp(main_window, self.fun.loc.CLIENT_LINE1, "Value"),
+            'service_buyer_is': self.fun.get_element_property_sp(main_window, self.fun.loc.BUYER_LINE1, "Value"),
+            'service_supplier_is': self.fun.get_element_property(main_window, self.fun.loc.SUPPLIER_LINE1, "Value"),
+            'service_currency_is': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
+            'service_amount_is': self.fun.get_element_property_sp(main_window, self.fun.loc.AMOUNT_LINE1, "Value"),
+            'service_info_is': self.fun.get_element_property_sp(main_window, self.fun.loc.INFO_LINE1, "Value"),
+            'service_closed_is': self.fun.get_element_property_sp(main_window, self.fun.loc.CLOSED_LINE1, "Value"),
+            'service_unpaid_is': self.fun.get_element_property_sp(main_window, self.fun.loc.UNPAID_LINE1, "Value"),
+            'service_charged_is': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_LINE1, "Value"),
+            'service_charged_sv_is': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_SV_LINE1, "Value"),
+        })
+        self.fun.click_element(main_window, self.loc.OK_BUTTON1, timeout=1)
+        time.sleep(2)
+        self.fun.order_data.update({
+            'service_date_is1': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_LINE1, "Value"),
+            'service_invoice_is1': self.fun.get_element_property_sp(main_window, self.fun.loc.INVOICE_LINE1, "Value"),
+            'service_client_is1': self.fun.get_element_property_sp(main_window, self.fun.loc.CLIENT_LINE1, "Value"),
+            'service_buyer_is1': self.fun.get_element_property_sp(main_window, self.fun.loc.BUYER_LINE1, "Value"),
+            'service_supplier_is1': self.fun.get_element_property(main_window, self.fun.loc.SUPPLIER_LINE1, "Value"),
+            'service_currency_is1': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
+            'service_amount_is1': self.fun.get_element_property_sp(main_window, self.fun.loc.AMOUNT_LINE1, "Value"),
+            'service_info_is1': self.fun.get_element_property_sp(main_window, self.fun.loc.INFO_LINE1, "Value"),
+            'service_closed_is1': self.fun.get_element_property_sp(main_window, self.fun.loc.CLOSED_LINE1, "Value"),
+            'service_unpaid_is1': self.fun.get_element_property_sp(main_window, self.fun.loc.UNPAID_LINE1, "Value"),
+            'service_charged_is1': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_LINE1, "Value"),
+            'service_charged_sv_is1': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_SV_LINE1,
+                                                                      "Value"),
+        })
+        # Связь с ВС
+        self.fun.click_element_sp(main_window, self.loc.VS)
+        self.fun.click_element(main_window, self.loc.TRANSFER_VS, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.SERVICES_OPTIONS)
+        keyboard.send_keys('{DOWN}')
+        keyboard.send_keys('{ENTER}')
+        time.sleep(1)
+        self.fun.click_element(main_window, self.loc.EXPAND, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.loc.ADD_SERVICES)
+        self.fun.order_data.update({
+            'service_date_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_LINE1, "Value"),
+            'service_invoice_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.INVOICE_LINE1, "Value"),
+            'service_client_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.CLIENT_LINE1, "Value"),
+            'service_buyer_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.BUYER_LINE1, "Value"),
+            'service_supplier_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.SUPPLIER_LINE1, "Value"),
+            'service_currency_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
+            'service_amount_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.AMOUNT_LINE1, "Value"),
+            'service_info_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.INFO_LINE1, "Value"),
+            'service_closed_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.CLOSED_LINE1, "Value"),
+            'service_unpaid_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.UNPAID_LINE1, "Value"),
+            'service_charged_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_LINE1, "Value"),
+            'service_charged_sv_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_SV_LINE1, "Value"),
+        })
+        self.fun.click_element(main_window, self.loc.OK_BUTTON1, timeout=1)
+        time.sleep(2)
+        self.fun.order_data.update({
+            'service_date_vs1': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_LINE1, "Value"),
+            'service_invoice_vs1': self.fun.get_element_property_sp(main_window, self.fun.loc.INVOICE_LINE1, "Value"),
+            'service_client_vs1': self.fun.get_element_property_sp(main_window, self.fun.loc.CLIENT_LINE1, "Value"),
+            'service_buyer_vs1': self.fun.get_element_property_sp(main_window, self.fun.loc.BUYER_LINE1, "Value"),
+            'service_supplier_vs1': self.fun.get_element_property_sp(main_window, self.fun.loc.SUPPLIER_LINE1, "Value"),
+            'service_currency_vs1': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
+            'service_amount_vs1': self.fun.get_element_property_sp(main_window, self.fun.loc.AMOUNT_LINE1, "Value"),
+            'service_info_vs1': self.fun.get_element_property_sp(main_window, self.fun.loc.INFO_LINE1, "Value"),
+            'service_closed_vs1': self.fun.get_element_property_sp(main_window, self.fun.loc.CLOSED_LINE1, "Value"),
+            'service_unpaid_vs1': self.fun.get_element_property_sp(main_window, self.fun.loc.UNPAID_LINE1, "Value"),
+            'service_charged_vs1': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_LINE1, "Value"),
+            'service_charged_sv_vs1': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_SV_LINE1,
+                                                                      "Value"),
+        })
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
+        time.sleep(1)
+
+        return self.fun.order_data
+
+    def finance_is(self):
         # 1. Запуск приложения
         self.fun.start_application()
         time.sleep(3)
@@ -97,7 +377,8 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
         self.fun.click_element_sp(main_window, self.loc.TERMINAL_PANEL)
-        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_2)
 
         self.fun.click_element_sp(main_window, self.loc.DESTINATION_PANEL)
         self.fun.set_text_field(main_window, self.fun.loc.SEARCH_BOX, "D", timeout=1)
@@ -150,7 +431,7 @@ class WinAISTApp:
             'is_shipment_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.SHIPMENT_PANEL, "Value"),
             'is_loading_conditions_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.LOADING_CONDITIONS_PANEL, "Value"),
             'is_destination_conditions_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.DESTINATION_CONDITIONS_PANEL,"Value"),
-            'is_terminal_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.TERMINAL_PANEL, "Value"),
+            'is_terminal_mod': self.fun.get_element_property(main_window, self.fun.loc.TERMINAL_PANEL, "Value"),
             'is_ocean_line_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.OCEAN_LINE_PANEL, "Value"),
             'is_feeder_line_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.FEEDER_LINE_PANEL, "Value"),
             'is_loading_location_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.LOADING_LOCATION_PANEL,
@@ -417,7 +698,7 @@ class WinAISTApp:
 
         })
         self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON)
-        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
+        self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
 
         time.sleep(1)
 
@@ -433,7 +714,6 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.ADD_SERVICES)
         time.sleep(1)
-        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
 
         time.sleep(1)
@@ -444,21 +724,7 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.FILES)
         time.sleep(1)
 
-        # Синхронизация счета с 1С
 
-        self.fun.click_element_sp(main_window, self.loc.TAB_CHECK1)
-        self.fun.click_element_sp(main_window, self.loc.SYNC_BUTTON_1C)
-        time.sleep(3)
-        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
-        time.sleep(3)
-
-        #self.fun.order_data.update({
-        #   'is_sync_ок': self.fun.get_element_property_sp(main_window, self.fun.loc.SYNC_1C, "Value"),
-        #})
-
-        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON) #Не работает синхронизация
-        time.sleep(1)
-        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
 
         # таблица Все счета
         main_window = self.fun.get_main_window()
@@ -473,6 +739,13 @@ class WinAISTApp:
 
         self.fun.click_element_sp(main_window, self.loc.INVOICES_FILTER)
         keyboard.send_keys(text, with_spaces=True)
+        keyboard.send_keys('{ENTER}')
+        time.sleep(1)
+        self.fun.right_click_element(main_window, self.loc.CHECK_TABLE, timeout=3)
+        time.sleep(1)
+        keyboard.send_keys('{DOWN}' * 17)
+        time.sleep(1)
+        keyboard.send_keys('{DOWN}'* 2)
         keyboard.send_keys('{ENTER}')
         self.fun.order_data.update({
             'data_all_accounts': self.fun.get_element_property_sp(main_window, self.loc.DATE_LINE1, "Value"),
@@ -492,9 +765,10 @@ class WinAISTApp:
         keyboard.send_keys('{DOWN 3}')
         keyboard.send_keys('{ENTER}')
         keyboard.send_keys('{DOWN 13}')
+        time.sleep(1)
         keyboard.send_keys('{ENTER}')
-        time.sleep(2)
-        self.fun.click_element_sp(main_window, self.loc.INVOICES_FILTER1)
+        time.sleep(3)
+        self.fun.click_element(main_window, self.loc.INVOICES_FILTER1, timeout=1)
         keyboard.send_keys(text, with_spaces=True)
         keyboard.send_keys('{ENTER}')
         self.fun.order_data.update({
@@ -509,10 +783,15 @@ class WinAISTApp:
             'all_serv_quantity': self.fun.get_element_property_sp(main_window, self.loc.QUANTITY_LINE1, "Value"),
             'all_serv_invoice_note': self.fun.get_element_property_sp(main_window, self.loc.INVOICE_NOTE_1, "Value")
         })
-        time.sleep(10)
+        time.sleep(1)
 
         return self.fun.order_data
 
     def close(self):
-        """Завершение работы приложения"""
-        self.fun.app.kill(soft=True)
+        try:
+            if hasattr(self.fun, "app") and self.fun.app is not None:
+                self.fun.app.kill(soft=True)
+            else:
+                print("⚠️ Приложение уже закрыто или не инициализировано")
+        except Exception as e:
+            print(f"❌ Ошибка при закрытии приложения: {e}")

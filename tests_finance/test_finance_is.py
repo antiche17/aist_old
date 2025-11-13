@@ -8,10 +8,10 @@ from locators.format_data import compare_dates
 
 @pytest.fixture(scope="module")
 def order_app():
-    print("Есть ошибки задача AIST-863\nПроверка синхронизации с 1С не полная, на дев01 ошибка - Данный счет существует в 1С")
+    print("Есть ошибки задача AIST-863\nУбраны проверки синхронизации с 1С")
     app = WinAISTApp()
     try:
-        order_data = app.finance()
+        order_data = app.finance_is()
         yield order_data
     finally:
         print("[TEARDOWN] Закрытие WinAISTApp")
@@ -20,7 +20,7 @@ def order_app():
 @allure.suite("Проверка ИС")
 @allure.title("Проверка ИС, проверок 134")
 @pytest.mark.order(1)
-def test_finance(order_app):
+def test_finance_is(order_app):
     with allure.step("1. Дата в форме Создание ИС"):
         check.is_true(order_app["is_date"], "❌ ФР: Пустое поле")
 
@@ -90,7 +90,7 @@ def test_finance(order_app):
         ("39. Отгрузка после редактирования", ["is_shipment_mod"]),
         ("40. Усл. погрузки после редактирования", ["is_loading_conditions_mod"]),
         ("41. Усл. назначения после редактирования", ["is_destination_conditions_mod"]),
-        ("42. Терминал после редактирования", ["is_terminal_mod"]),
+
         ("43. Океан. линия после редактирования", ["is_ocean_line_mod"]),
         ("44. Фидер. линия после редактирования", ["is_feeder_line_mod"]),
         ("45. Место погрузки после редактирования", ["is_loading_location_mod"]),
@@ -109,6 +109,8 @@ def test_finance(order_app):
     with allure.step("50. Валюта в услуге"):
         check.equal(order_app["service_vat"], "RUR", "❌ ФР: Валюта не RUR в услуге")
 
+    with allure.step("42. Терминал после редактирования в услуге"):
+        check.is_true(order_app["is_terminal_mod"], "❌ ФР: Терминал после редактирования пустое поле в услуге")
 
     with allure.step("50. Номер услуги"):
         check.equal(order_app["service_line_number1"], "1", "❌ ФР: Пустое поле Номер услуги")

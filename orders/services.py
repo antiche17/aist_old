@@ -28,7 +28,7 @@ class WinAISTApp:
 
         # 5. Заполнение формы заказа
         self.fun.click_element_sp(main_window, self.fun.loc.ORDER_TYPE_COMBO)
-        self.fun.click_element_sp(main_window, self.fun.loc.LOGISTICS_ITEM)
+        self.fun.click_element(main_window, self.fun.loc.LOGISTICS_ITEM, timeout=1)
         self.fun.click_element_sp(main_window, self.fun.loc.CUSTOMER_COMBO)
         self.fun.click_element_sp(main_window, self.fun.loc.CUSTOMER_ITEM)
         time.sleep(1)
@@ -66,8 +66,8 @@ class WinAISTApp:
             'service_currency': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'service_vat': self.fun.get_element_property_sp(main_window, self.fun.loc.VAT_LINE1, "Value"),
             'service_quantity': self.fun.get_element_property_sp(main_window, self.fun.loc.QUANTITY_TABLE1, "Value"),
-            'service_te_type': self.fun.get_element_property_sp(main_window, self.fun.loc.TYPE_TE_TABLE1, "Value"),
-            'service_te_number': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_TE_NUMBER, "Value"),
+            'service_te_type': self.fun.get_element_property(main_window, self.fun.loc.TYPE_TE_TABLE1, "Value"),
+            'service_te_number': self.fun.get_element_property(main_window, self.fun.loc.SERVICE_TE_NUMBER, "Value"),
             'service_note': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE_LINE1, "Value"),
             'service_source': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_SOURCE, "Value"),
             'service_account': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_ACCOUNT, "Value"),
@@ -96,8 +96,8 @@ class WinAISTApp:
             'service_currency_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'service_vat_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.VAT_LINE1, "Value"),
             'service_quantity_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.QUANTITY_TABLE1, "Value"),
-            'service_te_type_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.TYPE_TE_TABLE1, "Value"),
-            'service_te_number_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_TE_NUMBER, "Value"),
+            'service_te_type_mod': self.fun.get_element_property(main_window, self.fun.loc.TYPE_TE_TABLE1, "Value"),
+            'service_te_number_mod': self.fun.get_element_property(main_window, self.fun.loc.SERVICE_TE_NUMBER, "Value"),
             'service_note_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE_LINE1, "Value"),
             'service_source_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_SOURCE, "Value"),
             'service_account_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_ACCOUNT, "Value"),
@@ -115,8 +115,8 @@ class WinAISTApp:
             'service_currency_form': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_CURRENCY_FORM, "Value"),
             'service_vat_form': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_VAT_FORM, "Value"),
             'service_quantity_form': self.fun.get_element_property_sp(main_window, self.fun.loc.FREIGHT_QUANTITY_APPLY, "Value"),
-            'service_te_type_form': self.fun.get_element_property_sp(main_window, self.fun.loc.FREIGHT_CREATE_TYPE, "Value"),
-            'service_te_number_form': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_TE_NUMBER_FORM, "Value"),
+            'service_te_type_form': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_TE_TYPE1, "Value"),
+            'service_te_number_form': self.fun.get_element_property(main_window, self.fun.loc.SERVICE_TE_NUMBER_FORM, "Value"),
             'service_note_form': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE, "Value"),
             'service_uom_form': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_UOM_FORM, "Value"),
         })
@@ -137,7 +137,8 @@ class WinAISTApp:
         self.fun.click_element_double_sp(main_window, self.fun.loc.SERVICE_TE_NUMBER_FORM)
         self.fun.click_element_double_sp(main_window, self.fun.loc.CREATE_BUTTON)
         self.fun.click_element_sp(main_window, self.loc.FREIGHT_CREATE_TE)
-        self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TE2, timeout=1)
+        time.sleep(2)
+        self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TE2, timeout=2)
         self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TYPE, timeout=1)
         self.fun.click_element_sp(main_window, self.loc.FREIGHT_CREATE_TYPE1)
         self.fun.set_text_field(main_window, self.loc.FREIGHT_CREATE_QUANTITY, 1, timeout=1)
@@ -229,8 +230,8 @@ class WinAISTApp:
         # Создание услуги в автоперевозке
         # Создаём автоперевозку
         self.fun.click_element_sp(main_window, self.fun.loc.CREATE_BUTTON)
-        self.fun.click_element_sp(main_window, self.fun.loc.TYPE_TRANSPORTATION)
-        self.fun.click_element_sp(main_window, self.fun.loc.AUTO_TRANSPORTATION)
+        self.fun.click_element(main_window, self.fun.loc.TYPE_TRANSPORTATION, timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.AUTO_TRANSPORTATION, timeout=1)
         keyboard.send_keys('{ENTER}')  # нажать на ОК работает если есть фокус на кнопке, могут быть проблемы
 
         # 5. Переключится на форму автоперевозки
@@ -238,7 +239,7 @@ class WinAISTApp:
         main_window.set_focus()
         time.sleep(1)
         # 6. Перейти во вкладку Услуги
-        self.fun.click_element_sp(main_window, self.fun.loc.TAB_SERVICES)
+        self.fun.click_element(main_window, self.fun.loc.TAB_SERVICES, timeout=1)
         time.sleep(2)
         self.fun.click_element(main_window, self.fun.loc.CREATE_BUTTON, timeout=1)
         self.fun.click_element_sp(main_window, self.fun.loc.SERVICES_ADD)
@@ -479,6 +480,8 @@ class WinAISTApp:
         })
         self.fun.click_element_sp(main_window, self.loc.DEL_WINDOW_BUTTON)
         time.sleep(10)
+
+
         return self.fun.order_data
 
     def close(self):

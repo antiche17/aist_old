@@ -16,12 +16,9 @@ def order_app():
         print("[TEARDOWN] Закрытие WinAISTApp")
         app.close()
 
-
-@allure.suite("ГТД в заказе" )
-@allure.title("Проверка данных заказа и ГТД 38"
-              " проверок")
-@pytest.mark.order(1)
-def test_full_order_validation(order_app):
+@allure.suite("ГТД в заказе")
+@allure.title("Проверка данных заказа и ГТД 38 проверок")
+def test_order_services(order_app):
     with allure.step("1. Проверка Название услуги в гриде"):
         check.is_true(order_app["service_type"] == order_app["service_type_mod"],
                       "❌ ФР: Одинаковые Название услуги в гриде")
@@ -46,8 +43,7 @@ def test_full_order_validation(order_app):
                       "❌ ФР: НЕ одинаковые Количество услуги в гриде")
 
     with allure.step("7. Проверка Тип ТЕ услуги в гриде"):
-        check.equal(order_app["service_te_type"], order_app["service_te_type_mod"],
-                      "❌ ФР: Не одинаковые Тип ТЕ услуги в гриде")
+        check.equal(order_app["service_te_type"], order_app["service_te_type_mod"], "❌ ФР: Не одинаковые Тип ТЕ услуги в гриде")
 
     with allure.step("8. Проверка Номера ТЕ услуги в гриде"):
         check.equal(order_app["service_te_number"], order_app["service_te_number_mod"],
@@ -82,7 +78,7 @@ def test_full_order_validation(order_app):
         check.equal(order_app["service_quantity_mod"], order_app["service_quantity_form"], "❌ ФР: Не одинаковые Количество услуги в гриде и форме")
 
     with allure.step("17. Сравнение Тип ТЕ услуги в гриде и форме"):
-        check.equal(order_app["service_te_type"], order_app["service_te_type_form"], "❌ ФР: Не динаковые Тип ТЕ услуги в гриде и форме")
+        check.equal(order_app["service_te_type_mod"], order_app["service_te_type_form"], "❌ ФР: Не одинаковые Тип ТЕ услуги в гриде и форме")
 
     with allure.step("18. Сравнение Номера ТЕ услуги в гриде и форме"):
         check.equal(order_app["service_te_number_mod"], order_app["service_te_number_form"], "❌ ФР: Не одинаковые Номера ТЕ услуги в гриде и форме")

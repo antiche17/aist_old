@@ -51,6 +51,10 @@ class Function:
         """Получение главного окна"""
         return self.app.window(**self.loc.SEA_FORM)
 
+    def get_preforwarding_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.PREFORWARDING_FORM)
+
     def get_auto_form(self):
         """Получение главного окна"""
         return self.app.window(**self.loc.AUTO_FORM)
@@ -107,7 +111,9 @@ class Function:
         """Получение главного окна"""
         return self.app.window(**self.loc.SERVICES_FORM_NEW)
 
-
+    def get_transfer_form(self):
+        """Получение главного окна"""
+        return self.app.window(**self.loc.TRANSFER_FORM)
 
     def click_element(self, window, locator, timeout=1.5):
         """Клик по элементу с ожиданием"""
@@ -205,8 +211,33 @@ class Function:
 
     def get_element_property_sp(self, window, locator, property_name):
         """Получение свойства элемента без ожидания visible"""
-        element = window.child_window(**locator)
-        return element.legacy_properties()[property_name]
+        element = window.child_window(**locator).wrapper_object()
+
+        try:
+            # Радиокнопки, чекбоксы, элементы списка
+            if property_name in ["SelectionItem.IsSelected", "IsSelected"]:
+                return element.iface_selection_item.CurrentIsSelected
+
+            # Значение поля ввода / текста
+            elif property_name in ["Value.Value", "Value"]:
+                return element.iface_value.CurrentValue
+
+            # Проверка на доступность редактирования
+            elif property_name in ["Value.IsReadOnly", "IsReadOnly"]:
+                return element.iface_value.CurrentIsReadOnly
+
+            # Для CheckBox и ToggleButton
+            elif property_name in ["Toggle.ToggleState", "ToggleState"]:
+                return element.iface_toggle.CurrentToggleState
+
+            else:
+                # fallback — legacy (AutomationElement)
+                props = element.legacy_properties()
+                return props.get(property_name, None)
+
+        except Exception as e:
+            pass
+            return None
 
     def get_element_value(self, window, locator, timeout=1):
         # Ожидание видимости и готовности элемента

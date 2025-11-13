@@ -27,7 +27,7 @@ class WinAISTApp:
         main_window.set_focus()
         time.sleep(2)
 
-        self.fun.click_element(main_window, self.loc.FREIGHT, timeout=3)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT)
         time.sleep(8)
 
         # 3. Добавление колонок
@@ -138,7 +138,6 @@ class WinAISTApp:
         main_window = self.fun.get_freight_form()
         main_window.set_focus()
         time.sleep(1)
-
         main_window = self.fun.app.window(**self.loc.FREIGHT_FROM)
         time.sleep(1)
 
@@ -153,109 +152,93 @@ class WinAISTApp:
 
         # 5 Редактирование формы bulkership
         self.fun.set_text_field(main_window, self.loc.FREIGHT_TE_NUMBER_FORM, "1234567", timeout=1)
-        self.fun.click_element(main_window, self.loc.FREIGHT_TE_TYPE, timeout=1)
-        self.fun.click_element(main_window, self.loc.FREIGHT_LINE_7, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT_TE_TYPE)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT_LINE_7)
         self.fun.set_text_field(main_window, self.loc.FREIGHT_TE_QUANTITY_FORM, "77", timeout=1)
-        self.fun.click_element(main_window, self.loc.FREIGHT_TE_UOM, timeout=1)
-        self.fun.click_element(main_window, self.loc.FREIGHT_LINE_3, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT_TE_UOM)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT_LINE_3)
 
-        self.fun.click_element(main_window, self.loc.UNLOADING, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.UNLOADING)
         keyboard.send_keys('1')
         time.sleep(1)
         self.fun.set_text_field(main_window, self.loc.FREIGHT_NUMBER_SEAL_FORM, "12345678", timeout=1)
         self.fun.set_text_field(main_window, self.loc.FREIGHT_NUMBER_GTD_FORM, "23456789", timeout=2)
-        self.fun.click_element(main_window, self.loc.FREIGHT_MODE_TO_FORM, timeout=1)
-        self.fun.click_element(main_window, self.loc.DELIVERY_CONDITION_0, timeout=1)
-        self.fun.click_element(main_window, self.loc.FORWARDING_RECEIVING_DO, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT_MODE_TO_FORM)
+        self.fun.click_element_sp(main_window, self.loc.DELIVERY_CONDITION_0)
+        self.fun.click_element_sp(main_window, self.loc.FORWARDING_RECEIVING_DO)
         keyboard.send_keys('2')
-        self.fun.click_element(main_window, self.loc.FREIGHT_DATA_TO_FORM, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT_DATA_TO_FORM)
         keyboard.send_keys('3')
         self.fun.set_text_field(main_window, self.loc.NOTE_CONTAINER, "MSMU2222222 + СААU 333333  2х20 ставка перевоза по 7 000р/щт", timeout=1)
 
-
         # Добавление товара bulkership
-        self.fun.click_element(main_window, self.loc.TAB_FREIGHT_GOODS, timeout=1)
-
-        self.fun.click_element(main_window, self.loc.CREATE_BUTTON, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.TAB_FREIGHT_GOODS)
+        self.fun.click_element_sp(main_window, self.loc.CREATE_BUTTON)
         self.fun.set_text_field(main_window, self.loc.NAME_TOV_RU, "Суперпупер штука которая очень нужная", timeout=1)
         self.fun.set_text_field(main_window, self.loc.NAME_TOV_EN, "A super-duper thing that is very necessary" ,timeout=1)
         self.fun.set_text_field(main_window, self.loc.NAME_NOTE, "Быстро нужно привезти",timeout=1)
-        self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
-
-        # 5. Переключение на форму товара bulkership
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
         main_window = self.fun.get_product_form()
         main_window.set_focus()
-
 
         # 5. Добавление вес товара bulkership
         self.fun.set_text_field(main_window, self.loc.NET_WEIGHT, "1000", timeout=1)
         self.fun.set_text_field(main_window, self.loc.GROSS_WEIGHT, "2345", timeout=1)
-
-        self.fun.click_element(main_window, self.loc.APPLY_BUTTON1, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON1)
 
         # 5. Проверка полей
         self.fun.order_data.update({
             'bul_te_net': self.fun.get_element_property(main_window, self.loc.NET_WEIGHT, "Value"),
             'bul_te_gross': self.fun.get_element_property(main_window, self.loc.GROSS_WEIGHT, "Value"),
         })
-
         self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
 
         # 5. Переключение на форму bulkership
         main_window = self.fun.get_freight_form()
         main_window.set_focus()
         time.sleep(1)
-
-        self.fun.click_element(main_window, self.loc.APPLY_BUTTON1, timeout=1)
-        self.fun.click_element(main_window, self.loc.TAB_INFO, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON1)
+        self.fun.click_element_sp(main_window, self.loc.TAB_INFO)
 
         # 5. Проверка полей bulkership
         self.fun.order_data.update({
-            'bul_number_form_mod': self.fun.get_element_property(main_window, self.loc.FREIGHT_TE_NUMBER_FORM, "Value"),
-            'bul_type_form_mod': self.fun.get_element_property(main_window, self.loc.FREIGHT_CREATE_TYPE, "Value"),
-            'bul_te_number_mod': self.fun.get_element_property(main_window, self.loc.FREIGHT_TE_NUMBER_FORM, "Value"),
-            'bul_unloading_mod': self.fun.get_element_property(main_window, self.loc.UNLOADING, "Value"),
-            'bul_seal_num_form_mod': self.fun.get_element_property(main_window, self.loc.FREIGHT_NUMBER_SEAL_FORM, "Value"),
-            'bul_do_form_mod': self.fun.get_element_property(main_window, self.loc.FORWARDING_RECEIVING_DO, "Value"),
-            'bul_regime_to_form_mod': self.fun.get_element_property(main_window, self.loc.FREIGHT_MODE_TO_FORM, "Value"),
-            'bul_data_to_form_mod': self.fun.get_element_property(main_window, self.loc.FREIGHT_DATA_TO_FORM, "Value"),
-            'bul_note_form_mod': self.fun.get_element_property(main_window, self.loc.NOTE_CONTAINER, "Value"),
-            'bul_gtd_form_mod': self.fun.get_element_property(main_window, self.loc.FREIGHT_NUMBER_GTD_FORM, "Value"),
-            'bul_quantity_form_mod': self.fun.get_element_property(main_window, self.loc.FREIGHT_QUANTITY_APPLY, "Value"),
-            'bul_uom_form_mod': self.fun.get_element_property(main_window, self.loc.FREIGHT_CREATE_UOM_SAVE, "Value"),
-            'bul_create_form': self.fun.get_element_property(main_window, self.loc.FREIGHT_CREATE_FORM, "Name"),
+            'bul_number_form_mod': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_TE_NUMBER_FORM, "Value"),
+            'bul_type_form_mod': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_CREATE_TYPE, "Value"),
+            'bul_te_number_mod': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_TE_NUMBER_FORM, "Value"),
+            'bul_unloading_mod': self.fun.get_element_property_sp(main_window, self.loc.UNLOADING, "Value"),
+            'bul_seal_num_form_mod': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_NUMBER_SEAL_FORM, "Value"),
+            'bul_do_form_mod': self.fun.get_element_property_sp(main_window, self.loc.FORWARDING_RECEIVING_DO, "Value"),
+            'bul_regime_to_form_mod': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_MODE_TO_FORM, "Value"),
+            'bul_data_to_form_mod': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_DATA_TO_FORM, "Value"),
+            'bul_note_form_mod': self.fun.get_element_property_sp(main_window, self.loc.NOTE_CONTAINER, "Value"),
+            'bul_gtd_form_mod': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_NUMBER_GTD_FORM, "Value"),
+            'bul_quantity_form_mod': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_QUANTITY_APPLY, "Value"),
+            'bul_uom_form_mod': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_CREATE_UOM_SAVE, "Value"),
+            'bul_create_form': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_CREATE_FORM, "Name"),
         })
 
         # 5 Закрыть bulkership
         self.fun.click_element(main_window, self.loc.SAVE_BUTTON, timeout=1)
         time.sleep(1)
-
-        # 5. Переключение на форму заказа
         main_window = self.fun.get_main_form()
         main_window.set_focus()
         time.sleep(1)
 
         # 7 Создать Container
-        self.fun.click_element(main_window, self.loc.CREATE_BUTTON, timeout=1)
-        self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TE, timeout=1)
-        self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TE2, timeout=1)
-        self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TYPE, timeout=1)
-        self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TYPE1, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.CREATE_BUTTON)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT_CREATE_TE)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT_CREATE_TE2)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT_CREATE_TYPE)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT_CREATE_TYPE1)
         self.fun.set_text_field(main_window, self.loc.FREIGHT_CREATE_QUANTITY, 1, timeout=1)
-
-        # 8 Взять данные
         self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
         time.sleep(2)
 
         # 5. Открыть Container
         self.fun.click_element_double(main_window, self.loc.FREIGHT_ITEM2, timeout=5)
-
-        # 5. Переключение на форму Container
         main_window = self.fun.get_freight_form()
         main_window.set_focus()
         time.sleep(1)
-
-        # 5. Проверка полей
 
         # 5 Редактирование формы Container
         self.fun.set_text_field(main_window, self.loc.FREIGHT_TE_NUMBER_FORM, "TARE1234567", timeout=1)
@@ -387,17 +370,35 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.loc.ARRIVAL, timeout=3)
         self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
 
-        # 9. Порт выставление данных в маршруты
-        self.fun.click_element(main_window, self.loc.PORT3, timeout=1)
-        keyboard.send_keys('{ENTER}')
-        self.fun.click_element(main_window, self.loc.PORT3, timeout=1)
-        self.fun.click_element(main_window, self.loc.NAME_LINE3, timeout=1)
+        # 9. Открыть форму маршрута Отгрузки и выставить Порт и Терминал
+        self.fun.click_element_double_sp(main_window, self.loc.LINE_TRANSPORTATION)
+        main_window = self.fun.get_preforwarding_form()
+        main_window.set_focus()
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.PREFORWARDING_TERMINAL2)
+        self.fun.click_element_sp(main_window, self.loc.SEARCH_BOX)
+        keyboard.send_keys('kaz')
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.loc.SAVE_BUTTON)
+        main_window = self.fun.get_sea_form()
+        main_window.set_focus()
+        time.sleep(1)
 
-        # 9. Терминал выставление данных в маршруты
-        self.fun.click_element(main_window, self.loc.TERMINAL_LINE3, timeout=1)
-        keyboard.send_keys('{ENTER}')
-        self.fun.click_element(main_window, self.loc.TERMINAL_LINE3, timeout=1)
-        self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TE3, timeout=1)
+        # 9. Открыть форму маршрута Прибытие и выставить Терминал
+        self.fun.click_element_double_sp(main_window, self.loc.RECIPIENT_3)
+        main_window = self.fun.get_preforwarding_form()
+        main_window.set_focus()
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.PREFORWARDING_TERMINAL2)
+        self.fun.click_element_sp(main_window, self.loc.SEARCH_BOX)
+        keyboard.send_keys('москва')
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.loc.SAVE_BUTTON)
+        main_window = self.fun.get_sea_form()
+        main_window.set_focus()
+        time.sleep(1)
 
         # 9. Судно выставление данных в маршруты
         self.fun.click_element(main_window, self.loc.SHIP_LINE1, timeout=1)
@@ -405,7 +406,6 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.loc.SHIP_LINE1, timeout=1)
         keyboard.send_keys('{DOWN}')
         keyboard.send_keys('{ENTER}')
-
         self.fun.click_element(main_window, self.loc.SHIP_LINE2, timeout=1)
         keyboard.send_keys('{ENTER}')
         self.fun.click_element(main_window, self.loc.SHIP_LINE2, timeout=1)
@@ -420,16 +420,16 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.loc.FACT_ARRIVAL3, timeout=3)
         keyboard.send_keys('8')
 
-        self.fun.click_element(main_window, self.loc.APPLY_BUTTON1, timeout=1)
-
+        self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON1)
+        self.fun.click_element_sp(main_window, self.loc.REFRESH_BUTTON1)
+        time.sleep(1)
         self.fun.order_data.update({
-            'sea_terminal_form': self.fun.get_element_property(main_window, self.loc.TERMINAL_LINE3, "Value"),
-            'sea_port_form': self.fun.get_element_property(main_window, self.loc.PORT3, "Value"),
-            'sea_plan_arrival_form': self.fun.get_element_property(main_window, self.loc.PLAN_ARRIVAL3, "Value"),
-            'sea_fact_arrival_form': self.fun.get_element_property(main_window, self.loc.FACT_ARRIVAL3, "Value"),
-            'sea_ship_shipment_form': self.fun.get_element_property(main_window, self.loc.SHIP_LINE1, "Value"),
-            'sea_ship_trans1_form': self.fun.get_element_property(main_window, self.loc.SHIP_LINE2, "Value"),
-
+            'sea_terminal_form': self.fun.get_element_property_sp(main_window, self.loc.TERMINAL_LINE3, "Value"),
+            'sea_port_form': self.fun.get_element_property_sp(main_window, self.loc.PORT3, "Value"),
+            'sea_plan_arrival_form': self.fun.get_element_property_sp(main_window, self.loc.PLAN_ARRIVAL3, "Value"),
+            'sea_fact_arrival_form': self.fun.get_element_property_sp(main_window, self.loc.FACT_ARRIVAL3, "Value"),
+            'sea_ship_shipment_form': self.fun.get_element_property_sp(main_window, self.loc.SHIP_LINE1, "Value"),
+            'sea_ship_trans1_form': self.fun.get_element_property_sp(main_window, self.loc.SHIP_LINE2, "Value"),
         })
 
         # 10. Добавить груз
@@ -486,12 +486,6 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.loc.ARRIVAL, timeout=3)
         self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
 
-        # 9. Адрес добавить
-        self.fun.click_element(main_window, self.loc.ADDRESS2, timeout=1)
-        keyboard.send_keys('{ENTER}')
-        self.fun.click_element(main_window, self.loc.ADDRESS2, timeout=1)
-        self.fun.click_element(main_window, self.loc.FREIGHT_CREATE_TE2, timeout=1)
-
         # 9. Водитель добавить
         self.fun.click_element(main_window, self.loc.DRIVER, timeout=1)
         keyboard.send_keys('{ENTER}')
@@ -507,6 +501,18 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.loc.PLAN_ARRIVAL2, timeout=1)
         keyboard.send_keys('9')
         self.fun.click_element(main_window, self.loc.APPLY_BUTTON1, timeout=1)
+
+        # 9. Адрес автоперевозка
+        self.fun.click_element_double_sp(main_window, self.loc.LINE_TRANSPORTATION)
+        main_window = self.fun.get_auto_shipment_form()
+        main_window.set_focus()
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.AUTO_ADDRESS)
+        self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.fun.loc.SAVE_BUTTON)
+        main_window = self.fun.get_auto_form()
+        main_window.set_focus()
+        time.sleep(1)
 
         # 16. Проверка введенных данных
         self.fun.order_data.update({
@@ -533,11 +539,9 @@ class WinAISTApp:
         main_window = self.fun.get_main_form()
         main_window.set_focus()
         time.sleep(1)
-
         self.fun.order_data.update({
             'type_transport1': self.fun.get_element_property(main_window, self.loc.TRANSPORTATION_NUMBER1, "Value"),
             'type_transport2': self.fun.get_element_property(main_window, self.loc.TRANSPORTATION_NUMBER2, "Value"),
-
         })
 
         # 7. Перейти во вкладку Экспедирование
@@ -567,9 +571,12 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.FORWARDING_RECEIVING_DOC)
         time.sleep(1)
         keyboard.send_keys('11')
-        self.fun.click_element_sp(main_window, self.loc.FORWARDING_NOMINATION)
+        self.fun.click_element(main_window, self.loc.FORWARDING_NOMINATION, timeout=1)
         time.sleep(1)
         keyboard.send_keys('12')
+        keyboard.send_keys('{ENTER}')
+        time.sleep(1)
+
         self.fun.set_text_field(main_window, self.loc.NOTE, "CAAU 111111 \n"
                                                         "MSMU 2222222 + СААU 333333  2х20 ставка перевоза по 7 000р/щт\n"
                                                         "\n"
@@ -590,29 +597,24 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.DELIVERY_CONDITION_1)
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
-
         self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON1)
 
         # 16. Проверка введенных данных
         self.fun.order_data.update({
-            'forwarding_otv': self.fun.get_element_property(main_window, self.loc.RESPONSIBLE_COMBO, "Value"),
-            'forwarding_telex': self.fun.get_element_property(main_window, self.loc.FORWARDING_TELEX, "Value"),
-            'forwarding_nomination': self.fun.get_element_property(main_window, self.loc.FORWARDING_NOMINATION, "Value"),
-            'forwarding_receiving_doc': self.fun.get_element_property(main_window, self.loc.FORWARDING_RECEIVING_DOC, "Value"),
-
+            'forwarding_otv': self.fun.get_element_property_sp(main_window, self.loc.RESPONSIBLE_COMBO, "Value"),
+            'forwarding_telex': self.fun.get_element_property_sp(main_window, self.loc.FORWARDING_TELEX, "Value"),
+            'forwarding_nomination': self.fun.get_element_property_sp(main_window, self.loc.FORWARDING_NOMINATION, "Value"),
+            'forwarding_receiving_doc': self.fun.get_element_property_sp(main_window, self.loc.FORWARDING_RECEIVING_DOC, "Value"),
         })
-
         self.fun.click_element_sp(main_window, self.loc.SAVE_BUTTON)
 
         # 17. Переключение на форму заказа
         main_window = self.fun.get_main_form()
         main_window.set_focus()
         time.sleep(1)
-
         self.fun.order_data.update({
             'forwarding_number': self.fun.get_element_property(main_window, self.loc.FORWARDING_NUMBER, "Value"),
         })
-
         self.fun.click_element_sp(main_window, self.loc.SAVE_BUTTON)
 
         # 22. В таблицу грузы
@@ -692,41 +694,40 @@ class WinAISTApp:
             'bul_recipient_table': self.fun.get_element_property(main_window, self.loc.RECIPIENT_TABLE2, "Value"),
             'bul_client_table': self.fun.get_element_property(main_window, self.loc.CLIENT_FOR_TABLE2, "Value"),
             'bul_seal_num_table': self.fun.get_element_property(main_window, self.loc.SEAL_NUMBER_TABLE2, "Value"),
-            'bul_te_table': self.fun.get_element_property(main_window, self.loc.TE_TABLE2, "Name"),
-            'bul_type_table': self.fun.get_element_property(main_window, self.loc.TYPE_TE_TABLE2, "Value"),
-            'bul_gross_table': self.fun.get_element_property(main_window, self.loc.FREIGHT_GROSS_TABLE2, "Value"),
-            'bul_number_table': self.fun.get_element_property(main_window, self.loc.NUM_TE_TABLE2, "Value"),
-            'bul_sea_terminal_table': self.fun.get_element_property(main_window, self.loc.TERMINAL_TABLE2, "Value"),
-            'bul_port_table': self.fun.get_element_property(main_window, self.loc.PORT_TABLE2, "Value"),
-            'bul_plan_arrival_table': self.fun.get_element_property(main_window, self.loc.PLAN_ARRIVAL_TABLE1, "Value"),
-            'bul_fact_arrival_table': self.fun.get_element_property(main_window, self.loc.FACT_ARRIVAL_TABLE2, "Value"),
-            'bul_unloading_table': self.fun.get_element_property(main_window, self.loc.FACT_UNLOADING_TABLE2, "Value"),
-            'bul_do_table': self.fun.get_element_property(main_window, self.loc.DO_TABLE2, "Value"),
-            'bul_forwarding_doc_table': self.fun.get_element_property(main_window, self.loc.DOC_TABLE2, "Value"),
+            'bul_te_table': self.fun.get_element_property_sp(main_window, self.loc.TE_TABLE2, "Name"),
+            'bul_type_table': self.fun.get_element_property_sp(main_window, self.loc.TYPE_TE_TABLE2, "Value"),
+            'bul_gross_table': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_GROSS_TABLE2, "Value"),
+            'bul_number_table': self.fun.get_element_property_sp(main_window, self.loc.NUM_TE_TABLE2, "Value"),
+            'bul_sea_terminal_table': self.fun.get_element_property_sp(main_window, self.loc.TERMINAL_TABLE2, "Value"),
+            'bul_port_table': self.fun.get_element_property_sp(main_window, self.loc.PORT_TABLE2, "Value"),
+            'bul_plan_arrival_table': self.fun.get_element_property_sp(main_window, self.loc.PLAN_ARRIVAL_TABLE1, "Value"),
+            'bul_fact_arrival_table': self.fun.get_element_property_sp(main_window, self.loc.FACT_ARRIVAL_TABLE2, "Value"),
+            'bul_unloading_table': self.fun.get_element_property_sp(main_window, self.loc.FACT_UNLOADING_TABLE2, "Value"),
+            'bul_do_table': self.fun.get_element_property_sp(main_window, self.loc.DO_TABLE2, "Value"),
+            'bul_forwarding_doc_table': self.fun.get_element_property_sp(main_window, self.loc.DOC_TABLE2, "Value"),
             'bul_nomination_table': self.fun.get_element_property(main_window, self.loc.NOMINATION_TABLE2, "Value"),
-            'bul_regime_to_table': self.fun.get_element_property(main_window, self.loc.REGIMEN_TABLE2, "Value"),
-            'bul_telex_table': self.fun.get_element_property(main_window, self.loc.TELEX_TABLE2, "Value"),
+            'bul_regime_to_table': self.fun.get_element_property_sp(main_window, self.loc.REGIMEN_TABLE2, "Value"),
+            'bul_telex_table': self.fun.get_element_property_sp(main_window, self.loc.TELEX_TABLE2, "Value"),
 
             'con_otv_table': self.fun.get_element_property(main_window, self.loc.OTV_FOR_TABLE1, "Value"),
             'con_auto_status_table': self.fun.get_element_property(main_window, self.loc.STATUS_AUTO_TABLE1, "Value"),
             'con_recipient_table': self.fun.get_element_property(main_window, self.loc.RECIPIENT_TABLE1, "Value"),
-            'con_client_table': self.fun.get_element_property(main_window, self.loc.CLIENT_FOR_TABLE1, "Value"),
+            'con_client_table': self.fun.get_element_property(main_window, self.loc.CLIENT_LINE1, "Value"),
             'con_seal_num_table': self.fun.get_element_property(main_window, self.loc.SEAL_NUMBER_TABLE1, "Value"),
             'con_te_table': self.fun.get_element_property(main_window, self.loc.TE_TABLE1, "Name"),
             'con_type_table': self.fun.get_element_property(main_window, self.loc.TYPE_TE_TABLE1, "Value"),
             'con_gross_table': self.fun.get_element_property(main_window, self.loc.FREIGHT_GROSS_TABLE1, "Value"),
             'con_number_table': self.fun.get_element_property(main_window, self.loc.NUM_TE_TABLE1, "Value"),
             'con_sea_terminal_table': self.fun.get_element_property(main_window, self.loc.TERMINAL_TABLE1, "Value"),
-            'con_port_table': self.fun.get_element_property(main_window, self.loc.PORT_TABLE1, "Value"),
-            'con_plan_arrival_table': self.fun.get_element_property(main_window, self.loc.PLAN_ARRIVAL_TABLE1, "Value"),
-            'con_fact_arrival_table': self.fun.get_element_property(main_window, self.loc.FACT_ARRIVAL_TABLE1, "Value"),
-            'con_unloading_table': self.fun.get_element_property(main_window, self.loc.FACT_UNLOADING_TABLE1, "Value"),
-            'con_do_table': self.fun.get_element_property(main_window, self.loc.DO_TABLE1, "Value"),
-            'con_forwarding_doc_table': self.fun.get_element_property(main_window, self.loc.DOC_TABLE1, "Value"),
+            'con_port_table': self.fun.get_element_property_sp(main_window, self.loc.PORT_TABLE1, "Value"),
+            'con_plan_arrival_table': self.fun.get_element_property_sp(main_window, self.loc.PLAN_ARRIVAL_TABLE1, "Value"),
+            'con_fact_arrival_table': self.fun.get_element_property_sp(main_window, self.loc.FACT_ARRIVAL_TABLE1, "Value"),
+            'con_unloading_table': self.fun.get_element_property_sp(main_window, self.loc.FACT_UNLOADING_TABLE1, "Value"),
+            'con_do_table': self.fun.get_element_property_sp(main_window, self.loc.DO_TABLE1, "Value"),
+            'con_forwarding_doc_table': self.fun.get_element_property_sp(main_window, self.loc.DOC_TABLE1, "Value"),
             'con_nomination_table': self.fun.get_element_property(main_window, self.loc.NOMINATION_TABLE1, "Value"),
-            'con_regime_to_table': self.fun.get_element_property(main_window, self.loc.REGIMEN_TABLE1, "Value"),
+            'con_regime_to_table': self.fun.get_element_property_sp(main_window, self.loc.REGIMEN_TABLE1, "Value"),
             'con_telex_table': self.fun.get_element_property(main_window, self.loc.TELEX_TABLE1, "Value"),
-
         })
 
         # Изменяем данные в таблице
@@ -750,12 +751,12 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.TERMINAL_TABLE2)
         keyboard.send_keys('{ENTER}')
         self.fun.click_element_sp(main_window, self.loc.TERMINAL_TABLE2)
-        self.fun.click_element_sp(main_window, self.loc.CUSTOMER_ITEM)
+        self.fun.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
 
         self.fun.click_element_sp(main_window, self.loc.PORT_TABLE2)
         keyboard.send_keys('{ENTER}')
         self.fun.click_element(main_window, self.loc.PORT_TABLE2, timeout=1)
-        self.fun.click_element(main_window, self.loc.NAME_LINE1, timeout=1)
+        self.fun.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
 
         self.fun.click_element(main_window, self.loc.PLAN_ARRIVAL_TABLE1, timeout=1)
         keyboard.send_keys('20')
@@ -1024,4 +1025,4 @@ class WinAISTApp:
 
     def close(self):
         """Завершение работы приложения"""
-        self.app.kill(soft=True)
+        self.fun.app.kill(soft=True)
