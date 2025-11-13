@@ -24,10 +24,11 @@ class WinAISTApp:
 
         # 4. Создание нового заказа
         self.fun.click_element_sp(main_window, self.fun.loc.ADD_BUTTON)
-        time.sleep(1)
+        time.sleep(2)
 
         # 5. Заполнение формы заказа
         self.fun.click_element_sp(main_window, self.fun.loc.ORDER_TYPE_COMBO)
+        time.sleep(1)
         self.fun.click_element(main_window, self.fun.loc.LOGISTICS_ITEM, timeout=1)
         self.fun.click_element_sp(main_window, self.fun.loc.CUSTOMER_COMBO)
         self.fun.click_element_sp(main_window, self.fun.loc.CUSTOMER_ITEM)

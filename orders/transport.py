@@ -224,7 +224,9 @@ class WinAISTApp:
         time.sleep(1)
         keyboard.send_keys('{LEFT}' * 2)
         keyboard.send_keys('11')
+        time.sleep(1)
         self.fun.set_text_field(main_window, self.fun.loc.NOTE ,"Отгрузка", timeout=1)
+        time.sleep(1)
         self.fun.click_element_sp(main_window, self.fun.loc.APPLY_BUTTON1)
         self.fun.order_data.update({
             'shipment_address_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.AUTO_ADDRESS, "Value"),
@@ -248,7 +250,7 @@ class WinAISTApp:
             'arrival_address': self.fun.get_element_property_sp(main_window, self.fun.loc.AUTO_ADDRESS, "Value"),
             'arrival_plan_data': self.fun.get_element_property_sp(main_window, self.fun.loc.ARRIVAL_DATA1, "Value"),
             'arrival_fact_data': self.fun.get_element_property_sp(main_window, self.fun.loc.ARRIVAL_DATA_FACT, "Value"),
-            'arrival_note': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE, "Value"),
+            'arrival_note': self.fun.get_element_property(main_window, self.fun.loc.NOTE, "Value"),
         })
         self.fun.click_element_sp(main_window, self.loc.AUTO_ADDRESS)
         self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_2)
@@ -260,14 +262,16 @@ class WinAISTApp:
         time.sleep(1)
         keyboard.send_keys('{LEFT}' * 2)
         keyboard.send_keys('13')
+        time.sleep(1)
         self.fun.set_text_field(main_window, self.fun.loc.NOTE, "Прибытие", timeout=1)
+        time.sleep(1)
         self.fun.click_element_sp(main_window, self.fun.loc.APPLY_BUTTON1)
         time.sleep(1)
         self.fun.order_data.update({
             'arrival_address_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.AUTO_ADDRESS, "Value"),
             'arrival_plan_data_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.ARRIVAL_DATA1, "Value"),
             'arrival_fact_data_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.ARRIVAL_DATA_FACT, "Value"),
-            'arrival_note_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE, "Value"),
+            'arrival_note_mod': self.fun.get_element_property(main_window, self.fun.loc.NOTE, "Value"),
         })
         self.fun.click_element_sp(main_window, self.fun.loc.SAVE_BUTTON)
 

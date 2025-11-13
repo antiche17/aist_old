@@ -661,6 +661,7 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
         time.sleep(1)
         self.fun.click_element(main_window, self.loc.ADD_SERVICES, timeout=1)
+        time.sleep(1)
         self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
         # Сброс настроек
         self.fun.right_click_element(main_window, self.loc.TYPE_IS_TABLE, timeout=3)

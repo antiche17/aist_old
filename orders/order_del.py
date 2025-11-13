@@ -447,6 +447,7 @@ class WinAISTApp:
         keyboard.send_keys('{DOWN}')
         keyboard.send_keys('{DOWN}')
         keyboard.send_keys('{ENTER}')
+        time.sleep(1)
         self.fun.click_element(main_window, self.loc.YES_BUTTON, timeout=1)
         self.fun.order_data.update({
             'del_window_auto': self.fun.get_element_property_sp(main_window, self.loc.DEL_WINDOW, "Name"),

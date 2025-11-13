@@ -277,7 +277,7 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.fun.loc.CUSTOMER_ITEM, timeout=1)
         time.sleep(1)
         self.fun.order_data = {
-            'order_dialog_otv': self.fun.get_element_property(main_window, self.fun.loc.RESPONSIBLE_COMBO, "Value")
+            'order_dialog_otv': self.fun.get_element_property_sp(main_window, self.fun.loc.RESPONSIBLE_COMBO, "Value")
         }
         self.fun.click_element(main_window, self.fun.loc.OK_BUTTON, timeout=1)
         time.sleep(1)
@@ -307,25 +307,25 @@ class WinAISTApp:
 
         # 10. Проверка полей
         self.fun.order_data.update({
-            'sea_order_number': self.fun.get_element_property(main_window, self.fun.loc.ORDER_NUMBER, "Name"),
-            'sea_type': self.fun.get_element_property(main_window, self.fun.loc.SEA_TYPE_TEXT, "Name"),
-            'sea_status': self.fun.get_element_property(main_window, self.fun.loc.STATUS_COMBO, "Value"),
-            'sea_priority': self.fun.get_element_property(main_window, self.fun.loc.PRIORITY_COMBO, "Value"),
-            'sea_otv': self.fun.get_element_property(main_window, self.fun.loc.RESPONSIBLE_COMBO, "Value"),
+            'sea_order_number': self.fun.get_element_property_sp(main_window, self.fun.loc.ORDER_NUMBER, "Name"),
+            'sea_type': self.fun.get_element_property_sp(main_window, self.fun.loc.SEA_TYPE_TEXT, "Name"),
+            'sea_status': self.fun.get_element_property_sp(main_window, self.fun.loc.STATUS_COMBO, "Value"),
+            'sea_priority': self.fun.get_element_property_sp(main_window, self.fun.loc.PRIORITY_COMBO, "Value"),
+            'sea_otv': self.fun.get_element_property_sp(main_window, self.fun.loc.RESPONSIBLE_COMBO, "Value"),
 
-            'sea_type_freight': self.fun.get_element_property(main_window, self.fun.loc.TYPE_FREIGHT, "Value"),
-            'sea_class_freight': self.fun.get_element_property(main_window, self.fun.loc.CLASS_FREIGHT, "Value"),
-            'sea_download_method': self.fun.get_element_property(main_window, self.fun.loc.DOWNLOAD_METHOD, "Value"),
-            'sea_ref_freight': self.fun.get_element_property(main_window, self.fun.loc.REFERENCE_FREIGHT, "Value"),
+            'sea_type_freight': self.fun.get_element_property_sp(main_window, self.fun.loc.TYPE_FREIGHT, "Value"),
+            'sea_class_freight': self.fun.get_element_property_sp(main_window, self.fun.loc.CLASS_FREIGHT, "Value"),
+            'sea_download_method': self.fun.get_element_property_sp(main_window, self.fun.loc.DOWNLOAD_METHOD, "Value"),
+            'sea_ref_freight': self.fun.get_element_property_sp(main_window, self.fun.loc.REFERENCE_FREIGHT, "Value"),
 
-            'sea_create_date': self.fun.get_element_property(main_window, self.fun.loc.CREATE_DATE, "Value"),
-            'sea_mode_date': self.fun.get_element_property(main_window, self.fun.loc.MOD_DATE, "Value"),
+            'sea_create_date': self.fun.get_element_property_sp(main_window, self.fun.loc.CREATE_DATE, "Value"),
+            'sea_mode_date': self.fun.get_element_property_sp(main_window, self.fun.loc.MOD_DATE, "Value"),
 
-            'sea_booking_reference': self.fun.get_element_property(main_window, self.fun.loc.BOOKING_REFERENCE, "Value"),
-            'sea_ocean_line': self.fun.get_element_property(main_window, self.fun.loc.OCEAN_LINE, "Value"),
-            'sea_ocean_konos': self.fun.get_element_property(main_window, self.fun.loc.OCEAN_KONOS, "Value"),
-            'sea_feeder_line': self.fun.get_element_property(main_window, self.fun.loc.FEEDER_LINE, "Value"),
-            'sea_feeder_konos': self.fun.get_element_property(main_window, self.fun.loc.FEEDER_KONOS, "Value"),
+            'sea_booking_reference': self.fun.get_element_property_sp(main_window, self.fun.loc.BOOKING_REFERENCE, "Value"),
+            'sea_ocean_line': self.fun.get_element_property_sp(main_window, self.fun.loc.OCEAN_LINE, "Value"),
+            'sea_ocean_konos': self.fun.get_element_property_sp(main_window, self.fun.loc.OCEAN_KONOS, "Value"),
+            'sea_feeder_line': self.fun.get_element_property_sp(main_window, self.fun.loc.FEEDER_LINE, "Value"),
+            'sea_feeder_konos': self.fun.get_element_property_sp(main_window, self.fun.loc.FEEDER_KONOS, "Value"),
         })
 
         # Закрываем морскую перевозку
@@ -364,23 +364,23 @@ class WinAISTApp:
 
         # 5. Проверка полей
         self.fun.order_data.update({
-            'auto_order_number': self.fun.get_element_property(main_window, self.fun.loc.AUTO_NAME_TRANSPORTATION, "Name"),
-            'auto_type': self.fun.get_element_property(main_window, self.fun.loc.AUTO_TYPE_TEXT, "Name"),
-            'auto_status': self.fun.get_element_property(main_window, self.fun.loc.STATUS_COMBO, "Value"),
-            'auto_priority': self.fun.get_element_property(main_window, self.fun.loc.PRIORITY_COMBO, "Value"),
-            'auto_otv': self.fun.get_element_property(main_window, self.fun.loc.RESPONSIBLE_COMBO, "Value"),
+            'auto_order_number': self.fun.get_element_property_sp(main_window, self.fun.loc.AUTO_NAME_TRANSPORTATION, "Name"),
+            'auto_type': self.fun.get_element_property_sp(main_window, self.fun.loc.AUTO_TYPE_TEXT, "Name"),
+            'auto_status': self.fun.get_element_property_sp(main_window, self.fun.loc.STATUS_COMBO, "Value"),
+            'auto_priority': self.fun.get_element_property_sp(main_window, self.fun.loc.PRIORITY_COMBO, "Value"),
+            'auto_otv': self.fun.get_element_property_sp(main_window, self.fun.loc.RESPONSIBLE_COMBO, "Value"),
 
-            'auto_create_date': self.fun.get_element_property(main_window, self.fun.loc.CREATE_DATE, "Value"),
-            'auto_mode_date': self.fun.get_element_property(main_window, self.fun.loc.MOD_DATE, "Value"),
+            'auto_create_date': self.fun.get_element_property_sp(main_window, self.fun.loc.CREATE_DATE, "Value"),
+            'auto_mode_date': self.fun.get_element_property_sp(main_window, self.fun.loc.MOD_DATE, "Value"),
 
-            'auto_type_freight': self.fun.get_element_property(main_window, self.fun.loc.TYPE_FREIGHT, "Value"),
-            'auto_class_freight': self.fun.get_element_property(main_window, self.fun.loc.CLASS_FREIGHT_AUTO, "Value"),
-            'auto_download_method': self.fun.get_element_property(main_window, self.fun.loc.DOWNLOAD_METHOD_AUTO, "Value"),
-            'auto_ref_freight': self.fun.get_element_property(main_window, self.fun.loc.REFERENCE_FREIGHT, "Value"),
+            'auto_type_freight': self.fun.get_element_property_sp(main_window, self.fun.loc.TYPE_FREIGHT, "Value"),
+            'auto_class_freight': self.fun.get_element_property_sp(main_window, self.fun.loc.CLASS_FREIGHT_AUTO, "Value"),
+            'auto_download_method': self.fun.get_element_property_sp(main_window, self.fun.loc.DOWNLOAD_METHOD_AUTO, "Value"),
+            'auto_ref_freight': self.fun.get_element_property_sp(main_window, self.fun.loc.REFERENCE_FREIGHT, "Value"),
 
-            'auto_carrier': self.fun.get_element_property(main_window, self.fun.loc.AUTO_CARRIER, "Value"),
-            'auto_cmr': self.fun.get_element_property(main_window, self.fun.loc.AUTO_CMR, "Value"),
-            'auto_cmr_por': self.fun.get_element_property(main_window, self.fun.loc.AUTO_CMR_POR, "Value"),
+            'auto_carrier': self.fun.get_element_property_sp(main_window, self.fun.loc.AUTO_CARRIER, "Value"),
+            'auto_cmr': self.fun.get_element_property_sp(main_window, self.fun.loc.AUTO_CMR, "Value"),
+            'auto_cmr_por': self.fun.get_element_property_sp(main_window, self.fun.loc.AUTO_CMR_POR, "Value"),
         })
 
         # Закрываем морскую перевозку
@@ -394,7 +394,7 @@ class WinAISTApp:
 
         # Во вкладке Перевозки, таблица
         self.fun.order_data.update({
-            'auto_order_table': self.fun.get_element_property(main_window, self.fun.loc.TRANSPORTATION_ITEM, "Value")
+            'auto_order_table': self.fun.get_element_property(main_window, self.fun.loc.TRANSPORTATION_ITEM, "Value", timeout=1)
         })
         # Удаляем автоперевозку
         self.fun.click_element(main_window, self.fun.loc.LINE_TRANSPORTATION, timeout=2)
