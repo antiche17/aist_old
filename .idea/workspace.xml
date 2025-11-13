@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="Исправление тестов из-за правок Новые перевозки">
-      <change beforePath="$PROJECT_DIR$/.idea/1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/finance.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/finance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/order.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orders/order_del.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/order_del.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orders/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/transport.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/transport.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_freight_bulkership.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_orders/test_order_freight_bulkership.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

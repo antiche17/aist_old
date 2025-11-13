@@ -238,11 +238,11 @@ class WinAISTApp:
         # 5. Переключится на форму автоперевозки
         main_window = self.fun.get_auto_form()
         main_window.set_focus()
-        time.sleep(1)
+        time.sleep(2)
         # 6. Перейти во вкладку Услуги
         self.fun.click_element(main_window, self.fun.loc.TAB_SERVICES, timeout=1)
-        time.sleep(2)
-        self.fun.click_element(main_window, self.fun.loc.CREATE_BUTTON, timeout=1)
+        time.sleep(4)
+        self.fun.click_element(main_window, self.fun.loc.CREATE_BUTTON, timeout=2)
         self.fun.click_element_sp(main_window, self.fun.loc.SERVICES_ADD)
         keyboard.send_keys('КТС')
         keyboard.send_keys('{ENTER}')
