@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="fix">
+      <change afterPath="$PROJECT_DIR$/tests_finance/test_ip.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/order_del.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/order_del.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_freight_bulkership.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_orders/test_order_freight_bulkership.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locators/locators.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/locators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orders/finance.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/finance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_finance/test_finance_is.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_finance/test_finance_is.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests_finance/test_finance_org.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests_finance/test_finance_org.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -415,7 +418,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763015250936</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="fix">
+      <option name="closed" value="true" />
+      <created>1763043837711</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1763043837711</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -426,9 +437,9 @@
     <MESSAGE value="Проверки таблицы Экспедирование" />
     <MESSAGE value="Рефакторинг кода автотестов. Обьединение двух проверок по сценариям Удаление заказов из таблицы и Удаление заказов с сущностями" />
     <MESSAGE value="Переделка сценария и проверок ГТД в заказе" />
-    <MESSAGE value="fix" />
     <MESSAGE value="Исправление тестов из-за правок Новые перевозки" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправление тестов из-за правок Новые перевозки" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

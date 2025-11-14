@@ -788,6 +788,54 @@ class WinAISTApp:
 
         return self.fun.order_data
 
+    def finance_ip(self):
+        # 1. Запуск приложения
+        self.fun.start_application()
+        time.sleep(3)
+
+        # 3.
+        main_window = self.fun.get_main_window()
+        main_window.set_focus()
+        time.sleep(1)
+
+        self.fun.click_element_sp(main_window, self.loc.FINANCE)
+        time.sleep(3)
+        self.fun.click_element_sp(main_window, self.loc.OUTGOING_PAYMENTS)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.ADD_BUTTON)
+        time.sleep(1)
+        main_window = self.fun.get_check_form()
+        main_window.set_focus()
+
+        self.fun.order_data = {
+            'ip_number': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_NUMBER,"Value"),
+            'ip_date': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_DATE,"Value"),
+            'ip_period': self.fun.get_element_property_sp(main_window, self.fun.loc.PERIOD, "Value"),
+            'ip_code': self.fun.get_element_property_sp(main_window, self.fun.loc.CODE_PAYMENT, "Value"),
+            'ip_note': self.fun.get_element_property_sp(main_window, self.fun.loc.NOTE_SERVICES,"Value"),
+            'ip_list': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_LIST, "Value"),
+
+            'ip_supplier': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_SUPPLIER, "Value"),
+            'ip_buyer': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_BUYER, "Value"),
+            'ip_number_order': self.fun.get_element_property_sp(main_window, self.fun.loc.VS_ORDER, "Value"),
+
+            'ip_usd': self.fun.get_element_property_sp(main_window, self.fun.loc.IP_USD, "Value"),
+            'ip_eur': self.fun.get_element_property_sp(main_window, self.fun.loc.IP_EUR, "Value"),
+            'ip_cc': self.fun.get_element_property_sp(main_window, self.fun.loc.CROSS_COURSE, "Value"),
+
+            'ip_total': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_TOTAL, "Value"),
+            'ip_currency': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICES_CURRENCY, "Value"),
+            'ip_commission': self.fun.get_element_property_sp(main_window, self.fun.loc.COMMISSION3, "Value"),
+            'ip_currency1': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY1, "Value"),
+            'ip_data_commission': self.fun.get_element_property_sp(main_window, self.fun.loc.DATA_COMMISSION, "Value"),
+
+
+        }
+        self.fun.click_element(main_window, self.loc.EXPAND, timeout=1)
+
+
+
+
     def close(self):
         try:
             if hasattr(self.fun, "app") and self.fun.app is not None:

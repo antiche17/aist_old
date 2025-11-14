@@ -85,6 +85,7 @@
   - Финансы:
     - ИС - создание, редактирование, связывание с другими счетами, создание услуги. `pytest tests_finance/test_finance_is.py --alluredir=./allure-results`
         нужно, что бы были созданы другие счета!
+    - Переводы - создание, редактирование, связывание с другими счетами. `pytest tests_finance/test_finance_org.py --alluredir=./allure-results`
   - Услуги:
     - Создание и редактирование в заказе(логистика) перевозках, экспедировании и привязки к счетам ИС и ВС `pytest tests_services/test_services.py --alluredir=./allure-results`
   - Запуск отчета - `allure serve allure-results --lang ru`

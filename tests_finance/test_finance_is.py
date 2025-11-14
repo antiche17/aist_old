@@ -1,4 +1,3 @@
-from difflib import SequenceMatcher
 from orders.finance import WinAISTApp
 import pytest
 import allure

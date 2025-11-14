@@ -572,7 +572,7 @@ class LocOrders:
     IS_SUPPLIER = {'title': "Поставщик:", 'control_type': "ComboBox", 'auto_id': "leSellerId", 'found_index': 0}
     IS_BUYER = {'title': "Покупатель:", 'control_type': "ComboBox", 'auto_id': "leBuyerId"}
     IS_TYPE_CHECK = {'title': "Тип счета строка 1", 'control_type': "DataItem"}
-    IS_NUMBER = {'control_type': "Edit", 'auto_id': "nameTextEdit", 'found_index': 0}
+    IS_NUMBER = {'control_type': "Edit", 'auto_id': "nameTextEdit", 'found_index': 0} #Счет:
     IS_NUMBER_TABLE = {'title': "Счет № строка 1", 'control_type': "DataItem"}
     IS_DATE_TABLE = {'title': "Дата строка 1", 'control_type': "DataItem"}
     IS_SUPPLIER_TABLE = {'title': "Поставщик строка 1", 'control_type': "DataItem"}
@@ -669,7 +669,7 @@ class LocOrders:
     ORG_ACCOUNT_TRANSFERS = {'title': "Переводы (Орг. счета)", 'control_type': "ListItem"}
     SERVICES_SERVICES = {'control_type': "ComboBox", 'auto_id': "leServiceTypeId"}
     SERVICES_BET = {'control_type': "Edit", 'auto_id': "txtChargeValue"}
-    SERVICES_CURRENCY = {'control_type': "ComboBox", 'auto_id': "icCurrencyCode"}
+    SERVICES_CURRENCY = {'control_type': "ComboBox", 'auto_id': "icCurrencyCode"} #валюта
     CONNECT_VP = {'title': "Связь с вх. платежами", 'control_type': "Button"}
     CONNECT_TRANSFERS = {'title': "Связь с вх. переводами", 'control_type': "Button"}
     CONNECT_INVOICES = {'title': "Связь с вх. счетами", 'control_type': "Button"}
@@ -840,6 +840,7 @@ class LocOrders:
 
     COMMISSION1 = {'title': "Комиссия:", 'control_type': "Edit", 'auto_id': "bankChargeValueSpinEdit"}
     COMMISSION2 = {'title': "Комиссия:", 'control_type': "Edit", 'auto_id': "aistNumberEdit2"}
+    COMMISSION3 = {'title': "Комиссия:", 'control_type': "Edit", 'auto_id': "bankFeeChargeEdit"}
 
     FROM_CHECK3 = {'title': "Со счета:", 'control_type': "ComboBox", 'auto_id': "leFeeOrgId"}
 
@@ -859,3 +860,12 @@ class LocOrders:
     AUTO_DEPARTURE_PLACE = {'title': "Место отправления строка 1", 'control_type': "DataItem", 'found_index': 0}
     AUTO_ARRIVAL_DATE = {'title': "Дата прибытия строка 1", 'control_type': "DataItem", 'found_index': 0}
     AUTO_ARRIVAL_PLACE = {'title': "Место прибытия строка 1", 'control_type': "DataItem", 'found_index': 0}
+
+    PERIOD = {'title': "Период (дн.):", 'control_type': "Edit", 'auto_id': "periodNumberEdit"}
+    CODE_PAYMENT = {'title': "Код оплаты:", 'control_type': "ComboBox", 'auto_id': "ceNoteTicker"}
+
+    IP_USD = {'title': "Курс USD:", 'control_type': "Edit", 'auto_id': "txtUSD"}
+    IP_EUR = {'title': "Курс EUR:", 'control_type': "Edit", 'auto_id': "txtEUR"}
+    CROSS_COURSE = {'title': "Кросс-курс:", 'control_type': "Edit", 'auto_id': "txtCrossCourse"}
+    CURRENCY1 = {'control_type': "ComboBox", 'auto_id': "icBankFeeCurrencyCode"}
+    DATA_COMMISSION = {'control_type': "ComboBox", 'auto_id': "bankfeedateDateEdit"}
