@@ -84,7 +84,7 @@
     - Создание данных и проверка отображения в таблице Экспедирование, редактирование данных в таблице. `pytest tests_forwarding/test_forwarding.py --alluredir=./allure-results` 
   - Финансы:
     - ИС - создание, редактирование, связывание с другими счетами, создание услуги. `pytest tests_finance/test_finance_is.py --alluredir=./allure-results`
-        нужно, что бы были созданы другие счета!
+    - ИП - создание, редактирование, связывание с другими счетами. `pytest tests_finance/test_finance_ip.py --alluredir=./allure-results`
     - Переводы - создание, редактирование, связывание с другими счетами. `pytest tests_finance/test_finance_org.py --alluredir=./allure-results`
   - Услуги:
     - Создание и редактирование в заказе(логистика) перевозках, экспедировании и привязки к счетам ИС и ВС `pytest tests_services/test_services.py --alluredir=./allure-results`

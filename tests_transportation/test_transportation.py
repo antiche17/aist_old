@@ -17,7 +17,7 @@ def order_app():
 
 @allure.suite("ГТД в заказе")
 @allure.title("Проверка Таблицы Автоперевозка 104 проверки")
-def test_value_del(order_app):
+def test_value_auto(order_app):
     # Диалог создания автоперевозки
     with allure.step("1. Тип перевозки"):
         check.equal(order_app["order_dialog_type"], "Автоперевозка", "❌ ФР: Не одинаковые")

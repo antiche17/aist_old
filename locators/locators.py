@@ -41,7 +41,7 @@ class LocOrders:
     APPLY_BUTTON1 = {'title': "Применить", 'auto_id': "sbApply", 'found_index': 0}
 
     # Элементы таблицы заказов
-    REFRESH_BUTTON = {'title': "Элемент", 'control_type': "SplitButton"}
+    REFRESH_BUTTON = {'title': "Элемент", 'control_type': "SplitButton", 'found_index': 0}
     REFRESH_BUTTON1 = {'title': "Обновить", 'control_type': "Button"}
     TABLE_ORDER_NUMBER_FILTER = {'title': "Номер заказа вернувшийся фильтр строк", 'control_type': "DataItem"}
     TABLE_ORDER_NUMBER = {'title': "Номер заказа вернувшийся строка 1", 'control_type': "DataItem"}
@@ -570,7 +570,7 @@ class LocOrders:
     IS_FREIGHT2 = {'title': "Экспедиторский", 'control_type': "ListItem"}
     IS_FREIGHT3 = {'title': "Таможенный", 'control_type': "ListItem"}
     IS_SUPPLIER = {'title': "Поставщик:", 'control_type': "ComboBox", 'auto_id': "leSellerId", 'found_index': 0}
-    IS_BUYER = {'title': "Покупатель:", 'control_type': "ComboBox", 'auto_id': "leBuyerId"}
+    IS_BUYER = {'title': "Покупатель:", 'control_type': "ComboBox", 'auto_id': "leBuyerId", 'found_index': 0}
     IS_TYPE_CHECK = {'title': "Тип счета строка 1", 'control_type': "DataItem"}
     IS_NUMBER = {'control_type': "Edit", 'auto_id': "nameTextEdit", 'found_index': 0} #Счет:
     IS_NUMBER_TABLE = {'title': "Счет № строка 1", 'control_type': "DataItem"}
@@ -586,7 +586,7 @@ class LocOrders:
 
     # Входящий счет
     VS_CONTRACTOR = {'title': "Подрядчик:", 'control_type': "ComboBox", 'auto_id': "leContractorId"}
-    VS_ORDER = {'title': "Заказ:", 'control_type': "ComboBox", 'auto_id': "orderEdit1"}
+    VS_ORDER = {'control_type': "ComboBox", 'auto_id': "orderEdit1", 'found_index': 0} #заказ:
 
     # Входящий платеж
     VP_NUMBER = {'title': "Счет:", 'control_type': "Edit", 'auto_id': "nameTextEdit"}
@@ -864,8 +864,9 @@ class LocOrders:
     PERIOD = {'title': "Период (дн.):", 'control_type': "Edit", 'auto_id': "periodNumberEdit"}
     CODE_PAYMENT = {'title': "Код оплаты:", 'control_type': "ComboBox", 'auto_id': "ceNoteTicker"}
 
-    IP_USD = {'title': "Курс USD:", 'control_type': "Edit", 'auto_id': "txtUSD"}
-    IP_EUR = {'title': "Курс EUR:", 'control_type': "Edit", 'auto_id': "txtEUR"}
-    CROSS_COURSE = {'title': "Кросс-курс:", 'control_type': "Edit", 'auto_id': "txtCrossCourse"}
+    IP_USD = {'title': "Курс USD:", 'control_type': "Edit", 'auto_id': "txtUSD", 'found_index': 0}
+    IP_EUR = {'title': "Курс EUR:", 'control_type': "Edit", 'auto_id': "txtEUR", 'found_index': 0}
+    CROSS_COURSE = {'title': "Кросс-курс:", 'control_type': "Edit", 'auto_id': "txtCrossCourse", 'found_index': 0}
     CURRENCY1 = {'control_type': "ComboBox", 'auto_id': "icBankFeeCurrencyCode"}
     DATA_COMMISSION = {'control_type': "ComboBox", 'auto_id': "bankfeedateDateEdit"}
+    TXTTOTAL = {'title': "= ", 'control_type': "Edit", 'auto_id': "txtTotal"}
