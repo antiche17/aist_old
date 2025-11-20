@@ -666,6 +666,7 @@ class LocOrders:
     OUTGOING_INVOICES = {'title': "Исходящие счета", 'control_type': "ListItem"}
     INCOMING_PAYMENTS = {'title': "Вх. платежи", 'control_type': "TabItem"}
     INCOMING_INVOICES = {'title': "Входящие счета", 'control_type': "ListItem"}
+    INCOMING_PAYMENTS10 = {'title': "Входящие платежи", 'control_type': "ListItem"}
     OUTGOING_PAYMENTS = {'title': "Исходящие платежи", 'control_type': "ListItem"}
     ORG_ACCOUNT_TRANSFERS = {'title': "Переводы (Орг. счета)", 'control_type': "ListItem"}
     SERVICES_SERVICES = {'control_type': "ComboBox", 'auto_id': "leServiceTypeId"}
@@ -879,4 +880,5 @@ class LocOrders:
     CROSS_COURSE = {'title': "Кросс-курс:", 'control_type': "Edit", 'auto_id': "txtCrossCourse", 'found_index': 0}
     CURRENCY1 = {'control_type': "ComboBox", 'auto_id': "icBankFeeCurrencyCode"}
     DATA_COMMISSION = {'control_type': "ComboBox", 'auto_id': "bankfeedateDateEdit"}
-    TXTTOTAL = {'title': "= ", 'control_type': "Edit", 'auto_id': "txtTotal"}
+    TXTTOTAL = {'title': "= ", 'control_type': "Edit", 'auto_id': "txtTotal", 'found_index': 0}
+    TXTTOTAL1 = {'title': "=", 'control_type': "Edit", 'auto_id': "txtTotal", 'found_index': 0}
