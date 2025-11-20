@@ -86,6 +86,7 @@
     - ИС - создание, редактирование, связывание с другими счетами, создание услуги. `pytest tests_finance/test_finance_is.py --alluredir=./allure-results`
     - ИП - создание, редактирование, связывание с другими счетами. `pytest tests_finance/test_finance_ip.py --alluredir=./allure-results`
     - ВС - создание, редактирование, связывание с другими счетами. `pytest tests_finance/test_finance_vs.py --alluredir=./allure-results`
+    - ВП - создание, редактирование, связывание с другими счетами. `pytest tests_finance/test_finance_vp.py --alluredir=./allure-results`
     - Переводы - создание, редактирование, связывание с другими счетами. `pytest tests_finance/test_finance_org.py --alluredir=./allure-results`
     - 
   - Услуги:
