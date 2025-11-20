@@ -14,7 +14,6 @@ def order_app():
     print("[TEARDOWN] Закрытие WinAISTApp")
     app.close()
 
-
 @allure.suite("Проверка ИП")
 @allure.title("Проверка ИП, проверок 59")
 def test_finance_ip(order_app):

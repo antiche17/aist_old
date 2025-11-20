@@ -116,7 +116,8 @@ class LocOrders:
     NOTE_SEA = {'title': "Примечание:", 'auto_id': "decriptionMemoEdit"}
     NOTE_SERVICES = {'control_type': "Edit", 'auto_id': "descriptionTextEdit"}
     NOTE_CONTAINER = {'auto_id': "descriptionMemoEdit"}
-    IS_DATE_SF = {'title': "Дата с/ф", 'auto_id': "dateEdit1"}
+    IS_DATE_SF = {'title': "Дата с/ф", 'auto_id': "dateEdit1", 'found_index': 0}
+    IS_DATE_SF1 = {'title': "Дата с\ф", 'auto_id': "dateEdit1", 'found_index': 0}
 
     MOD_DATE = {'control_type': "Text", 'auto_id': "lblModified"}# Дата изменения
     CREATE_DATE = {'control_type': "Text", 'auto_id': "lblCreatedOn"} # Дата создания
@@ -679,6 +680,10 @@ class LocOrders:
     LOOK_SERVICES = {'title': "Показать все счета", 'control_type': "Button", 'found_index': 0}
     ADD_SERVICES = {'control_type': "Button", 'auto_id': "btnAdd"}
     EXPAND = {'title': "Свернуть", 'control_type': "Button", 'found_index': 0}
+    CONNECT_IP = {'title': "Связь с исх. платежами", 'control_type': "Button"}
+    CONNECT_TRANSFERS1 = {'title': "Связь с исх. переводами", 'control_type': "Button"}
+    CONNECT_INVOICES1 = {'title': "Связь с исх. счетами", 'control_type': "Button"}
+    CONNECT_IS = {'title': "Взаимозачет с исх. счетами", 'control_type': "Button"}
 
     # Вкладки счета
     INCOMING_PAYMENTS1 = {'title': "Вх. платежи", 'control_type': "TabItem"}
@@ -691,9 +696,14 @@ class LocOrders:
     FILES = {'title': "Файлы", 'control_type': "TabItem"}
     ADD_FROM_ORDER_BUTTON = {'title': "Добавить из заказа", 'control_type': "Button"}
     QUICK_CREATE_MENU = {'title': "Быстрое создание", 'control_type': "MenuItem"}
+    INCOMING_INVOICES2 = {'title': "Исх. счета", 'control_type': "TabItem"}
+    OFF_OUTGOING_ACCOUNTS = {'title': "Взаимозачеты с исх. счетами", 'control_type': "TabItem"}
 
     IS = {'title': "Исх. счета", 'control_type': "TabItem"}
     VS = {'title': "Вх. счета", 'control_type': "TabItem"}
+
+    INCOMING_PAYMENTS2 = {'title': "Исх. платежи", 'control_type': "TabItem"}
+    INCOMING_TRANSFERS2 = {'title': "Исх. переводы", 'control_type': "TabItem"}
 
 
     OCEAN_VESSEL_PANEL = {'title': "Океан. к/с:", 'control_type': "Edit"}

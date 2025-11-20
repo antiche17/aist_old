@@ -2,8 +2,6 @@ from pywinauto import Application, keyboard
 from locators.locators import LocOrders
 from locators.function import Function
 import time
-import subprocess
-import psutil
 
 
 class WinAISTApp:

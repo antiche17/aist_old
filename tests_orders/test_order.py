@@ -15,7 +15,6 @@ def order_app():
 
 
 @allure.title("Проверка создание и редактирование заказа с типом Логистика 46 проверок")
-@pytest.mark.order(1)
 def test_value_order(order_app):
     with allure.step("1. Номер заказа не пустой"):
         check.is_not_none(order_app["order_number"], "❌ ФР: Поле пустое")
