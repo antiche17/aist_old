@@ -18,7 +18,6 @@ def order_app():
 
 @allure.suite("Проверка Переводы")
 @allure.title("Проверка Переводы, проверок 134")
-@pytest.mark.order(1)
 def test_finance_org(order_app):
     with allure.step("1. Номер в пустой форме"):
         check.equal(order_app["number_org"], "0000", "❌ ФР: Номер перевода в пустой форме не 0000")

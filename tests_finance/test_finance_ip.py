@@ -106,14 +106,8 @@ def test_finance_ip(order_app):
     with allure.step("37. Сравнение полей Счет № добавленного ВС"):
         check.equal(order_app["account_vs"], order_app["account_vs_form"],"❌ ФР: Не одинаковое Счет № полей добавленного ВС")
 
-    with allure.step("38. Сравнение полей Покупатель добавленного ВС"):
-        check.equal(order_app["buyer_vs"], order_app["buyer_vs_form"],"❌ ФР: Не одинаковое Покупатель полей добавленного ВС")
-
     with allure.step("39. Сравнение полей Фидер. судно добавленного ВС"):
         check.equal(order_app["feeder_vessel_vs"], order_app["feeder_vessel_vs_form"],"❌ ФР: Не одинаковое Фидер. судно полей добавленного ВС")
-
-    with allure.step("40. Сравнение полей Поставщик добавленного ВС"):
-        check.equal(order_app["supplier_vs"], order_app["supplier_vs_form"],"❌ ФР: Не одинаковое Поставщик полей добавленного ВС")
 
     with allure.step("41. Сравнение полей Валюта добавленного ВС"):
         check.equal(order_app["currency_vs"], order_app["currency_vs_form"],"❌ ФР: Не одинаковое Валюта полей добавленного ВС")

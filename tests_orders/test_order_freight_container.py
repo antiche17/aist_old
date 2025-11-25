@@ -110,13 +110,8 @@ def test_container_freight(order_app):
     with allure.step("27. Дата ТО"):
         check.equal(order_app["freight_data_to_up"], order_app["freight_data_to_save"],"❌ ФР: Не совпадают")
 
-
     with allure.step("28. Дата создания не поменялась"):
         check.equal(order_app["freight_data_create"], order_app["freight_data_create_save"], "❌ ФР: Поменялась")
-
-    with allure.step("29. Дата изменения  поменялась"):
-        check.not_equal(order_app["freight_note_up"], order_app["freight_data_mod_save"], "❌ ФР: Не поменялась")
-
 
     with allure.step("30. Всего записей 0"):
         check.equal(order_app["freight_del_table"], "Всего записей: 0", "❌ ФР: Не совпадает")

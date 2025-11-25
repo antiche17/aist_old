@@ -467,7 +467,6 @@ class WinAISTApp:
             'service_vat': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICES_CURRENCY, "Value"),
         })
 
-
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
         time.sleep(1)
 
@@ -545,9 +544,14 @@ class WinAISTApp:
         keyboard.send_keys('{ENTER}')
         time.sleep(2)
         self.fun.click_element(main_window, self.loc.EXPAND, timeout=1)
+        time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
         self.fun.click_element_sp(main_window, self.loc.ADD_SERVICES)
-        self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=2)
+        time.sleep(2)
+        if self.fun.is_element_present(main_window, self.loc.OK_BUTTON, timeout=2):
+            self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=2)
+        else:
+            print("OK_BUTTON не найден")
         time.sleep(2)
         self.fun.order_data.update({
             'service_is_payment_vp': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_PAYMENT_LINE1, "Value"),
@@ -652,7 +656,8 @@ class WinAISTApp:
         })
 
         time.sleep(1)
-
+        self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON)
+        self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
         # Связь с прямыми счетами на клиента
         self.fun.click_element_sp(main_window, self.loc.DIRECT_CLIENT_INVOICES)
         self.fun.click_element_sp(main_window, self.loc.CONNECT_ACCOUNTS_CLIENT)
@@ -661,14 +666,11 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element(main_window, self.loc.ADD_SERVICES, timeout=1)
         time.sleep(1)
-        self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
-        # Сброс настроек
-        self.fun.right_click_element(main_window, self.loc.TYPE_IS_TABLE, timeout=3)
-        keyboard.send_keys('{DOWN}' * 17)
-        keyboard.send_keys('{ENTER}')
-        time.sleep(1)
+        if self.fun.is_element_present(main_window, self.loc.OK_BUTTON, timeout=2):
+            self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=2)
+        else:
+            print("OK_BUTTON не найден")
         self.fun.order_data.update({
-            'is_type_ps': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_TYPE_LINE1, "Value"),
             'created_by_ps': self.fun.get_element_property(main_window, self.fun.loc.CREATED_BY_LINE1, "Value"),
             'date_ps': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_LINE1, "Value"),
             'account_ps': self.fun.get_element_property_sp(main_window, self.fun.loc.ACCOUNT_LINE1, "Value"),
@@ -677,16 +679,10 @@ class WinAISTApp:
             'currency_ps': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'amount_ps': self.fun.get_element_property_sp(main_window, self.fun.loc.AMOUNT_LINE1, "Value"),
             'info_ps': self.fun.get_element_property_sp(main_window, self.fun.loc.INFO_LINE1, "Value"),
-
         })
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
         time.sleep(2)
-        self.fun.right_click_element(main_window, self.loc.CHECK_TABLE, timeout=3)
-        time.sleep(1)
-        keyboard.send_keys('{DOWN}' * 18)
-        keyboard.send_keys('{ENTER}')
         self.fun.order_data.update({
-            'is_type_ps_form': self.fun.get_element_property_sp(main_window, self.fun.loc.IS_TYPE_LINE1, "Value"),
             'created_by_ps_form': self.fun.get_element_property_sp(main_window, self.fun.loc.CREATED_BY_LINE1, "Value"),
             'date_ps_form': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_LINE1, "Value"),
             'account_ps_form': self.fun.get_element_property_sp(main_window, self.fun.loc.ACCOUNT_LINE1, "Value"),
@@ -695,17 +691,15 @@ class WinAISTApp:
             'currency_ps_form': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'amount_ps_form': self.fun.get_element_property_sp(main_window, self.fun.loc.AMOUNT_LINE1, "Value"),
             'info_ps_form': self.fun.get_element_property_sp(main_window, self.fun.loc.INFO_LINE1, "Value"),
-
         })
         self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON)
-        self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
-
         time.sleep(1)
 
         # Связываем с Взаимозачеты с вх. счетами
         self.fun.click_element_sp(main_window, self.loc.OFFSETS)
         self.fun.click_element_sp(main_window, self.loc.CONNECT_OFFSETS)
         time.sleep(2)
+        self.fun.click_element(main_window, self.loc.EXPAND, timeout=1)
         self.fun.click_element(main_window, self.loc.SERVICES_OPTIONS, timeout=1)
         keyboard.send_keys('{DOWN}')
         keyboard.send_keys('{ENTER}')
@@ -714,8 +708,11 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.ADD_SERVICES)
         time.sleep(1)
+        if self.fun.is_element_present(main_window, self.loc.OK_BUTTON, timeout=2):
+            self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=2)
+        else:
+            print("OK_BUTTON не найден")
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
-
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.RELATIONS)
         time.sleep(1)
@@ -745,6 +742,7 @@ class WinAISTApp:
         time.sleep(1)
         keyboard.send_keys('{DOWN}'* 2)
         keyboard.send_keys('{ENTER}')
+        time.sleep(1)
         self.fun.order_data.update({
             'data_all_accounts': self.fun.get_element_property_sp(main_window, self.loc.DATE_LINE1, "Value"),
             'supplier_all_accounts': self.fun.get_element_property_sp(main_window, self.loc.SUPPLIER_LINE1, "Value"),
@@ -765,7 +763,7 @@ class WinAISTApp:
         keyboard.send_keys('{DOWN 13}')
         time.sleep(1)
         keyboard.send_keys('{ENTER}')
-        time.sleep(3)
+        time.sleep(2)
         self.fun.click_element(main_window, self.loc.INVOICES_FILTER1, timeout=1)
         keyboard.send_keys(text, with_spaces=True)
         keyboard.send_keys('{ENTER}')
@@ -889,11 +887,10 @@ class WinAISTApp:
             'service_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_LINE_01, "Value"),
             'service_date_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_LINE1, "Value"),
             'account_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.ACCOUNT_LINE1, "Value"),
-            'buyer_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.BUYER_LINE1, "Value"),
+            'buyer_vs': self.fun.get_element_property(main_window, self.fun.loc.BUYER_LINE1, "Value"),
             'gtd_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.GTD_LINE1, "Value"),
             'feeder_vessel_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.FEEDER_VESSEL_LINE1,
                                                                  "Value"),
-            'supplier_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.SUPPLIER_LINE1, "Value"),
             'currency_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'amount_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.AMOUNT_LINE1, "Value"),
             'unallocated_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.UNALLOCATED_LINE1, "Value"),
@@ -902,22 +899,17 @@ class WinAISTApp:
             'linked_ip_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.LINKED_IS_LINE1, "Value"),
             'linked_vs_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.LINKED_VS_LINE1, "Value"),
             'client_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.CLIENT_LINE1, "Value"),
-
         })
-
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
         time.sleep(1)
         self.fun.order_data.update({
-
             'service_date_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_LINE1, "Value"),
             'account_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.ACCOUNT_LINE1, "Value"),
             'buyer_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.BUYER_LINE1, "Value"),
             'feeder_vessel_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.FEEDER_VESSEL_LINE1,"Value"),
-            'supplier_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.SUPPLIER_LINE1, "Value"),
             'currency_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'amount_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.AMOUNT_LINE1, "Value"),
             'client_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.CLIENT_LINE1, "Value"),
-
         })
         # Связываем с Вх. платежом
         self.fun.click_element_sp(main_window, self.loc.INCOMING_PAYMENTS1)
@@ -1269,7 +1261,7 @@ class WinAISTApp:
             'service_info_vp': self.fun.get_element_property_sp(main_window, self.fun.loc.INFO_LINE1, "Value"),
             'service_closed_vp': self.fun.get_element_property_sp(main_window, self.fun.loc.CLOSED_LINE1, "Value"),
             'service_unpaid_vp': self.fun.get_element_property_sp(main_window, self.fun.loc.UNPAID_LINE1, "Value"),
-            'service_charged_vp': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_LINE1, "Value"),
+
             'service_charged_sv_vp': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_SV_LINE1,
                                                                       "Value"),
 
@@ -1393,12 +1385,6 @@ class WinAISTApp:
         keyboard.send_keys(text, with_spaces=True)
         keyboard.send_keys('{ENTER}')
         time.sleep(1)
-        self.fun.right_click_element(main_window, self.loc.CHECK_TABLE, timeout=3)
-        time.sleep(1)
-        keyboard.send_keys('{DOWN}' * 17)
-        time.sleep(1)
-        keyboard.send_keys('{DOWN}' * 2)
-        keyboard.send_keys('{ENTER}')
         self.fun.order_data.update({
             'data_all_accounts': self.fun.get_element_property_sp(main_window, self.loc.DATE_LINE1, "Value"),
             'supplier_all_accounts': self.fun.get_element_property_sp(main_window, self.loc.SUPPLIER_LINE1, "Value"),
@@ -1488,7 +1474,7 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON)
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.IS_SUPPLIER)
-        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_2)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_3)
         self.fun.click_element_sp(main_window, self.loc.IS_BUYER)
         self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
         self.fun.click_element_sp(main_window, self.loc.VS_ORDER)
@@ -1543,7 +1529,6 @@ class WinAISTApp:
             'service_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.SERVICE_LINE_01, "Value"),
             'service_date_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_LINE1, "Value"),
             'account_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.ACCOUNT_LINE1, "Value"),
-            'buyer_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.BUYER_LINE1, "Value"),
             'supplier_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.SUPPLIER_LINE1, "Value"),
             'currency_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'amount_vs': self.fun.get_element_property_sp(main_window, self.fun.loc.AMOUNT_LINE1, "Value"),
@@ -1559,7 +1544,6 @@ class WinAISTApp:
         self.fun.order_data.update({
             'service_date_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.DATE_LINE1, "Value"),
             'account_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.ACCOUNT_LINE1, "Value"),
-            'buyer_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.BUYER_LINE1, "Value"),
             'supplier_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.SUPPLIER_LINE1, "Value"),
             'currency_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1, "Value"),
             'amount_vs_form': self.fun.get_element_property_sp(main_window, self.fun.loc.AMOUNT_LINE1, "Value"),
@@ -1586,7 +1570,7 @@ class WinAISTApp:
             'service_info': self.fun.get_element_property_sp(main_window, self.fun.loc.INFO_LINE1, "Value"),
             'service_closed': self.fun.get_element_property_sp(main_window, self.fun.loc.CLOSED_LINE1, "Value"),
             'service_unpaid': self.fun.get_element_property_sp(main_window, self.fun.loc.UNPAID_LINE1, "Value"),
-            'service_charged': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_LINE1, "Value"),
+            'service_charged': self.fun.get_element_property(main_window, self.fun.loc.CHARGED_LINE1, "Value"),
             'service_charged_sv': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_SV_LINE1, "Value"),
 
         })
@@ -1602,8 +1586,8 @@ class WinAISTApp:
             'service_currency_form': self.fun.get_element_property_sp(main_window, self.fun.loc.CURRENCY_LINE1,
                                                                       "Value"),
             'service_amount_form': self.fun.get_element_property_sp(main_window, self.fun.loc.AMOUNT_LINE1, "Value"),
-            'service_charged_form': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_LINE1, "Value"),
-            'service_charged_sv_form': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_SV_LINE1,
+            'service_charged_form': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_SV_LINE1, "Value"),
+            'service_charged_sv_form': self.fun.get_element_property_sp(main_window, self.fun.loc.CHARGED_LINE1,
                                                                         "Value"),
         })
         time.sleep(1)

@@ -154,8 +154,8 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
         self.fun.click_element_sp(main_window, self.loc.SERVICE_TE_NUMBER_FORM)
         keyboard.send_keys('{DOWN}')
-
-        self.fun.set_text_field(main_window, self.loc.NOTE, "Редактирование услуги", timeout=2)
+        time.sleep(1)
+        self.fun.set_text_field(main_window, self.loc.NOTE, "Редактирование услуги", timeout=3)
         self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON1)
         self.fun.order_data.update({
             'service_name_form_mod': self.fun.get_element_property_sp(main_window, self.fun.loc.ORDER_NUMBER, "Value"),

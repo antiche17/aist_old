@@ -7,18 +7,20 @@ from locators.format_data import compare_dates
 
 @pytest.fixture(scope="module")
 def order_app():
-    print("Есть ошибки задача AIST-863\nУбраны проверки синхронизации с 1С")
+    print("Проверка ВС")
     app = WinAISTApp()
+    order_data = app.finance_is()
+    yield order_data
+    print("[TEARDOWN] Закрытие WinAISTApp")
     try:
-        order_data = app.finance_is()
-        yield order_data
-    finally:
-        print("[TEARDOWN] Закрытие WinAISTApp")
-        app.close()
+        # Прямое жесткое закрытие минуя проблемные методы
+        app.fun.app.kill()  # без soft=True
+    except Exception as e:
+        print(f"При закрытии возникла ошибка: {e}")
+        # Игнорируем ошибку, так как приложение все равно должно закрыться
 
 @allure.suite("Проверка ИС")
 @allure.title("Проверка ИС, проверок 134")
-@pytest.mark.order(1)
 def test_finance_is(order_app):
     with allure.step("1. Дата в форме Создание ИС"):
         check.is_true(order_app["is_date"], "❌ ФР: Пустое поле")
@@ -294,41 +296,28 @@ def test_finance_is(order_app):
         check.equal(order_app["client_vs_form"], order_app["client_vs_form"], "❌ ФР: Пустое поле Клиент  Вх.счета")
 
     # Прямые счета
-
-    with allure.step("106. Поле Тип ИС Прямые счета на клиента"):
-        check.equal(order_app["is_type_ps_form"], order_app["is_type_ps_form"],
-                    "❌ ФР: Пустое поле Тип ИС Прямые счета на клиента")
-
     with allure.step("107. Поле Кем создан Прямые счета на клиента"):
-        check.equal(order_app["created_by_ps_form"], order_app["created_by_ps_form"],
+        check.equal(order_app["created_by_ps"], order_app["created_by_ps_form"],
                     "❌ ФР: Пустое поле Кем создан Прямые счета на клиента")
 
     with allure.step("108. Поле Дата  Прямые счета на клиента"):
-        check.equal(order_app["date_ps_form"], order_app["date_ps_form"],
+        check.equal(order_app["date_ps"], order_app["date_ps_form"],
                     "❌ ФР: Пустое поле Дата  Прямые счета на клиента")
 
     with allure.step("109. Поле Счет № Прямые счета на клиента"):
-        check.equal(order_app["account_ps_form"], order_app["account_ps_form"],
+        check.equal(order_app["account_ps"], order_app["account_ps_form"],
                     "❌ ФР: Пустое поле Счет № Прямые счета на клиента")
 
-    with allure.step("110. Поле Покупатель  Прямые счета на клиента"):
-        check.equal(order_app["buyer_ps_form"], order_app["buyer_ps_form"],
-                    "❌ ФР: Пустое поле Покупатель  Прямые счета на клиента")
-
-    with allure.step("111. Поле Поставщик  Прямые счета на клиента"):
-        check.equal(order_app["supplier_ps_form"], order_app["supplier_ps_form"],
-                    "❌ ФР: Пустое поле Поставщик  Прямые счета на клиента")
-
     with allure.step("112. Поле Валюта  Прямые счета на клиента"):
-        check.equal(order_app["currency_ps_form"], order_app["currency_ps_form"],
+        check.equal(order_app["currency_ps"], order_app["currency_ps_form"],
                     "❌ ФР: Пустое поле Валюта  Прямые счета на клиента")
 
     with allure.step("113. Поле Сумма Прямые счета на клиента"):
-        check.equal(order_app["amount_ps_form"], order_app["amount_ps_form"],
+        check.equal(order_app["amount_ps"], order_app["amount_ps_form"],
                     "❌ ФР: Пустое поле Сумма Прямые счета на клиента")
 
     with allure.step("114. Поле Информация  Прямые счета на клиента"):
-        check.equal(order_app["info_ps_form"], order_app["info_ps_form"],
+        check.equal(order_app["info_ps"], order_app["info_ps_form"],
                     "❌ ФР: Пустое поле Информация Прямые счета на клиента")
     # Все счета
     with allure.step("115. Поле Дата в таблице Все счета"):

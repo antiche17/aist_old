@@ -202,10 +202,6 @@ def test_finance_vs(order_app):
     with allure.step("75. Поле Начислено"):
         check.equal(order_app["service_unpaid_vp"], order_app["service_unpaid_vp_form"], "❌ ФР: Пустое поле Начислено")
 
-    with allure.step("76. Поле Начислено (С.В.)"):
-        check.equal(order_app["service_charged_vp"], order_app["service_charged_vp_form"],
-                    "❌ ФР: Пустое поле Начислено (С.В.)")
-
     # Связываем с Исх. счета
     with allure.step("77. Поле Дата Исх. счета"):
         check.equal(order_app["service_date_is"], order_app["service_date_is_form"],

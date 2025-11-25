@@ -71,6 +71,7 @@ class LocOrders:
     OK_BUTTON = {'title': "ОК", 'control_type': "Button", 'found_index': 0}
     OK_BUTTON1 = {'auto_id': "btnOK", 'found_index': 0}
     OK_BUTTON2 = {'title': "ОК", 'control_type': "Button", 'found_index': 2}
+    OK_BUTTON3 = {'title': "ОК", 'control_type': "Button", 'found_index': 1}
     SAVE_BUTTON = {'auto_id': "sbSave", 'control_type': "Button"}
     AP = {'auto_id': "sbSave", 'control_type': "Button"}
     SCROLL_RIGHT = {'title': "Прокрутка вправо", 'control_type': "Button", 'found_index': 0}

@@ -195,6 +195,15 @@ class Function:
         element.type_keys("{DOWN}")
         return element
 
+    def is_element_present(self, window, locator, timeout=2):
+        element = window.child_window(**locator)
+        try:
+            element.wait('visible', timeout=timeout)
+            return True
+        except Exception:
+            return False
+
+
     def set_text_field(self, window, locator, text, timeout=1):
         """Устанавливает текст в текстовое поле"""
         element = window.child_window(**locator)
