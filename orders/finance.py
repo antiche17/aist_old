@@ -406,7 +406,6 @@ class WinAISTApp:
         keyboard.send_keys('6')
         self.fun.click_element_sp(main_window, self.loc.RETURN_DATE_PANEL)
         keyboard.send_keys('7')
-
         self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON)
         time.sleep(2)
         self.fun.order_data.update({
@@ -1619,6 +1618,268 @@ class WinAISTApp:
         })
 
         return self.fun.order_data
+
+    def finance_te(self):
+        # 1. Запуск приложения
+        self.fun.start_application()
+        time.sleep(3)
+        main_window = self.fun.get_main_window()
+        main_window.set_focus()
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.FINANCE)
+        time.sleep(2)
+        self.fun.click_element_sp(main_window, self.loc.OUTGOING_INVOICES)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.ADD_BUTTON)
+        time.sleep(1)
+        main_window = self.fun.get_check_form()
+        main_window.set_focus()
+
+        # Редактирование формы
+        self.fun.click_element_sp(main_window, self.loc.IS_LIST)
+        self.fun.click_element_sp(main_window, self.loc.IS_FREIGHT)
+        self.fun.set_text_field(main_window, self.fun.loc.NOTE_SERVICES, "Примечание для ИС", timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.IS_DATE_SF, timeout=1)
+        keyboard.send_keys('1')
+        self.fun.click_element_sp(main_window, self.loc.IS_SUPPLIER)
+        self.fun.set_text_field(main_window, self.fun.loc.SEARCH_BOX, "бодрус", timeout=1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_4)
+        self.fun.click_element_sp(main_window, self.loc.GTD_CLIENT)
+        self.fun.set_text_field(main_window, self.fun.loc.SEARCH_BOX, "Веспа", timeout=1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.loc.IS_ORDER)
+        self.fun.click_element_sp(main_window, self.loc.FREIGHT_ORDER_CREATE)
+        self.fun.click_element_sp(main_window, self.loc.ORDER_TYPE_COMBO)
+        self.fun.click_element_sp(main_window, self.loc.LOGISTICS_ITEM)
+        self.fun.click_element_sp(main_window, self.loc.CUSTOMER_COMBO)
+        self.fun.set_text_field(main_window, self.fun.loc.SEARCH_BOX, "Веспа", timeout=1)
+        self.fun.click_element(main_window, self.loc.RECIPIENT_1, timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON)
+        time.sleep(2)
+        text = self.fun.get_element_value(main_window, self.loc.IS_NUMBER, timeout=1)
+        text1 = self.fun.get_element_value(main_window, self.loc.IS_ORDER, timeout=1)
+
+        #Добавление ТЕ
+        self.fun.click_element_sp(main_window, self.loc.ADD_TE1)
+        time.sleep(1)
+        # 7 Создать Container
+        self.fun.click_element_sp(main_window, self.loc.ADD_TE2)
+        self.fun.click_element(main_window, self.fun.loc.FREIGHT_CREATE_TE, timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.FREIGHT_CREATE_TE2, timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.FREIGHT_CREATE_TYPE, timeout=1)
+        self.fun.click_element(main_window, self.fun.loc.FREIGHT_CREATE_TYPE1, timeout=1)
+        self.fun.set_text_field(main_window, self.fun.loc.FREIGHT_CREATE_QUANTITY, 1, timeout=1)
+        time.sleep(1)
+
+        # 8 Взять данные
+        self.fun.order_data = {
+            'con_dialog_te': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_CREATE_TE, "Value"),
+            'con_dialog_type': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_CREATE_TYPE, "Value"),
+            'con_dialog_quantity': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_CREATE_QUANTITY,"Value"),
+            'order_dialog_number': self.fun.get_element_property(main_window, self.fun.loc.FREIGHT_CREATE_ORDER,"Value"),
+        }
+        self.fun.click_element(main_window, self.fun.loc.OK_BUTTON, timeout=1)
+        time.sleep(1)
+
+        # 7 Создать Bulkership
+        self.fun.click_element_sp(main_window, self.loc.ADD_TE2)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_TE)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_TE1)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_TYPE)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_TYPE1)
+        self.fun.set_text_field(main_window, self.fun.loc.FREIGHT_CREATE_QUANTITY, 1, timeout=1)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_UOM)
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_UOM1)
+        time.sleep(2)
+
+        # 8 Взять данные
+        self.fun.order_data.update({
+            'bul_dialog_te': self.fun.get_element_property_sp(main_window, self.fun.loc.FREIGHT_CREATE_TE, "Value"),
+            'bul_dialog_type': self.fun.get_element_property_sp(main_window, self.fun.loc.FREIGHT_CREATE_TYPE,"Value"),
+            'bul_dialog_quantity': self.fun.get_element_property_sp(main_window, self.fun.loc.FREIGHT_CREATE_QUANTITY, "Value"),
+            'bul_dialog_uom': self.fun.get_element_property_sp(main_window, self.fun.loc.FREIGHT_CREATE_UOM, "Value"),
+            'bul_dialog_number': self.fun.get_element_property_sp(main_window, self.fun.loc.FREIGHT_CREATE_ORDER,"Value"),
+        })
+        self.fun.click_element_sp(main_window, self.fun.loc.OK_BUTTON)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.TE_SELECT1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.TE_SELECT2)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.ADD_BUTTON)
+        time.sleep(1)
+        self.fun.order_data.update({
+            'container_con': self.fun.get_element_property_sp(main_window, self.fun.loc.CONTAINER_LINE1, "Value"),
+            'container_bul': self.fun.get_element_property_sp(main_window, self.fun.loc.CONTAINER_LINE2, "Value"),
+        })
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
+        time.sleep(1)
+
+        # Добавляем ТЕ в услугу
+        main_window = self.fun.get_main_window()
+        main_window.set_focus()
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.REFRESH_BUTTON)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.INVOICES_FILTER)
+        keyboard.send_keys(text, with_spaces=True)
+        keyboard.send_keys('{ENTER}')
+        time.sleep(2)
+        self.fun.click_element_double(main_window, self.loc.RECIPIENT_1, timeout=1)
+        time.sleep(3)
+
+        # Добавить услугу
+        main_window = self.fun.get_check_form()
+        main_window.set_focus()
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.TAB_SERVICES)
+        self.fun.click_element_sp(main_window, self.loc.ADD_BUTTON)
+        time.sleep(1)
+        main_window = self.fun.get_services_form()
+        main_window.set_focus()
+        self.fun.click_element_sp(main_window, self.loc.SERVICES_SERVICES)
+        self.fun.set_text_field(main_window, self.fun.loc.SEARCH_BOX, "Автоперевозка собственным транспортом",
+                                timeout=1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.set_text_field(main_window, self.loc.SERVICES_BET, "100", timeout=1)
+        self.fun.click_element_sp(main_window, self.loc.SERVICES_CURRENCY)
+        self.fun.click_element_sp(main_window, self.loc.RUR)
+        self.fun.click_element_sp(main_window, self.loc.NDS)
+        self.fun.click_element_sp(main_window, self.loc.NDS_0)
+        self.fun.click_element_sp(main_window, self.loc.CONTAINERS)
+        self.fun.click_element_sp(main_window, self.loc.GTD_ELLIPSIS)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.ADD_ALL)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON)
+        self.fun.order_data.update({
+            'te_service': self.fun.get_element_property_sp(main_window, self.fun.loc.CONTAINERS, "Value"),
+
+        })
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
+
+        main_window = self.fun.get_main_window()
+        main_window.set_focus()
+        time.sleep(1)
+
+        # таблица Все услуги
+        self.fun.click_element_sp(main_window, self.loc.MENU_BAZA)
+        keyboard.send_keys('{DOWN 3}')
+        keyboard.send_keys('{ENTER}')
+        keyboard.send_keys('{DOWN 13}')
+        time.sleep(1)
+        keyboard.send_keys('{ENTER}')
+        time.sleep(2)
+        self.fun.click_element(main_window, self.loc.INVOICES_FILTER1, timeout=1)
+        keyboard.send_keys(text, with_spaces=True)
+        keyboard.send_keys('{ENTER}')
+        self.fun.order_data.update({
+            'te_service_tab': self.fun.get_element_property_sp(main_window, self.loc.TABLE_CONTAINER, "Value"),
+        })
+        time.sleep(1)
+
+        # 3. Переход в раздел Заказы
+        main_window = self.fun.get_main_window()
+        main_window.set_focus()
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.LOGISTICS)
+        time.sleep(1)
+        self.fun.click_element(main_window, self.fun.loc.ORDERS_TAB, timeout=3)
+        time.sleep(5)
+        self.fun.click_element_sp(main_window, self.loc.TABLE_ORDER_NUMBER_FILTER)
+        keyboard.send_keys(text1, with_spaces=True)
+        keyboard.send_keys('{ENTER}')
+        time.sleep(2)
+        self.fun.order_data.update({
+            'te_order_tab': self.fun.get_element_property_sp(main_window, self.loc.TE_TABLE1, "Value"),
+        })
+        self.fun.click_element_double(main_window, self.loc.RECIPIENT_1, timeout=1)
+        time.sleep(1)
+        main_window = self.fun.get_main_form()
+        main_window.set_focus()
+        time.sleep(1)
+
+        # 6. Перейти во вкладку
+        self.fun.click_element(main_window, self.fun.loc.TAB_FREIGHT, timeout=2)
+        self.fun.order_data.update({
+            'te_order_con': self.fun.get_element_property_sp(main_window, self.loc.TE_TABLE1, "Value"),
+            'type_order_con': self.fun.get_element_property_sp(main_window, self.loc.TYPE_TE_TABLE1, "Value"),
+            'number_order_con': self.fun.get_element_property_sp(main_window, self.loc.NUM_TE_TABLE1, "Value"),
+            'te_order_bul': self.fun.get_element_property_sp(main_window, self.loc.TE_TABLE2, "Value"),
+            'type_order_bul': self.fun.get_element_property_sp(main_window, self.loc.TYPE_TE_TABLE2, "Value"),
+            'number_order_bul': self.fun.get_element_property_sp(main_window, self.loc.NUM_TE_TABLE2, "Value"),
+        })
+        self.fun.click_element_sp(main_window, self.loc.SAVE_BUTTON)
+
+        main_window = self.fun.get_main_window()
+        main_window.set_focus()
+        time.sleep(1)
+
+        #Удаление ТЕ из счета
+        self.fun.click_element_sp(main_window, self.loc.FINANCE)
+        time.sleep(2)
+        self.fun.click_element_sp(main_window, self.loc.ALL_INVOICES)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.INVOICES_FILTER)
+        keyboard.send_keys(text, with_spaces=True)
+        keyboard.send_keys('{ENTER}')
+        time.sleep(2)
+        self.fun.click_element_double(main_window, self.loc.RECIPIENT_1, timeout=1)
+        time.sleep(3)
+
+        main_window = self.fun.get_check_form()
+        time.sleep(1)
+        main_window.set_focus()
+
+        # Container удаляем Bulkership
+        self.fun.click_element_sp(main_window, self.loc.CONTAINER_LINE1)
+        self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.order_data.update({
+            'te_del_chek1': self.fun.get_element_property_sp(main_window, self.loc.SEA_TYPE_TEXT, "Name"),
+        })
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
+        time.sleep(1)
+        # Bulkership удаляем
+        self.fun.click_element_sp(main_window, self.loc.CONTAINER_LINE1)
+        self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.order_data.update({
+            'te_del_chek2': self.fun.get_element_property_sp(main_window, self.loc.SEA_TYPE_TEXT, "Name"),
+        })
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
+        time.sleep(1)
+        self.fun.order_data.update({
+            'te_del_0': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_TOTAL_RECORDS, "Value"),
+        })
+        time.sleep(5)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
+        time.sleep(1)
+        main_window = self.fun.get_main_window()
+        main_window.set_focus()
+        time.sleep(1)
+
+        # Удаляем счет
+        self.fun.click_element_sp(main_window, self.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.REFRESH_BUTTON)
+        time.sleep(1)
+        self.fun.order_data.update({
+            'te_del_chek': self.fun.get_element_property_sp(main_window, self.loc.FREIGHT_TOTAL_RECORDS, "Value"),
+        })
+
+        return self.fun.order_data
+
+        self.fun.click_element_sp(main_window, self.loc.TABLE_DELETE)
+        self.fun.click_element_sp(main_window, self.loc.INVOICES_FILTER)
 
     def close(self):
         """Завершение работы приложения"""

@@ -34,7 +34,7 @@ class Function:
 
         # Находим главное окно
         window = self.app.window(auto_id="frmMain")
-        window.wait('visible', timeout=33)
+        window.wait('visible', timeout=30)
         window.set_focus()
 
         return window

@@ -450,6 +450,7 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_UOM)
         self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_CREATE_UOM1)
         time.sleep(1)
+
         # 8 Взять данные
         self.fun.order_data = {
             'order_dialog_te': self.fun.get_element_property_sp(main_window, self.fun.loc.FREIGHT_CREATE_TE, "Value"),

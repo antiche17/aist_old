@@ -88,7 +88,7 @@
     - ВС - создание, редактирование, связывание с другими счетами. `pytest tests_finance/test_finance_vs.py --alluredir=./allure-results`
     - ВП - создание, редактирование, связывание с другими счетами. `pytest tests_finance/test_finance_vp.py --alluredir=./allure-results`
     - Переводы - создание, редактирование, связывание с другими счетами. `pytest tests_finance/test_finance_org.py --alluredir=./allure-results`
-    - 
+    - ТЕ - создание в ИС, добавление ТЕ в услугу, проверка в таблице Все счета, проверка в заказе, удаление ТЕ из счета `pytest tests_finance/test_finance_te.py --alluredir=./allure-results`
   - Услуги:
     - Создание и редактирование в заказе(логистика) перевозках, экспедировании и привязки к счетам ИС и ВС `pytest tests_services/test_services.py --alluredir=./allure-results`
   - Запуск отчета - `allure serve allure-results --lang ru`

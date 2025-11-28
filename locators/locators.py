@@ -14,7 +14,7 @@ class LocOrders:
     PREFORWARDING_FORM = {'auto_id': 'RouteSeaCarriageForm'}
     FORM_FORM = {'auto_id': 'TitleBar', 'control_type': "TitleBar"}
     GTD_FROM = {'auto_id': 'frmGTD', 'control_type': "Window"}
-    CHECK_FROM = {'auto_id': 'frmOutboxInvoice', 'control_type': "Window"}
+    CHECK_FROM = {'auto_id': 'frmOutboxInvoice', 'control_type': "Window", 'found_index': 0}
     CHECK_FROM_VS = {'auto_id': 'frmInboxInvoice', 'control_type': "Window"}
     CHECK_FROM_IP = {'auto_id': 'frmOutboxPayment', 'control_type': "Window"}
     CHECK_FROM_VP = {'auto_id': 'frmInboxPayment', 'control_type': "Window"}
@@ -662,6 +662,7 @@ class LocOrders:
     SERVICES_ADD = {'title': "Услуга:", 'control_type': "ComboBox", 'auto_id': "serviceTypeEdit1"}
 
     #Финансы
+    LOGISTICS = {'title': "Логистика", 'control_type': "Button"}
     FINANCE = {'title': "Финансы", 'control_type': "Button"}
     ALL_INVOICES = {'title': "Все счета", 'control_type': "ListItem"}
     OUTGOING_INVOICES = {'title': "Исходящие счета", 'control_type': "ListItem"}
@@ -883,3 +884,15 @@ class LocOrders:
     DATA_COMMISSION = {'control_type': "ComboBox", 'auto_id': "bankfeedateDateEdit"}
     TXTTOTAL = {'title': "= ", 'control_type': "Edit", 'auto_id': "txtTotal", 'found_index': 0}
     TXTTOTAL1 = {'title': "=", 'control_type': "Edit", 'auto_id': "txtTotal", 'found_index': 0}
+
+    ADD_TE1 = {'title': "Добавить контейнер", 'control_type': "Button", 'found_index': 0}
+    ADD_TE2 = {'title': "Создать новый контейнер", 'control_type': "Button", 'found_index': 0}
+    ADD_ALL = {'title': "Добавить все", 'control_type': "Button", 'found_index': 0}
+
+    TE_SELECT1 = {'title': "Выбор строка 1", 'control_type': "DataItem", 'found_index': 0}
+    TE_SELECT2 = {'title': "Выбор строка 2", 'control_type': "DataItem", 'found_index': 0}
+
+    CONTAINERS = {'control_type': "Edit", 'auto_id': "txtCargo", 'found_index': 0} #контейнеры
+
+    CONTAINER_LINE1 = {'title': "Контейнер строка 1", 'control_type': "DataItem", 'found_index': 0}
+    CONTAINER_LINE2 = {'title': "Контейнер строка 2", 'control_type': "DataItem", 'found_index': 0}
