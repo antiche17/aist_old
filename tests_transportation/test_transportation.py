@@ -103,10 +103,16 @@ def test_value_auto(order_app):
             check.not_equal(order_app["shipment_address"], order_app["shipment_address_mod"], f"❌ ФР: Адрес Отгрузка не поменялся")
 
     with allure.step("27. Поменялся Водитель Отгрузка"):
-        check.is_false(order_app["shipment_driver"] == order_app["shipment_driver_mod"], f"❌ ФР: ")
+        check.is_false(order_app["shipment_driver"] == order_app["shipment_driver_mod"], f"❌ ФР: Водитель Отгрузка")
+
+    with allure.step("27. Поменялся Водитель Прибытие"):
+        check.is_true(order_app["driver2_mod"], f"❌ ФР: Водитель Прибытие")
 
     with allure.step("28. Поменялся Автомобиль Отгрузка"):
         check.is_false(order_app["shipment_auto"] == order_app["shipment_auto_mod"], f"❌ ФР: ")
+
+    with allure.step("28. Поменялся Автомобиль Прибытие"):
+        check.is_true(order_app["car2_mod"], f"❌ ФР: не поменялся Автомобиль Прибытие")
 
     with allure.step("29. Поменялся План. дата отгрузки Отгрузка"):
         check.is_false(order_app["shipment_plan_data"] == order_app["shipment_plan_data_mod"], f"❌ ФР: ")
@@ -256,10 +262,10 @@ def test_value_auto(order_app):
         ("89. Автомобиль Сдача контейнера", ["car3"]),
         ("90. План. прибытия Отгрузка", ["plan_arrival1_mod"]),
         ("91. Факт. прибытия Отгрузка", ["fact_arrival1_mod"]),
-        ("92. Водитель Прибытие", ["driver2_mod"]),
+
         ("93. План. отгрузки Прибытие", ["plan_load2_mod"]),
         ("94. Факт. отгрузки Прибытие", ["fact_load2_mod"]),
-        ("95. Автомобиль Прибытие", ["car2_mod"]),
+
         ("96. Водитель Сдача контейнера", ["driver3_mod"]),
         ("97. План. отгрузки Сдача контейнера", ["plan_load3_mod"]),
         ("98. Факт. отгрузки Сдача контейнера", ["fact_load3_mod"]),

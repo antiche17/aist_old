@@ -356,6 +356,12 @@ class WinAISTApp:
             'priority_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.TABLE_PRIORITY, "Value"),
             'responsible_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.RESPONSIBLE_TABLE1, "Value"),
             'carrier_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.CARRIER_TABLE1, "Value"),
+        })
+
+        self.fun.click_element_sp(main_window, self.fun.loc.FREIGHT_ORDER_TABLE)
+        keyboard.send_keys('{RIGHT}' * 28)
+
+        self.fun.order_data.update({
             'cargo_class_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.CARGO_CLASS_TABLE1, "Value"),
             'loading_method_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.LOADING_METHOD_TABLE1, "Value"),
             'cmr_number_table1': self.fun.get_element_property_sp(main_window, self.fun.loc.CMR_NUMBER_TABLE1, "Value"),

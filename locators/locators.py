@@ -457,7 +457,7 @@ class LocOrders:
     EXPEDITION_TABLE2 = {'title': "Экспедирование строка 2", 'control_type': "DataItem"}
     CAR_TABLE1 = {'title': "Автомобиль строка 1", 'control_type': "DataItem"}
     CAR_TABLE2 = {'title': "Автомобиль строка 2", 'control_type': "DataItem"}
-    CAR_TABLE3 = {'title': "Автомобиль строка 2", 'control_type': "DataItem"}
+    CAR_TABLE3 = {'title': "Автомобиль строка 3", 'control_type': "DataItem"}
     ADDRESS_TABLE1 = {'title': "Адрес строка 1", 'control_type': "DataItem"}
     ADDRESS_TABLE2 = {'title': "Адрес строка 2", 'control_type': "DataItem"}
     ADDRESS_TABLE3 = {'title': "Адрес строка 3", 'control_type': "DataItem"}
