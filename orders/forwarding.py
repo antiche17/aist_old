@@ -248,6 +248,7 @@ class WinAISTApp:
         })
 
         self.fun.click_element_sp(main_window, self.fun.loc.TAB_FREIGHT)
+
         # 10. Добавить груз в морскую перевозку
         self.fun.click_element_sp(main_window, self.loc.TAB_FREIGHT)
         self.fun.click_element_sp(main_window, self.loc.CREATE_BUTTON)

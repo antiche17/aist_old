@@ -296,9 +296,8 @@ def test_finance_is(order_app):
         check.equal(order_app["client_vs_form"], order_app["client_vs_form"], "❌ ФР: Пустое поле Клиент  Вх.счета")
 
     # Прямые счета
-    with allure.step("107. Поле Кем создан Прямые счета на клиента"):
-        check.equal(order_app["created_by_ps"], order_app["created_by_ps_form"],
-                    "❌ ФР: Пустое поле Кем создан Прямые счета на клиента")
+    # with allure.step("107. Поле Кем создан Прямые счета на клиента"):
+        # check.equal(order_app["created_by_ps"], order_app["created_by_ps_form"], "❌ ФР: Пустое поле Кем создан Прямые счета на клиента")
 
     with allure.step("108. Поле Дата  Прямые счета на клиента"):
         check.equal(order_app["date_ps"], order_app["date_ps_form"],

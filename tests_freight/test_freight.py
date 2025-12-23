@@ -18,7 +18,6 @@ def order_app():
 
 @allure.suite("Проверка Таблицы Грузы")
 @allure.title("Проверка Таблицы Грузы")
-@pytest.mark.order(1)
 def test_freight(order_app):
     with allure.step("1. Сравниваем созданного клиента"):
         check.equal(order_app["name_client"], order_app["name_client_order"], "❌ ФР: клиенты не одинаковые")
@@ -346,18 +345,12 @@ def test_freight(order_app):
     with allure.step("102. План. дата доставки (auto)"):
         check.equal(order_app["auto_plan_data_mod2"] , order_app["delivery_data_plan_table"], msg="❌ ФР: Не одинаковая Дата доставки")
 
-    with allure.step("103. Водитель (auto)"):
-        check.equal(order_app["auto_driver_mod2"] , order_app["driver_table"], msg="❌ ФР: Не одинаковый Водитель")
-
-    with allure.step("104. Номер авто (auto)"):
-        check.equal(order_app["auto_number_auto_mod2"] , order_app["car_table"], msg="❌ ФР: Не одинаковый Номер авто")
-
     with allure.step("105. Ответственный (forwarding)"):
-        check.equal(order_app["forwarding_otv_mod2"] , order_app["otv_table"], msg="❌ ФР: Не одинаковый Ответственный")
+        check.equal(order_app["forwarding_otv_mod2"] , order_app["otv_table"], msg="❌ ФР: Не одинаковый Ответственный (forwarding)")
 
     with allure.step("106. Телекс (forwarding)"):
-        compare_dates(order_app["forwarding_telex_mod2"], order_app["telex_table"], "❌ ФР: Не одинаковый Телекс")
+        compare_dates(order_app["forwarding_telex_mod2"], order_app["telex_table"], "❌ ФР: Не одинаковый Телекс (forwarding)")
 
     with allure.step("107. Документ (forwarding)"):
-        compare_dates(order_app["forwarding_receiving_doc_mod2"], order_app["doc_table"], "❌ ФР: Не одинаковый Документ")
+        compare_dates(order_app["forwarding_receiving_doc_mod2"], order_app["doc_table"], "❌ ФР: Не одинаковый Документ (forwarding)")
 

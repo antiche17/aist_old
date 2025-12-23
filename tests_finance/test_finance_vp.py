@@ -148,7 +148,7 @@ def test_finance_vp(order_app):
         check.equal(order_app["ip_supplier_mod"], order_app["ip_table_supplier"], "❌ ФР: Не одинаковое Поставщик в таблице ВП")
 
     with allure.step("52. Сравнение  Валюта в таблице ВП"):
-        check.equal(order_app["ip_table_currency"],"CNY", "❌ ФР: Не одинаковое Валюта в таблице ВП")
+        check.equal(order_app["ip_table_currency"],"€", "❌ ФР: Не одинаковое Валюта в таблице ВП")
 
     with allure.step("53. Сравнение  Сумма в таблице ВП"):
         check.equal(order_app["ip_total_mod"], "1000", "❌ ФР: Не одинаковое Сумма в таблице ВП")

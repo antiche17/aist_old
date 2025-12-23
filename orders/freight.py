@@ -480,17 +480,21 @@ class WinAISTApp:
         self.fun.click_element(main_window, self.loc.SHIPMENT, timeout=3)
         self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
 
-        # 9. Прибытие
-        self.fun.click_element(main_window, self.loc.CREATE_BUTTON, timeout=3)
-        self.fun.click_element(main_window, self.loc.ROUTES_WINDOWS, timeout=3)
-        self.fun.click_element(main_window, self.loc.ARRIVAL, timeout=3)
-        self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
+        # 10. Прибытие
+        self.fun.click_element_sp(main_window, self.loc.CREATE_BUTTON)
+        self.fun.click_element_sp(main_window, self.loc.ROUTES_WINDOWS)
+        self.fun.click_element_sp(main_window, self.loc.ARRIVAL)
+        self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
+
+
 
         # 9. Водитель добавить
         self.fun.click_element(main_window, self.loc.DRIVER, timeout=1)
         keyboard.send_keys('{ENTER}')
         self.fun.click_element(main_window, self.loc.DRIVER, timeout=1)
         self.fun.click_element(main_window, self.loc.NAME_LINE1, timeout=1)
+
+
 
         # 10. Автомобиль
         self.fun.click_element(main_window, self.loc.AUTO, timeout=1)
@@ -509,7 +513,36 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.AUTO_ADDRESS)
         self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_1)
+        self.fun.click_element_sp(main_window, self.fun.loc.APPLY_BUTTON1)
+        time.sleep(1)
         self.fun.click_element_sp(main_window, self.fun.loc.SAVE_BUTTON)
+        main_window = self.fun.get_auto_form()
+        main_window.set_focus()
+        time.sleep(1)
+        time.sleep(2)
+
+        # 19. Открываем форму Прибытие
+        self.fun.click_element_double(main_window, self.fun.loc.RECIPIENT_2)
+        main_window = self.fun.get_auto_shipment_form()
+        main_window.set_focus()
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.loc.AUTO_ADDRESS)
+        self.fun.click_element_sp(main_window, self.fun.loc.RECIPIENT_2)
+        self.fun.click_element_sp(main_window, self.loc.ARRIVAL_DATA1)
+        time.sleep(1)
+        keyboard.send_keys('{LEFT}' * 2)
+        keyboard.send_keys('12')
+        self.fun.click_element_sp(main_window, self.loc.ARRIVAL_DATA_FACT)
+        time.sleep(1)
+        keyboard.send_keys('{LEFT}' * 2)
+        keyboard.send_keys('13')
+        time.sleep(1)
+        self.fun.set_text_field(main_window, self.fun.loc.NOTE, "Прибытие", timeout=1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.fun.loc.APPLY_BUTTON1)
+        time.sleep(1)
+        self.fun.click_element_sp(main_window, self.fun.loc.SAVE_BUTTON)
+
         main_window = self.fun.get_auto_form()
         main_window.set_focus()
         time.sleep(1)
@@ -653,35 +686,35 @@ class WinAISTApp:
 
         # 5. Проверка скрытых полей в таблице
         self.fun.order_data.update({
-            'bul_note_table': self.fun.get_element_property(main_window, self.loc.NOTE_TE_TABLE2, "Value"),
-            'bul_order_otv_table': self.fun.get_element_property(main_window, self.loc.RESPONSIBLE_ORDER_TABLE2, "Value"),
-            'bul_forwarding_number_table': self.fun.get_element_property(main_window, self.loc.EXPEDITION_TABLE2, "Value"),
-            'bul_net_table': self.fun.get_element_property(main_window, self.loc.WEIGHT_NETTO_TABLE2, "Value"),
-            'bul_auto_number_auto_table': self.fun.get_element_property(main_window, self.loc.CAR_TABLE2, "Value"),
-            'bul_auto_address_table': self.fun.get_element_property(main_window, self.loc.ADDRESS_TABLE2, "Value"),
-            'bul_auto_driver_table': self.fun.get_element_property(main_window, self.loc.DRIVER_TABLE2, "Value"),
-            'bul_auto_otv_table': self.fun.get_element_property(main_window, self.loc.OTV_AUTO_TABLE2, "Value"),
-            'bul_auto_plan_data_table': self.fun.get_element_property(main_window, self.loc.DELIVERY_DATE_PLAN_TABLE2, "Value"),
-            'bul_gtd_table': self.fun.get_element_property(main_window, self.loc.GTD_NUMBER_TABLE2, "Value"),
-            'bul_quantity_table': self.fun.get_element_property(main_window, self.loc.QUANTITY_TABLE2, "Value"),
-            'bul_uom_table': self.fun.get_element_property(main_window, self.loc.MEASUREMENT_UNIT_TABLE2, "Value"),
-            'bul_otv_table': self.fun.get_element_property(main_window, self.loc.OTV_AUTO_TABLE2, "Value"),
-            'bul_create_table': self.fun.get_element_property(main_window, self.loc.CREATED_TE_TABLE2, "Value"),
+            'bul_note_table': self.fun.get_element_property_sp(main_window, self.loc.NOTE_TE_TABLE2, "Value"),
+            'bul_order_otv_table': self.fun.get_element_property_sp(main_window, self.loc.RESPONSIBLE_ORDER_TABLE2, "Value"),
+            'bul_forwarding_number_table': self.fun.get_element_property_sp(main_window, self.loc.EXPEDITION_TABLE2, "Value"),
+            'bul_net_table': self.fun.get_element_property_sp(main_window, self.loc.WEIGHT_NETTO_TABLE2, "Value"),
+            'bul_auto_number_auto_table': self.fun.get_element_property_sp(main_window, self.loc.CAR_TABLE2, "Value"),
+            'bul_auto_address_table': self.fun.get_element_property_sp(main_window, self.loc.ADDRESS_TABLE2, "Value"),
+            'bul_auto_driver_table': self.fun.get_element_property_sp(main_window, self.loc.DRIVER_TABLE2, "Value"),
+            'bul_auto_otv_table': self.fun.get_element_property_sp(main_window, self.loc.OTV_AUTO_TABLE2, "Value"),
+            'bul_auto_plan_data_table': self.fun.get_element_property_sp(main_window, self.loc.DELIVERY_DATE_PLAN_TABLE2, "Value"),
+            'bul_gtd_table': self.fun.get_element_property_sp(main_window, self.loc.GTD_NUMBER_TABLE2, "Value"),
+            'bul_quantity_table': self.fun.get_element_property_sp(main_window, self.loc.QUANTITY_TABLE2, "Value"),
+            'bul_uom_table': self.fun.get_element_property_sp(main_window, self.loc.MEASUREMENT_UNIT_TABLE2, "Value"),
+            'bul_otv_table': self.fun.get_element_property_sp(main_window, self.loc.OTV_AUTO_TABLE2, "Value"),
+            'bul_create_table': self.fun.get_element_property_sp(main_window, self.loc.CREATED_TE_TABLE2, "Value"),
 
-            'con_note_table': self.fun.get_element_property(main_window, self.loc.NOTE_TE_TABLE1, "Value"),
-            'con_order_otv_table': self.fun.get_element_property(main_window, self.loc.RESPONSIBLE_ORDER_TABLE1, "Value"),
-            'con_forwarding_number_table': self.fun.get_element_property(main_window, self.loc.EXPEDITION_TABLE1, "Value"),
-            'con_net_table': self.fun.get_element_property(main_window, self.loc.WEIGHT_NETTO_TABLE1, "Value"),
-            'con_auto_number_auto_table': self.fun.get_element_property(main_window, self.loc.CAR_TABLE1, "Value"),
-            'con_auto_address_table': self.fun.get_element_property(main_window, self.loc.ADDRESS_TABLE1, "Value"),
-            'con_auto_driver_table': self.fun.get_element_property(main_window, self.loc.DRIVER_TABLE1, "Value"),
-            'con_auto_otv_table': self.fun.get_element_property(main_window, self.loc.OTV_AUTO_TABLE1, "Value"),
-            'con_auto_plan_data_table': self.fun.get_element_property(main_window, self.loc.DELIVERY_DATE_PLAN_TABLE1, "Value"),
-            'con_gtd_table': self.fun.get_element_property(main_window, self.loc.GTD_NUMBER_TABLE1, "Value"),
-            'con_quantity_table': self.fun.get_element_property(main_window, self.loc.QUANTITY_TABLE1, "Value"),
-            'con_uom_table': self.fun.get_element_property(main_window, self.loc.MEASUREMENT_UNIT_TABLE1, "Value"),
-            'con_otv_table': self.fun.get_element_property(main_window, self.loc.OTV_AUTO_TABLE1, "Value"),
-            'con_create_table': self.fun.get_element_property(main_window, self.loc.CREATED_TE_TABLE1, "Value"),
+            'con_note_table': self.fun.get_element_property_sp(main_window, self.loc.NOTE_TE_TABLE1, "Value"),
+            'con_order_otv_table': self.fun.get_element_property_sp(main_window, self.loc.RESPONSIBLE_ORDER_TABLE1, "Value"),
+            'con_forwarding_number_table': self.fun.get_element_property_sp(main_window, self.loc.EXPEDITION_TABLE1, "Value"),
+            'con_net_table': self.fun.get_element_property_sp(main_window, self.loc.WEIGHT_NETTO_TABLE1, "Value"),
+            'con_auto_number_auto_table': self.fun.get_element_property_sp(main_window, self.loc.CAR_TABLE1, "Value"),
+            'con_auto_address_table': self.fun.get_element_property_sp(main_window, self.loc.ADDRESS_TABLE1, "Value"),
+            'con_auto_driver_table': self.fun.get_element_property_sp(main_window, self.loc.DRIVER_TABLE1, "Value"),
+            'con_auto_otv_table': self.fun.get_element_property_sp(main_window, self.loc.OTV_AUTO_TABLE1, "Value"),
+            'con_auto_plan_data_table': self.fun.get_element_property_sp(main_window, self.loc.DELIVERY_DATE_PLAN_TABLE1, "Value"),
+            'con_gtd_table': self.fun.get_element_property_sp(main_window, self.loc.GTD_NUMBER_TABLE1, "Value"),
+            'con_quantity_table': self.fun.get_element_property_sp(main_window, self.loc.QUANTITY_TABLE1, "Value"),
+            'con_uom_table': self.fun.get_element_property_sp(main_window, self.loc.MEASUREMENT_UNIT_TABLE1, "Value"),
+            'con_otv_table': self.fun.get_element_property_sp(main_window, self.loc.OTV_AUTO_TABLE1, "Value"),
+            'con_create_table': self.fun.get_element_property_sp(main_window, self.loc.CREATED_TE_TABLE1, "Value"),
         })
         time.sleep(1)
         keyboard.send_keys('{LEFT}' * 47)
