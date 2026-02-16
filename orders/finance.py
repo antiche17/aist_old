@@ -657,6 +657,7 @@ class WinAISTApp:
         time.sleep(1)
         self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON)
         self.fun.click_element(main_window, self.loc.OK_BUTTON, timeout=1)
+        time.sleep(1)
         # Связь с прямыми счетами на клиента
         self.fun.click_element_sp(main_window, self.loc.DIRECT_CLIENT_INVOICES)
         self.fun.click_element_sp(main_window, self.loc.CONNECT_ACCOUNTS_CLIENT)

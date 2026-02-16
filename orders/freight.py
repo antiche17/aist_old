@@ -604,8 +604,8 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.FORWARDING_RECEIVING_DOC)
         time.sleep(1)
         keyboard.send_keys('11')
-        self.fun.click_element(main_window, self.loc.FORWARDING_NOMINATION, timeout=1)
-        time.sleep(1)
+        self.fun.click_element(main_window, self.loc.FORWARDING_NOMINATION, timeout=2)
+        time.sleep(2)
         keyboard.send_keys('12')
         keyboard.send_keys('{ENTER}')
         time.sleep(1)
@@ -631,7 +631,7 @@ class WinAISTApp:
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
         self.fun.click_element_sp(main_window, self.loc.OK_BUTTON)
         self.fun.click_element_sp(main_window, self.loc.APPLY_BUTTON1)
-
+        time.sleep(1)
         # 16. Проверка введенных данных
         self.fun.order_data.update({
             'forwarding_otv': self.fun.get_element_property_sp(main_window, self.loc.RESPONSIBLE_COMBO, "Value"),
