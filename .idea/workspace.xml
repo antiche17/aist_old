@@ -4,141 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="fix финансовых проверок">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="24f635d4-0be9-43e9-9985-8b017033fac1" name="Changes" comment="up">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/finance.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/finance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/freight.py" beforeDir="false" afterPath="$PROJECT_DIR$/orders/freight.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/00deeb06-c42b-40ea-87df-1f69f226a26a-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/02f26d2a-95fe-466d-9b0f-85a412f773d7-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/068a377a-56b7-47ea-a897-6c4433017166-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/087a13c2-d326-4602-ab6d-cdc171aa683b-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/0a41a148-78ea-4c8a-906f-dcda42a8b23b-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/0b5adafe-6cb4-4acc-9a48-3087a840fb85-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/0e3e4208-40d5-4a8d-bee6-b98b5ada5609-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/0f585d39-4b7c-4eda-adad-b780f824feba-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/11fb0636-a374-4950-aafe-f7c19e0d286a-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/1447f8d0-7e6f-4405-91c4-c2fad6b4de67-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/14745a49-b639-4449-a468-a21ad5885a14-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/16f26cc4-544e-42e4-807e-94897f3e9385-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/1760d52f-f054-4537-a6cc-f84735a271cb-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/18b374c1-6c61-4f95-9205-ab5d50dd9cec-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/198c6f4c-387b-4bf2-b790-36af9dc73746-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/1a86bf2c-15b8-467e-9315-b1d8a900cf38-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/1dcebb06-67eb-4df2-be5e-403f7c14b117-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/1ff436c1-c77c-4c55-a787-08fa4dbf219d-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/20366111-8cf4-435f-9c26-672b8f776652-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/23108dc3-e91f-4cdb-971c-4909ba1c2027-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/2679cfdc-54c1-4472-9970-06dd3b039fd4-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/26f0d2a8-a2da-4be7-a5b2-b36fb73b3fc6-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/277d529f-6030-4a1b-a348-e962bcf4ff58-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/296372e0-376a-430e-859c-503bf6be2cf4-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/29849cf9-5095-451d-b8a4-1312e28fd10a-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/358fb60d-70ba-4444-a2f2-d6147e7e1904-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/3cc16cef-c5bd-474d-b7d6-1e3061550a9d-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/3e29f19e-1688-4ead-ba5e-509be847ef6e-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/3f1426fc-ff57-45c1-b63c-c27fb33996c6-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/4559da87-ee16-4cea-b21f-806c7f01f5e6-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/46ed9c02-b48f-4959-a2d9-7a725b1112a7-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/4972a331-50d9-4b29-8ea8-02099aaeae57-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/4a5fa6c3-e94e-47d6-99dc-4a42423bebe7-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/4df17344-f7f3-4187-8013-27c4304261e1-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/517c7fba-cbf5-4a94-832e-2d29800fbfe2-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/51d01412-5983-4a8d-b705-5e02d525033f-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/56727293-2527-4965-aa76-37469f62f2f2-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/57f61e54-7c5b-4221-9f91-761818b8dc02-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/581f6d55-41b4-4b99-8a9d-01372667ad43-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/610d3977-3ea4-4ac4-a37a-7fbf1fdaaa9b-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/631db182-80ec-4764-8559-b60719e4860e-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/65dcbff0-37ae-413b-ac22-7b6bcd415851-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/669cab75-a46b-4378-99a8-2c3579078bcf-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/67df3920-5c25-45e2-bfac-0b24871293a1-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/6bed984d-b0cd-4baa-ac03-c0e07a7b053a-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/70189f9b-8b5e-4df6-9dc9-dde037d2f8ad-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/7045a1b0-4ab9-444a-959f-c8fe68b5eae2-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/746e36ca-6d09-41b1-8451-617d0cad6351-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/7903c71f-d929-40f8-b0b6-0aa8432904ba-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/79bcfe0a-cbd3-4c7e-8385-a2dbe0661162-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/7b05a50c-3b6d-4d8e-a421-9c2ab2d6d9e1-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/7b51fc44-c655-4a8f-9b66-ad693b71cc08-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/7eacbfad-8188-49b9-8455-bc125d15d0fe-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/81c3cc5b-6ff6-418c-bc76-ad8742d27468-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/84ef0234-9e6a-416b-825c-8079b7c7bddf-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/862bb51e-6a12-44e5-a2d9-96b5485803da-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/86c78f44-4747-4949-b6f1-4e41159c09ce-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/87f4b423-213d-4670-a50e-8ec9bde17691-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/88fda384-a37f-4a1b-a49b-3207926d6b4e-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/8d76d10d-033d-4f91-8f71-9ff3dd08e947-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/96bd0e4c-a0dd-459a-88ce-bebed8956bd2-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/9882905b-419c-4bde-98e3-d766b7db7217-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/9a979557-12f8-42a3-8145-560758ef97f2-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/9ba90579-b8a8-47a5-83df-d849e9526495-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/9e348af8-311a-4166-af2d-a693c19c536a-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/9e3c2cdb-2d12-478f-8fd2-76b9265366e4-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/9e8468ef-e396-45ac-af16-407e8d283e41-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/aacfcae6-ee26-463c-80ae-bc7bd2e07728-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/abae0bed-e2a3-43d6-bad3-9300d82abbe3-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/ac80286f-25f3-4739-ad6f-5ec45591a73c-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/ad409c1f-a41a-4c16-8a02-32662c51ba41-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/b137364e-accd-419e-8a59-2821c296bf5f-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/b19c8ee1-c72f-4b3b-9984-03f256194e62-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/b2c50923-2372-477b-b5df-96dd4d88dc8b-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/b2f1f18e-ba6b-47c4-bebc-f52f067ba4c5-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/b6b81ed6-6662-49a2-a65f-83346aaea49d-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/b73ad6f7-a011-4c72-9e02-d343fe8c8b08-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/b7768367-efea-4f7d-b325-c720a98bd258-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/c161edae-b762-42cf-8d25-25cb27049728-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/c2b9a563-ef9a-4654-8b08-5288300dd064-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/c399b0bb-c596-4e05-b79e-4ff4f81c7d6c-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/c5818c57-5ccd-4135-8237-e695e7187c21-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/c6518fbb-5cc2-41d6-b8d3-182534f8cdd8-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/c68f8e8b-a914-4516-ab71-1a7cb919500c-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/c6aa85b3-4d07-4f6d-942e-34d9ae1f021e-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/c76cba4d-46c6-4ec6-b912-0c71234adb02-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/c804dc4e-a33b-4632-88d8-c29fa8e7326e-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/c9e2a8ec-4ae2-4e14-a16e-a59b9d11a419-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/d666b3a2-2699-4853-ab8b-0ee172a006bf-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/e368a99c-205c-4db0-836f-f450b78a9e1b-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/e444d714-bab5-4b15-a062-a52120216982-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/e44edd97-f011-46b1-9cad-199677dd8d88-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/ebdb822b-3d28-4893-871d-ab2db04deece-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/edf11a8a-982b-42ff-b6aa-4e5ede43e03f-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/f14087e2-b5d6-4f0d-8889-ab8db2be2616-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/f58f6541-ee06-4bad-a3be-b2c4cd984306-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/f6dafa01-f01b-4495-9133-dcbabdaddf25-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/fa4fa29d-b2ec-46fb-b656-f3998128c14c-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/allure-results/fd1c5575-303b-415d-b512-51d5143bf784-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/test_finance_ip.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/test_finance_is.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/test_finance_org.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/test_finance_te.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/test_finance_vp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_finance/test_finance_vs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_forwarding/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_forwarding/test_forwarding.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_freight/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/06cc8005-afcc-4912-973d-aba25eadb1cb-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/4d759d09-f3d5-4aa2-9eec-499625f30ca8-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_freight/allure-results/561cc736-f6de-4c85-ac91-fb6233cb7052-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_freight/test_freight.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_orders/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_orders/test_order.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_del.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_finance.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_forwarding.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_freight_bulkership.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_freight_container.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_gtd.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_orders/test_order_transportation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_services/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_services/test_services.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_transportation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests_transportation/test_transportation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/transportation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/transportation/transportation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/запуск_тестов.ps1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/шаблоны/Перевозка.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,12 +22,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "antiche17"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;antiche17&quot;
   }
-}]]></component>
+}</component>
   <component name="GitLabMergeRequestFiltersHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPENED&quot;,
@@ -177,12 +44,12 @@
     &quot;second&quot;: &quot;2e2adb64-596e-4580-9669-f5da413c0b6c&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/antiche17/aist_old.git",
-    "accountId": "7060aebc-1dd9-4534-958a-22ff9050d53b"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/antiche17/aist_old.git&quot;,
+    &quot;accountId&quot;: &quot;7060aebc-1dd9-4534-958a-22ff9050d53b&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -266,7 +133,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/qa/qa-copy-1/tests_finance&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Issue.Navigation&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -601,7 +468,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766492287837</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="up">
+      <option name="closed" value="true" />
+      <created>1771227024296</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1771227024296</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -627,7 +502,8 @@
     <MESSAGE value="fix" />
     <MESSAGE value="fix Авто перевозки" />
     <MESSAGE value="fix финансовых проверок" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix финансовых проверок" />
+    <MESSAGE value="up" />
+    <option name="LAST_COMMIT_MESSAGE" value="up" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
